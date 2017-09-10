@@ -1,0 +1,239 @@
+* {
+    margin:0;
+    padding:0;
+}
+html, body {
+    height:100%;
+    font:12px/100% Verdana, Geneva, sans-serif;
+    overflow:hidden;
+    min-width:600px;
+    min-height:500px;
+}
+* html, * html body {
+    background-image:url(about:blank);
+    background-attachment:fixed;
+    min-width:600px;
+}
+#Top {
+    background:url(../../images/admin/x-bg.gif) repeat-x top;
+    height:70px;
+}
+#Tags {
+    height:60px;
+    background:url(../../images/admin/x-bg.gif) repeat-x left -200px;
+    position:relative;
+}
+#Left {
+    width:206px;
+    background:url(../../images/admin/y-bg.gif) repeat-y 0 0px;
+    margin-top:-12px;
+    float:left;
+    position:relative;
+}
+#Right {
+    overflow-x:hidden;
+    overflow-y:scroll;
+    float:right;
+    position:relative;
+    padding-right: 10px;
+}
+#Bottom {
+    line-height:20px;
+    bottom:0;
+    background: #F9F7EA;
+    border-top: 1px solid #EFE6BB;
+    bottom: 0;
+    color: #B9DDFF;
+    font-size: 11px;
+    text-align: center;
+    position: fixed;
+    width:100%;
+}
+/*#Right .contentArea { padding-bottom:80px;}*/
+.commonBtnArea {
+    border-top:1px solid #D8D8D8;
+    padding:10px 20px;
+    background:#F5F5F5;
+    right:16px;
+    bottom:20px;
+    position: fixed;
+    /*width:100%;*/
+}
+#Left .QRcode{ position: absolute; left: 0; bottom: 5px; text-align: center; width: 100%;}
+/* header */
+.logo {
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:200px;
+    height:65px;
+    line-height:65px;
+    overflow:hidden;
+    text-align:center;
+    vertical-align:bottom;
+}
+.logo img { vertical-align:bottom; margin: 5px 0 0 10px; }
+.help {
+    position:absolute;
+    right:50px;
+    top:0px;
+    width:163px;
+    height:23px;
+    line-height:20px;
+    overflow:hidden;
+    background:url(../../images/admin/help-bg.gif) no-repeat;
+    text-indent:40px;
+}
+.help a { color:#333; }
+.help span { margin-left:30px; }
+.menu {
+    height:31px;
+    line-height:31px;
+    margin-left: 230px;
+}
+.menu ul {
+    margin-top:39px;
+    float:left;
+    background:url(../../images/admin/x-bg.gif) repeat-x left -80px;
+}
+.menu li {
+    min-width:80px;
+    float:left;
+    text-align:center;
+}
+.menu li.fisrt { background:url(../../images/admin/x-bg.gif) no-repeat left -120px; }
+.menu li.fisrt span{ margin-right: -15px;}
+.menu li.end { background:url(../../images/admin/x-bg.gif) no-repeat right -160px; }
+.menu li.end span{ padding-right: 20px;}
+.menu li a {
+    color:#333;
+    text-shadow: 0 1px 0 #fefefe;
+}
+.menu li.current a, .menu li.fisrt_current a, .menu li.end_current a {
+    color:#fff;
+    text-shadow: none;
+}
+ .menu li span {
+    padding-right:0px;
+    display:block;
+}
+
+.menu li.current, .menu li.fisrt_current, .menu li.end_current {
+    background: url(../../images/admin/menu-current.gif) no-repeat left -70px;
+    padding-left:20px;
+}
+.menu li.current span, .menu li.fisrt_current span {
+    background: url(../../images/admin/menu-current.gif) no-repeat right -175px;
+    padding-right:20px;
+}
+.menu li.fisrt_current { background-position: left -0px;
+                         padding-left:20px;}
+.menu li.end_current { background-position: left -35px;
+                       padding-left:20px;}
+.menu li.end_current span { background: url(../../images/admin/menu-current.gif) no-repeat right -140px;
+                            padding-right:20px; }
+/* /header */
+#Tags .userPhoto {
+    height:60px;
+    width:300px;
+    position:absolute;
+    left:0; top:0;
+    z-index:2;
+    background:url(../../images/admin/userInfo-bg.gif) no-repeat left 0px;
+}
+#Tags .userPhoto img {
+    margin:8px 0 0 9px;
+    width:45px;
+    height:45px;
+}
+#Tags .navArea {
+    width:100%;
+    color:#333;
+}
+#Tags .navArea .userInfo {
+    text-shadow: 0 1px 0 #fefefe;
+    line-height: 26px;
+    margin-left:100px;
+    top:0;
+    z-index:3;
+    position: absolute;
+    width:100%;
+}
+#Tags .navArea .userInfo div {
+    float:right;
+    width:auto;
+    line-height:20px;
+    margin-right:130px;
+}
+#Tags .navArea a { color:#333; }
+#Tags .nav {
+    line-height:22px;
+    background: #f2f2f2;
+    margin-left:290px;
+    position: absolute;
+    bottom: 12px;
+    left: 0;
+    z-index: 5;
+    width: 100%;
+}
+#Tags .nav font {
+    width:190px;
+    display:inline-block;
+    line-height:18px;
+    color:#ccc;
+    text-align:center;
+    margin:0 50px 0 -235px;
+}
+#Tags .nav span {
+    float:right;
+    color:#f00;
+    line-height:30px;
+}
+#Tags .userFunction a { color:#ccc; }
+#Tags .navArea .userInfo div .sysSet span {
+    width:12px;
+    width:18px;
+    margin:0px 5px;
+    display: inline-block;
+    background:url(../../images/admin/ico.gif) -5px 0px no-repeat;
+}
+#Tags .navArea .userInfo div .loginOut { margin-left:15px; }
+#Tags .navArea .userInfo div .loginOut span {
+    width:12px;
+    width:18px;
+    margin:0px 5px;
+    display: inline-block;
+    background:url(../../images/admin/ico.gif) -25px 2px no-repeat;
+}
+#Left #control {
+    position:absolute;
+    right:0px;
+    top:0;
+    width:9px;
+    background:url(../../images/admin/control-bg.gif) no-repeat left center;
+    cursor:pointer;
+}
+#Left #control.close {
+    position:absolute;
+    right:0px;
+    top:0;
+    background:url(../../images/admin/control-bg.gif) no-repeat right center;
+}
+#Left .subMenuList { width:197px; }
+#Left .itemTitle {
+    width:197px;
+    background:url(../../images/admin/item-bg.gif) no-repeat left top;
+    padding-top: 12px;
+    line-height:36px;
+    text-indent:50px;
+}
+#Left li {
+    line-height:28px;
+    text-indent:30px;
+    border-bottom:1px solid #2d689f;
+}
+#Left li a {
+    background:url(../../images/admin/ico-y.gif) no-repeat 15px 12px;
+    color:#b9ddff;
+    display:block;
+}

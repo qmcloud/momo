@@ -1,0 +1,53 @@
+@charset "utf-8";
+/*!----------------------------------------------------------------------------- 
+   AsyncBox default v1.5 - http://asyncui.com/skin - Copyright 2012, Wuxinxi007
+   -----------------------------------------------------------------------------!*/
+   
+body{margin:0;height:100%} asyncui{display:block} .asyncbox{position:absolute;font:12px Tahoma,sans-serif}
+
+ab_skins{background:url(zcms/zcms_bg.png)}
+ab_skins ul{background:url(zcms/zcms_tb.png)}
+
+ab_clone{border:1px dotted #666}
+table.ab_outer{width:auto;height:auto;border-collapse:collaps}
+.asyncbox table,.asyncbox td,.asyncbox ul{margin:0;padding:0;list-style:none}
+
+.ab_border,.ab_close,.ab_footbar a,.ab_footbar span{background:url(zcms/zcms_bg.png) no-repeat;_background-image:none}
+.ab_border{font-size:0}
+/* 上左中右下 */
+.ab_t,.ab_b{height:33px;background:url(zcms/zcms_tb.png) repeat-x;_png:zcms/ie6/t.png}
+.ab_l div,.ab_r div{width:13px}
+.ab_l,.ab_r{background-repeat:repeat-y;_png:zcms/ie6/l.png}
+.ab_c{background:#fff}
+.ab_r{background-position:-14px 0;_png:zcms/ie6/r.png}
+.ab_b{height:13px;background-position:0 -34px;_png:zcms/ie6/b.png}
+/* 顺时针四个角 */
+.ab_lt{background-position:-28px -33px;_png:zcms/ie6/lt.png}
+.ab_rt{background-position:-41px -33px;_png:zcms/ie6/rt.png}
+.ab_rb{background-position:-41px -65px;_png:zcms/ie6/rb.png}
+.ab_lb{background-position:-28px -65px;_png:zcms/ie6/lb.png}
+
+.ab_title{position:relative;height:33px;margin-top:-33px;color:#fff;cursor:default;padding-right:20px;overflow:hidden;-moz-user-select:none;font-weight:bold;line-height:35px; text-shadow:0 0 3px #333}
+.ab_close{position:absolute;top:7px;_top:8px;right:0;width:26px;height:15px;background-position:-28px 0;_background:url(zcms/ie6/closebtn.gif) no-repeat;}
+.ab_close:hover{background-position:-28px -15px;_background-position:0 -15px}
+
+/*asyncbox alert...*/
+.asyncbox_alert,.asyncbox_confirm,.asyncbox_success,.asyncbox_warning,.asyncbox_error{color:#333;margin:10px;line-height:18px;padding-left:40px;text-align:left;}
+.asyncbox_alert span,.asyncbox_confirm span,.asyncbox_success span,.asyncbox_warning span,.asyncbox_error span{
+	width:36px;height:34px;position:absolute;top:40px;left:21px;background:url(zcms/zcms_bg.png) no-repeat -55px 0
+}
+.asyncbox_confirm span{background-position:-91px 0}
+.asyncbox_success span{background-position:-127px 0}
+.asyncbox_warning span{background-position:-163px 0}
+.asyncbox_error span{background-position:-199px 0}
+.asyncbox_error{color:#F00}
+.asyncbox_prompt{color:#033;padding:0 10px}
+.asyncbox_prompt li{margin-top:8px}
+.asyncbox_prompt input,.asyncbox_prompt textarea{color:#555;margin:0;padding:2px;border:1px solid #09c;font:12px/1.3em Verdana,sans-serif;resize:none}
+.asyncbox_prompt input{height:17px}
+
+.ab_footbar{padding:10px 10px 10px 0;text-align:right}
+.ab_footbar a{margin:0 0 0 10px;padding:0;display:inline-block;border:none;text-decoration:none;height:22px;cursor:pointer;background:url(zcms/zcms_bg.png) no-repeat -55px -34px}
+.ab_footbar span{background:url(zcms/zcms_bg.png) no-repeat 100% -34px;color:#09d;padding:3px 11px 3px 0;margin-left:12px;float:left;height:16px}
+.ab_footbar a:hover{background-position:-55px -56px;text-decoration:none}
+.ab_footbar a:hover span{color:#069;background-position:100% -56px}

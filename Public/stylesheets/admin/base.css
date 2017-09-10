@@ -1,0 +1,284 @@
+@charset "utf-8";
+/* CSS Document */
+/*全局样式定义*/
+* {
+    margin:0;
+    padding:0;
+}
+body {
+    min-height:500px;
+    font: 12px/26px Georgia, "Times New Roman", Times, serif;
+    background:#f5f5f5;
+}
+li { list-style:none; }
+a { text-decoration:none; }
+input,textarea {
+    -webkit-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -moz-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -ms-transition: border linear 0.2s, box-shadow linear 0.2s;
+    -o-transition: border linear 0.2s, box-shadow linear 0.2s;
+    transition: border linear 0.2s, box-shadow linear 0.2s;
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+    border-radius:3px;
+}
+input:focus,textarea:focus {
+    outline: 0;
+    border-color: rgba(82, 168, 236, 0.8);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+    -moz-box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);
+}
+input{ vertical-align: middle;}
+.input { height: 18px; }
+.input, textarea, select {
+    background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 2px #F0F0F0 inset;
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 18px;
+    padding: 4px;
+    margin: 0;
+    vertical-align: middle;
+}
+option{ height: 16px;}
+.clear { clear:both; }
+.fr{ float: right;}
+.line {
+    background:url(../../images/admin/x-bg.gif) repeat-x left -310px;
+    height:2px;
+    overflow:hidden;
+    margin:5px 0px;
+}
+.hr { background:url(../../images/Bg/hr.png) repeat-x bottom; }
+.btn {
+    margin-right: 10px;
+    min-width: 80px;
+    background: #1b75b6;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+    color:#fff;
+    border: 1px solid #106bab;
+    border-radius: 3px;
+    padding:4px 5px 4px 10px;
+    display: inline-block;
+    cursor: pointer;
+    font-size:100%;
+    line-height: normal;
+    text-decoration:none;
+    overflow:visible;
+    vertical-align: middle;
+    text-align:center;
+    zoom: 1;
+    white-space:nowrap;
+    font-family:inherit;
+    letter-spacing:5px;
+}
+/*登录页样式*/
+.loginWeb { background:url(../../images/admin/login_body_bg.gif) repeat-x center top; }
+.loginBox {
+    width:900px;
+    height:500px;
+    background:url(../../images/admin/login_bg.jpg) no-repeat center 30px;
+    margin:0 auto;
+    padding-top:135px;
+}
+.loginBox .innerBox {
+    width:456px;
+    height:310px;
+    margin:0px auto 5px auto;
+}
+.loginBox .innerBox .logo {
+    height:75px;
+    line-height:75px;
+    padding:10px 40px 0 40px;
+}
+.loginBox .loginInfo { }
+.loginBox ul {
+    clear:both;
+    margin:0 40px;
+}
+.loginBox ul li {
+    line-height:50px;
+    height:50px;
+    float:left;
+}
+.loginBox ul li.row1 {
+    width:80px;
+    text-align:right;
+    padding-right:10px;
+    font-family:"微软雅黑";
+    font-size:16px;
+    color:#666;
+}
+.loginBox ul li.row2 { }
+.loginBox .loginInfo { }
+.loginBox .operation { text-align: center; padding:10px 0; }
+.tabEvenOdd {
+    border:1px solid #ddd;
+    background:#fefefe
+}
+.tabEvenOdd tr.odd { background:#fff; }
+.tabEvenOdd td {
+    padding:3px 5px;
+    border-top:1px solid #fff;
+    border-bottom:1px solid #ddd;
+}
+.Item {
+    height: 35px;
+    margin-bottom: 15px;
+    line-height: 35px;
+}
+.Item div {
+    display: inline-block;
+    padding: 0 10px;
+    height: 32px;
+}
+.Item div.current {
+    border-bottom: 2px solid #266AAE;
+    color: #266AAE;
+    font-weight: 700;
+}
+.table1{ border-top: #ddd solid 1px; }
+.table1 tr:hover{ background-color:#fafafa;}
+.table1 th {
+    border-right: 1px solid #E5E3E3;
+    font-weight: 100;
+    line-height: 24px;
+    padding: 5px 10px 7px;
+    text-align:right;
+}
+.table1 td {
+    line-height: 24px;
+    padding: 5px 10px 7px;
+}
+.table1 tr { background:url(../../images/Bg/hr.png) repeat-x bottom; }
+.table2{}
+
+.tab {
+    margin: 15px 0;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #ddd #ddd #fff #fff;
+    text-shadow: 0 1px 0 #FFFFFF;
+    border-collapse: separate;
+}
+.tab td {
+    padding: 5px 10px;
+    margin: 15px 0;
+    line-height: 24px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #fff #fff #ddd #ddd;
+}
+.tab thead td { text-align: center; }
+.tab tbody tr:hover { background: #fff; }
+/*layout_bg.png*/
+
+/*.wrap {
+        overflow:hidden;
+        -webkit-animation: bounceIn 600ms linear;
+        -moz-animation: bounceIn 600ms linear;
+        -o-animation: bounceIn 600ms linear;
+        animation: bounceIn 600ms linear;
+}
+@-webkit-keyframes bounceIn { 0% {
+ opacity: 0;
+ -webkit-transform: scale(.3);
+}
+ 50% {
+ opacity: 1;
+ -webkit-transform: scale(1.05);
+}
+ 70% {
+ -webkit-transform: scale(.9);
+}
+ 100% {
+ -webkit-transform: scale(1);
+}
+}
+@-moz-keyframes bounceIn { 0% {
+ opacity: 0;
+ -moz-transform: scale(.3);
+}
+ 50% {
+ opacity: 1;
+ -moz-transform: scale(1.05);
+}
+ 70% {
+ -moz-transform: scale(.9);
+}
+ 100% {
+ -moz-transform: scale(1);
+}
+}
+@-o-keyframes bounceIn { 0% {
+ opacity: 0;
+ -o-transform: scale(.3);
+}
+ 50% {
+ opacity: 1;
+ -o-transform: scale(1.05);
+}
+ 70% {
+ -o-transform: scale(.9);
+}
+ 100% {
+ -o-transform: scale(1);
+}
+}
+@keyframes bounceIn { 0% {
+ opacity: 0;
+ transform: scale(.3);
+}
+ 50% {
+ opacity: 1;
+ transform: scale(1.05);
+}
+ 70% {
+ transform: scale(.9);
+}
+ 100% {
+ transform: scale(1);
+}
+}
+*/
+
+/**
+ * pagination
+ */
+div.page {
+    padding: 3px;
+    margin: 3px;
+}
+
+div.page a {
+    padding: 3px 7px;
+    border: #ddd 1px solid;
+    color: #417eb7;
+    margin-right: 2px;
+    text-decoration: none;
+}
+
+div.page a:hover {
+    border: #2b66a5 1px solid;
+    color: #000;
+    background-color: #eee;
+}
+
+div.page span.current {
+    border: navy 1px solid;
+    padding: 3px 7px;
+    font-weight: bold;
+    color: #fff;
+    margin-right: 2px;
+    background-color: #417eb7;
+}
+
+div.page span.disabled {
+    padding: 3px 7px;
+    border: #929292 1px solid;
+    color: #929292;
+    margin-right: 2px;
+}

@@ -1,0 +1,53 @@
+@charset "utf-8";
+/*!----------------------------------------------------------------------------- 
+   AsyncBox default v1.5 - http://asyncui.com/skin - Copyright 2012, Wuxinxi007
+   -----------------------------------------------------------------------------!*/
+   
+body{margin:0;height:100%} asyncui{display:block} .asyncbox{position:absolute;font:12px Tahoma,sans-serif}
+
+ab_skins{background:url(default/default_bg.gif)}
+ab_skins ul{background:url(default/default_tb.gif)}
+
+ab_clone{border:1px dotted #666}
+table.ab_outer{width:auto;height:auto;border-collapse:collaps}
+.asyncbox table,.asyncbox td,.asyncbox ul{margin:0;padding:0;list-style:none}
+
+.ab_border,.ab_close,.ab_footbar a,.ab_footbar span{background:url(default/default_bg.gif) no-repeat;}
+.ab_border{opacity:0.9;filter:alpha(opacity=90);font-size:0}
+/* 上左中右下 */
+.ab_t,.ab_b{height:26px;background:url(default/default_tb.gif) repeat-x}
+.ab_l div,.ab_r div{width:7px}
+.ab_l,.ab_r{background-repeat:repeat-y}
+.ab_c{background:#fff}
+.ab_r{background-position:-8px 0}
+.ab_b{height:7px;background-position:0 -27px}
+/* 顺时针四个角 */
+.ab_lt{background-position:-16px -32px}
+.ab_rt{background-position:-24px -32px}
+.ab_rb{background-position:-24px -59px}
+.ab_lb{background-position:-16px -59px}
+
+.ab_title{position:relative;height:26px;margin-top:-26px;color:#15428B;cursor:default;padding-right:20px;overflow:hidden;-moz-user-select:none; font-weight:bold; line-height:26px}
+.ab_close{position:absolute;top:6px;right:0;width:15px;height:15px;background-position:-16px 0}
+.ab_close:hover{background-position:-16px -16px}
+
+/*asyncbox alert...*/
+.asyncbox_alert,.asyncbox_confirm,.asyncbox_success,.asyncbox_warning,.asyncbox_error{color:#033;margin:12px;line-height:18px;padding-left:46px;text-align:left;}
+.asyncbox_alert span,.asyncbox_confirm span,.asyncbox_success span,.asyncbox_warning span,.asyncbox_error span{
+	width:37px;height:37px;position:absolute;top:36px;left:18px;background:url(default/default_bg.gif) no-repeat -32px 0
+}
+.asyncbox_confirm span{background-position:-69px 0}
+.asyncbox_success span{background-position:-106px 0}
+.asyncbox_warning span{background-position:-143px 0}
+.asyncbox_error span{background-position:-180px 0}
+.asyncbox_error{color:#F00}
+.asyncbox_prompt{color:#033;padding:0 10px}
+.asyncbox_prompt li{margin-top:8px}
+.asyncbox_prompt input,.asyncbox_prompt textarea{color:#666;padding:2px;border:1px solid #84A0C4;font:12px/1.3em Verdana,sans-serif;resize:none}
+.asyncbox_prompt input{height:17px}
+
+.ab_footbar{padding:10px 10px 10px 0;text-align:right}
+.ab_footbar a{margin:0 0 0 10px;padding:0;display:inline-block;border:none;text-decoration:none;height:22px;cursor:pointer;background-position:-32px -38px;}
+.ab_footbar span{background-position:100% -38px;color:#555;padding:3px 11px 3px 0;margin-left:12px;float:left;height:16px}
+.ab_footbar a:hover{background-position:-32px -60px;text-decoration:none}
+.ab_footbar a:hover span{color:#000;background-position:100% -60px}
