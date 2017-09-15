@@ -6,7 +6,7 @@
 
 ## 演示地址：
 
-http://51zhibo.top
+http://live.logde.cn/
 
 ## 后台截图
 
