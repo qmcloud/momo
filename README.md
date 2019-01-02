@@ -6,8 +6,6 @@
 
 ## 演示地址：
 
-
-
 ## 后台截图
 
 ![截图](http://www.thinkphp.cn/Uploads/editor/2017-09-05/59aebf32e2bd5.png)
@@ -201,10 +199,7 @@ server {
 
 * QQ群: 274904994
 * QQ:779763764
+##
+![另有8套直播源码提供](http://sz-ctfs.ftn.qq.com/ftn_handler/e478090c6b06bc860fd73bee41cca4533771fda27709cf7355c6a63bf40132a0/?fname=WX20190102-205731%402x.png&pictype=scaled&size=1024*1024)
 
-##如果帮到你请打赏小弟一下！十分感激
-
-!["打赏一下"](http://group.store.qq.com/qun/M5CXvbshIHEJdIzwzpGpEg!!/V3tordiEAAItFnC*GMt/800?w5=612&h5=624&rf=viewer_421) 
-
-##文档会持续更新
 
