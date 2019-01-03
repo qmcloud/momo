@@ -82,9 +82,9 @@ rtmp {
 hls_path需要可读可写的权限。
 修改http中的server模块：
 
-server {  
-    listen       81;  
-    server_name  localhost;  
+#server {  
+    #listen       81;  
+    #server_name  localhost;  
   
     #charset koi8-r;  
   
@@ -199,7 +199,8 @@ server {
 
 * QQ群: 274904994
 * QQ:779763764
-##另有8套直播源码提供
+
+##另有8套整套直播源码提供
 ![另有8套直播源码提供](http://sz-ctfs.ftn.qq.com/ftn_handler/e478090c6b06bc860fd73bee41cca4533771fda27709cf7355c6a63bf40132a0/?fname=WX20190102-205731%402x.png&pictype=scaled&size=1024*1024)
 
 
