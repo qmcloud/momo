@@ -1,6 +1,7 @@
 # PHP 打造 直播短视频社交系统
-####技术交流群：
-![技术群](http://manager.gulugj.com/Qrcode/GroupQrcode/uncode?id=NTM5MzAzNTM4MzEz "技术群")
+**技术交流群：**
+
+![技术群](https://github.com/DOUBLE-Baller/momo/blob/master/uncode.png?raw=true)
 
 ----------------
 
@@ -17,7 +18,7 @@
 * [CDN技术详解](https://book.douban.com/subject/10759173/)
 
 ### 技术结构
-###### 前端
+# 前端
 - **基于VUE+UNI-APP技术开发的集小视频/IM聊天/直播等功能于一体的微直播项目。界面仿制抖音|火山小视频/陌陌直播，支持编译到多端(H5、小程序、APP端) 且兼容效果一致。**
 
 ![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111141512652-843587761.png?raw=true)
@@ -180,11 +181,14 @@
         }
     </script>
 ------------
-###### 后端
+# 后端
+
 **系统架构**
+
 ![](https://github.com/DOUBLE-Baller/momo/blob/master/20191120154941.jpg?raw=true)
+
 **系统开发语言**
-*-  PHP 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP 语言开发，所有服务提供横向扩展。*
+-  **PHP 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP 语言开发，所有服务提供横向扩展。**
 
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
@@ -198,7 +202,9 @@
 
 
 **视频服务**
-######直播配置
+
+**直播配置**
+
 **RTMP服务添加一个application这个名字可以任意起，也可以起多个名字，由于是直播我就叫做它live，如果打算弄多个序列的直播就可以live_cctv。**
     #user  nobody;
     worker_processes  1;
@@ -236,19 +242,24 @@
     其他配置不需理会
 
 **在Ubuntu端用ffmpeg产生一个模拟直播源，向rtmp服务器推送**
+
 **推流**
+
 `ffmpeg -re -i /mnt/hgfs/dn_class/vod/35.mp4 -c copy -f flv rtmp://192.168.100.33/live/35`
 
 *注意，源文件必须是H.264+AAC编码的*
 
 **拉流**
+
 `ffplay rtmp://192.168.100.33/live/35`
+
 ######点播配置
+
 1. 建立媒体文件夹`/mnt/hgfs/dn_class/vod`
 **把媒体文件 35.mp4复制到/mnt/hgfs/dn_class/vod目录下。
 然后我们就可以开启一个视频点播的服务了。打开配置文件nginx.conf（路径/usr/local/nginx/conf/nginx.conf），添加RTMP的配置。**
 
-
+```
     #user  nobody;
     worker_processes  1;
     
@@ -274,14 +285,12 @@
     }
     ........
     其他配置不需理会
-	
-	
-	
-
+```			
 ------------
 
 
 **聊天服务**
+
 #### 特性
  * 轻量级
  * 高性能
