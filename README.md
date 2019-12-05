@@ -689,6 +689,8 @@ WebSocket Client：实现html5的浏览器都支持WebSocket对象，如不支�
 * QQ:779763764
 
 ##另有整套直播教学视频提供
-![另有整套直播教学视频提供](https://github.com/DOUBLE-Baller/momo/blob/master/zb20191120163102.png?raw=true)
+![另有整套直播教学视频提供](https://github.com/DOUBLE-Baller/momo/blob/master/Uploads/zb120191120163102.png?raw=true)
+##打赏一下
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Uploads/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20191205162328.jpg?raw=true)
 
 
