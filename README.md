@@ -1,6 +1,6 @@
 # PHP 打造 直播短视频社交系统
 **技术交流群：**
-微信:BCFind5
+微信:
 ![二维码](https://avatars0.githubusercontent.com/u/26708405?s=96&v=4) 
 
 ----------------
