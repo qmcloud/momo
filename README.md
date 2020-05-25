@@ -3,7 +3,9 @@
 ![二维码](https://avatars0.githubusercontent.com/u/26708405?s=96&v=4) 
 
 微信:BCFind5
+
 QQ：407193275
+
 ----------------
 web演示地址： http://www.jinqianlive.com
 
@@ -19,6 +21,7 @@ IOS 视频演示：
 提取码：v929
 
 文档地址：http://www.jinqianlive.com/appapi/listAllApis.php?type=expand
+
 ----------------
 
 ### 系统截图
@@ -51,7 +54,7 @@ IOS 视频演示：
 
 ![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141225.png?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/消息.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/usjhmo1lwc.png?raw=true)
 
 
 - **仿抖音小视频效果**
