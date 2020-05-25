@@ -1,12 +1,28 @@
 # PHP 打造 直播短视频社交系统
-**技术交流群：**
+**技术交流：**
 ![二维码](https://avatars0.githubusercontent.com/u/26708405?s=96&v=4) 
-微信:BCFind5
 
+微信:BCFind5
+QQ：407193275
+----------------
+web演示地址： http://www.jinqianlive.com
+
+后台演示地址： http://www.jinqianlive.com/admin
+
+账号 ：test
+密码： test
+
+安卓下载：https://baoya.lanzous.com/icsdtxa （用手机浏览器打开下载，不要用微信直接下载）
+
+IOS 视频演示：
+链接：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 
+提取码：v929
+
+文档地址：http://www.jinqianlive.com/appapi/listAllApis.php?type=expand
 ----------------
 
 ### 系统截图
-![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111142706873-2058201438.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140802.png?raw=true)
 
 ----------------
 
@@ -19,17 +35,23 @@
 
 ### 技术结构
 # 前端
-- **集小视频/IM聊天/直播等功能于一体的直播项目。界面仿制抖音|火山小视频/陌陌直播。**
+- **集小视频/IM聊天/直播等功能于一体的直播项目。界面仿制抖音|火山小视频|陌陌直播|比心陪玩。**
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111141512652-843587761.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140802.png?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111142553532-187838933.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140852.png?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111142613325-253123084.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140929.png?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111142853823-1326367501.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140949.png?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/1289798-20191111143027700-207603792.png?raw=true)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141016.png?raw=true)
+
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141130.png?raw=true)
+
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141225.png?raw=true)
+
+![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/消息.png?raw=true)
 
 
 - **仿抖音小视频效果**
