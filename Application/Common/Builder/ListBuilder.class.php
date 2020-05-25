@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | QQ群274904994 [ 简单 高效 卓越 ]
+// | qq407193275 [ 简单 高效 卓越 ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 51zhibo.top All rights reserved.
+// | Copyright (c) 2016 qq407193275 All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 51zhibo.top
+// | Author: 2s
 // +----------------------------------------------------------------------
 namespace Common\Builder;
 
@@ -12,7 +12,7 @@ use Common\Controller\ControllerController;
 
 /**
  * 数据列表自动生成器
- * @author 51zhibo.top
+ * @author qq407193275
  */
 class ListBuilder extends ControllerController
 {
@@ -32,7 +32,7 @@ class ListBuilder extends ControllerController
     /**
      * 初始化方法
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     protected function _initialize()
     {
@@ -43,7 +43,7 @@ class ListBuilder extends ControllerController
      * 设置页面标题
      * @param $title 标题文本
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setMetaTitle($meta_title)
     {
@@ -59,7 +59,7 @@ class ListBuilder extends ControllerController
      * @param string $type 按钮类型，主要有add/resume/forbid/recycle/restore/delete/self七几种取值
      * @param array  $attr 按钮属性，一个定了标题/链接/CSS类名等的属性描述数组
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function addTopButton($type, $attribute = null)
     {
@@ -218,7 +218,7 @@ class ListBuilder extends ControllerController
      * @param $title
      * @param $url
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setSearch($title, $url)
     {
@@ -234,7 +234,7 @@ class ListBuilder extends ControllerController
      *                           )
      * @param $current_tab 当前tab
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setTabNav($tab_list, $current_tab)
     {
@@ -247,7 +247,7 @@ class ListBuilder extends ControllerController
 
     /**
      * 加一个表格标题字段
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function addTableColumn($name, $title, $type = null, $param = null)
     {
@@ -263,7 +263,7 @@ class ListBuilder extends ControllerController
 
     /**
      * 表格数据列表
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setTableDataList($table_data_list)
     {
@@ -273,7 +273,7 @@ class ListBuilder extends ControllerController
 
     /**
      * 表格数据列表的主键名称
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setTableDataListKey($table_data_list_key)
     {
@@ -291,7 +291,7 @@ class ListBuilder extends ControllerController
      * @param string $type 按钮类型，edit/forbid/recycle/restore/delete/self六种取值
      * @param array  $attr 按钮属性，一个定了标题/链接/CSS类名等的属性描述数组
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function addRightButton($type, $attribute = null)
     {
@@ -475,7 +475,7 @@ class ListBuilder extends ControllerController
      * 设置分页
      * @param $page
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setTableDataPage($table_data_page)
     {
@@ -489,7 +489,7 @@ class ListBuilder extends ControllerController
      * 比如管理员列表ID为1的超级管理员右侧编辑按钮不显示删除
      * @param $page
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function alterTableData($condition, $alter_data)
     {
@@ -504,7 +504,7 @@ class ListBuilder extends ControllerController
      * 设置额外功能代码
      * @param $extra_html 额外功能代码
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setExtraHtml($extra_html)
     {
@@ -516,7 +516,7 @@ class ListBuilder extends ControllerController
      * 设置页面模版
      * @param $template 模版
      * @return $this
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function setTemplate($template)
     {
@@ -526,7 +526,7 @@ class ListBuilder extends ControllerController
 
     /**
      * 显示页面
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function display()
     {

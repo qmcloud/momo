@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | QQ群274904994 [ 简单 高效 卓越 ]
+// | qq407193275 [ 简单 高效 卓越 ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 51zhibo.top All rights reserved.
+// | Copyright (c) 2016 qq407193275 All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 51zhibo.top
+// | Author: 2s
 // +----------------------------------------------------------------------
 namespace Admin\Controller;
 
@@ -12,14 +12,14 @@ use Think\Page;
 
 /**
  * 系统配置控制器
- * @author 51zhibo.top
+ * @author qq407193275
  */
 class ConfigController extends AdminController
 {
     /**
      * 配置列表
      * @param $tab 配置分组ID
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function index($group = 1)
     {
@@ -83,7 +83,7 @@ class ConfigController extends AdminController
 
     /**
      * 新增配置
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function add()
     {
@@ -125,7 +125,7 @@ class ConfigController extends AdminController
 
     /**
      * 编辑配置
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function edit($id)
     {
@@ -169,7 +169,7 @@ class ConfigController extends AdminController
 
     /**
      * 获取某个分组的配置参数
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function group($group = 1)
     {
@@ -205,7 +205,7 @@ class ConfigController extends AdminController
 
     /**
      * 批量保存配置
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function groupSave($config)
     {

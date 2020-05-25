@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | QQ群274904994 [ 简单 高效 卓越 ]
+// | qq407193275 [ 简单 高效 卓越 ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 51zhibo.top All rights reserved.
+// | Copyright (c) 2016 qq407193275 All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 51zhibo.top
+// | Author: 2s
 // +----------------------------------------------------------------------
 
 /**
@@ -18,10 +18,10 @@ $_config = array(
     'DEVELOP_VERSION'      => 'release', // 开发版本号
     'BUILD_VERSION'        => '201703191221', // 编译标记
     'PRODUCT_MODEL'        => 'admin', // 产品型号
-    'PRODUCT_TITLE'        => 'QQ群274904994', // 产品标题
+    'PRODUCT_TITLE'        => 'qq407193275', // 产品标题
     'WEBSITE_DOMAIN'       => 'http://admin.lyunweb.com', // 官方网址
     'UPDATE_URL'           => '/appstore/home/core/update', // 官方更新网址
-    'TEAM_TITLE'           => '51zhibo.top', // 公司名称
+    'TEAM_TITLE'           => 'qq407193275', // 公司名称
     'TEAM_MEMBER'          => '目前群里组员', // 团队成员
     'TEAM_ADDRESS'         => '保密', // 公司地址
     'TEAM_EMAIL'           => '', // 公司邮箱

@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | QQ群274904994 [ 简单 高效 卓越 ]
+// | qq407193275 [ 简单 高效 卓越 ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 51zhibo.top All rights reserved.
+// | Copyright (c) 2016 qq407193275 All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 51zhibo.top
+// | Author: 2s
 // +----------------------------------------------------------------------
 namespace Admin\Model;
 
@@ -12,19 +12,19 @@ use Common\Model\ModelModel;
 
 /**
  * 配置模型
- * @author 51zhibo.top
+ * @author qq407193275
  */
 class ConfigModel extends ModelModel
 {
     /**
      * 数据库表名
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     protected $tableName = 'admin_config';
 
     /**
      * 自动验证规则
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     protected $_validate = array(
         array('group', 'require', '配置分组不能为空', self::MUST_VALIDATE, 'regex', self::MODEL_BOTH),
@@ -39,7 +39,7 @@ class ConfigModel extends ModelModel
 
     /**
      * 自动完成规则
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     protected $_auto = array(
         array('create_time', 'time', self::MODEL_INSERT, 'function'),
@@ -50,7 +50,7 @@ class ConfigModel extends ModelModel
     /**
      * 获取配置列表与ThinkPHP配置合并
      * @return array 配置数组
-     * @author 51zhibo.top
+     * @author qq407193275
      */
     public function lists()
     {

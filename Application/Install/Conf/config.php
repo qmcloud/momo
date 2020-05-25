@@ -1,10 +1,10 @@
 <?php
 // +----------------------------------------------------------------------
-// | QQ群274904994 [ 简单 高效 卓越 ]
+// | qq407193275 [ 简单 高效 卓越 ]
 // +----------------------------------------------------------------------
-// | Copyright (c) 2016 51zhibo.top All rights reserved.
+// | Copyright (c) 2016 qq407193275 All rights reserved.
 // +----------------------------------------------------------------------
-// | Author: 51zhibo.top
+// | Author: 2s
 // +----------------------------------------------------------------------
 /**
  * 安装程序配置文件
@@ -13,7 +13,7 @@ return array(
     //产品配置
     'INSTALL_PRODUCT_NAME'   => 'admin', //产品名称
     'INSTALL_WEBSITE_DOMAIN' => 'http://admin.lyunweb.com', //官方网址
-    'INSTALL_COMPANY_NAME'   => '51zhibo.top', //公司名称
+    'INSTALL_COMPANY_NAME'   => 'qq407193275', //公司名称
     'ORIGINAL_TABLE_PREFIX'  => 'ly_', //默认表前缀
 
     //模板相关配置
