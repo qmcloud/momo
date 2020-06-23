@@ -2,6 +2,7 @@
 **技术交流：**
 ![二维码](https://avatars0.githubusercontent.com/u/26708405?s=96&v=4) 
 
+
 微信:BCFind5
 
 QQ：407193275
@@ -25,7 +26,7 @@ IOS 视频演示：
 ----------------
 
 ### 系统截图
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140802.png?raw=true)
+![](https://img-blog.csdnimg.cn/20200623093957995.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center?raw=true)
 
 ----------------
 
@@ -40,28 +41,26 @@ IOS 视频演示：
 # 前端
 - **集小视频/IM聊天/直播等功能于一体的直播项目。界面仿制抖音|火山小视频|陌陌直播|比心陪玩。**
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140802.png?raw=true)
+![](https://img-blog.csdnimg.cn/20200623094230336.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140852.png?raw=true)
+![](https://img-blog.csdnimg.cn/20200623094230125.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140929.png?raw=true)
+![](https://img-blog.csdnimg.cn/20200623094230115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525140949.png?raw=true)
+![](https://img-blog.csdnimg.cn/2020062309423093.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141016.png?raw=true)
+![](https://img-blog.csdnimg.cn/2020062309423090.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141130.png?raw=true)
+![](https://img-blog.csdnimg.cn/2020062309423076.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/_20200525141225.png?raw=true)
+![](https://img-blog.csdnimg.cn/2020062309423027.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
-![](https://github.com/DOUBLE-Baller/momo/blob/master/Public/images/git/usjhmo1lwc.png?raw=true)
+![](https://img-blog.csdnimg.cn/2020062309423017.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70?raw=true)
 
 
 - **仿抖音小视频效果**
 
 **项目中小视频界面功能效果类似抖音/火山小视频，使用SWIPER组件实现上下滑动切换视频播放。**
-
-![](https://github.com/DOUBLE-Baller/momo/blob/master/usjhmo1lwc.png?raw=true)
 
 ```html
 <swiper :indicator-dots="false" :duration="200" :vertical="true" :current="videoIndex" @change="handleSlider" style="height: 100%;">
@@ -208,9 +207,6 @@ IOS 视频演示：
 ------------
 # 后端
 
-**系统架构**
-
-![](https://github.com/DOUBLE-Baller/momo/blob/master/20191120154941.jpg?raw=true)
 
 **系统开发语言**
 -  **PHP 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP 语言开发，所有服务提供横向扩展。**
@@ -711,7 +707,7 @@ WebSocket Client：实现html5的浏览器都支持WebSocket对象，如不支�
 在使用中有任何问题，欢迎反馈给我们，可以用以下联系方式跟我们交流
 
 *
-##另有整套直播教学视频提供
-![另有整套直播教学视频提供](https://github.com/DOUBLE-Baller/momo/blob/master/Uploads/zb120191120163102.png?raw=true)
+##另有几套直播教学视频提供 入群后@群主 索取
+![另有整套直播教学视频提供](https://img-blog.csdnimg.cn/20200623094714713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center?raw=true)
 
 
