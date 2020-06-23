@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/cash.css"/> 
+    <title>提现记录</title>
+</head>
+<body>
+    <div class="list">
+        <ul>
+            <volist name="list" id="v">
+            <li>
+                <div class="list_l">
+                    <p><span><img class="coin" src="__PUBLIC__/appapi/images/coin.png"></span>{$v['votes']}</p>
+                    <p class="money"><span>金额:</span>{$v['money']}</p>
+                </div>
+                <div class="list_r">
+                    <p>{$v['status_name']}</p>
+                    <p>{$v['addtime']}</p>
+                </div>
+            </li>
+            </volist>
+        </ul>
+    </div>
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script>
+	$(function(){
+		function getlistmore(){
+			$.ajax({
+				url:'/index.php?g=appapi&m=cash&a=getlistmore',
+				data:{'page':page,'uid':uid,'token':token},
+				type:'post',
+				dataType:'json',
+				success:function(data){
+					if(data.nums>0){
+                        var nums=data.nums;
+                        var list=data.data;
+                        var html='';
+                        for(var i=0;i<nums;i++){
+                            var v=list[i];
+                            html='<li>\
+                                    <div class="list_l">\
+                                        <p><span><img class="coin" src="__PUBLIC__/appapi/images/coin.png"></span>'+v['votes']+'}</p>\
+                                        <p class="money"><span>金额:</span>'+v['money']+'}</p>\
+                                    </div>\
+                                    <div class="list_r">\
+                                        <p>'+v['status_name']+'}</p>\
+                                        <p>'+v['addtime']+'}</p>\
+                                    </div>\
+                                </li>';
+                        }
+						
+						$(".list ul").append(html);
+					}
+					
+					if(data.isscroll==1){
+						page++;
+						isscroll=true;
+					}
+				}
+			})
+		}
+
+		var page=2; 
+		var isscroll=true; 
+        
+        var scroll_list=$("body");
+
+		scroll_list.scroll(function(){  
+            var srollPos = scroll_list.scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)  		
+            var totalheight = parseFloat(scroll_list.height()) + parseFloat(srollPos);  
+            if(($(document).height()-50) <= totalheight  && isscroll) {  
+                    isscroll=false;
+                    getlistmore()
+            }  
+		});  
+
+
+	})
+	</script>	
+</body>
+</html>

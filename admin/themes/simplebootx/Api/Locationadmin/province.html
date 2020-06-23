@@ -1,0 +1,43 @@
+<admintpl file="header" />
+</head>
+<body style="min-width:800px;">
+<div class="wrap js-check-wrap">
+  <form class="js-ajax-form" action="" method="post">
+    <div class="table_list">
+      <table width="100%" class="table table-hover">
+        <thead>
+	          <tr>
+	            <td width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></td>
+	            <th width="50">排序</th>
+	            <td width="50">ID</td>
+	            <td>名称</td>
+	            <td width="50"><span>状态</span></td>
+	          </tr>
+        </thead>
+        	<php>$status=array("1"=>"显示","0"=>"隐藏");</php>
+        	<foreach name="provinces" item="vo">
+	        	<tr>
+		            <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.province_id}" ></td>
+		            <td><input name='listorders[{$vo.province_id}]' class="input input-order"  type='text' size='3' value='{$vo.listorder}'></td>
+		            <td>{$vo.province_id}</td>
+		            <td>{$vo.province}</td>
+		            <td>{$status[$vo['status']]}</td>
+	          	</tr>
+          </foreach>
+          </table>
+      <div class="p10"><div class="pages"> {$Page} </div> </div>
+     
+    </div>
+    <div>
+      <div class="btn_wrap_pd">
+        <label class="mr20"><input type="checkbox" class="js-check-all" data-direction="y" data-checklist="js-check-y">全选</label>
+        <button class="btn btn-primary js-ajax-submit" type="submit" data-action="{:U('Locationadmin/listorders')}">排序</button>              
+        <button class="btn js-ajax-submit" type="submit" data-action="{:U('Locationadmin/province_show',array('show'=>1))}" data-subcheck="true">显示</button>
+        <button class="btn js-ajax-submit" type="submit" data-action="{:U('Locationadmin/province_show',array('unshow'=>1))}" data-subcheck="true">隐藏</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script src="__PUBLIC__/js/common.js{$js_debug}"></script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/programe.css"/>
+</head>
+<body>
+<div class="wrapper">
+    <tc_include file="Public:header" />
+</div>
+
+
+
+<div class="content">
+    <div class="div-img">
+        <div class="qr-code">
+            <div class="qr-img"><img src="{$config['qr_url']}" style="width:90%;height:auto;margin-left:5%;margin-top:5%;" ></div>
+            <div class="qr-right">
+                <p class="qr-p1">扫描二维码下载</p>
+                <p class="qr-p2">IOS/Android版本</p>
+                <p class="qr-p2">均已在各大应用市场上架</p>
+            </div>
+    </div>
+        <div class="bottom">
+            <div class="ab-left clearfix">
+                <div class="ab">关注我们：</div>
+                <a class="ab-weibo"><span></span>新浪微博</a>
+                <a class="ab-wixin"><span></span>微信</a>
+                <a class="ab-qq"><span></span>QQ空间</a>
+            </div>
+            <div class="ab-content">商务合作: {$config['mobile']}</div>
+        </div>
+
+    </div>
+
+
+</div>
+
+<tc_include file="Public:footer" />
+
+
+</body>
+</html>

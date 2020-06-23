@@ -1,0 +1,59 @@
+<admintpl file="header" />
+
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('guide/set')}">配置</a></li>
+			<li class="active"><a >列表</a></li>
+			<li><a href="{:U('guide/add')}">添加</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('guide/listorders')}">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+					  	<th>排序</th>
+						<th align="center">ID</th>
+						<th><if condition="$type eq 1">视频<else/>图片</if></th>
+						<th>链接</th>
+						<th>发布时间</th>
+						<th>更新时间</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+					   <td><input name="listorders[{$vo['id']}]" type="text" size="3" value="{$vo['orderno']}" class="input input-order"></td>
+						<td align="center">{$vo.id}</td>
+                        <if condition="$type eq 1">
+						<td>{$vo['thumb']}</td>
+                        <else/>
+						<td><img width="25" height="25" src="{$vo['thumb']}" /></td>
+                        </if>
+                        <td>{$vo['href']}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td>{$vo.uptime|date="Y-m-d H:i:s",###}</td>
+
+						<td align="center">	
+							<a href="{:U('guide/edit',array('id'=>$vo['id']))}" >编辑</a>
+							 |
+                            <a href="{:U('guide/del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

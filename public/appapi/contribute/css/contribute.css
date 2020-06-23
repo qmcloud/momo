@@ -1,0 +1,192 @@
+*{
+	padding:0;
+	margin: 0;
+}
+*{
+	-webkit-tap-highlight-color:rgba(0, 0, 0, 0);  
+	-moz-tap-highlight-color:rgba(0, 0, 0, 0);  
+	-ms-tap-highlight-color:rgba(0, 0, 0, 0);  
+	-o-tap-highlight-color:rgba(0, 0, 0, 0);  
+	tap-highlight-color:rgba(0, 0, 0, 0);  
+}
+body {
+	font:14px/1.5 Arial, '\5FAE\8F6F\96C5\9ED1';
+}
+ul,ol,li { 
+	list-style-type:none;
+}
+img {
+	border:none;
+	vertical-align:middle;
+}
+
+ul.list{
+	
+}
+
+ul.list li{
+	border-bottom:1px solid #eee;
+	padding:10px 0;
+	position:relative;
+}
+ul.list li:after{
+	content:".";
+	display:block;
+	height:0;
+	clear:both;
+	visibility:hidden;
+	overflow:hidden;
+}
+ul.list li .nums{
+	float:left;
+	height: 45px;
+	line-height: 45px;
+	font-size:16px;
+	margin-right:5px;
+}
+
+ul.list li .avatar{
+	float:left;
+	margin:0 5px;
+}
+
+ul.list li .avatar img{
+	width:40px;
+	height:40px;
+	border-radius:50%;
+	margin-top:2px;
+}
+
+ul.list li .info{
+	position:relative;
+}
+
+ul.list li .info .name{
+	font-size: 16px;
+}
+
+ul.list li .info .sex{
+	height:20px;
+}
+ul.list li .info .level{
+	height:15px;
+}
+
+ul.list li .info .contribute{
+	
+}
+
+ul.list li .info .contribute-nums{
+	color:#df506c;
+	font-size:16px;
+	margin-left:5px;
+	margin-right:5px;
+}
+
+ul.list li.order1 .nums{
+	float:left;
+	position:absolute;
+	width:80px;
+	height:25px;
+	line-height:25px;
+	background:#ffdc8e;
+	border-radius:0 12px 12px 0;
+	color:#fff;
+	text-align:center;
+}
+
+ul.list li.order1 .avatar{
+	float:none;
+	height:100px;
+	margin:0;
+}
+
+ul.list li.order1 .avatar img{
+	width:70px;
+	height:70px;
+	margin-top: 20px;
+}
+ul.list li.order1 .avatar span{
+	background: url(../images/me_yp_no_1.png) no-repeat center top;
+	display: block;
+	background-size: auto 100px;
+	width: 100%;
+	height: 100px;
+	position: absolute;
+	top: 0;
+}
+ul.list li.order1 .info{
+	text-align:center;
+}
+
+
+ul.list li.order2 .nums{
+	float:left;
+	position:absolute;
+	width:80px;
+	height:25px;
+	line-height:25px;
+	background:#ffdc8e;
+	border-radius:0 12px 12px 0;
+	color:#fff;
+	text-align:center;
+}
+
+ul.list li.order2 .avatar{
+	float:none;
+	height: 70px;
+	margin:0;
+}
+
+ul.list li.order2 .avatar img{
+	width:58px;
+	height:58px;
+	margin-top: 2px;	
+}
+ul.list li.order2 .avatar span{
+	background: url(../images/me_yp_no_2.png) no-repeat center top;
+	display: block;
+	background-size: auto 70px;
+	width: 100%;
+	height: 70px;
+	position: absolute;
+	top: 0;
+}
+ul.list li.order2 .info{
+	text-align:center;
+}
+
+ul.list li.order3 .nums{
+	float:left;
+	position:absolute;
+	width:80px;
+	height:25px;
+	line-height:25px;
+	background:#ffdc8e;
+	border-radius:0 12px 12px 0;
+	color:#fff;
+	text-align:center;
+}
+
+ul.list li.order3 .avatar{
+	float:none;
+	height: 60px;
+	margin:0;
+}
+
+ul.list li.order3 .avatar img{
+	width:49px;
+	height:49px;
+}
+ul.list li.order3 .avatar span{
+	background: url(../images/me_yp_no_3.png) no-repeat center top;
+	display: block;
+	background-size: auto 60px;
+	width: 100%;
+	height: 60px;
+	position: absolute;
+	top: 0;
+}
+ul.list li.order3 .info{
+	text-align:center;
+}

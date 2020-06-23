@@ -1,0 +1,62 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+</head>
+<body style="background-color:#f3f3f3">
+<tc_include file="Public:header" />
+<tc_include file="Home/Personal:header" />
+<div class="buyvip" id="buyvip"></div>
+<div class="dds-dialog-bg" id="ds-dialog-bg"></div>
+<div class="container">
+  <div class="Firstfloor clearfix">
+		<div class="Leftlayout">
+			<tc_include file="Home/Personal:navigation" />
+		</div>
+		<div class="rightlayout">
+			<div class="schedule">
+				<h3 class="personal_h3"><i class="h3_two"></i>TA是我的粉丝</h3>
+				<div class="fldiv">
+					<ul>
+		<!--  遍历输出============================= -->
+						<volist name="attention" id="v">
+							<li>
+								<div class="info">
+								<a class="user-pic" href="{$v['users']['id']}" target="_blank" title="{$v['users']['user_nicename']}">
+									<img src="{$v['users']['avatar']}" title="{$v['users']['user_nicename']}" alt="{$v['users']['id']}">
+								</a>
+								<p class="user-name">
+									<i><span class="ICON-noble-level ICON-nl-{$v['users']['level']}"></span></i>
+									<a title="{$v['users']['user_nicename']}" target="_blank" href="{$v['users']['id']}">
+										{$v['users']['user_nicename']}
+									</a>
+								</p>
+								<p class="count">
+									关注{$v['follow']} | 粉丝{$v['fans']}
+								</P>
+								</div>
+								<div class="status">
+							       	<a onclick="Personal.played({$v['uid']})">观看直播</a>
+							       	<if condition="$v['isblack'] eq '0'">
+										<a onclick="Personal.blacklist({$v['uid']})">拉黑</a>
+									<else />
+										<a onclick="Personal.list_del({$v['uid']})">移除</a>
+									</if>
+								</div>
+								<if condition="$v['attention'] eq 1">
+									<a class="cancel" followID="{$v['uid']}" onclick="Personal.cancel({$v['uid']})">取消关注</a>
+								<else/>
+									<a class="cancel" followID="{$v['uid']}" onclick="Personal.follow_add({$v['uid']})">添加关注</a>
+								</if>
+								
+							</li>
+					  </volist>		
+		<!--  遍历输出============================= -->
+					</ul>
+				</div>
+			</div>
+		</div>
+  </div>
+</div>
+<tc_include file="Public:footer" />
+<tc_include file="Home/Personal:footer" />
+</body>
+</html>

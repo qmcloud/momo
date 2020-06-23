@@ -1,0 +1,64 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Music/classify')}">分类列表</a></li>
+			<li class="active"><a >分类添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Music/classify_add_post')}">
+			<fieldset>
+				
+				<div class="control-group">
+					<label class="control-label">排序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="0">
+						<span class="form-required">*填写正整数</span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">分类标题</label>
+					<div class="controls">
+						<input type="text" name="title">
+						<span class="form-required">* 简洁明了</span>
+					</div>
+				</div>
+				
+				
+				<div class="control-group">
+					<label class="control-label">分类图标</label>
+					<div class="controls">
+								<div >
+									<input type="hidden" name="img_url" id="thumb2" value="">
+									<a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb2',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+										    <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb2_preview" width="135" style="cursor: hand" />
+									</a>
+									<input type="button" class="btn btn-small" onclick="$('#thumb2_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb2').val('');return false;" value="取消图片">
+								</div>
+						<span class="form-required"></span>
+					</div>
+				</div>
+
+				<!-- <div class="control-group">
+					<label class="control-label">分类型式</label>
+					<div class="controls">
+						<label class="radio inline" ><input type="radio" name="video_upload_type" value="0" checked  />视频链接</label>
+						<label class="radio inline" ><input type="radio" name="video_upload_type" value="1" >视频文件</label>
+					</div>
+				</div> -->
+
+				
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Music/classify')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+	
+</body>
+</html>

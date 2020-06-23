@@ -1,0 +1,78 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >认证申请</a></li>
+
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Userauth/index')}">
+		  审核状态：
+			<select class="select_2" name="status">
+				<option value="">全部</option>
+				<option value="0" <if condition="$formget.status eq '0'">selected</if> >处理中</option>
+				<option value="1" <if condition="$formget.status eq '1'">selected</if> >审核成功</option>			
+				<option value="2" <if condition="$formget.status eq '2'">selected</if> >审核失败</option>			
+			</select>
+			提交时间：
+			<input type="text" name="start_time" class="js-date date" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+			<input type="text" class="js-date date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入会员ID、姓名、手机">
+			<input type="submit" class="btn btn-primary" value="搜索">
+		</form>				
+		<form method="post" class="js-ajax-form" >
+
+		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">会员ID</th>
+						<th>会员</th>						
+						<th>真实姓名</th>
+						<th>手机号码</th>
+						<th>身份证号</th>
+						<th>审核状态</th>
+						<th>提交时间</th>
+						<th>处理时间</th>
+
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<php>$status=array("0"=>"处理中","1"=>"审核成功", "2"=>"审核失败");</php>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.uid}</td>
+						<td>{$vo['userinfo']['user_nicename']} </td>	
+						<td>{$vo['real_name']}</td>
+						<td>{$vo['mobile']}</td>				
+						<td>{$vo['cer_no']}</td>				
+						<td>{$status[$vo['status']]}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>						
+						<td>
+						 <if condition="$vo['status'] eq '0'" >
+						    处理中
+						 <else/>
+						     {$vo.uptime|date="Y-m-d H:i:s",###}
+						 </if>						
+						 </td>
+
+						<td align="center">	
+						
+						    <a href="{:U('Userauth/edit',array('id'=>$vo['uid']))}" >编辑</a>  
+						 
+ 							
+							<!-- <a href="{:U('Cash/del',array('id'=>$vo['uid']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>  -->
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

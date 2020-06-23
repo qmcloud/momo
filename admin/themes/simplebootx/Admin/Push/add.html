@@ -1,0 +1,35 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Push/index')}">记录</a></li>
+			<li class="active"><a >发送</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Push/add_post')}">
+			<fieldset>
+
+				<div class="control-group">
+					<label class="control-label">推送对象</label>
+					<div class="controls">
+						<textarea type="text" name="touid" rows="3" style="width:500px;"></textarea>
+						<span class="form-required">*</span> 留空为推送所有会员，多个会员用 , 分隔
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">推送内容</label>
+					<div class="controls">
+                        <textarea type="text" name="content" rows="3" style="width:500px;"></textarea>
+						<span class="form-required">*</span> 推送的消息仅支持文字，不支持图片及视频文件
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">推送</button>
+				<a class="btn" href="{:U('Push/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,59 @@
+<tc_include file="Public:head" />
+<title>提现记录</title>
+</head>
+<body style="background-color:#f3f3f3">
+<tc_include file="Public:header" />
+<tc_include file="Home/Personal:header" />
+<div class="buyvip" id="buyvip"></div>
+<div class="dds-dialog-bg" id="ds-dialog-bg"></div>
+<div class="container">
+	<div class="Firstfloor clearfix">
+		<div class="Leftlayout">
+			<tc_include file="Home/Personal:navigation" />
+		</div>
+		<div class="rightlayout">
+			<div class="clearfix">
+			
+				<div class="shouyez">
+					<h3 class="personal_h3">
+						<i class="h3_one"></i>
+						我的提现记录
+						<div class="linexi"></div>
+					</h3>
+
+				</div>
+				
+			</div>
+			<div class="schedule">
+				<div class="charge_table">
+					<table>
+					 <tbody>
+						<tr>
+							<th width="25%">映票金额</th>
+							<th width="25%">提现金额</th>
+							<th width="25%">状态</th>
+							<th width="25%">申请时间</th>
+						</tr>
+						<volist name="list" id="v">
+							<tr>
+								<td width="25%">{$v['votes']}</td>
+								<td width="25%">{$v['money']}</td>
+								<td width="25%">{$v['status_name']}</td>
+								<td width="25%">{$v['addtime']}</td>
+							</tr>						
+						 </volist>
+						</tbody>						
+					</table>
+          <div class="page">
+					
+	          </div>		    	   					
+				</div>
+			</div>
+				{$page}
+		</div>
+  </div>
+</div>
+<tc_include file="Public:footer" />
+<tc_include file="Home/Personal:footer" /> 
+</body>
+</html>

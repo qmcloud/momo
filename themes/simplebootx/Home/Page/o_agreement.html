@@ -1,0 +1,48 @@
+<tc_include file="Public:head" />
+<title>用户协议 - {$site_name}</title>
+<style>
+				h3 {
+						display: block;
+						font-size: 1.17em;
+						-webkit-margin-before: 1em;
+						-webkit-margin-after: 1em;
+						-webkit-margin-start: 0px;
+						-webkit-margin-end: 0px;
+						font-weight: bold;
+				}
+				#doc-bd{
+					min-height:700px;
+				}
+        .bd .content {
+            font-size: 10pt;
+            line-height: 16px;
+            color: #111;
+        }
+
+        .bd .content b {
+            color: #000;
+        }
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+	<div id="doc-bd">
+		<div class="container clearfix">
+				<div class="hd">
+						<div class="h-title"><h3>用户协议</h3></div>
+				</div>
+				<div class="bd">
+						<div class="content">
+							{$agreement['post_content']}
+						</div>
+				</div>		
+		</div>
+	</div>
+<tc_include file="Public:footer" />
+
+</div>
+
+
+</body>
+</html>

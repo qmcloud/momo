@@ -1,0 +1,30 @@
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/personal.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/font-awesome.min.css"/>
+<div class="headers">
+  <div class="container" style="padding-top:20px">
+    <div class="hersleft">
+			<a href="index.php?m=Personal&a=photo" style="display:inline-block;height:88px">
+				<img src="{$info['avatar']}" alt="" class="herszhezhao">
+				<i class="herszhezhao">
+				</i>
+			</a>
+		</div>
+		<div class="hersright">
+			<div style="display:black" id="datas">
+				<div>
+					<span>{$info['user_nicename']}</span>
+					<i class="dianji" id="dianji"></i>
+				</div>
+				<p title="{$info['user_login']}">个人账号：{$info['user_login']}</p>
+			</div>
+			<div style="display:none" id="modify">
+				<input id="name" placeholder="请输入新昵称">
+				<p>
+					<span class="hersbaocun" >保存</span>
+					<span class="hersquxiao">取消</span>
+				</p>
+			</div>
+		</div>
+  </div>
+</div>

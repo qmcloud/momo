@@ -1,0 +1,188 @@
+<admintpl file="header" />
+<style>
+.table img{
+	max-width:100px;
+	max-height:100px;
+}
+.textArea textarea{
+	width:90%;padding:3%;height:80%;margin:0 auto;margin-top:30px;
+	margin-left: 2%;
+}
+.textArea_btn{
+	text-align: right;
+	margin-top: 30px;
+}
+.textArea_btn input{
+	margin-right: 30px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >下架视频列表</a></li>
+			
+		</ul>
+		
+		<form class="well form-search" method="post" action="{:U('Video/lowervideo')}">
+			排序：
+			<select class="select_2" name="ordertype">
+				<option value="">默认</option>
+				<option value="1" <if condition="$formget.ordertype eq '1'">selected</if> >评论数排序</option>
+				<option value="2" <if condition="$formget.ordertype eq '2'">selected</if> >点赞数排序</option>			
+				<option value="3" <if condition="$formget.ordertype eq '3'">selected</if> >分享数排序</option>			
+			</select>
+			
+			
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入视频ID、会员ID">
+			<input type="text" name="keyword1" style="width: 200px;" value="{$formget.keyword1}" placeholder="请输入视频标题">
+			<input type="text" name="keyword2" style="width: 200px;" value="{$formget.keyword2}" placeholder="请输入用户名称">
+			<input type="submit" class="btn btn-primary" value="搜索">
+		</form>		
+		
+		<form method="post" class="js-ajax-form">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>会员昵称（ID）</th>
+						<th style="max-width: 300px;">标题</th>
+						<th>图片</th>
+						<th>点赞数</th>
+						<th>评论数</th>
+						<th>分享数</th>
+						<!-- <th>催更单价</th>
+						<th>已催更金额</th> -->
+						<th>视频状态</th>
+						<th>发布时间</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<php>$isdel=array("0"=>"上架","1"=>"下架");$status=array("0"=>"待审核","1"=>"通过","2"=>"不通过");</php>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['userinfo']['user_nicename']} ({$vo['uid']})</td>
+						<td style="max-width: 300px;">{$vo['title']}</td>
+						<td><img src="{$vo['thumb']}" /></td>
+						<td>{$vo['likes']}</td>
+						<td>{$vo['comments']}</td>
+						<td>{$vo['shares']}</td>
+						<!-- <td>{$vo['urge_money']}</td>
+						<td>{$vo['hasurgemoney']}</td> -->
+						<td>{$status[$vo['status']]}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td align="center">	
+							<a href="javascript:void(0)" onclick="videoListen({$vo['id']})" >观看</a>
+							|
+							<a href="{:U('Video/edit',array('id'=>$vo['id'],'from'=>'lower'))}" >编辑</a>
+							|
+							 <if condition="$vo['isdel'] eq '1'">
+							<a href="{:U('Video/set_shangjia',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要将该视频上架吗？">上架</a>
+							 |
+							</if>
+							<!-- <a href="{:U('Video/del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a> -->
+							<a href="javascript:void (0)" onclick="del({$vo['id']})" >删除</a>
+							
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/layer/layer.js"></script>
+
+	<script type="text/javascript">
+
+
+		
+		var del_status=0;
+
+		
+		function del(id){
+			var p={$p};
+
+			layer.open({
+			  type: 1,
+			  title:"是否确定将该视频删除",
+			  skin: 'layui-layer-rim', //加上边框
+			  area: ['30%', '30%'], //宽高
+			  content: '<div class="textArea"><textarea id="del_reason" maxlength="50" placeholder="请输入删除原因,最多50字" /> </div><div class="textArea_btn" ><input type="button" id="delete" value="删除" onclick="del_submit('+id+','+p+')" /><input type="button" id="cancel" onclick="layer.closeAll();" value="取消" /></div>'
+			});
+		}
+
+		function del_submit(id,p){
+
+			var reason=$("#del_reason").val();
+
+			if(del_status==1){
+				return;
+			}
+
+			del_status=1;
+
+			$.ajax({
+				url: '/index.php?g=Admin&m=Video&a=del',
+				type: 'POST',
+				dataType: 'json',
+				data: {id:id,reason: reason},
+				success:function(data){
+					var code=data.code;
+					if(code!=0){
+						layer.msg(data.msg);
+						return;
+					}
+
+					del_status=0;
+					//设置按钮不可用
+					$("#delete").attr("disabled",true);
+					$("#cancel").attr("disabled",true);
+
+					layer.msg("删除成功",{icon: 1,time:1000},function(){
+						layer.closeAll();
+						location.reload();
+					});
+				},
+				error:function(e){
+					$("#delete").attr("disabled",false);
+					$("#cancel").attr("disabled",false);
+
+					console.log(e);
+				}
+			});
+			
+			
+		}
+
+		/*获取视频评论列表*/
+		function commentlists(videoid){
+			layer.open({
+				type: 2,
+				title: '视频评论列表',
+				shadeClose: true,
+				shade: 0.8,
+				area: ['60%', '90%'],
+				content: '/index.php?g=Admin&m=Video&a=commentlists&videoid='+videoid 
+			}); 
+		}
+	</script>
+	<script type="text/javascript">
+		function videoListen(id){
+			layer.open({
+			  type: 2,
+			  title: '观看视频',
+			  shadeClose: true,
+			  shade: 0.8,
+			  area: ['500px', '750px'],
+			  content: '/index.php?g=Admin&m=Video&a=video_listen&id='+id
+			}); 
+		}
+	</script>
+	
+</body>
+</html>

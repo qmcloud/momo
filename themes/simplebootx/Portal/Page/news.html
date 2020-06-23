@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$news.post_title}</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta content="telephone=no" name="format-detection" />
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<link href="__TMPL__Public/css/page.css" rel="stylesheet">
+</head>
+<style>
+body{
+ background:#f5f5f5;
+}
+</style>
+<body class="body-white">
+	<div class="container tc-main">	
+	   <div class="news_content">
+		    <div class="news_hd">
+				<div class="news_title">{$news.post_title}</div>
+			</div>
+				 
+			<div class="news_bd">
+			   {$news.post_content}
+			</div>
+		 
+		 </div>
+		 
+	</div>
+	<!-- /container -->
+</body>
+</html>

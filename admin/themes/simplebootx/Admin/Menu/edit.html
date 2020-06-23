@@ -1,0 +1,120 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('menu/index')}">{:L('ADMIN_MENU_INDEX')}</a></li>
+			<li><a href="{:U('menu/add')}">{:L('ADMIN_MENU_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Menu/edit_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">上级:</label>
+					<div class="controls">
+						<select name="parentid">
+							<option value="0">作为一级菜单</option>{$select_categorys}
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">名称:</label>
+					<div class="controls">
+						<input type="text" name="name" value="{$data.name}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">应用:</label>
+					<div class="controls">
+						<input type="text" name="app" value="{$data.app}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">控制器:</label>
+					<div class="controls">
+						<input type="text" name="model" value="{$data.model}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">方法:</label>
+					<div class="controls">
+						<input type="text" name="action" value="{$data.action}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">参数:</label>
+					<div class="controls">
+						<input type="text" name="data" value="{$data.data}"> 例:id=3&amp;p=3
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">图标:</label>
+					<div class="controls">
+						<input type="text" name="icon" value="{$data.icon}">
+						<a href="http://www.thinkcmf.com/font/icons" target="_blank">选择图标</a> 不带前缀fa-，如fa-user => user
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">备注:</label>
+					<div class="controls">
+						<textarea name="remark" rows="5" cols="57" style="width: 500px;">{$data.remark}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">状态:</label>
+					<div class="controls">
+						<select name="status">
+							<option value="1">显示</option>
+							<php>$status_selected=empty($data['status'])?"selected":"";</php>
+							<option value="0" {$status_selected}>隐藏</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">类型:</label>
+					<div class="controls">
+						<select name="type">
+							<option value="1">权限认证+菜单</option>
+							<php>$type_selected=empty($data['type'])?"selected":"";</php>
+							<option value="0" {$type_selected}>只作为菜单</option>
+						</select>
+						注意：“权限认证+菜单”表示加入后台权限管理，纯碎是菜单项请不要选择此项。
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<input type="hidden" name="id" value="{$data.id}" />
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+				<button class="btn js-ajax-close-btn" type="submit">{:L('CLOSE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		$(function() {
+			$(".js-ajax-close-btn").on('click', function(e) {
+				e.preventDefault();
+				Wind.use("artDialog", function() {
+					art.dialog({
+						id : "question",
+						icon : "question",
+						fixed : true,
+						lock : true,
+						background : "#CCCCCC",
+						opacity : 0,
+						content : "您确定需要关闭当前页面嘛？",
+						ok : function() {
+							setCookie('refersh_time_admin_menu_index', 1);
+							window.close();
+							return true;
+						}
+					});
+				});
+			});
+		});
+	</script>
+</body>
+</html>

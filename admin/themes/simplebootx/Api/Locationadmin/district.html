@@ -1,0 +1,44 @@
+<admintpl file="header" />
+</head>
+<body style="min-width:800px;">
+<div class="wrap js-check-wrap">
+  <form class="js-ajax-form" action="" method="post">
+    <div class="table_list">
+      <table width="100%">
+        <thead>
+	          <tr>
+	            <td width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></td>
+	            <td width="50">ID</td>
+	            <td>省/直辖市</td>
+	            <td>城市名称</td>
+	            <td>县/区</td>
+	            <td width="50"><span>状态</span></td>
+	          </tr>
+        </thead>
+        	<php>$status=array("1"=>"显示","0"=>"隐藏");</php>
+        	<foreach name="districts" item="vo">
+	        	<tr>
+		            <td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.district_id}" ></td>
+		            <td>{$vo.district_id}</td>
+		            <td>{$vo.province}</td>
+		            <td>{$vo.city}</td>
+		            <td>{$vo.district}</td>
+		            <td>{$status[$vo['status']]}</td>
+	          	</tr>
+          </foreach>
+          </table>
+      <div class="p10"><div class="pages"> {$Page} </div> </div>
+     
+    </div>
+    <div>
+      <div class="btn_wrap_pd">
+        <label class="mr20"><input type="checkbox" class="js-check-all" data-direction="y" data-checklist="js-check-y">全选</label>                
+        <button class="btn js-ajax-submit" type="submit" data-action="{:U('Locationadmin/district_show',array('show'=>1))}" data-subcheck="true">显示</button>
+        <button class="btn js-ajax-submit" type="submit" data-action="{:U('Locationadmin/district_show',array('unshow'=>1))}" data-subcheck="true">隐藏</button>
+      </div>
+    </div>
+  </form>
+</div>
+<script src="__PUBLIC__/js/common.js{$js_debug}"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Jackpot/index')}">列表</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Jackpot/edit_post')}">
+		   <input type="hidden" name="id" value="{$data['id']}">
+			<fieldset>
+				
+				<div class="control-group">
+					<label class="control-label">等级</label>
+					<div class="controls">
+						<input type="text" name="levelid" value="{$data['levelid']}">
+						<span class="form-required"></span>
+					</div>
+				</div>
+
+                <div class="control-group">
+					<label class="control-label">等级下限</label>
+					<div class="controls">
+						<input type="text" name="level_up"  value="{$data['level_up']}"> 
+						<span class="form-required"></span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Jackpot/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

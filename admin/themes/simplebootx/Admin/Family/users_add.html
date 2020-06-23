@@ -1,0 +1,35 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Family/users')}">成员列表</a></li>
+			<li class="active"><a>新增成员</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Family/users_add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">家族ID</label>
+					<div class="controls">
+						<input type="text" name="familyid" value="0">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">成员ID</label>
+					<div class="controls">
+						<input type="text" name="uid">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Family/users')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

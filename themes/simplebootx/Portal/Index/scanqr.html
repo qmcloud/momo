@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<!-- saved from url=(0024)http://x.pps.tv/download -->
+<html><!--<![endif]-->
+ <head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta charset="UTF-8">
+	<title>APP下载</title>
+</head>
+<body class="max-wide">
+
+	<script type="text/javascript">
+	        function browserRedirect() {
+	            var sUserAgent = navigator.userAgent.toLowerCase();
+	            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+	            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+	            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+	            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+	            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+	            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+	            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+	            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+	            //document.writeln("您的浏览设备为：");
+
+	            //安卓
+	            if(bIsAndroid){
+	                //document.writeln("安卓");
+	                window.location.href="{$config['app_android']}";
+	            }else if(bIsIpad || bIsIphoneOs) {
+	               // document.writeln("肾");
+	                window.location.href="{$config['app_ios']}";
+	                
+	            }else if(bIsWM){
+	               // document.writeln("wp");
+	            }else{
+	               // document.writeln("pc");
+	            }
+	        }
+
+	        browserRedirect();
+	    </script>
+
+<!--Exec Time:0.0019 -->
+
+</body></html>

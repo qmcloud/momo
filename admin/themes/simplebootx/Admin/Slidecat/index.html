@@ -1,0 +1,50 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('slidecat/index')}">{:L('ADMIN_SLIDECAT_INDEX')}</a></li>
+			<li><a href="{:U('slidecat/add')}">{:L('ADMIN_SLIDECAT_ADD')}</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('term/listorders')}">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th>{:L('NAME')}</th>
+						<th>{:L('CATEGORY_KEY')}</th>
+						<th>{:L('DESCRIPTION')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>0</td>
+						<td>{:L('DEFAULT_CATEGORY')}</td>
+						<td>APP_</td>
+						<td>{:L('DEFAULT_CATEGORY')}</td>
+						<td>{:L('NOT_ALLOWED_EDIT')}</td>
+					</tr>
+					<foreach name="slidecats" item="vo">
+					<tr>
+						<td>{$vo.cid}</td>
+						<td>{$vo.cat_name}</td>
+						<td>{$vo.cat_idname}</td>
+						<td>{$vo.cat_remark}</td>
+						<td>
+							<if condition="$vo['cid'] neq 1">
+								<a href="{:U('slidecat/edit',array('id'=>$vo['cid']))}">{:L('EDIT')}</a>|
+								<a href="{:U('slidecat/delete',array('id'=>$vo['cid']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+							<else/>
+								不允许修改
+							</if>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

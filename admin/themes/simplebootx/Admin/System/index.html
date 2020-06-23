@@ -1,0 +1,61 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >消息列表</a></li>
+			<li ><a href="{:U('System/edit')}">发送消息</a></li>
+		</ul>		
+		<form method="post" class="js-ajax-form" >
+
+		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>会员</th>						
+						<th>真实姓名</th>
+						<th>手机号码</th>
+
+						<th>审核状态</th>
+						<th>提交时间</th>
+						<th>处理时间</th>
+
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['userinfo']['user_nicename']} ( {$vo['uid']} )</td>	
+						<td>{$vo['real_name']}</td>
+						<td>{$vo['mobile']}</td>				
+						<td>{$status[$vo['status']]}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>						
+						<td>
+						 <if condition="$vo['status'] eq '0'" >
+						    处理中
+						 <else/>
+						     {$vo.uptime|date="Y-m-d H:i:s",###}
+						 </if>						
+						 </td>
+
+						<td align="center">	
+						
+						    <a href="{:U('Userauth/edit',array('id'=>$vo['id']))}" >编辑</a>  
+						 
+ 							
+							<!-- <a href="{:U('Cash/del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>  -->
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

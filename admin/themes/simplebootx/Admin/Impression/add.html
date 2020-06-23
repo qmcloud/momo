@@ -1,0 +1,83 @@
+<admintpl file="header" />
+<link href="__PUBLIC__/colpick/colpick.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Impression/index')}">列表</a></li>
+			<li class="active"><a >添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Impression/add_post')}">
+			<fieldset>
+                <div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="0">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">名称</label>
+					<div class="controls">
+						<input type="text" name="name">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">首色</label>
+					<div class="controls">
+						<input type="text" name="colour" id="picker"> <input id="colour_block" style="width:50px;height:20px;background:#000;" disabled/>
+						<span class="form-required">*</span> 内容为6位颜色16进制色码，点击可选择
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label">尾色</label>
+					<div class="controls">
+						<input type="text" name="colour2" id="picker2"> <input id="colour_block2" style="width:50px;height:20px;background:#000;" disabled/>
+						<span class="form-required">*</span> 内容为6位颜色16进制色码，点击可选择
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Impression/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+    <script src="__PUBLIC__/colpick/colpick.js"></script>
+    <script>
+        (function(){
+            $('#picker').colpick({
+                layout:'hex',
+                submit:0,
+                colorScheme:'dark',
+                onChange:function(hsb,hex,rgb,el,bySetColor) {
+                    $("#colour_block").css('background','#'+hex);
+                    // Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+                    if(!bySetColor) $(el).val(hex);
+                }
+
+            }).keyup(function(){
+                $(this).colpickSetColor(this.value);
+            });
+            
+            $('#picker2').colpick({
+                layout:'hex',
+                submit:0,
+                colorScheme:'dark',
+                onChange:function(hsb,hex,rgb,el,bySetColor) {
+                    $("#colour_block2").css('background','#'+hex);
+                    // Fill the text box just if the color was set using the picker, and not the colpickSetColor function.
+                    if(!bySetColor) $(el).val(hex);
+                }
+
+            }).keyup(function(){
+                $(this).colpickSetColor(this.value);
+            });
+        })()
+    </script>
+</body>
+</html>

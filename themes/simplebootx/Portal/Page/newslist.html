@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>帮助和反馈</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta content="telephone=no" name="format-detection" />
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<link href="__TMPL__Public/css/page.css" rel="stylesheet">
+<style>
+body{
+ background:#f5f5f5;
+}
+.feedback {
+    width: 100%;
+		height: 50px;
+    line-height: 50px;
+    text-align: center;
+    background-color: #fff;
+}
+.cl {
+    float: left;
+		color: rgba(0, 216, 201, 1);
+}
+</style>
+</head>
+
+<body class="body-white">
+	<div class="container tc-main">	
+	 <volist name="team" id="v">
+	  <div class="team"> 
+			<div class="team_hd">
+						<a href="./index.php?g=portal&m=page&a=newslists&id={$v.term_id}">{$v.name}</a>
+			</div>
+			<ul class="page_list">
+				<volist name="v.list" id="vo">
+					<li><a href="./index.php?g=portal&m=page&a=news&id={$vo.id}">{$vo.post_title}</a></li>
+				</volist>
+			</ul>
+		</div>	
+	 </volist>	
+	</div>
+	
+	
+		<div id="btm" style="position: absolute; left: 0px; bottom: 0px;width: 100%;">
+				<div class="feedback">
+					<a href="./index.php?g=feedback&m=index&a=index&uid={$uid}&version={$version}&model={$model}">
+						<img src="__PUBLIC__/home/images/feedback.jpg" class="cl" style="margin:0;margin-top: 9px;width: 35px; margin-left: 35%;">
+						<div class="cl">意见反馈</div>
+					</a>
+				</div>
+				<div style="clear: both"></div>
+		</div>
+	<!-- /container -->
+</body>
+</html>

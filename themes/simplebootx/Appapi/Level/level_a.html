@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<tc_include file="Appapi/Public/head" />
+		<title>主播等级说明</title>
+		<link href='__PUBLIC__/appapi/css/level.css?t=1540809470' rel="stylesheet" type="text/css" >
+	</head>
+<body>
+    <div class="line10"></div>
+	<div class="explain">
+		<div class="list">
+			<table>
+				<tr>
+					<th>主播等级</th>
+					<th>经验值</th>
+					<th>等级标识</th>
+				</tr>
+				<volist name="list" id="v">
+				<tr>
+					<td>M{$v['levelid']}</td>
+					<td>{$v['level_up']}</td>
+					<td><img src="{$v['thumb']}"></td>
+				</tr>
+				</volist>
+			</table>
+		</div>
+	</div> 
+    <tc_include file="Appapi/Public/footer" />
+</body>
+
+</body>
+</html>

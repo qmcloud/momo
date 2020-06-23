@@ -1,0 +1,82 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Family/index')}">列表</a></li>
+			<li class="active"><a >审核</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Family/edit_post')}">
+		  <input type="hidden" name="id" value="{$family['id']}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">家族名称</label>
+					<div class="controls">
+						<input type="text" value="{$family['name']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">家族长</label>
+					<div class="controls">
+						<input type="text" onkeyup ="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$family['uid']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">家族简介</label>
+					<div class="controls">
+						<textarea rows="2" cols="20" id="signature" class="inputtext" style="height: 100px; width: 500px;" readonly>{$family['briefing']}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">家族徽章</label>
+					<div class="controls">
+							<img src="{$family['badge']}" id="thumb_preview" width="50" style="cursor: hand" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">身份证正面</label>
+					<div class="controls">
+							<img src="{$family['apply_pos']}" id="thumb_preview" width="150" style="cursor: hand" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">身份证反面</label>
+					<div class="controls">
+							<img src="{$family['apply_side']}" id="thumb_preview" width="150" style="cursor: hand" />
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">家族抽成</label>
+					<div class="controls">
+						<input type="text"  name="divide_family" onkeyup ="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$family['divide_family']}"> %
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">审核</label>
+					<div class="controls">
+						<label class="radio inline" for="sex_1"><input type="radio" name="state" value="2" id="sex_1" <if condition="$family['state'] eq '2'">checked</if> >成功</label>
+						<label class="radio inline" for="sex_2"><input type="radio" name="state" value="1" id="sex_2" <if condition="$family['state'] eq '1'">checked</if> >失败</label>
+						<label class="radio inline" for="sex_3"><input type="radio" name="state" value="0" id="sex_3" <if condition="$family['state'] eq '0'">checked</if> >未审核</label>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">审核失败原因</label>
+					<div class="controls">
+						<textarea name="reason" rows="2" cols="20" id="signature" class="inputtext" style="height: 100px; width: 500px;">{$family['reason']}</textarea>
+					</div>
+				</div>
+		
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Family/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

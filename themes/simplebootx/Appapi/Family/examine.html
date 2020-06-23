@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css?t=1543197377"/>
+    <title>签约审核</title>
+</head>
+<body class="examine">
+	<div class="user-list">
+		<ul>
+			<volist name="list" id="v">
+			<li>
+				<div class="thumb">
+					<img src="{$v['userinfo']['avatar']}">
+				</div>
+				<div class="info">
+					<p class="info-title">
+                        {$v['userinfo']['user_nicename']}
+                        <img src="__PUBLIC__/appapi/images/<if condition="$v['userinfo']['sex'] eq 1">man<else/>woman</if>.png" class="sex"> 
+                        <img src="{$levellist[$v['userinfo']['level']]['thumb']}" class="level">
+                    </p>
+					<p class="info-des2">粉丝数：{$v['userinfo']['fansnum']}</p>
+				</div>
+				<div class="action">
+					<span class="ok" data-touid="{$v['userinfo']['id']}" data-divide="{$v['userinfo']['avatar']}" data-type='2'>同意</span>
+					<span class="no" data-touid="{$v['userinfo']['id']}" data-name="{$v['userinfo']['user_nicename']}" data-type='1'>拒绝</span>
+				</div>
+			</li>
+			</volist>
+		</ul>
+	</div>
+    <empty name="list">
+        <div class="li_empty">
+            <p class="title"></p>
+            <p class="des">没有收到新的签约申请</p>
+        </div>
+    </empty>
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+		var familyid='{$familyid}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script src="__PUBLIC__/appapi/js/family.js"></script>
+	
+</body>
+</html>

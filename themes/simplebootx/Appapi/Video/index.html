@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <meta http-equiv="X-UA-Compatible"content="IE=edge">
+    <meta content="telephone=no" name="format-detection" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>{$liveinfo['title']|default=$config['sitename']}</title>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/appapi/share/css/iconfont.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/appapi/share/css/style.css">
+
+	<link href="__PUBLIC__/appapi/share/css/video-js.min.css" rel="stylesheet">
+    <script type="text/javascript" src="__PUBLIC__/appapi/share/js/jquery-1.10.1.min.js"></script>
+    <script type="text/javascript">
+        var room_id = '{$liveinfo['stream']}';
+        var to_uid = '{$liveinfo['uid']}';
+        //var User = {$userinfoj};
+        var User = {};
+        
+		
+		var isiPad = /iPad/i.test(navigator.userAgent);
+		var isiPhone = /iPhone|iPod/i.test(navigator.userAgent);
+		var isAndroid = /Android/i.test(navigator.userAgent);
+		var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
+		var isQQ = /QQ/i.test(navigator.userAgent);
+		var isIOS = (isiPad || isiPhone);
+		var isWeibo = /Weibo/i.test(navigator.userAgent);
+		var isApp = (isAndroid || isIOS);
+
+        var videosrc='{$hls}';
+        var myPlayer;
+        var h=window.screen.height;
+        var videotimer='',request='';
+
+        $(function(){
+            videotimer=setTimeout("connectChange()", 1000);
+        });
+
+        function connectChange(){
+			myPlayer = videojs("videoHLS");
+
+				if(videosrc){
+					$("#videoPlay").show(); 
+					var div='<button id="play"><img src="__PUBLIC__/appapi/share/images/play.png" width="61"></button>';
+					$("#top_box").append(div);
+					$("#state").hide();
+					myPlayer.height(h);
+					myPlayer.show()
+					$("#top_box").show();
+				}else{
+					$("#videoPlay").hide();   
+					$("#play").remove();       
+					$("#state").show();
+					$("#top_box").hide();
+					$(".jw-preview").show();
+					$(".section1_box .roomtitle").remove();
+					clearInterval(videotimer);
+					return !1;
+				}
+
+            //开始或恢复播放
+            myPlayer.on('play', function() {  
+                if(document.getElementById('roomtitle')) {
+                    $("#roomtitle").remove();
+                }
+                if(isAndroid){
+                    var html='<div id="roomtitle" class="roomtitle">&nbsp;</div>';
+                    $(".section1_box .header").prepend(html);
+                }
+                //myPlayer.height(h);
+                $("#top_box").hide();
+                $(".jw-preview").hide();
+
+            });
+            // 暂停播放
+            myPlayer.on('pause', function() { 
+                $(".section1_box .roomtitle").remove(); 
+                $("#top_box").show();
+            });
+
+      }
+    </script> 
+</head>
+<body>
+
+<!--视频-->
+<section class="section1">
+    <article class="jwplayer jw-reset jw-stretch-fill">
+        <div class="jw-media jw-reset">
+            <div id="videoPlay" style="width:100%;height:100%;position:absolute;top:0;left:0;overflow:hidden;">
+                <video id="videoHLS" class="video-js vjs-big-play-centered" style="width:100%;"  data-setup="{'preload': 'auto'}" webkit-playsinline  playsinline  x-webkit-airplay="true" x5-video-player-type="h5"  x5-video-player-fullscreen="true" poster="">
+                    <source src="{$hls}" type="application/x-mpegURL">
+                </video>
+            </div>
+            <div id="state" style="text-align:center;line-height:40px;position:absolute;top:35%;z-index:11;color:#fff;padding:20px;display:none;">
+                <h2></h2>
+            </div>
+            <div class="jw-preview jw-reset" style="background-image: url('{$videoinfo['thumb']}')"></div>
+        </div>
+    </article>
+ 
+    <article class="section1_box" id="section1_box">
+        <header class="header clearfix">
+            <div class="clearfix">
+                <div class="userinfo">
+                    <img src="{$liveinfo['avatar_thumb']}" userid="{$liveinfo['id']}">
+                    <span class="ulive">{$liveinfo['user_nicename']}</span>
+                    <span class="unum">ID：{$liveinfo['id']}</span>
+                </div>
+                <div class="userimg" id="userimg">
+                    <ul class="userpic clearfix" id="userpic"></ul>
+                </div>
+            </div>
+
+        </header>
+        <article id="heart"><canvas id="canvas"></canvas></article>
+
+
+        <article id="top_box" style="display: none;">
+            <!-- <button id="play"><img src="__PUBLIC__/appapi/share/images/play.png" width="61"></button> -->
+        </article>
+    </article>
+    <section class="touchbox" id="touchbox"></section>
+	<!-- 下载 -->
+	<div class="down-bottom" onclick="downurl()">
+		<img src="__PUBLIC__/appapi/share/images/down.png">
+	</div>
+</section>
+<!--视频-->
+
+<script type="text/javascript" src="__PUBLIC__/appapi/share/js/video.js"></script>
+<script type="text/javascript" src="__PUBLIC__/appapi/share/js/videojs-contrib-hls.js"></script>
+<script type="text/javascript" src="__PUBLIC__/appapi/share/js/common.js"></script>
+
+<script type="text/javascript">
+    var mode = 1;//代表手机直播手机观看
+	function downurl(){
+		var href='';
+		if(isIOS){
+			href='{$config['app_ios']}';
+		}else{
+			href='{$config['app_android']}';
+		}
+		location.href=href;
+		return !1;
+	}
+
+    //点击播放按钮
+    $(document).on("click","#play",function(){
+        var objbtn=$(this);
+        Ctrfn.play(objbtn);
+    })
+
+
+</script>
+</body>
+</html> 

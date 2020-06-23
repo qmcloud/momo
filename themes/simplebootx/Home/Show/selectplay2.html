@@ -1,0 +1,62 @@
+<div class="dialog-tc">
+ 
+	<div class="mode">
+		<a>直播配置</a>
+		<span onclick="liveType.closePorp()" class="rotate"></span>
+	</div>
+	<div class="mount_title">直播类型</div>
+	<div class="mount-method" id="mount_method" data-type="0">
+			<!-- <a class="mount_btn_on" id="btn0">普通直播</a>
+			<a class="mount_btn_no" id="btn1">密码房间</a>
+			<a class="mount_btn_no" id="btn2">收费房间</a> -->
+			<a class="mount_btn_on" id="btn3">计时收费</a>
+	</div>
+	<div class="mount_num" id="mount_num"> 
+		<input id="gift_number"  placeholder="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type="text" class="minput-text">
+	</div>
+	<div class="mount_num" id="mount_select" style="display:block;"> 
+		<select id="gift_select">
+			<volist name="config.live_time_coin" id="vo">
+			<option value="{$vo}">{$vo}{$config['name_coin']}/分钟</option>
+			</volist>
+		</select>
+	</div>
+	<div class="deal-footer">
+		<a class="mount_con" onclick="liveType.submitTypeValue()">确定</a>
+		<a class="mount_cancel" id="mount_cancel">取消</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#mount_method a").click(function(){
+			$(this).attr("class","mount_btn_on");
+			$(this).siblings().attr("class","mount_btn_no");
+			var id=$(this).attr("id");
+			if(id=="mima_btn" || id=="shoufei_btn")
+			{
+				$("#mount_num input").val("");
+				if(id=="mima_btn")
+				{
+					$("#mount_num input").attr("placeholder","请设置密码");
+				}
+				else
+				{
+					$("#mount_num input").attr("placeholder","请设置金额");
+				}
+				$("#mount_select").css('display','none');
+				$("#mount_num").css('display','block');
+				
+			}
+			else if(id=="jishi_btn"){
+				$("#mount_num").css('display','none');
+				$("#mount_select").css('display','block');
+			}
+			else
+			{
+				$("#mount_num").css('display','none');
+			}
+   });
+	 $("#mount_cancel").click(function(){
+			liveType.closePorp()
+   });
+</script>

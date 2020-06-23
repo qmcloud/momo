@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible"content="IE=edge">
+    <meta content="telephone=no" name="format-detection" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,user-scalable=no">
+    <title>socket测试</title>
+</head>
+<body>
+<ul id="msg">
+</ul>
+
+<script type="text/javascript" src="/public/home/js/jquery.js"></script>
+<script type="text/javascript" src="/public/home/js/socket.io.js"></script>
+<script>
+	function appendChat(msg){
+		var html='<li>'+msg+'</li>';
+		$("#msg").append(html);
+	}
+</script>
+<script>
+var socket = new io("{$configpri['chatserver']}");
+var uid="{$info['id']}";
+var i=0;
+/*客户端socket.io接收与发送*/
+//连接socket服务器
+//连接状态设置为成功
+////////////////////////////////////////////////////////////////////////////////////
+var Socket = {
+    nodejsInit: function () {
+        this.inituser();
+    },
+    inituser: function () {
+		socket.emit('conn', {uid:uid,roomnum: '19967',nickname: "测试"+uid,stream:"19967_19967",equipment: 'pc',token:"{$info['token']}"});					  
+    },
+    //==========node改====================emitData===========================================
+    emitData: function (event, msg) {
+        socket.emit(event, msg);
+    }
+    //==========node改====================emitData===========================================
+}
+/*客户端广播接收broadcasting*/
+socket.on('broadcastingListen', function (data) {
+	console.log(data);
+	var data = JSON.parse(data);
+	var msgObject = data.msg[0];
+	var msgtype = msgObject.msgtype;
+	var msgaction = msgObject.action;
+	var msgmethod = msgObject._method_;
+	var html='';
+	if(msgmethod=='SendMsg'){ //聊天信息
+		if(msgtype==2){
+			html=msgObject.ct;
+			appendChat(html);
+		}
+		
+	}
+	
+});
+//==========node改====================conn===========================================
+socket.on('conn', function (data) {  
+	console.log('conn：'+data);
+	
+	if(data=='ok'){
+		appendChat('连接成功');
+		var msg ='';
+		var chatmsg=setInterval(function () {
+			console.log('1');
+			msg='{"msg":[{"_method_":"SendMsg","action":0,"ct":"我是测试:'+uid+'---'+i+'","msgtype":"2","uid":"'+uid+'","uname":"测试'+uid+'","level":"1"}],"retcode":"000000","retmsg":"OK"}';
+			i++;
+			Socket.emitData('broadcast',msg);
+		}, 100);	
+	}else{
+		appendChat('连接失败');
+	}
+	
+});
+//==========node改====================conn===========================================
+
+</script>
+<script>
+(function(){
+	Socket.nodejsInit();
+})()
+</script>
+</body>
+</html> 

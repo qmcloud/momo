@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>{$sitename}-微信扫码支付</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/style.css"/>
+    
+</head>
+<body id="bp_center">   
+    <div class="cashier_content">
+        <div class="cashier_head">
+            <div class="cashier_head_logo"><a href="{$site}">{$logo}</a></div>
+        </div>
+        <div class="cashier_center">
+            <div class="wechat_head">
+                <span>使用微信支付：</span>
+                <span class="wechat_head_info">消费￥{$money}元充值{$coin}虚拟币</span>
+            </div>
+            <div class="wechat_qrcode" title=""><canvas width="248" height="248" style="display: none;"></canvas><img alt="Scan me!" src="/wxpay/pay/qrcode.php?data={$url}" style="display: block;width:248px;height:248px;"></div>
+            <div class="wechat_btn">
+                <span class="wechat_btn_icon"></span>
+                <span class="wechat_btn_info">使用微信扫描二维码以完成支付</span>
+            </div>
+        </div>
+    </div>
+
+<script src="__PUBLIC__/home/js/jquery.1.10.2.js"></script> 
+    <script type="text/javascript">
+	
+       setInterval(function(){
+	   
+             var orderid="{$orderid}";
+               $.ajax({
+                    url:"/index.php/Payment/getOrderStatus/orderid/"+orderid,
+                    type:"GET",
+                    success:function(data){
+                     
+                        if(data==1){
+                        alert("支付成功");
+                            window.location.href="./index.php?m=Payment&a=index"; 
+							
+                        }
+                    }
+                   });
+       },1000);
+    </script>
+</body>
+</html>

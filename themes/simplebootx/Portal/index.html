@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta content="telephone=no" name="format-detection">
+<meta name="baidu-site-verification" content="QpfdfPmoBr" />
+<title>{$site_name}</title>
+<meta name="keywords" content=""/>
+<meta name="description" content=""/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/index/css/index.css">
+
+</head>
+<body>
+<div class="content pr">
+    <div class="log"><img src="__PUBLIC__/index/images/log.png"></div>
+    <div class="erweima display"><img src="{$config['apk_ewm']}"></div>
+    <div class="erweima1"><img src="{$config['ipa_ewm']}"></div>
+    <div class="button">
+        <a class="ios" href="{$config.app_ios}"><img src="__PUBLIC__/index/images/ios2.png"></a>
+        <a class="ios display" href="{$config.app_ios}"><img src="__PUBLIC__/index/images/ios.png"></a>
+        <a class="adr" href="{$config.app_android}"><img src="__PUBLIC__/index/images/adr2.png"></a>
+        <a class="adr display" href="{$config.app_android}"><img src="__PUBLIC__/index/images/adr.png"></a>
+    </div>
+    <div class="foot">
+        <div></div>
+        <div>地址：{$config.address}</div>
+        <div>电话:{$config.mobile}</div>
+        <div>{$config.copyright}</div>
+    </div>
+</div>
+
+</body>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script>
+    $(function(){
+        $(".ios").mouseover(function(){
+            $(".erweima1").removeClass("display")
+            $(".erweima").addClass("display")
+            $(".ios").eq(0).addClass("display")
+            $(".ios").eq(1).removeClass("display")
+        })
+        $(".ios").mouseout(function(){
+            $(".erweima1").removeClass("display")
+            $(".erweima").addClass("display")
+            $(".ios").eq(0).removeClass("display")
+            $(".ios").eq(1).addClass("display")
+
+        })
+        $(".adr").mouseover(function(){
+            $(".erweima").removeClass("display")
+            $(".erweima1").addClass("display")
+            $(".adr").eq(0).addClass("display")
+            $(".adr").eq(1).removeClass("display")
+        })
+        $(".adr").mouseout(function(){
+            $(".erweima").removeClass("display")
+            $(".erweima1").addClass("display")
+            $(".adr").eq(0).removeClass("display")
+            $(".adr").eq(1).addClass("display")
+
+        })
+    })
+</script>
+</html>

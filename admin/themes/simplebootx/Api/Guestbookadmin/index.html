@@ -1,0 +1,42 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('guestbookadmin/index')}">{:L('API_GUESTBOOKADMIN_INDEX')}</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="50">ID</th>
+						<th width="100">{:L('NAME')}</th>
+						<th width="150">{:L('EMAIL')}</th>
+						<th style="min-width: 60px;">{:L('TITLE')}</th>
+						<th>{:L('CONTENT')}</th>
+						<th width="120">{:L('TIME')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="guestmsgs" item="vo">
+					<tr>
+						<td>{$vo.id}</td>
+						<td>{$vo.full_name}</td>
+						<td>{$vo.email}</td>
+						<td>{$vo.title}</td>
+						<td>{$vo.msg}</td>
+						<td>{$vo.createtime}</td>
+						<td>
+							<a href="{:U('guestbookadmin/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$Page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js?"></script>
+</body>
+</html>

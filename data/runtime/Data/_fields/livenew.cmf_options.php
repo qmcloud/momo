@@ -1,0 +1,1 @@
+a:6:{i:0;s:9:"option_id";i:1;s:11:"option_name";i:2;s:12:"option_value";i:3;s:8:"autoload";s:3:"_pk";s:9:"option_id";s:5:"_type";a:4:{s:9:"option_id";s:19:"bigint(20) unsigned";s:11:"option_name";s:11:"varchar(64)";s:12:"option_value";s:8:"longtext";s:8:"autoload";s:6:"int(2)";}}

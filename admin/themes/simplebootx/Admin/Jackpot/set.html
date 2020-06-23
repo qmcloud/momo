@@ -1,0 +1,77 @@
+<admintpl file="header" />
+</head>
+<body>
+<style>
+input{
+  width:500px;
+}
+.form-horizontal textarea{
+ width:500px;
+}
+.nav-tabs>.current>a{
+    color: #95a5a6;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav li
+{
+	cursor:pointer
+}
+.nav li:hover
+{
+	cursor:pointer
+}
+.hide{
+	display:none;
+}
+</style>
+
+
+	<div class="wrap js-check-wrap">
+
+		<ul class="nav nav-tabs">
+			<li class="active"><a>配置</a></li>
+            <li><a href="{:U('Jackpot/index')}">奖池等级</a></li>
+		</ul>
+		
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Jackpot/set_post')}">
+			<div class="js-tabs-content">
+				<!-- 网站信息 -->
+				<div>
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label">奖池开关</label>
+							<div class="controls">				
+								<label class="radio inline"><input type="radio" value="0" name="post[switch]" <eq name="config['switch']" value="0">checked="checked"</eq>>关闭</label>
+								<label class="radio inline"><input type="radio" value="1" name="post[switch]" <eq name="config['switch']" value="1">checked="checked"</eq>>开启</label>
+								<label class="checkbox inline"></label>
+							</div>
+						</div>
+
+						<div class="control-group" >
+							<label class="control-label">幸运礼物-主播比例</label>
+							<div class="controls">				
+								<input type="text" name="post[luck_anchor]" value="{$config['luck_anchor']}">% 
+							</div>
+						</div>
+                        
+                        <div class="control-group" >
+							<label class="control-label">幸运礼物-奖池比例</label>
+							<div class="controls">				
+								<input type="text" name="post[luck_jackpot]" value="{$config['luck_jackpot']}">% 
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

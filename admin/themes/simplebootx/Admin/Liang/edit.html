@@ -1,0 +1,44 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Liang/index')}">列表</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Liang/edit_post')}">
+		   <input type="hidden" name="id" value="{$liang['id']}">
+			<fieldset>
+
+				<div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="{$liang['orderno']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">靓号</label>
+					<div class="controls">
+						<input type="text" name="name" value="{$liang['name']}" maxlength="6">
+						<span class="form-required">*</span> 最长6位
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">所需点数</label>
+					<div class="controls">
+						<input type="text" name="coin"  value="{$liang['coin']}"  oninput="this.value=this.value.replace(/\D/g,'')"  maxlength="9">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Liang/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

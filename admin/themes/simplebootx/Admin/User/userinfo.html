@@ -1,0 +1,56 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('User/userinfo')}">{:L('ADMIN_USER_USERINFO')}</a></li>
+			<li><a href="{:U('setting/password')}">{:L('ADMIN_SETTING_PASSWORD')}</a></li>
+		</ul>
+		<form class="form-horizontal js-ajax-form" method="post" action="{:U('User/userinfo_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label" for="input-user_nicename">{:L('NICENAME')}</label>
+					<div class="controls">
+						<input type="hidden" name="id" value="{$id}">
+						<input type="text" id="input-user_nicename" name="user_nicename" value="{$user_nicename}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input-gender">{:L('GENDER')}</label>
+					<div class="controls">
+						<select name="sex" id="input-gender">
+							<php>$sexs=array("0"=>L('GENDER_SECRECY'),"1"=>L('MALE'),"2"=>L('FEMALE'));</php>
+							<foreach name="sexs" item="vo">
+								<php>$sexselected=$key==$sex?"selected":"";</php>
+								<option value="{$key}"{$sexselected}>{$vo}</option>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input-birthday">{:L('BIRTHDAY')}</label>
+					<div class="controls">
+						<input class="js-date" type="text" id="input-birthday" placeholder="2013-01-04" name="birthday" value="{$birthday}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input-user_url">{:L('WEBSITE')}</label>
+					<div class="controls">
+						<input type="text" id="input-user_url" placeholder="http://thinkcmf.com" name="user_url" value="{$user_url}">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label" for="input-signature">{:L('SIGNATURE')}</label>
+					<div class="controls">
+						<textarea id="input-signature" placeholder="{:L('SIGNATURE')}" name="signature">{$signature}</textarea>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

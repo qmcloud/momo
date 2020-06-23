@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<title>等级</title>
+		<style type="text/css"> 
+		body div {margin: 0; padding: 0}
+		body {
+			padding:0px;
+			margin: 0 auto;
+			min-width: 300px;
+			max-width: 620px;
+		}
+		.main {
+			position: relative;
+			margin: 0 auto;
+			width: 100%;
+		}
+		.level {
+			position: relative;
+			width: 100%;
+			height: 200px;
+		}
+		.text {
+			width:100%;
+			height:100%;
+			background: #cccccc;
+			padding-top: 15px;
+			padding-left: 15px;
+			padding-right: 15px;
+			box-sizing:border-box;
+		}
+		.level_val {
+			position: absolute;
+			box-sizing:border-box;
+			width: 100%;
+			height:200px;
+			line-height: 200px;
+			text-align: center;
+			padding-left: 40%;
+			vertical-align: middle;
+		}
+		.level_text {
+			text-align: left;
+			height:200px;
+		}
+
+		.pie {
+				background: url("__PUBLIC__/images/level_pie.png") no-repeat;
+				background-size: 134px 134px;
+				width: 134px;
+				height: 134px;
+				position: absolute;
+				border-radius: 50%;
+				top:16%;
+				left:5%;
+		}
+		.pie_left, .pie_right {
+				width:134px; 
+				height:134px;
+				position: absolute;
+				top: 0;left: 0;
+		}
+		.left, .right {
+				width:134px; 
+				height:134px;
+				background:#666666;
+				border-radius: 50%;
+				position: absolute;
+				top: 0;
+				left: 0;
+
+		}
+		.pie_right, .right {
+				clip:rect(0,auto,auto,67px);
+		}
+		.pie_left, .left {
+				clip:rect(0,67px,auto,0);
+		}
+		
+		.mask {
+				width: 120px;
+				height: 120px;
+				border-radius: 50%;
+				left: 7px;
+				top: 7px;
+				background: #FFF;
+				position: relative;
+				text-align: center;
+				line-height: 120px;
+				font-size: 20px;
+				font-family: Arial;
+				color: #666666;
+		}
+		 ul {
+			box-sizing:border-box;
+			padding: 0;
+			margin: 0;
+			margin-top: 65px;
+			margin-left: 10px;
+		}
+		.level_val li {
+			text-align: left;
+			list-style: none;
+			line-height: 30px;
+		}
+    h2 {
+			font-size: 20px;
+			text-align: left;
+			padding-bottom:10px;
+			line-height: 10px;
+			color: #666666;
+		}
+		.clear{ clear:both}
+		p {
+			color: #666666;
+			margin: 6px;
+		} 
+		</style>
+
+		<script src="__PUBLIC__/js/jquery.js"></script>
+	</head>
+<body >
+	<div class="main">
+		<div class="level">
+			<div class="level_val">
+				<ul>
+					<li style="color:#666666">累计经验值：<span style="color:#66cc33;font-family:arial;" id="total">{$experience}</span></li>
+					<li style="color:#666666">距离升级还差：<span style="color:#00cccc;font-family:arial;" id="next_diff">{$cha}</span></li>
+				</ul>
+			</div>
+
+			<div class="pie">
+		        <div class="pie_left"><div class="left" style="transform: rotate(0deg);"></div></div>
+		        <div class="pie_right"><div class="right" style="transform: rotate(0deg);"></div></div>
+		        <div class="mask">
+		         <div style="display:block; height:30px; font-size:2.8rem; position: absolute; width:100%; top: -10px;" id="level">{$level['levelid']}</div>
+		         <div style="display:inline-block;font-size:12px;margin-top:25px;text-align: center; height:15px">我的等级</div>
+		         <div class="clear"></div> 
+		        </div>
+		  </div>
+		</div>
+		<div class="text">
+             <h2>等级权益</h2>
+
+<p>1. 不同等级图标不同，越高越尊贵</p>
+
+<p>2. 你的身份一眼可见，尊贵显而易见</p>
+
+
+
+<h2 style="margin-top:30px">如何升级</h2>
+
+<p>1. 送礼物是升级最快的办法，送的越多升级越快！</p>
+
+		</div>
+	</div>
+</body>
+
+<script>
+$(document).ready(function() {
+  var percent = 0.30;
+	var pie_width = 134;
+	var doc_width = $(document).width();
+	if (doc_width < 360) {
+		pie_width = Math.ceil(doc_width * percent);
+		if (pie_width % 2 > 0) pie_width++;
+	}
+	$('.pie').css('width', pie_width+'px')
+			 .css('height', pie_width+'px')
+			 .css('background-size', pie_width+'px '+pie_width+'px')
+			 .css('top', (200-pie_width)/2+'px ');
+
+
+	$('.pie_left').css('width', pie_width+'px');
+	$('.pie_left').css('height', pie_width+'px');
+	$('.pie_right').css('width', pie_width+'px');
+	$('.pie_right').css('height', pie_width+'px');
+	$('.left').css('width', pie_width+'px');
+	$('.left').css('height', pie_width+'px');
+	$('.right').css('width', pie_width+'px');
+	$('.right').css('height', pie_width+'px');
+
+	$('.pie_right').css('clip', 'rect(0,auto,auto,'+(pie_width / 2)+'px)');
+	$('.right').css('clip', 'rect(0,auto,auto,'+(pie_width / 2)+'px)');
+
+	$('.pie_left').css('clip', 'rect(0,'+(pie_width / 2)+'px,auto,0)');
+	$('.left').css('clip', 'rect(0,'+(pie_width / 2)+'px,auto,0)');
+
+	$('.mask').css('width', (pie_width - 14)+'px');
+	$('.mask').css('height', (pie_width - 14)+'px');
+	$('.mask').css('line-height', (pie_width - 14)+'px');
+
+
+    var num = Math.round({$rate} * 3.6);
+
+    //if (num == 0) num = 360;
+    if (num <= 180) {
+        $(this).find('.right').css('transform', 'rotate(' + num + 'deg)');
+    } else {
+        $(this).find('.right').css('transform', 'rotate(180deg)');
+        $(this).find('.left').css('transform', 'rotate(' + (num - 180) + 'deg)');
+    }
+})
+</script>
+</body>
+</html>

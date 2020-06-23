@@ -1,0 +1,57 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#" data-toggle="tab">{:L('ADMIN_MAILER_ACTIVE')}</a></li>
+		</ul>
+		<div class="common-form">
+			<form method="post" class="form-horizontal js-ajax-form" action="{:U('Admin/mailer/active_post')}">
+				<table cellpadding="2" cellspacing="2" width="100%">
+					<tbody>
+						<tr>
+							<td width="100">{:L('EMAIL_ACTIVATION')}</td>
+							<td>
+								<php> 
+								$radio1=''; $radio2=' checked';
+								if(C('SP_MEMBER_EMAIL_ACTIVE')==1){ 
+									$radio1=' checked';
+									$radio2='';
+								}
+								</php>
+								<label class="radio inline" for="lightup_true"> <input type="radio" {$radio1} id="lightup_true" class="radio" name="lightup" value="1" />{:L('OPEN')}</label> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<label class="radio inline" for="lightup_false"> <input type="radio" {$radio2} id="lightup_false" class="radio" name="lightup" value="0" />{:L('CLOSE')}</label>
+							</td>
+						</tr>
+						<tr>
+							<td>{:L('EMAIL_SUBJECT')}</td>
+							<td><input type="text" name="options[title]" value="{$options.title}"/></td>
+						</tr>
+						<tr>
+							<td>{:L('EMAIL_TEMPLATE')}</td>
+							<td>
+								<script type="text/plain" id="content" name="options[template]">{$options.template}</script>
+								<span style="color: #ffb752;">{:L('EMAIL_TEMPLATE_HELP_TEXT',array('link'=>'http://#link#','username'=>'#username#'))}</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary  js-ajax-submit">{:L('SAVE')}</button>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript">
+		//编辑器路径定义
+		var editorURL = GV.DIMAUB;
+	</script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.config.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/ueditor/ueditor.all.min.js"></script>
+	<script type="text/javascript">
+		var editorcontent = new baidu.editor.ui.Editor();
+		editorcontent.render('content');
+	</script>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#A" data-toggle="tab">{:L('WEB_SITE_INFOS')}</a></li>
+			<li><a href="#B" data-toggle="tab">{:L('SEO_SETTING')}</a></li>
+			<li><a href="#C" data-toggle="tab">{:L('URL_SETTING')}</a></li>
+			<li><a href="{:U('route/index')}">{:L('URL_OPTIMIZATION')}</a></li>
+			<li><a href="#D" data-toggle="tab">{:L('UCENTER_SETTING')}</a></li>
+			<li><a href="#E" data-toggle="tab">{:L('COMMENT_SETTING')}</a></li>
+			<li><a href="#F" data-toggle="tab">{:L("USERNAME_FILTER")}</a></li>
+		</ul>
+		<form class="form-horizontal js-ajax-forms" action="{:U('setting/site_post')}" method="post">
+			<fieldset>
+				<div class="tabbable">
+					<div class="tab-content">
+						<div class="tab-pane active" id="A">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_NAME')}</label>
+									<div class="controls">
+										<input type="text" name="options[site_name]" value="{$site_name}"><span class="form-required">*</span>
+										<php>if($option_id):</php>
+										<input type="hidden" name="option_id" value="{$option_id}">
+										<php>endif;</php>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_DOMAIN')}</label>
+									<div class="controls">
+										<input type="text" name="options[site_host]" value="{$site_host}"><span class="form-required">*</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">后台地址加密码：</label>
+									<div class="controls">
+										<input type="text" name="options[site_admin_url_password]" value="{$site_admin_url_password}" id="js-site-admin-url-password"><span class="form-required">*</span>
+										<span class="help-block" style="color: red;">设置加密码后必须通过以下地址访问后台,请劳记此地址，为了安全，您也可以定期更换此加密码!</span>
+										<php>$site_admin_url_password =C("SP_SITE_ADMIN_URL_PASSWORD");</php>
+										<if condition="!empty($site_admin_url_password)">
+										<span class="help-block">后台地址：<span id="js-site-admin-url">{:sp_get_host()}__ROOT__?g=admin&upw={:C('SP_SITE_ADMIN_URL_PASSWORD')}</span></span>
+										</if>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_THEME')}</label>
+									<div class="controls">
+										<select name="options[site_tpl]">
+											<foreach name="templates" item="vo">
+											<php>$tpl_selected=$site_tpl==$vo?"selected":"";</php>
+											<option value="{$vo}" {$tpl_selected}>{$vo}</option>
+											</foreach>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('ENABLE_MOBILE_THEME')}：</label>
+									<div class="controls">
+										<php>$mobile_tpl_enabled_checked=empty($mobile_tpl_enabled)?'':'checked';</php>
+										<label class="checkbox inline"><input type="checkbox" name="options[mobile_tpl_enabled]" value="1" {$mobile_tpl_enabled_checked}></label>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_ADMIN_THEME')}</label>
+									<div class="controls">
+										<select name="options[site_adminstyle]">
+											<foreach name="adminstyles" item="vo">
+											<php>$adminstyle_selected=$site_adminstyle==$vo?"selected":"";</php>
+											<option value="{$vo}" {$adminstyle_selected}>{$vo}</option>
+											</foreach>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('HTML_CACHE')}：</label>
+									<div class="controls">
+										<php>$html_cache_on_checked=empty($html_cache_on)?'':'checked';</php>
+										<label class="checkbox inline"><input type="checkbox" name="options[html_cache_on]" value="1" {$html_cache_on_checked}></label>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_ICP')}</label>
+									<div class="controls">
+										<input type="text" name="options[site_icp]" value="{$site_icp}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBMASTER_EMAIL')}</label>
+									<div class="controls">
+										<input type="text" name="options[site_admin_email]" value="{$site_admin_email}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L("WEBSITE_STATISTICAL_CODE")}</label>
+									<div class="controls">
+										<textarea name="options[site_tongji]" rows="5" cols="57">{$site_tongji}</textarea>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_COPYRIGHT_INFOMATION')}</label>
+									<div class="controls">
+										<textarea name="options[site_copyright]" rows="5" cols="57">{$site_copyright}</textarea>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="tab-pane" id="B">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_SEO_TITLE')}</label>
+									<div class="controls">
+										<input type="text" name="options[site_seo_title]" value="{$site_seo_title}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_SEO_KEYWORDS')}</label>
+									<div class="controls">
+										<input type="text" name="options[site_seo_keywords]" value="{$site_seo_keywords}">
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('WEBSITE_SEO_DESCRIPTION')}</label>
+									<div class="controls">
+										<textarea name="options[site_seo_description]" rows="5" cols="57">{$site_seo_description}</textarea>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="tab-pane" id="C">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">{:L('URL_MODE')}</label>
+									<div class="controls">
+										<php>$urlmodes=array( "0"=>L('URL_NORMAL_MODE'), "1"=>L('URL_PATHINFO_MODE'), "2"=>L('URL_REWRITE_MODE'));</php>
+										<select name="options[urlmode]">
+											<foreach name="urlmodes" item="vo">
+											<php>$urlmode_selected=$key==$urlmode?"selected":"";</php>
+											<option value="{$key}" {$urlmode_selected}>{$vo}</option>
+											</foreach>
+										</select>
+										<span class="form-required">* {:L('URL_MODE_HELP_TEXT')}</span>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('URL_REWRITE_SUFFIX')}</label>
+									<div class="controls">
+										<input type="text" name="options[html_suffix]" value="{$html_suffix}">
+										<span class="form-required">{:L('URL_REWRITE_SUFFIX_HELP_TEXT')}</span>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="tab-pane" id="D">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">{:L('ENABLE_UCENTER')}</label>
+									<div class="controls">
+										<php>$ucenter_enabled_checked=empty($ucenter_enabled)?"":"checked";</php>
+										<input type="checkbox" class="js-check" name="options[ucenter_enabled]" value="1" {$ucenter_enabled_checked}>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="tab-pane" id="E">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">{:L('COMMENT_CHECK')}</label>
+									<div class="controls">
+										<php>$comment_need_checked=empty($comment_need_check)?"":"checked";</php>
+										<input type="checkbox" class="js-check" name="options[comment_need_check]" value="1" {$comment_need_checked}>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label">{:L('COMMENT_TIME_INTERVAL')}</label>
+									<div class="controls">
+										<input type="number" name="options[comment_time_interval]" value="{$comment_time_interval|default=60}" style="width:40px;">{:L('SECONDS')}
+									</div>
+								</div>
+							</fieldset>
+						</div>
+						<div class="tab-pane" id="F">
+							<fieldset>
+								<div class="control-group">
+									<label class="control-label">{:L('SPECAIL_USERNAME')}</label>
+									<div class="controls">
+										<textarea name="cmf_settings[banned_usernames]" rows="5" cols="57">{$cmf_settings.banned_usernames}</textarea>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				</div>
+
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary  js-ajax-submit">{:L("SAVE")}</button>
+				</div>
+			</fieldset>
+		</form>
+
+	</div>
+	<script type="text/javascript" src="__PUBLIC__/js/common.js"></script>
+	<script>
+		/////---------------------
+		$(function(){
+			$("#urlmode-select").change(function(){
+				if($(this).val()==1){
+					alert("更改后，若发现前台链接不能正常访问，可能是您的服务器不支持PATHINFO，请先修改data/conf/config.php文件的URL_MODEL为0保证网站正常运行,在配置服务器PATHINFO功能后再更新为PATHINFO模式！");
+				}
+				
+				if($(this).val()==2){
+					alert("更改后，若发现前台链接不能正常访问，可能是您的服务器不支持REWRITE，请先修改data/conf/config.php文件的URL_MODEL为0保证网站正常运行，在开启服务器REWRITE功能后再更新为REWRITE模式！");
+				}
+			});
+			$("#js-site-admin-url-password").change(function(){
+				$(this).data("changed",true);
+			});
+		});
+		Wind.use('validate', 'ajaxForm', 'artDialog', function() {
+			//javascript
+			var form = $('form.js-ajax-forms');
+			//ie处理placeholder提交问题
+			if ($.browser.msie) {
+				form.find('[placeholder]').each(function() {
+					var input = $(this);
+					if (input.val() == input.attr('placeholder')) {
+						input.val('');
+					}
+				});
+			}
+			//表单验证开始
+			form.validate({
+				//是否在获取焦点时验证
+				onfocusout : false,
+				//是否在敲击键盘时验证
+				onkeyup : false,
+				//当鼠标掉级时验证
+				onclick : false,
+				//验证错误
+				showErrors : function(errorMap, errorArr) {
+					//errorMap {'name':'错误信息'}
+					//errorArr [{'message':'错误信息',element:({})}]
+					try {
+						$(errorArr[0].element).focus();
+						art.dialog({
+							id : 'error',
+							icon : 'error',
+							lock : true,
+							fixed : true,
+							background : "#CCCCCC",
+							opacity : 0,
+							content : errorArr[0].message,
+							cancelVal : "{:L('OK')}",
+							cancel : function() {
+								$(errorArr[0].element).focus();
+							}
+						});
+					} catch (err) {
+					}
+				},
+				//验证规则
+				rules : {
+					'options[site_name]' : {
+						required : 1
+					},
+					'options[site_host]' : {
+						required : 1
+					},
+					'options[site_root]' : {
+						required : 1
+					}
+				},
+				//验证未通过提示消息
+				messages : {
+					'options[site_name]' : {
+						required : "{:L('WEBSITE_SITE_NAME_REQUIRED_MESSAGE')}"
+					},
+					'options[site_host]' : {
+						required : "{:L('WEBSITE_SITE_HOST_REQUIRED_MESSAGE')}"
+					}
+				},
+				//给未通过验证的元素加效果,闪烁等
+				highlight : false,
+				//是否在获取焦点时验证
+				onfocusout : false,
+				//验证通过，提交表单
+				submitHandler : function(forms) {
+					$(forms).ajaxSubmit({
+						url : form.attr('action'), //按钮上是否自定义提交地址(多按钮情况)
+						dataType : 'json',
+						beforeSubmit : function(arr, $form, options) {
+
+						},
+						success : function(data, statusText, xhr, $form) {
+							if (data.status) {
+								setCookie("refersh_time", 1);
+								var admin_url_changed=$("#js-site-admin-url-password").data("changed");
+								var message =admin_url_changed?data.info+'<br><span style="color:red;">后台地址已更新(请劳记！)</span>':data.info;
+								
+								//添加成功
+								Wind.use("artDialog", function() {
+									art.dialog({
+										id : "succeed",
+										icon : "succeed",
+										fixed : true,
+										lock : true,
+										background : "#CCCCCC",
+										opacity : 0,
+										content : message,
+										button : [ {
+											name : "{:L('OK')}",
+											callback : function() {
+												reloadPage(window);
+												return true;
+											},
+											focus : true
+										}, {
+											name : "{:L('CLOSE')}",
+											callback : function() {
+												reloadPage(window);
+												return true;
+											}
+										} ]
+									});
+								});
+							} else {
+								alert(data.info);
+							}
+						}
+					});
+				}
+			});
+		});
+		////-------------------------
+	</script>
+</body>
+</html>

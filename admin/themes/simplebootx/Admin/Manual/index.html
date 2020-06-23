@@ -1,0 +1,49 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >手动充值记录</a></li>
+			<li><a href="{:U('Manual/add')}">手动充值</a></li>
+		</ul>
+		<form class="well form-search" name="form1" method="post" action="">
+			提交时间：
+			<input type="text" name="start_time" class="js-date date" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+			<input type="text" class="js-date date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入会员ID..">
+			<input type="button" class="btn btn-primary" value="搜索" onclick="form1.action='{:U('Manual/index')}';form1.submit();"/>
+			<input type="button" class="btn btn-primary" style="background-color: #1dccaa;" value="导出" onclick="form1.action='{:U('Manual/export')}';form1.submit();"/>
+			<a class="admin_zongshu">总点数:{$coin}</a>
+		</form>		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>管理员</th>
+						<th>会员 (账号)(ID)</th>
+						<th>充值点数</th>
+						<th>IP</th>
+						<th>时间</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['admin']}</td>
+						<td>{$vo['user_nicename']} （{$vo['user_login']}）（{$vo['touid']}）</td>
+						<td>{$vo['coin']}</td>
+						<td>{$vo['ip']}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

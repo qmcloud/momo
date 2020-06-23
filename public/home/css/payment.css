@@ -1,0 +1,694 @@
+.red {
+	color: #ffd350!important
+}
+
+.orange {
+	color: #f39800!important
+}
+
+.yellow {
+	color: #fc0!important
+}
+
+.white {
+	color: #fff!important
+}
+
+.black {
+	color: #313131!important
+}
+
+.gray-dark {
+	color: #959595!important
+}
+
+.btn,.sidebar>li.active,.sidebar>li.active>a,.breadcrumb>li.active {
+	background-color: #ffd350;
+	color: #000
+}
+
+.disable,.disable:hover {
+	background-color: #959595!important;
+	color: #fff!important;
+	cursor: not-allowed!important
+}
+
+.hidden {
+	display: none
+}
+
+.btn {
+	display: inline;
+	padding: 13px 90px;
+	line-height: 45px;
+	border-radius: 3px;
+	color: #000;
+	font-size: 16px;
+	text-align: center;
+	text-decoration: none
+}
+
+.btn:hover {
+	background-color: #ffc004;
+	color: #000;
+	text-decoration: none
+}
+
+.wrapper {
+	background-color: #fafafa
+}
+
+.side {
+	float: left;
+	width: 200px
+}
+
+.main {
+	float: right;
+	width: 980px
+}
+
+.sidebar {
+	min-height: 630px;
+	font-size: 14px;
+	border: 1px solid #eee;
+	background-color: #fff
+}
+
+.sidebar>li {
+	height: 48px;
+	line-height: 48px;
+	border-bottom: 1px solid #eee
+}
+
+.sidebar>li>a {
+	display: block;
+	text-decoration: none;
+	margin-left: 15px
+}
+
+.sidebar>li.active>a {
+	text-decoration: none
+}
+
+.chargebox {
+	border: 1px solid #eee;
+	background-color: #fff;
+	min-height: 580px;
+	font-size: 14px;
+	padding-top: 20px;
+	padding-bottom: 30px
+}
+
+.chargebox .charge-help {
+	color: #535353;
+	font-size: 12px;
+	position: relative;
+	text-align: center
+}
+
+.chargebox .charge-help .content {
+	display: inline
+}
+
+.chargebox .charge-help .content .red {
+	position: relative
+}
+
+.chargebox .charge-help .qrcode {
+	position: absolute;
+	display: none
+}
+
+.chargebox .charge-help .content .red:hover .qrcode {
+	display: block;
+	bottom: 60%;
+	left: 0
+}
+
+.hd-nav {
+	/* display: none */
+}
+
+.sub-title {
+	font-size: 18px;
+	line-height: 36px;
+	font-weight: bold
+}
+
+.huajiaodou {
+	/* display: none */
+}
+
+#charge-container {
+	margin-top: 20px;
+	padding-bottom: 20px
+}
+
+.breadcrumb {
+	display: none;
+	font-size: 14px;
+	position: relative;
+	height: 30px
+}
+
+.breadcrumb>li {
+	height: 30px;
+	line-height: 30px;
+	width: 33%;
+	text-align: center;
+	position: absolute;
+	z-index: 1;
+	border: 1px solid #eee;
+	background-color: #fff
+}
+
+.breadcrumb>li.step1 {
+	left: 0
+}
+
+.breadcrumb>li.step2 {
+	left: 33%
+}
+
+.breadcrumb>li.step3 {
+	left: 66%;
+	width: 34%
+}
+
+.chargebox>li {
+	display: none
+}
+
+.chargebox>li.active {
+	display: list-item
+}
+
+.chargebox .row {
+	padding: 15px 0
+}
+
+.chargebox .row2 {
+	margin-top: 20px
+}
+
+.chargebox .label {
+	width: 300px;
+	text-align: right;
+	float: left;
+	color: #959595
+}
+
+.chargebox .content {
+	width: 450px;
+	padding-left: 20px;
+	text-align: left;
+	float: left
+}
+
+.chargebox .user-info .nickname {
+	display: inline-block;
+	vertical-align: top;
+	max-width: 190px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap
+}
+
+.chargebox .user-info .uid {
+	display: inline-block;
+	vertical-align: top
+}
+
+.chargebox .user-info .balance-label {
+	float: right
+}
+
+.chargebox .charge-custom {
+	height: 32px;
+	line-height: 32px
+}
+
+.chargebox .charge-custom .content {
+	white-space: nowrap;
+	width: 600px
+}
+
+.chargebox .charge-custom input[name="price"] {
+	text-align: center;
+	outline: 0;
+	border: 1px solid #d7d7d7;
+	width: 100px;
+	height: 32px
+}
+
+.chargebox .charge-custom .hjdou-label {
+	color: #959595
+}
+
+.chargebox .charge-custom .hjdou-tip {
+	display: none;
+	font-size: 12px;
+	background: url(https://p.ssl.qhmsg.com/t016e172f38f93507d5.png) left center no-repeat;
+	padding: 5px 180px 5px 15px
+}
+
+.chargebox .charge-custom .hjdou-tip>img {
+	margin-bottom: -3px;
+	margin-right: 3px
+}
+
+.chargebox .package-list {
+	margin-left: -7px
+}
+
+.chargebox .package-list .item {
+	float: left;
+	width: 120px;
+	margin: 7px;
+	padding: 8px;
+	border: 1px solid #d7d7d7;
+	border-radius: 3px;
+	text-align: center;
+	cursor: pointer
+}
+
+.chargebox .package-list .item>a {
+	text-decoration: none
+}
+
+.chargebox .package-list .item>a:hover {
+	color: #313131
+}
+
+.chargebox .package-list .item .price,.chargebox .package-list .item .amount {
+	display: block
+}
+
+.chargebox .package-list .item .amount span{
+	float:right;
+}
+
+.chargebox .package-list .item .price {
+	color: #959595
+}
+
+.chargebox .package-list .item.active {
+	border-color: #ffd350;
+	background: url(../images/chongzhiduihao.png) right bottom no-repeat
+}
+
+.chargebox .package-list .item.active .price,.chargebox .package-list .item.active .amount {
+	color: #ffd350
+}
+
+.chargebox .charge-bank-list,.chargebox .charge-source-list {
+	margin-left: -10px
+}
+
+.chargebox .charge-bank-list>li,.chargebox .charge-source-list>li {
+	width: 130px;
+	height: 36px;
+	padding: 10px 5px;
+	border-radius: 3px;
+	float: left;
+	margin: 5px 0 5px 10px;
+	text-align: center;
+	cursor: pointer;
+	border: 1px solid #d7d7d7;
+	position: relative
+}
+
+.chargebox .charge-bank-list>li.active,.chargebox .charge-source-list>li.active {
+	border-color: #ffd350
+}
+
+.chargebox .charge-bank-list>li.active:before,.chargebox .charge-source-list>li.active:before {
+	content: '';
+	position: absolute;
+	display: block;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	background: url(../images/chongzhiduihao.png) 100% 100% no-repeat
+}
+
+.chargebox .charge-bank-list>li img,.chargebox .charge-source-list>li img {
+	max-width: 100%
+}
+
+.chargebox .charge-errormsg {
+	width: 380px;
+	padding-left: 15px;
+	visibility: hidden;
+	overflow: hidden;
+	display: inline-block;
+	vertical-align: top;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	line-height: 45px;
+	padding-top: 0;
+	background: url(https://p.ssl.qhmsg.com/t01794ee47d99fd8976.png) left center no-repeat
+}
+
+.chargebox .charge-errormsg>img {
+	margin-bottom: -3px
+}
+
+.chargebox .charge-errormsg .msg {
+	margin-left: 3px;
+	font-size: 12px
+}
+
+.chargebox .charge-submit .content,.chargebox .charge-help .content {
+	margin-left: 300px;
+	width: 650px
+}
+
+.chargebox .goback {
+	padding-top: 0
+}
+
+.chargebox .goback .target {
+	float: right;
+	font-size: 16px;
+	margin-right: 20px;
+	cursor: pointer
+}
+
+.chargebox .charge-table {
+	font-size: 14px;
+	color: #959595
+}
+
+.chargebox .charge-table table {
+	margin: 0 auto;
+	border: solid #eee;
+	border-width: 1px 1px 0 0
+}
+
+.chargebox .charge-table tr {
+	height: 30px;
+	line-height: 30px
+}
+
+.chargebox .charge-table td {
+	border: solid #eee;
+	border-width: 0 0 1px 1px;
+	padding: 10px
+}
+
+.chargebox .charge-table td.key {
+	width: 110px;
+	background-color: #f6f6f6;
+	text-align: center;
+	font-weight: bold
+}
+
+.chargebox .charge-table td.value {
+	width: 280px;
+	text-align: left;
+	padding-left: 20px
+}
+
+.chargebox .charge-result {
+	text-align: center;
+	font-size: 24px;
+	margin-top: 80px
+}
+
+.chargebox .charge-info table {
+	margin: 0 auto
+}
+
+.chargebox .charge-info table tr {
+	height: 28px;
+	line-height: 28px
+}
+
+.chargebox .charge-info table td {
+	padding-left: 10px
+}
+
+.chargebox .charge-tip {
+	line-height: 36px
+}
+
+.chargebox .charge-recharge {
+	text-align: center
+}
+
+.chargebox .charge-recharge .btn-recharge {
+	width: 240px;
+	margin: 0 auto
+}
+
+.chargebox .step3-fail {
+	padding-top: 80px
+}
+
+.chargebox .step3-fail .label {
+	width: 400px
+}
+
+.chargebox .step3-fail .content {
+	width: 450px
+}
+
+.chargebox .step3-fail .charge-result {
+	text-align: left;
+	margin-top: 0
+}
+
+.chargebox .step3-fail .charge-recharge {
+	text-align: left
+}
+
+.chargebox .step3-fail .charge-recharge .btn-recharge {
+	margin: 0
+}
+
+.chargebox .kefu-qrcode img {
+	width: 90px;
+	height: 90px;
+	float: left
+}
+
+.chargebox .kefu-qrcode .title {
+	font-size: 12px;
+	display: block;
+	float: left;
+	padding: 30px 20px
+}
+
+.chargecover {
+	width: 100%;
+	height: 2000px;
+	background-color: rgba(0,0,0,0.5);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#80000000,endColorstr=#80000000);
+	position: fixed;
+	_position: absolute;
+	left: 0;
+	top: 0;
+	z-index: 100;
+	display: none
+}
+
+.charge-qrcode {
+	width: 180px;
+	padding: 100px 40px 40px;
+	margin-left: 300px;
+	text-align: center
+}
+
+.charge-qrcode .qrcode-box {
+	position: relative
+}
+
+.charge-qrcode .qrcode-box .title {
+	display: block;
+	font-size: 18px
+}
+
+.charge-qrcode .qrcode-box .source {
+	padding-left: 20px
+}
+
+.charge-qrcode .qrcode-box .tip {
+	position: absolute;
+	top: -15px;
+	left: 100%;
+	width: 238px;
+	height: 226px
+}
+
+.charge-qrcode .qrcode-box #qrcode-alipay,.charge-qrcode .qrcode-box #qrcode-weixin {
+	width: 180px;
+	display: none
+}
+
+.charge-qrcode .qrcode-box:hover .tip {
+	display: block
+}
+
+.charge-qrcode .qrcode-box.alipay #qrcode-alipay {
+	display: block
+}
+
+.charge-qrcode .qrcode-box.alipay #qrcode-weixin {
+	display: none
+}
+
+.charge-qrcode .qrcode-box.alipay .tip {
+	background: url(https://p.ssl.qhmsg.com/t0198b52a2f38b3bdae.png) center no-repeat
+}
+
+.charge-qrcode .qrcode-box.alipay .source {
+	background: url(https://p.ssl.qhmsg.com/t01fc3818dbec12d6d4.png) 0 3px no-repeat
+}
+
+.charge-qrcode .qrcode-box.weixin #qrcode-alipay {
+	display: none
+}
+
+.charge-qrcode .qrcode-box.weixin #qrcode-weixin {
+	display: block
+}
+
+.charge-qrcode .qrcode-box.weixin .tip {
+	background: url(https://p.ssl.qhmsg.com/t013ec189e000657a74.png) center no-repeat
+}
+
+.charge-qrcode .qrcode-box.weixin .source {
+	background: url(https://p.ssl.qhmsg.com/t01fc3818dbec12d6d4.png) 0 -54px no-repeat
+}
+
+.charge-pay-tip {
+	display: none;
+	background-color: #fff;
+	width: 440px;
+	padding: 20px;
+	position: fixed;
+	_position: absolute;
+	z-index: 200;
+	top: 20%;
+	left: 50%;
+	margin-left: -200px
+}
+
+.charge-pay-tip .charge-qrcode {
+	margin-left: 10px;
+	padding: 0
+}
+
+.charge-pay-tip .btn-group {
+	width: 100%;
+	text-align: center;
+	margin-top: 30px
+}
+
+.charge-pay-tip .btn {
+	display: inline;
+	padding: 10px 40px;
+	border-radius: 5px
+}
+
+.charge-pay-tip .btn-complete {
+	background-color: #009e96;
+	margin-right: 20%
+}
+
+.charge-pay-tip .btn-complete:hover {
+	background-color: rgba(0,158,150,0.8)
+}
+
+.charge-pay-tip .btn-problem {
+	background-color: #fc4e53
+}
+
+.charge-pay-tip .btn-problem:hover {
+	background-color: #ff7579
+}
+
+.charge-bankpay-tip {
+	display: none;
+	background-color: #fff;
+	width: 480px;
+	position: fixed;
+	_position: absolute;
+	z-index: 200;
+	top: 20%;
+	left: 50%;
+	margin-left: -200px;
+	font-size: 14px
+}
+
+.charge-bankpay-tip .title {
+	height: 36px;
+	line-height: 36px;
+	background-color: #f0f0f0;
+	padding-left: 20px
+}
+
+.charge-bankpay-tip .title .close {
+	float: right;
+	padding: 0 10px;
+	font-size: 20px;
+	text-decoration: none;
+	font-family: Times New Roman;
+	font-size: 28px
+}
+
+.charge-bankpay-tip .content {
+	padding: 20px;
+	text-align: center
+}
+
+.charge-bankpay-tip .content .tip {
+	padding: 15px
+}
+
+.charge-bankpay-tip .content .tip .timer {
+	color: #fc4e53
+}
+
+.charge-bankpay-tip .tail {
+	text-align: right;
+	margin-top: 15px;
+	padding-right: 20px
+}
+
+.charge-bankpay-tip .tail a {
+	color: blue
+}
+
+.charge-bankpay-tip .btn-group {
+	width: 100%;
+	text-align: center;
+	margin-top: 15px
+}
+
+.charge-bankpay-tip .btn {
+	display: inline;
+	padding: 10px 40px;
+	border-radius: 5px
+}
+
+.charge-bankpay-tip .btn-complete {
+	background-color: #009e96;
+	margin-right: 25px
+}
+
+.charge-bankpay-tip .btn-complete:hover {
+	background-color: rgba(0,158,150,0.8)
+}
+
+.charge-bankpay-tip .btn-problem {
+	background-color: #fc4e53
+}
+
+.charge-bankpay-tip .btn-problem:hover {
+	background-color: #ff7579
+}

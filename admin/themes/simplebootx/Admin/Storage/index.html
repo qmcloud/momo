@@ -1,0 +1,84 @@
+<admintpl file="header" />
+<style>
+.input{
+    width:500px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('storage/index')}">{:L('ADMIN_STORAGE_INDEX')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('storage/setting_post')}">
+			<php>$support_storages=array("Local"=>L('DEFAULT'),"Qiniu"=>L('QINIU'));</php>
+			<select name="type" onchange="func()" id="mySelect">
+				<foreach name="support_storages" item="vo"> <php>$type_selected=$type==$key?"selected":"";</php>
+				<option value="{$key}"{$type_selected}>{$vo}</option>
+				</foreach>
+			</select>
+			<div style="margin-top: 10px;" >
+				<div id="storage" style="display:none">
+				<ul class="nav nav-tabs">
+					<li class="active"><a>{:L('QINIU')}</a></li>
+				</ul>
+
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">AccessKey</label>
+						<div class="controls">
+							<input type="text" class="input mr5" name="Qiniu[accessKey]" value="{$Qiniu.accessKey}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">SecretKey</label>
+						<div class="controls">
+							<input type="text" class="input mr5" name="Qiniu[secretKey]" value="{$Qiniu.secretKey}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('DOMAIN')}</label>
+						<div class="controls">
+							<input type="text" class="input mr5" name="Qiniu[domain]" value="{$Qiniu.domain}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('BUCKET')}</label>
+						<div class="controls">
+							<input type="text" class="input mr5" name="Qiniu[bucket]" value="{$Qiniu.bucket}">
+						</div>
+					</div>
+                    <div class="control-group">
+						<label class="control-label">区域上传域名(服务端)</label>
+						<div class="controls">
+							<input type="text" class="input mr5" name="Qiniu[upHost]" value="{$Qiniu.upHost}">  <a href="https://developer.qiniu.com/kodo/manual/1671/region-endpoint" target="_blank">存储区域</a>
+						</div>
+					</div>
+				</fieldset>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/js/jquery.js"></script>
+	<script>
+		function func(){
+			var vs = $('select option:selected').val();
+			if(vs=="Qiniu")
+			{
+				$("#storage").css('display','block');
+			}else
+			{
+				$("#storage").css('display','none');
+			}
+		};
+	  $(function(){
+			func();
+		})
+	</script> 
+
+</body>
+</html>

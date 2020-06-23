@@ -1,0 +1,67 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<!-- <li ><a href="{:U('System/index')}">消息列表</a></li> -->
+			<li class="active"><a >发送消息</a></li>
+		</ul>
+
+			<fieldset>
+
+				<div class="control-group">
+					<label class="control-label">消息内容</label>
+					<div class="controls">
+						<input type="text" name="content"  value="" id="content">
+						<span class="form-required">*</span>发送的系统消息将显示到所有直播间的聊天公屏区域
+					</div>
+				</div>
+
+				<!-- <div class="control-group">
+					<label class="control-label">失败原因</label>
+					<div class="controls">
+						 <textarea name="reason" rows="2" cols="20" id="reason" class="inputtext" style="height: 100px; width: 500px;">{$auth['reason']}</textarea>
+						<span class="form-required">*</span>
+					</div>
+				</div> -->
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">发送</button>
+				<!-- <a class="btn" href="{:U('System/index')}">{:L('BACK')}</a> -->
+			</div>
+	</div>
+
+	<script src="__PUBLIC__/js/socket.io.js"></script>
+<script type="text/javascript">
+
+     var socket = new io("{$config['chatserver']}");
+	 $(".js-ajax-submit").on("click",function(){
+		
+		var content=$.trim( $("#content").val() );
+		if(!content){
+			alert("内容不能为空");
+			return !1;
+		}
+		$.ajax({
+			url:'./index.php?g=admin&m=system&a=send',
+			data:{content:content},
+			type:'POST',
+			dataType:'json',
+			success:function(data){
+				if(data.error==0){
+					var data2 = {"token":"1234567","content":content};
+					socket.emit("systemadmin",data2);
+					alert("发送成功");
+				}else{
+					alert(data.msg);
+				}
+				 
+			}
+		})
+	 
+	 })
+
+</script>	
+</body>
+</html>

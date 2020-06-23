@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css"/>
+    <title>家族主页</title>
+</head>
+<body class="detail">
+	<div class="detai_top">
+		<div class="user-list user-list-fillet">
+			<ul>
+				<li>
+					<div class="thumb">
+						<img src="{$familyinfo['badge']}">
+					</div>
+					<div class="info">
+						<p class="info-title">{$familyinfo['name']}</p>
+						<p class="info-des">族长：{$familyinfo['userinfo']['user_nicename']}</p>
+						<p class="info-des2">ID：{$familyinfo['id']}</p>
+					</div>
+					<div class="action">
+					</div>
+				</li>
+
+			</ul>
+		</div>
+	</div>
+    <div class="line10"></div>
+	<div class="des">
+		<div class="des_title">简介</div>
+		<div class="des_body">{$familyinfo['briefing']}</div>
+	</div>
+	<div class="line10"></div>
+	<div class="anchor">
+		<div class="anchor_t">
+			签约主播 <span>({$familyinfo['count']})</span>
+		</div>
+		<div class="user-list">
+			<ul>
+			    <volist name="list" id="v">
+				<li>
+					<div class="thumb">
+						<img src="{$v['userinfo']['avatar']}">
+					</div>
+					<div class="info">
+						<p class="info-title">
+                            {$v['userinfo']['user_nicename']}
+                            <img src="__PUBLIC__/appapi/images/<if condition="$v['userinfo']['sex'] eq 1">man<else/>woman</if>.png" class="sex"> 
+                            <img src="{$levellist[$v['userinfo']['level']]['thumb']}" class="level">
+                        </p>
+						<p class="info-des2">粉丝数：{$v['userinfo']['fansnum']}</p>
+					</div>
+					<div class="action">
+					</div>
+				</li>
+				</volist>
+			</ul>
+		</div>
+	</div>
+	<if condition="$familyinfo['isstatus'] neq '0' && $familyinfo['isstatus'] neq '2' ">
+	<a href="/index.php?g=Appapi&m=Family&a=detail_sign&familyid={$familyinfo['id']}&uid={$uid}&token={$token}">
+		<div class="button_default bottombtn sign">
+			我要签约
+		</div>
+	</a>
+	</if>
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+		var familyid='{$familyinfo['id']}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script src="__PUBLIC__/appapi/js/family.js"></script>
+	<script>
+	$(function(){
+		function getlistmore(){
+			$.ajax({
+				url:'/index.php?g=appapi&m=Family&a=detail_more',
+				data:{'page':page,'uid':uid},
+				type:'post',
+				dataType:'json',
+				success:function(data){
+					if(data.nums>0){
+							var nums=data.nums;
+							var list=data.data;
+							var html='';
+							for(var i=0;i<nums;i++){
+								html='<li>\
+										<div class="thumb">\
+											<img src="'+list[i]['userinfo']['avatar']+'">\
+										</div>\
+										<div class="info">\
+											<p class="info-title">'+list[i]['userinfo']['user_nicename']+'</p>\
+											<p class="info-des"><span>粉丝数：'+list[i]['userinfo']['fansnum']+'</span></p>\
+										</div>\
+										<div class="action">\
+										</div>\
+									</li>';
+							}
+						
+						$(".anchor .user-list ul").append(html);
+					}
+					
+					if(data.isscroll==1){
+						page++;
+						isscroll=true;
+					}
+				}
+			})
+		}
+		var page=2; 
+		var isscroll=true; 
+
+		$(window).scroll(function(){  
+				var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)  		
+				var totalheight = parseFloat($(window).height()) + parseFloat(srollPos);  
+				if(($(document).height()-50) <= totalheight  && isscroll) {  
+						isscroll=false;
+						getlistmore()
+				}  
+		});  
+
+	})
+	</script>
+	
+</body>
+</html>

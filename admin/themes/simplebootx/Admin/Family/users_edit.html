@@ -1,0 +1,63 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Family/users')}">家族列表</a></li>
+			<li class="active"><a >家族审核</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Family/users_edit_post')}">
+		  <input type="hidden" name="id" value="{$user_family['id']}">
+		  <input type="hidden" name="uid" value="{$user_family['uid']}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">成员</label>
+					<div class="controls">
+						<input type="text" value="{$user_family['userinfo']['user_nicename']}({$user_family['uid']})" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">家族</label>
+					<div class="controls">
+						<input type="text" onkeyup ="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$user_family['family_nicename']}({$user_family['familyid']})" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">家族抽成</label>
+					<div class="controls">
+						<if condition="$user_family['divide_family'] neq '-1'">
+						<input type="text"  name="divide_family" onkeyup ="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$user_family['divide_family']}"> %
+						<else/>
+						<input type="text"  name="divide_family" onkeyup ="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" value="{$user_family['family_devide']}"> %
+						</if>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">审核</label>
+					<div class="controls">
+						<label class="radio inline" for="sex_2"><input type="radio" name="state" value="2" id="sex_2" <if condition="$user_family['state'] eq '2'">checked</if> />成功</label>
+						<label class="radio inline" for="sex_1"><input type="radio" name="state" value="1" id="sex_1" <if condition="$user_family['state'] eq '1'">checked</if> >失败</label>
+						<label class="radio inline" for="sex_0"><input type="radio" name="state" value="0" id="sex_0" <if condition="$user_family['state'] eq '0'">checked</if> >未审核</label>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">审核失败原因</label>
+					<div class="controls">
+						<textarea name="reason" rows="2" cols="20" id="signature" class="inputtext" style="height: 100px; width: 500px;">{$user_family['reason']}</textarea>
+					</div>
+				</div>
+		
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Family/users')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

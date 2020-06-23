@@ -1,0 +1,98 @@
+<tc_include file="Public:head" />
+<title>{$site_seo_title} - {$site_name}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/index.css"/>
+
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+				<!-- 热门直播 -->
+				<div class="container">
+				<div class="g-box feed-list" id="hot">
+				<form class="well translate_form" method="post" action="index.php?m=Index&a=translate">
+					<div class="box-hdd">
+						<input name="keyword" class="translate_input" autocomplete="off" tabindex="0" value="{$formget.keyword}" placeholder="请输入用户名、用户ID"/>
+						<input type="submit" class="translate_primary" value="搜索">
+							<div class="search_count">
+						<span>{$msg['info']}</span>
+						<span class="search_hotkey">{$msg['name']}</span>
+						<span>{$msg['result']}</span>
+					</div>
+					<if condition="$msg['type'] eq '0'">
+						<div class="search_tuijian_container">
+							<span>推荐其他精彩直播</span>
+						</div>
+					</if>
+						
+						
+					</div>
+				
+				</form>
+				<div><hr class="search_line"></div>
+					<div class="box-bd translate_bd">
+						<ul class="list">
+						  <volist name="lists" id="v">
+							<li class="feed <if condition="$v['islive'] eq '1'">live<else/>review</if> " style="height: 342px;margin-bottom: 18px;">
+								<a class="link" <if condition="$msg['type'] eq '0'">  href="./{$v['uid']}"<else/> href="./{$v['id']}"</if> target="_blank">
+									<img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/>
+									<p class="user">
+										<img class="avatar thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/><span class="username">{$v['user_nicename']}</span>
+									</p>
+								<div class="comment">
+									<div class="comment-inner">
+										<if condition="$v['title']">
+											{$v['title']}
+										<else/>
+											此处应该有互动
+										</if>
+									</div>
+								</div>
+							</a>
+							</li>
+							</volist>
+						</ul>
+					</div>
+				</div>
+				</div>
+					{$page}
+			</div>
+
+		</div>
+	</div>
+<tc_include file="Public:footer" />
+	<!--
+下线时将下面div元素的style改为"display:none;"
+上线时将下面div元素的style改为"display:block;"
+图片尺寸100X100
+-->
+	<div id="right-fixed-position" class="right-fixed-position" style="display:none;" >
+		<a href="#" class="close"></a>
+		<a href="#" class="link" target="_blank"><img src="#"/></a>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.SuperSlide.2.1.1.js"></script>  
+<script>
+(function(){
+	/* 控制左右按钮显示 */
+	jQuery(".fullSlide").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.5) },function(){ jQuery(this).find(".prev,.next").fadeOut() });
+
+	/* 调用SuperSlide */
+	jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click",
+		startFun:function(i){
+			var curLi = jQuery(".fullSlide .bd li").eq(i); /* 当前大图的li */
+			if( !!curLi.attr("_src") ){
+				curLi.css("background-image",curLi.attr("_src")).removeAttr("_src") /* 将_src地址赋予li背景，然后删除_src */
+			}
+		}
+	});	
+})()
+</script>
+<script>
+$(function(){
+	//图片延迟加载
+	$("img.thumb").lazyload({effect: "fadeIn"});		
+})
+</script>
+
+</body>
+</html>

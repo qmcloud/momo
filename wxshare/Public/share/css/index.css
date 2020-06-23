@@ -1,0 +1,216 @@
+* {
+	-webkit-tap-highlight-color: transparent;
+	outline: 0;
+	-webkit-overflow-scrolling: touch;
+	margin: 0;
+    padding: 0;
+}
+	
+img {
+	border: 0
+}
+
+p {
+	text-align: justify
+}
+
+strong {
+	color: #F4629C
+}
+
+a {
+	text-decoration: none
+}
+
+body {
+	font: normal normal 14px Arial,Helvetica,'微软雅黑','黑体';
+	color: #666;
+	line-height: 22px;
+	min-width: 320px;
+	max-width: 640px;
+	margin: 0 auto;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	-webkit-overflow-scrolling: touch;
+	overflow-scrolling: touch;
+	font-family: helvetica;
+	background-color: #fff
+}
+
+.all-wrap {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 480px;
+}
+.down-top{
+	width:100%;
+	height:2.5rem;
+	line-height:2.5rem;
+	background:url('../images/down_bg2.png');
+	text-align:center;
+}
+.down-top img {
+	max-width:80%;
+	max-height:100%;
+	vertical-align:middle;
+}
+.bottom-list-container, .hots .lists {
+    background: #fff;
+}
+.tab-con-list {
+    padding-bottom: 1rem;
+}
+.tab-con-list .one, .tab-con-list .one-page {
+    overflow: hidden;
+}
+
+.hots .lists,.hots .lists .l-top {
+	position: relative;
+	height:8.9rem;
+}
+
+.hots .lists .l-top:after {
+	width: 100%;
+	z-index: 1;
+	left: 0;
+	content: ""
+}
+
+
+.bottom-list-container,.hots .lists {
+	background: #fff
+}
+
+body,html {
+	width: 100%;
+	min-height: 100%
+}
+
+#tab>div.active,#tab>div.swiper-button-disabled {
+	color: #53d9d2;
+	border-bottom-color: #53d9d2
+}
+
+#tab>div {
+	color: #bbc7cb;
+	border-bottom: 2px solid #fff
+}
+
+.hots .lists {
+	float: left;
+	margin-left: .3rem;
+	margin-top: .55rem
+}
+
+.hots .lists .l-top:after {
+	position: absolute;
+	height: 2.4rem;
+	bottom: 0;
+	background: linear-gradient(bottom,rgba(0,0,0,.7),rgba(255,255,255,0));
+	background: -webkit-linear-gradient(bottom,rgba(0,0,0,.7),rgba(255,255,255,0))
+}
+
+.hots .lists .icon-big {
+	width: 8.9rem;
+	height: 8.9rem;
+	margin-bottom: -2%
+}
+
+
+.hots .lists .h-info {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	z-index: 3
+}
+
+.lists .h-info .fans {
+	float: left;
+	min-width: 1rem;
+	line-height: 1.2rem;
+	color: #fff;
+	font-size: .6rem;
+	margin-left: .4rem;
+	position: relative
+}
+
+.lists .h-info .fans:before {
+	position: absolute;
+	display: block;
+	width: .9rem;
+	height: .65rem;
+	left: 0;
+	top: 48%;
+	transform: translateY(-50%);
+	-webkit-transform: translateY(-50%);
+	background-position: 0 -22.5rem
+}
+
+.lists .h-info .live-icon {
+	float: right;
+	min-width: 1rem;
+	line-height: 1.2rem;
+	color: #fff;
+	font-size: .6rem;
+	margin-right: .4rem;
+	position: relative;
+	background:url("../images/live.png") no-repeat center;
+	background-size:0.8rem;
+}
+
+.img-noback,.no-back,.tab-con-list .record .no-data-con,.tab-con-list .record .no-record-list-text {
+	display: none
+}
+
+.lists .box-btm {
+	line-height: 1.8rem;
+	font-size: .6rem;
+	color: #546064;
+	background-color: #fff;
+	padding: 0 .27rem;
+	overflow: hidden;
+	margin: .2rem auto;
+	width: 8.7rem
+}
+
+.tab-con-list {
+	padding-bottom: 1rem
+}
+
+.tab-con-list .one,.tab-con-list .one-page {
+	overflow: hidden
+}
+
+.no-data-con {
+	width: 5rem;
+	height: 5rem;
+	margin: 3.2rem auto 0;
+	background-position: .8rem 0
+}
+
+.no-record-list-text {
+	color: #CAD3D7;
+	line-height: 1rem;
+	font-size: .75rem;
+	text-align: center;
+	margin-bottom: 3rem
+}
+
+.tab-con-list .record.empty .no-data-con,.tab-con-list .record.empty .no-record-list-text {
+	display: block
+}
+
+.user-point-text {
+	color: #8ee2d3;
+	margin-left: 5px
+}
+
+.user-point-value {
+	color: #fff;
+	overflow: hidden
+}

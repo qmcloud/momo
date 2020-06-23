@@ -1,0 +1,83 @@
+<admintpl file="header" />
+<style>
+input{
+    width:500px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Cash/index')}">提现记录</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Cash/edit_post')}">
+		   <input type="hidden" name="id" value="{$cash['id']}">
+		   <input type="hidden" name="uid" value="{$cash['uid']}">
+			<fieldset>
+
+				<div class="control-group">
+					<label class="control-label">会员</label>
+					<div class="controls">
+						<input type="text" name="" value="{$cash['userinfo']['user_nicename']} ( {$cash['uid']} )" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">兑换{$configpub['name_votes']}</label>
+					<div class="controls">
+						<input type="text" name="votes" value="{$cash['votes']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">提现金额</label>
+					<div class="controls">
+						<input type="text" name="money"  value="{$cash['money']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">提现账号</label>
+					<div class="controls">
+						<input type="text"  value="{$type[$cash['type']]}  {$cash['name']}  {$cash['account']}  {$cash['account_bank']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+
+				
+				<!-- <div class="control-group">
+					<label class="control-label">商户订单号</label>
+					<div class="controls">
+						<input type="text" name="orderno"  value="{$cash['orderno']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div> -->
+				<div class="control-group">
+					<label class="control-label">第三方支付订单号</label>
+					<div class="controls">
+						<input type="text" name="trade_no"  value="{$cash['trade_no']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">状态</label>
+					<div class="controls">
+						<label class="radio inline" for="status_2"><input type="radio" name="status" value="2" id="status_2" <if condition="$cash['status'] eq '2'">checked</if>>拒绝</label>
+						<label class="radio inline" for="status_0"><input type="radio" name="status" value="0" id="status_0" <if condition="$cash['status'] eq '0'">checked</if>>处理中</label>
+						<label class="radio inline" for="status_1"><input type="radio" name="status" value="1" id="status_1" <if condition="$cash['status'] eq '1'">checked</if>>成功</label>
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Cash/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

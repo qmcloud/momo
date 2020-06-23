@@ -1,0 +1,57 @@
+{:hook('body_start')}
+<div class="navbar navbar-fixed-top">
+   <div class="navbar-inner">
+     <div class="container">
+       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+         <span class="icon-bar"></span>
+       </a>
+       <a class="brand" href="__ROOT__/"><img src="__TMPL__Public/images/logo.png"/></a>
+       <div class="nav-collapse collapse" id="main-menu">
+       	<?php
+			$effected_id="main-menu";
+		  	$filetpl="<a href='\$href' target='\$target'>\$label</a>";
+		  	$foldertpl="<a href='\$href' target='\$target' class='dropdown-toggle' data-toggle='dropdown'>\$label <b class='caret'></b></a>";
+		  	$ul_class="dropdown-menu" ;
+		  	$li_class="" ;
+		  	$style="nav";
+		  	$showlevel=6;
+		  	$dropdown='dropdown';
+		  	echo sp_get_menu("main",$effected_id,$filetpl,$foldertpl,$ul_class,$li_class,$style,$showlevel,$dropdown);
+		?>
+		
+		<ul class="nav pull-right" id="main-menu-user">
+			<li class="dropdown user login">
+	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
+	            <img src="__TMPL__/Public/images/headicon.png" class="headicon"/>
+	            <span class="user-nicename"></span><b class="caret"></b></a>
+	            <ul class="dropdown-menu pull-right">
+	               <li><a href="{:U('user/center/index')}"><i class="fa fa-user"></i> &nbsp;个人中心</a></li>
+	               <li class="divider"></li>
+	               <li><a href="{:U('user/index/logout')}"><i class="fa fa-sign-out"></i> &nbsp;退出</a></li>
+	            </ul>
+          	</li>
+          	<li class="dropdown user offline">
+	            <a class="dropdown-toggle user" data-toggle="dropdown" href="#">
+	           		<img src="__TMPL__/Public/images/headicon.png" class="headicon"/>登录<b class="caret"></b>
+	            </a>
+	            <ul class="dropdown-menu pull-right">
+	               <li><a href="{:U('api/oauth/login',array('type'=>'sina'))}"><i class="fa fa-weibo"></i> &nbsp;微博登录</a></li>
+	               <li><a href="{:U('api/oauth/login',array('type'=>'qq'))}"><i class="fa fa-qq"></i> &nbsp;QQ登录</a></li>
+	               <li><a href="{:leuu('user/login/index')}"><i class="fa fa-sign-in"></i> &nbsp;登录</a></li>
+	               <li class="divider"></li>
+	               <li><a href="{:leuu('user/register/index')}"><i class="fa fa-user"></i> &nbsp;注册</a></li>
+	            </ul>
+          	</li>
+		</ul>
+		<div class="pull-right">
+        	<form method="post" class="form-inline" action="{:U('portal/search/index')}" style="margin:18px 0;">
+				 <input type="text" class="" placeholder="Search" name="keyword" value="{:I('get.keyword')}"/>
+				 <input type="submit" class="btn btn-info" value="Go" style="margin:0"/>
+			</form>
+		</div>
+       </div>
+     </div>
+   </div>
+ </div>

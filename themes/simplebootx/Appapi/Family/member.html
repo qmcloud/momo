@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css?t=1543197377"/>
+		
+    <title>家族成员</title>
+</head>
+<body class="member">
+	<div class="user-list">
+		<ul>
+			<volist name="list" id="v">
+			<li>
+				<div class="thumb">
+					<img src="{$v['userinfo']['avatar']}">
+				</div>
+				<div class="info">
+					<p class="info-title">
+                        {$v['userinfo']['user_nicename']}
+                        <img src="__PUBLIC__/appapi/images/<if condition="$v['userinfo']['sex'] eq 1">man<else/>woman</if>.png" class="sex"> 
+                        <img src="{$levellist[$v['userinfo']['level']]['thumb']}" class="level">
+                    </p>
+					<p class="info-des2"><span>粉丝数：{$v['userinfo']['fansnum']}</span><if condition="$type eq 1"><span>抽成：<i class="divide_family">{$v['userinfo']['divide_family']}</i>%</span></if></p>
+				</div>
+				<if condition="$type eq 1">
+				<div class="action">
+					<span class="ok" data-touid="{$v['userinfo']['id']}" data-divide="{$v['userinfo']['divide_family']}">设置</span>
+					<span class="no" data-touid="{$v['userinfo']['id']}" data-name="{$v['userinfo']['user_nicename']}">踢出</span>
+				</div>
+				</if>
+			</li>
+			</volist>
+		</ul>
+	</div>
+    <empty name="list">
+        <div class="li_empty">
+            <p class="title">您的家族还没有成员</p>
+            <p class="des">～赶快去招募主播加入吧～</p>
+        </div>
+    </empty>
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+		var familyid='{$familyid}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script src="__PUBLIC__/appapi/js/family.js"></script>
+	
+</body>
+</html>

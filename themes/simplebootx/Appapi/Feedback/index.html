@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <title>意见反馈</title>	
+    <tc_include file="Appapi/Public/head" />        
+    <link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/feedback.css"/>
+</head>
+<body>
+    <div id="test">
+        <textarea placeholder="请将您遇到的问题／产品建议反馈给我们，建议您尽可能详细的描述问题，便于运营同学帮您解决。" id="content" oninput="check_input()" maxlength='200'></textarea>
+        <div class="num">最多只能输入200字</div>
+        
+        <div class="thumb_bd">
+            <div id="upload" ></div>
+            <input type="hidden" id="thumb" name="thumb" value="">
+            <img src="__PUBLIC__/appapi/images/feedback/add.png" class="fl img-sfz" data-index="ipt-file1" id="img_file1" onclick="file_click($(this))">
+            <div class="shad1 shadd" data-select="ipt-file1">
+                <div class="title-upload">正在上传中...</div>
+                <div id="progress1">
+                    <div class="progress ipt-file1"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="btm">
+        <button disabled id="save_btn" class="button_default">点击反馈</button>
+    </div>
+    <input type="hidden" id="uid" value="{$uid}">
+    <input type="hidden" id="token" value="{$token}">
+    <input type="hidden" id="version" value="{$version}">
+    <input type="hidden" id="model" value="{$model}">
+
+    <tc_include file="Appapi/Public/footer" />
+    <script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+    <script src="__PUBLIC__/appapi/js/feedback.js"></script>
+</body>
+</html>

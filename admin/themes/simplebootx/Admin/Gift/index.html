@@ -1,0 +1,82 @@
+<admintpl file="header" />
+
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >礼物列表</a></li>
+			<li><a href="{:U('Gift/add')}">礼物添加</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('Gift/listorders')}">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+					  	<th>排序</th>
+						<th align="center">ID</th>
+						<th>类型</th>
+						<!-- <th>分类</th> -->
+						<th>标识</th>
+						<th>名称</th>
+						<th>所需点数</th>
+						<!-- <th>礼物小图 （25 X 25）</th> -->
+						<th>图片</th>
+						<th>动画类型</th>
+						<th>动画</th>
+						<th>动画时长</th>
+						<th>发布时间</th>
+
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+					   <td><input name="listorders[{$vo['id']}]" type="text" size="3" value="{$vo['orderno']}" class="input input-order"></td>
+						<td align="center">{$vo.id}</td>
+						<td>{$type[$vo['type']]}</td>
+						<!-- <td>{$gift_sort[$vo['sid']]}</td> -->
+						<td>{$mark[$vo['mark']]}</td>
+						<td>{$vo['giftname']}</td>
+						<td>{$vo['needcoin']}</td>
+						<!-- <td><img width="25" height="25" src="{$vo['gifticon_mini']}" /></td> -->
+						<td><img width="25" height="25" src="{$vo['gifticon']}" /></td>
+						<td><if condition="$vo['type'] eq 1">{$swftype[$vo['swftype']]}</if></td>
+						<td><if condition="$vo['swf']">
+                                <if condition="$vo['swftype'] eq 1">
+                                    {$vo['swf']}
+                                <else/>
+                                    <img width="100" height="100" src="{$vo['swf']}" />
+                                </if>
+                            </if>
+                        </td>
+                        <td>{$vo['swftime']}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+
+						<td align="center">	
+                            <if condition="$vo['type'] eq 0 && $vo['mark'] eq 3">
+							<a href="{:U('Luckrate/index',array('giftid'=>$vo['id']))}" >中奖设置</a>
+							 |
+                             <a href="{:U('Jackpotrate/index',array('giftid'=>$vo['id']))}" >奖池设置</a>
+							 |
+                             </if>
+							<a href="{:U('Gift/edit',array('id'=>$vo['id']))}" >编辑</a>
+							 |
+                            <a href="{:U('Gift/del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<admintpl file="header" />
+</head>
+<body>
+<style>
+input{
+  width:500px;
+}
+.form-horizontal textarea{
+ width:500px;
+}
+.nav-tabs>.current>a{
+    color: #95a5a6;
+    cursor: default;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-bottom-color: transparent;
+}
+.nav li
+{
+	cursor:pointer
+}
+.nav li:hover
+{
+	cursor:pointer
+}
+.hide{
+	display:none;
+}
+</style>
+
+
+	<div class="wrap js-check-wrap">
+
+		<ul class="nav nav-tabs">
+			<li class="active"><a>配置</a></li>
+            <li><a href="{:U('Guide/index')}">管理</a></li>
+		</ul>
+		
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Guide/set_post')}">
+			<div class="js-tabs-content">
+				<!-- 网站信息 -->
+				<div>
+					<fieldset>
+						<div class="control-group">
+							<label class="control-label">引导页开关</label>
+							<div class="controls">				
+								<label class="radio inline"><input type="radio" value="0" name="post[switch]" <eq name="config['switch']" value="0">checked="checked"</eq>>关闭</label>
+								<label class="radio inline"><input type="radio" value="1" name="post[switch]" <eq name="config['switch']" value="1">checked="checked"</eq>>开启</label>
+								<label class="checkbox inline"></label>
+							</div>
+						</div>
+                        <div class="control-group">
+							<label class="control-label">引导页类型</label>
+							<div class="controls" id="type">				
+								<label class="radio inline"><input type="radio" value="0" name="post[type]" <eq name="config['type']" value="0">checked="checked"</eq>>图片</label>
+								<label class="radio inline"><input type="radio" value="1" name="post[type]" <eq name="config['type']" value="1">checked="checked"</eq>>视频</label>
+								<label class="checkbox inline"></label>
+							</div>
+						</div>
+
+						<div class="control-group" id="type_0" <if condition="$config['type'] eq 1">style="display:none;"</if> >
+							<label class="control-label">图片展示时间</label>
+							<div class="controls">				
+								<input type="text" name="post[time]" value="{$config['time']}">秒 当类型选择图片时，每张图片的展示时间
+							</div>
+						</div>
+					</fieldset>
+				</div>
+
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+    <script>
+    (function(){
+        $("#type label.radio").on('click',function(){
+            var v=$("input",this).val();
+            if(v==1){
+                $("#type_0").hide();
+            }else{
+                $("#type_0").show();
+            }
+            
+        })
+        
+    })()  
+    </script>
+</body>
+</html>

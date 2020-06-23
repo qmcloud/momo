@@ -1,0 +1,72 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('plugin/index')}">{:L('ADMIN_PLUGIN_INDEX')}</a></li>
+			<li><a href="http://www.thinkcmf.com/appstore/plugin.html" target="_blank">插件市场</a></li>
+			<li><a href="http://www.thinkcmf.com/topic/index/index/cat/9.html" target="_blank">{:L('PLUGIN_DISCUSSION')}</a></li>
+			<li><a href="http://www.thinkcmf.com/document/article/id/373.html" target="_blank">{:L('PLUGIN_DOCUMENT')}</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form">
+			<php>
+			$status=array("1"=>L('ENABLED'),"0"=>L('DISABLED'),"3"=>L('UNINSTALLED'));
+			</php>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>{:L('NAME')}</th>
+						<th>{:L('TEXT_DOMAIN')}</th>
+						<th>{:L('HOOKS')}</th>
+						<th>{:L('DESCRIPTION')}</th>
+						<th>{:L('AUTHOR')}</th>
+						<th width="45">{:L('STATUS')}</th>
+						<th width="150">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="plugins" item="vo">
+					<tr>
+						<td>{$vo.title}</td>
+						<td>{$vo.name}</td>
+						<td>{$vo.hooks}</td>
+						<td>{$vo.description}</td>
+						<td>{$vo.author}</td>
+						<td>{$status[$vo['status']]}</td>
+						<td>
+							<if condition="$vo['status']==3">
+								<a href="{:U('plugin/install',array('name'=>$vo['name']))}" class="js-ajax-dialog-btn" data-msg="确定安装该插件吗？">安装</a>
+							<else />
+								<php>$config=json_decode($vo['config'],true);</php>
+								<if condition="!empty($config)">
+									<a href="{:U('plugin/setting',array('id'=>$vo['id']))}">{:L('SETTING')}</a>|
+								<else/>
+									<a href="javascript:;" style="color: #ccc;">{:L('SETTING')}</a>|
+								</if>
+								
+								<if condition="!empty($vo['has_admin'])">
+									<a href="javascript:parent.openapp('{:sp_plugin_url($vo['name'].'://AdminIndex/index')}','plugin_{$vo.name}','{$vo.title}')">管理</a>|
+								<else/>
+									<a href="javascript:;" style="color: #ccc;">管理</a>| 
+								</if>
+								
+								<a href="{:U('plugin/update',array('name'=>$vo['name']))}" class="js-ajax-dialog-btn" data-msg="确定更新该插件吗？">更新</a>| 
+								
+								<if condition="$vo['status']==0">
+									<a href="{:U('plugin/toggle',array('id'=>$vo['id'],'enable'=>1))}" class="js-ajax-dialog-btn" data-msg="确定启用该插件吗？">启用</a>| 
+								<else/>
+									<a href="{:U('plugin/toggle',array('id'=>$vo['id'],'disable'=>1))}" class="js-ajax-dialog-btn" data-msg="确定禁用该插件吗？">禁用</a>|
+								</if>
+								
+								<a href="{:U('plugin/uninstall',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="确定卸载该插件吗？">卸载</a>
+							</if>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

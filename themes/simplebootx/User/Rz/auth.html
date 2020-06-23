@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <title>身份认证</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-family: Helvetica;}
+        .title1{color: #526165;font-size: 1.4em;text-align: center;margin-top: 20%;}
+        .title2{color: #939FA3;font-size: 1em;text-align: center;margin-top: 4%;}
+        .btn{color: #fff;background-color: #00D8C9;width: 74%;margin:20% 13% -23%;height: 46px;line-height: 46px;font-size: 1.1em;text-align: center;border-radius: 55px;}
+        a:nth-of-type(3){text-decoration: none;font-size: 0.9em;color: #00D8C9;}
+        a:nth-of-type(1){text-decoration: none;font-size: 0.9em;color: #939FA3;}
+        .title3{color: #939FA3;font-size: 0.9em;text-align: center;}
+        .title4{color: #939FA3;font-size: 0.9em;text-align: center;margin-top: 15%}
+        img{width: 6%;position: absolute;top: 2%;right: 3%;}
+    </style>
+
+</head>
+<body>
+<div class="title1">亲爱的用户</div>
+<div class="title2" style="margin-top: 28%;">收到付费礼物可领取劳务费</div>
+<div class="title2">为保证<span style="color:#FF988D">资金安全</span></div>
+<div class="title2">开播前请通过<span style="color:#FF988D">身份认证</span>绑定账户</div>
+<div class="title2">通过认证可以获得更好的体验</div>
+<a href="./index.php?g=User&m=Rz&a=authStep&uid={$uid}"><div class="btn"><!-- 支付宝一键 -->身份认证</div></a>
+<div class="title3" style="margin-top:27%;"><!-- <a href="./index.php?g=User&m=Rz&a=authStep1&uid={$uid}" style="text-decoration:underline">没有支付宝 请点击这里</a> --></div>
+<div class="title4">认证即同意 <a style="color:#00D8C9 " href="./index.php?g=portal&m=page&a=index&id=10">主播协议</a></div>
+
+</body>
+</html>

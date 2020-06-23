@@ -1,0 +1,77 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a>成员列表（不含家族长）</a></li>
+			<li><a href="{:U('Family/users_add')}">新增成员</a></li> 
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Family/users')}">
+            审核状态： 
+			<select class="select_2" name="state">
+				<option value="">全部</option>
+
+                <option value="0" <if condition="$formget.state eq '0'">selected</if> >未审核</option>
+                <option value="2" <if condition="$formget.state eq '2'">selected</if> >审核通过</option>
+                <option value="1" <if condition="$formget.state eq '1'">selected</if> >审核失败</option>
+			</select> &nbsp;&nbsp;
+			提交时间：
+			<input type="text" name="start_time" class="js-date date" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+			<input type="text" class="js-date date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+			家族ID： 
+			<input type="text" name="keyword1" style="width: 200px;" value="{$formget.keyword1}" placeholder="请输入家族ID"> &nbsp; &nbsp;
+			成员ID： 
+			<input type="text" name="keyword2" style="width: 200px;" value="{$formget.keyword2}" placeholder="请输入成员ID">
+			<input type="submit" class="btn btn-primary" value="搜索">
+		</form>				
+		<form method="post" class="js-ajax-form" >
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>家族成员(ID)</th>						
+						<th>所属家族（ID）</th>
+						<th>家族抽成比例（%）</th>
+						<th>状态</th>
+						<th>提交时间</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['userinfo']['user_nicename']}({$vo['uid']})</td>
+						<td> <a href="{:U('Family/edit',array('id'=>$vo['familyid']))}" >{$vo['family']['name']}({$vo['familyid']})</a> </td>
+						<if condition="$vo['divide_family'] neq '-1'">
+						<td>{$vo['divide_family']}</td>
+						<else/>
+						<td>{$vo['family']['divide_family']}</td>
+						</if>
+						<td>
+							<if condition="$vo['state'] eq '0'">
+								未审核
+							<elseif condition="$vo['state'] eq '1'"/>
+								审核失败
+							<else/>
+								审核成功
+							</if>
+						</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>						
+						<td align="center">	
+						    <a href="{:U('Family/users_edit',array('id'=>$vo['id']))}" >编辑</a>  
+								|  <a href="{:U('Family/users_del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="你确定要删除该成员吗？">删除</a>
+								|  <a href="{:U('Family/profit',array('uid'=>$vo['uid']))}" >收益</a>  
+								|  <a href="{:U('Family/cash',array('uid'=>$vo['uid']))}" >提现记录</a>  
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

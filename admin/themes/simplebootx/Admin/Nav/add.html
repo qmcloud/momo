@@ -1,0 +1,129 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('nav/index')}">{:L('ADMIN_NAV_INDEX')}</a></li>
+			<li class="active"><a href="{:U('nav/add')}">{:L('ADMIN_NAV_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('nav/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('NAVIGATION_CATEGORY')}</label>
+					<div class="controls">
+						<select name="cid" id="navcid_select">
+						<foreach name="navcats" item="vo">
+							<php>$navcid_selected=$navcid==$vo['navcid']?"selected":"";</php>
+							<option value="{$vo.navcid}" {$navcid_selected}>{$vo.name}</option>
+						</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('PARENT')}</label>
+					<div class="controls">
+						<select name="parentid">
+							<option value="0">/</option>
+							{$nav_trees}
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('LABEL')}</label>
+					<div class="controls">
+						<input type="text" name="label" value=""><span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('HREF')}</label>
+					<div class="controls">
+						<input type="radio" name="nav" id="outlink">
+						<input type="text" name="href" id="outlink_input" value="http://">
+						<input type="radio" name="nav" id="selecturl">
+						<select name="href" id="selecthref">
+							<option value="home">{:L('HOME')}</option>
+							<foreach name="navs" item="vo">
+							<option disabled>{$vo.name}</option>
+							<foreach name="vo['items']" item="voo">
+							<option value='{$voo.rule}'>{$voo.label}</option>
+							</foreach>
+							</foreach>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('TARGET')}</label>
+					<div class="controls">
+						<select name="target">
+							<option value="">{:L('TARGET_DEFAULT')}</option>
+							<option value="_blank">{:L('TARGET_BLANK')}</option>
+						</select>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('ICON')}</label>
+					<div class="controls">
+						<input type="text" name="icon" value="">
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('STATUS')}</label>
+					<div class="controls">
+						<select name="status">
+							<option value="1">{:L('DISPLAY')}</option>
+							<option value="0">{:L('HIDDEN')}</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('nav/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		$(function() {
+			$("#navcid_select").change(function() {
+				if(location.search.indexOf("?")>=0){
+					location.href = location.href + "&cid=" + $(this).val();
+				}else{
+					location.href = location.href + "?cid=" + $(this).val();
+				}
+			});
+
+			$("#selecthref").click(function() {
+				$('#outlink_input').removeAttr('name');
+				$('#selecturl').attr({
+					'checked' : 'checked',
+					'name' : 'href'
+				});
+			});
+			$("input[name='href']").click(function() {
+				$('#selecthref').removeAttr('name');
+				$('#outlink').attr({
+					'checked' : 'checked',
+					'name' : 'href'
+				});
+			});
+			/*
+			Wind.use('ajaxForm','artDialog','iframeTools', function () {
+			 	$("#href_input").click(function(){
+			 		art.dialog.open("{:U('nav/select')}", {
+			            title: "选择链接地址",
+			            close: function () {
+			    			var checked_v = art.dialog.data('checked_v');
+			    			if (checked_v !== undefined) $('#href_input').val(checked_v);
+			    			var checked_u = art.dialog.data('checked_u');
+			    			if (checked_u !== undefined) $('#u_input').val(checked_u);
+			    		}
+			        },false);
+				});
+			});
+			 */
+		});
+	</script>
+
+</body>
+</html>

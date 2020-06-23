@@ -1,0 +1,40 @@
+<admintpl file="header"/>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('rbac/index')}">{:L('ADMIN_RBAC_INDEX')}</a></li>
+			<li class="active"><a href="{:U('rbac/roleadd')}">{:L('ADMIN_RBAC_ROLEADD')}</a></li>
+		</ul>
+		<form class="form-horizontal js-ajax-form" action="{:U('Rbac/roleadd_post')}" method="post">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('ROLE_NAME')}</label>
+					<div class="controls">
+						<input type="text" name="name" value="" id="rolename"/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('ROLE_DESCRIPTION')}</label>
+					<div class="controls">
+						<textarea name="remark" rows="2" cols="20" id="remark" class="inputtext" style="height: 100px; width: 500px;"></textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('STATUS')}</label>
+					<div class="controls">
+						<label class="radio inline" for="active_true"><input type="radio" name="status" value="1" checked id="active_true" />{:L('ENABLED')}</label>
+						<label class="radio inline" for="active_false"><input type="radio" name="status" value="0" id="active_false">{:L('DISABLED')}</label>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('rbac/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

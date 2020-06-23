@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css"/>
+    <title>签约家族</title>
+</head>
+<body class="detail_sign">
+	<div class="home_info">
+		<ul>
+			<li>
+				<span class="home_info_t">家族名称：</span>
+				<span class="home_info_b">{$familyinfo['name']}</span>
+			</li>
+			<li>
+				<span class="home_info_t">家族抽成比例：</span>
+				<span class="home_info_b">{$familyinfo['divide_family']}%</span>
+			</li>
+			<li>
+				<span class="home_info_t">签约说明</span>
+				<a href="/index.php?g=portal&m=page&a=index&id=18"><span class="edit_des"></span></a>
+			</li>
+		</ul>
+	</div>
+
+	<if condition="$familyinfo['isstatus'] neq '0' && $familyinfo['isstatus'] neq '2' ">
+		<div class="button_default bottombtn sign">
+			同意并签约
+		</div>
+	</if>
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+		var familyid='{$familyinfo['id']}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script src="__PUBLIC__/appapi/js/family.js"></script>
+	
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <title>申请认证</title>	
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-family: Helvetica;}
+        body{background-color: #F2F4F5;}
+        .fl{float: left;}
+        .cl{clear: left;}
+        .top-title{width: 100%;}
+        .box-top{width: 100%;}
+        .content{width:100%;background-color: #fff;font-size: 1em;line-height: 50px;}
+        .pr{position: relative;}
+        .span1{color: #9EA1A3;padding-left: 7%;}
+        input{width: 67%;height: 50px;color:#49565A;font-size: 1em;border:none;outline:none;margin-left: 2.5%;}
+        ::-moz-placeholder { color:#D2D8DB; }
+        ::-webkit-input-placeholder { color:#D2D8DB; }
+        :-ms-input-placeholder { color:#D2D8DB; }
+        .jiantou{position:absolute;width: 9px;position: absolute;
+            right: 5%;
+            top: 34.5%;}
+        .box-select{line-height: 50px;color:#D2D8DB;width: 67%;margin-left: 2%;}
+        .next-btn,.aply{background-color: #00D8C9;line-height: 50px;width: 70%;margin:12% auto 44%;color: #fff;font-size: 1.1em;border-radius: 55px;text-align: center;}
+        select{height: 50px;width:67%;border:none;outline:none;color:#D2D8DB;font-size: 1em;margin-left: 2.5%;
+            appearance:none;
+            -moz-appearance:none;
+            -webkit-appearance:none; background-color: #fff; }
+        select:nth-of-type(1){}
+        .line{height: 1px;background-color: #F1F4F5;margin-left: 28%;width: 71%;}
+
+        .content2{width: 100%;background-color: #fff;}
+        #resident{margin-top: 24px;position: relative;}
+        .img-sfz{width: 30%;margin-left: 2.5%;}
+        .exam{width: 78%;margin-left: 3%;margin-top: 12px;}
+        #smt{width: 80%;height:47px;font-size:1em;letter-spacing:2px;background-color: #fff;color: #C6C9C9;border:solid 1px #C6C9C9;border-radius: 30px;margin-top:17px;margin-left:10%;margin-bottom:70px;}
+        #progress1,#progress2,#progress3{margin-left:10%;width:80%;margin-top:17%;height: 6px;border:solid 1px #fff;background-color:#ccc;border-radius: 20px;position:relative;}
+        .progress{width:0;height:4px;border:1px solid #fff;border-radius:20px;position:absolute;left:0;top:0;background-color:#fff;}
+        .shadd{width: 29%;position:absolute;top:1px;background: rgba(0,0,0,0.4);display: none;}
+        .shad{left: 3%;}
+        .shad2{left: 35.5%;}
+        .shad3{left: 68%;}
+        .img-upload{height:100%;position: absolute;left: 0px;right: 0px;top: 0px;bottom: 0px;margin: 0 auto;}
+        .box-upload1{left: 3%;}
+        .box-upload2{left: 36%;}
+        .box-upload3{left: 68%;}
+        .box-upload{width: 28%;height:53%;position: absolute;top: 13%;display: none;}
+        .title-upload{width: 100%;font-size: 0.8em;color: #fff;margin-top: 15%;text-align: center;}
+        input[type="file"]{display: none;}
+    </style>
+</head>
+<body>
+
+<div class="content">
+    <div>
+        <span class="span1">真实姓名</span>
+        <input type="text" id="real_name"  value="{$auth['real_name']}" readonly />
+    </div>
+    <div class="line"></div>
+    <div>
+        <span class="span1">手机号码</span>
+        <input type="text" id="mobile" value="{$auth['mobile']}" readonly />
+    </div>
+    <div class="line"></div>
+    <div>
+        <span class="span1">银行卡号</span>
+        <input type="text" id="card_no" value="{$auth['card_no']}" readonly />
+    </div>
+    <div class="line"></div>
+    <div class=" pr">
+        <span class="span1">开户银行</span>
+				<input type="text" id="bank_name" value="{$auth['bank_name']}" readonly />
+    </div>
+    <div class="line"></div>
+    <div class="pr">
+        <span class="span1">开户地<span style="color: #fff;">我</span></span>
+        <input type="text" id="accounts_province" value="{$auth['accounts_province']}" readonly />
+    </div>
+    <div class="line"></div>
+    <div class="pr">
+        <span class="span1" style="color: #fff;">开户银行</span>
+				<input type="text" id="accounts_city" value="{$auth['accounts_city']}" readonly />
+    </div>
+    <div class="line"></div>
+    <div>
+        <span class="span1">支行名称</span>
+        <input type="text" id="sub_branch" value="{$auth['sub_branch']}" readonly />
+    </div>
+</div>
+<div class="content2">
+    <div class="pr">
+        <span class="span1">证件类型</span>
+				<input type="text" id="cer_type" value="{$auth['cer_type']}" readonly />
+ 
+    </div>
+    <div class="line"></div>
+    <div>
+        <span class="span1">证件号<span style="color: #fff;">是</span></span>
+        <input type="text" id="cer_no" value="{$auth['cer_no']}" readonly /><br>
+    </div>
+    <div class="line"></div>
+    <div id="resident">
+        <img src="{$auth['front_view']}" class="fl img-sfz" >
+        <img src="{$auth['back_view']}" class="fl img-sfz" >
+        <img src="{$auth['handset_view']}" class="fl img-sfz" >
+        <div class="cl"></div>
+
+    </div>
+    <div id="upload"></div>
+  
+    <br>
+
+</div>
+
+</body>
+</html>

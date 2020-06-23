@@ -1,0 +1,131 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Userauth/index')}">认证申请</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Userauth/edit_post')}">
+		   <input type="hidden" name="id" value="{$auth['id']}">
+		   <input type="hidden" name="uid" value="{$auth['uid']}">
+			<fieldset>
+
+				<div class="control-group">
+					<label class="control-label">会员</label>
+					<div class="controls">
+						<input type="text" name="" value="{$auth['userinfo']['user_nicename']} ( {$auth['uid']} )" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">真实姓名</label>
+					<div class="controls">
+						<input type="text" name="real_name" value="{$auth['real_name']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">手机号码</label>
+					<div class="controls">
+						<input type="text" name="mobile"  value="{$auth['mobile']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">银行卡号</label>
+					<div class="controls">
+						<input type="text" name="card_no"  value="{$auth['card_no']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">开户银行</label>
+					<div class="controls">
+						<input type="text" name="bank_name"  value="{$auth['bank_name']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">开户地</label>
+					<div class="controls">
+							<input type="hidden" name="accounts_province"  value="{$auth['accounts_province']}" readonly>
+							<input type="hidden" name="accounts_city"  value="{$auth['accounts_city']}" readonly>
+						<input type="text" name="accounts"  value="{$auth['accounts_province']}-{$auth['accounts_city']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">支行名称</label>
+					<div class="controls">
+						<input type="text" name="sub_branch"  value="{$auth['sub_branch']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件类型</label>
+					<div class="controls">
+						<input type="text" name="cer_type"  value="{$auth['cer_type']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件号</label>
+					<div class="controls">
+						<input type="text" name="cer_no"  value="{$auth['cer_no']}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件正面</label>
+					<div class="controls">
+						<input type="hidden" name="front_view"  value="{$auth['front_view']}" readonly>
+						<img src="{$auth['front_view']}" width="135" style="cursor: hand">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">证件反面</label>
+					<div class="controls">
+						<input type="hidden" name="back_view"  value="{$auth['back_view']}" readonly>
+						<img src="{$auth['back_view']}" width="135" style="cursor: hand">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">手持证件照</label>
+					<div class="controls">
+						<input type="hidden" name="handset_view"  value="{$auth['handset_view']}" readonly>
+						<img src="{$auth['handset_view']}" width="135" style="cursor: hand">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+
+		
+				<div class="control-group">
+					<label class="control-label">审核状态</label>
+					<div class="controls">
+						<label class="radio inline" for="status_2"><input type="radio" name="status" value="2" id="status_2" <if condition="$auth['status'] eq '2'">checked</if>>失败</label>
+						<label class="radio inline" for="status_0"><input type="radio" name="status" value="0" id="status_0" <if condition="$auth['status'] eq '0'">checked</if>>处理中</label>
+						<label class="radio inline" for="status_1"><input type="radio" name="status" value="1" id="status_1" <if condition="$auth['status'] eq '1'">checked</if>>成功</label>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">失败原因</label>
+					<div class="controls">
+						 <textarea name="reason" rows="2" cols="20" id="reason" class="inputtext" style="height: 100px; width: 500px;">{$auth['reason']}</textarea>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Userauth/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Guard/index')}">列表</a></li>
+			<li class="active"><a >添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Guard/do_add')}">
+			<fieldset>
+                <div class="control-group">
+					<label class="control-label">类型</label>
+					<div class="controls">
+                        <volist name="type_a" id="v">
+						<label class="radio inline" for="type_{$key}"><input type="radio" name="type" value="{$key}" id="type_{$key}" <if condition="$i eq '1'">checked</if> >{$v}</label>
+                        </volist>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="0">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">名称</label>
+					<div class="controls">
+						<input type="text" name="name">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">价格</label>
+					<div class="controls">
+						<input type="text" name="coin">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label">时长</label>
+					<div class="controls">
+                        <input type="text" name="length">
+                        <volist name="length_type_a" id="v">
+						<label class="radio inline" for="length_type_{$key}"><input type="radio" name="length_type" value="{$key}" id="length_type_{$key}" <if condition="$i eq '1'">checked</if> >{$v}</label>
+                        </volist>
+
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Guard/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

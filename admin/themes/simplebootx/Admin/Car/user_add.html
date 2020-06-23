@@ -1,0 +1,46 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Vip/user_index')}">列表</a></li>
+			<li class="active"><a >添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Vip/do_user_add')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">类型</label>
+					<div class="controls">
+						<select name="type">
+							<volist name="type" id="vo">
+							<option value="{$key}" <if condition="$vip['type'] eq '$key'">selected</if> >{$vo}</option>
+							</volist>		
+							 
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">用户id</label>
+					<div class="controls">
+						<input type="text" name="uid">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">到期时间</label>
+					<div class="controls">
+						<input type="text" name="endtime" value="{:date('Y-m-d H:i:s',time())}" class="js-datetime" style="width: 160px;">
+					</div>
+				</div>	
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Vip/user_index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

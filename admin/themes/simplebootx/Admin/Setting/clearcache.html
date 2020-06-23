@@ -1,0 +1,34 @@
+<admintpl file="header" />
+<style>
+li {
+	list-style: none;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<div id="error_tips">
+			<h2>{:L('CACHE_CLEARED')}</h2>
+			<div class="error_cont">
+				<ul>
+					<li>{:L('CACHE_CLEARED')}</li>
+				</ul>
+				<div class="error_return">
+					<a href="javascript:close_app();" class="btn">{:L('CLOSE')}</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		var close_timeout = setTimeout(function() {
+			parent.close_current_app();
+		}, 3000);
+
+		function close_app() {
+			clearTimeout(close_timeout);
+			parent.close_current_app();
+		}
+	</script>
+</body>
+</html>

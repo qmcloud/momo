@@ -1,0 +1,37 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Loginbonus/index')}">列表</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Loginbonus/edit_post')}">
+		   <input type="hidden" name="id" value="{$bonus['id']}">
+			<fieldset>
+
+				<div class="control-group">
+					<label class="control-label">登录天数</label>
+					<div class="controls">
+						<input type="text" name="day" value="{$bonus['day']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">奖励{$configpub['name_coin']}</label>
+					<div class="controls">
+						<input type="text" name="coin"  value="{$bonus['coin']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Loginbonus/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

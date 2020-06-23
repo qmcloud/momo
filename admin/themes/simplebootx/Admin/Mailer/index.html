@@ -1,0 +1,60 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#" data-toggle="tab">{:L('ADMIN_MAILER_INDEX')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Admin/mailer/index_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('SENDER_NAME')}</label>
+					<div class="controls">
+						<input type="text" name="sender" value="{$Think.config.SP_MAIL_SENDER}" />
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SENDER_EMAIL_ADDRESS')}</label>
+					<div class="controls">
+						<input type="text" name="address" value="{$Think.config.SP_MAIL_ADDRESS}" />
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SENDER_SMTP_SERVER')}</label>
+					<div class="controls">
+						<input type="text" name="smtp" value="{$Think.config.SP_MAIL_SMTP}" />
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">SMTP服务器端口</label>
+					<div class="controls">
+						<input type="text" name="smtp_port" value="{$Think.config.SP_MAIL_SMTP_PORT}" placeholder="默认为25"/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SMTP_MAIL_ADDRESS')}</label>
+					<div class="controls">
+						<input type="text" name="loginname" value="{$Think.config.SP_MAIL_LOGINNAME}" />
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('SMTP_MAIL_PASSWORD')}</label>
+					<div class="controls">
+						<input type="password" name="password" value="{$Think.config.SP_MAIL_PASSWORD}" />
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="form-actions">
+					<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

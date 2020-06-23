@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css?t=1561712925"/>
+    <title>家族申请</title>
+</head>
+<body>
+	<div class="apply">
+		<form id="apply_form" class="apply_form">
+			<input type="hidden" id="ipt-file1v" name="apply_pos" value="">
+			<input type="hidden" id="ipt-file2v" name="apply_side" value="">
+			<input type="hidden" id="ipt-file3v" name="apply_map" value="">
+			<input type="hidden" id="uid" name ="uid" value="{$uid}">
+			<input type="hidden" id="token" name ="token" value="{$token}">
+			<div id="upload" ></div>
+			<div class="top-title bg_default">为保证家族申请顺利通过,请如实填写下列信息</div>
+            <div class="apply_form_content">
+                <div class="term">
+                    <span class="form_span">家族名称</span>
+                    <input type="text" placeholder="请输入您要创建的家族名称" id="name" name="name" class="form_input"/>
+                </div>
+                <div class="line" ></div>
+                <div class="term">
+                    <span class="form_span">个人姓名</span>
+                    <input type="text" placeholder="请输入您的姓名" id="fullname" name="fullname" class="form_input"/>
+                </div>
+                <div class="line" ></div>
+                <div class="term">
+                    <span class="form_span">身份证号</span>
+                    <input type="text" placeholder="请填写您的身份证号" id="carded" name="carded" class="form_input"/>
+                </div>
+                <div class="line" ></div>
+                <div class="term">
+                    <span class="form_span sf2">家族简介</span>
+                    <textarea  type="text" placeholder="请简单介绍一下您的家族" id="briefing" name="briefing" class="form_textarea"></textarea>
+                </div>
+                <div class="line" ></div>
+                <div class="term t">
+                    <span class="form_span sf2">证件图片</span>
+                    <img src="__PUBLIC__/appapi/images/family/auth_handle.png" class="fl img-sfz" data-index="ipt-file1" id="img_file1" onclick="file_click($(this))">
+                    <img src="__PUBLIC__/appapi/images/family/auth_handle2.png" class="fl img-sfz" data-index="ipt-file2" id="img_file2" onclick="file_click($(this))">
+                    <div class="cl"></div>
+                    <div class="shad shadd" data-select="ipt-file1">
+                        <div class="title-upload">正在上传中...</div>
+                        <div id="progress1">
+                            <div class="progress ipt-file1"></div>
+                        </div>
+                    </div>
+                    <div class="shad2 shadd" data-select="ipt-file2">
+                        <div class="title-upload">正在上传中...</div>
+                        <div id="progress2">
+                            <div class="progress ipt-file2"></div>
+                        </div>
+                    </div>
+                    <div class="box-upload1 box-upload" data-index="ipt-file1" onclick="file_click($(this))"><img src="" class="img-upload" ></div>
+                    <div class="box-upload2 box-upload" data-index="ipt-file2" onclick="file_click($(this))"><img src="" class="img-upload"></div>
+                </div>
+                <div class="term t">
+                    <span class="form_span sf2">家族图片</span>
+                    <img src="__PUBLIC__/appapi/images/family/auth_handle4.png" class="fl img-sfz" data-index="ipt-file3" id="img_file3" onclick="file_click($(this))">
+                    <div class="shad3 shadd" data-select="ipt-file3">
+                        <div class="title-upload">正在上传中...</div>
+                        <div id="progress3">
+                            <div class="progress ipt-file3"></div>
+                        </div>
+                    </div>
+                    <div class="box-upload3 box-upload" data-index="ipt-file3" onclick="file_click($(this))"><img src="" class="img-upload"></div>
+                </div>
+            </div>
+		</form>
+		
+		<input class="button button_default" id="button" type='submit' onclick="apply_judge()" value="提交申请"/>
+	</div>
+	<tc_include file="Appapi/Public/footer" />
+	<script src="__PUBLIC__/js/ajaxfileupload.js"></script>
+	<script src="__PUBLIC__/appapi/js/family.js"></script>
+</body>
+</html>

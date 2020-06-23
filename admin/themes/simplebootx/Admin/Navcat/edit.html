@@ -1,0 +1,41 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('navcat/index')}">{:L('ADMIN_NAVCAT_INDEX')}</a></li>
+			<li><a href="{:U('navcat/add')}">{:L('ADMIN_NAVCAT_ADD')}</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('navcat/edit_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">{:L('CATEGORY_NAME')}</label>
+					<div class="controls">
+						<input type="hidden" name="navcid" value="{$navcid}">
+						<input type="text" name="name" value="{$name}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('DESCRIPTION')}</label>
+					<div class="controls">
+						<textarea name="remark" rows="5" cols="57">{$remark}</textarea>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">{:L('MAIN_NAVCAT')}</label>
+					<div class="controls">
+						<php>$mainmenu_checked=$active?"checked":"";</php>
+						<input type="checkbox" name="active" value="1" {$mainmenu_checked}>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+				<a class="btn" href="{:U('navcat/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

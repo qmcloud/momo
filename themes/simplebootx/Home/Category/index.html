@@ -1,0 +1,118 @@
+<tc_include file="Public:head" />
+
+<title>{$site_seo_title} - {$site_name}</title>
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/index.css"/>
+<style type="text/css">
+	.feed-list .feed{
+		height: 360px;
+	}
+</style>
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+	<div id="doc-bd">
+		<div class="container clearfix">
+			<div class="main clearfix">
+				<!-- 分类推荐 -->
+				<div class="g-box feed-list" >
+
+					<div class="box-bd">
+						<ul class="list">
+
+							<volist name="lists" id="v">
+							<li class="feed <if condition="$v['islive'] eq '1'">live<else/></if>"><a class="link" href="./{$v['uid']}" target="_blank"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['thumb']}"/>
+							<p class="user">
+								<img class="avatar thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/><span class="username">{$v['user_nicename']}</span>
+							</p>
+							<div class="comment">
+								<div class="comment-inner">
+									<if condition="$v['title']">
+										{$v['title']}
+									<else/>
+										此处应该有互动
+									</if>
+								</div>
+							</div>
+							</a></li>
+							</volist>
+						</ul>
+					</div>
+					{$page}
+				</div>
+			</div>
+			<!-- <div class="side clearfix">
+				<div class="download">
+					<div class="headline">
+						<a href="#" target="_blank"><img src="http://p0.qhimg.com/t012fba3e01107b75a7.jpg" width="100%" alt=""/>
+						<div class="logo-slogan">
+						</div>
+						</a>
+					</div>
+					<div class="btns clearfix">
+						<a href="{$config['app_android']}" class="btn-android" target="_blank"></a>
+						<a href="{$config['app_ios']}" class="btn-iphone" target="_blank"></a>
+					</div>
+					<dl class="qrcode">
+						<dt class="title">
+						<span>或扫描二维码下载直播APP</span>
+						</dt>
+						<dd class="pic">
+						<img src="{$config['qr_url']}" alt=""/>
+						</dd>
+					</dl>
+				</div>
+				<div class="sidebar">
+					<div class="g-box" id="topic-plan">
+						<div class="box-hd">
+							<h2 class="box-title"><span class="icon"></span>专题策划1</h2>
+							<a href="" class="box-more"></a>
+						</div>
+						<div class="box-bd">
+							<div class="topic">
+								<div class="pic">
+									<a href="{$ads[0]['url']}" target="_blank"><img src="{$ads[0]['thumb']}" width="245" height="130" alt=""/><span class="mask"></span></a>
+								</div>
+								<div class="content">
+									<h3 class="title"><a href="{$ads[0]['url']}" target="_blank">{$ads[0]['name']}</a></h3>
+									<p class="desc">
+										{$ads[0]['des']}
+									</p>
+									<p class="more">
+										<a href="{$ads[0]['url']}" target="_blank">查看详情</a>
+									</p>
+								</div>
+							</div>
+							<ul class="topics">
+							  <volist name="ads" id="v" offset="1" length="6">
+									<li><a href="{$v['url']}" target="_blank"><img src="{$v['thumb']}"/></a></li>
+								</volist>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div> -->
+		</div>
+	</div>
+<tc_include file="Public:footer" />
+	<!--
+下线时将下面div元素的style改为"display:none;"
+上线时将下面div元素的style改为"display:block;"
+图片尺寸100X100
+-->
+	<div id="right-fixed-position" class="right-fixed-position" style="display:none;" >
+		<a href="#" class="close"></a>
+		<a href="#" class="link" target="_blank"><img src="#"/></a>
+	</div>
+</div>
+<script>
+$(function(){
+	//图片延迟加载
+	$("img.thumb").lazyload({effect: "fadeIn"});		
+})
+</script>
+
+</body>
+</html>

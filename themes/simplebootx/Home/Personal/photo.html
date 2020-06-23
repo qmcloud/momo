@@ -1,0 +1,57 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+<link href="__PUBLIC__/js/artDialog/skins/default.css" rel="stylesheet" />
+</head>
+<body style="background-color:#f3f3f3">
+<tc_include file="Public:header" />
+<tc_include file="Home/Personal:header" />
+<div class="container">
+  <div class="Firstfloor clearfix">
+		<div class="Leftlayout">
+			<tc_include file="Home/Personal:navigation" />
+		</div>
+		<div class="rightlayout">
+			<div class="jiben">
+				<h3>修改头像</h3>
+			</div>
+			<div>
+				<div class="form-horizontal js-ajax-forms" > 
+					<fieldset>
+						<div class="control-group">
+							<div class="flashupload_div">
+								<a onclick="flashuploadcut('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;" class="flashupload">上传头像</a>
+								<a class="support">(仅支持jpg、jpeg、gif、png)</a>
+							</div>
+							<div class="photo">
+								<div>
+									<input type="hidden" name="avatar" id="thumb" value="{$info['avatar']}">
+									<a href="javascript:void(0);" >
+										<if condition="$info['avatar'] neq ''">
+											<div class="photozuo">
+												<img src="{$info['avatar']}" id="thumb_preview" class="thumb_preview"/>
+											</div>	
+										<else/>
+										  <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb_preview" width="135"/>
+										</if>
+									</a>
+								</div>
+								<span class="form-required"></span>
+							</div>
+						</div>
+					</fieldset>
+					<div class="photo-actions">
+						<a  class="photo_baochun" onclick="Personal.photo()">保存</a>
+						<a  class="photo_baochun" onclick="$('#thumb_preview').attr('src','/default.jpg');$('#thumb').val('/default.jpg');return false;">取消</a>
+					</div>
+				</div>
+			</div> 
+		</div>
+	</div>
+</div>
+<tc_include file="Public:footer" />
+<tc_include file="Home/Personal:footer" />  
+<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+
+
+</body>
+</html>

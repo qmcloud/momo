@@ -1,0 +1,134 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<div class="common-form">
+			<form method="post" class="form-horizontal js-ajax-form" action="{:U('nav/edit_post')}">
+				<fieldset>
+					<div class="control-group">
+						<label class="control-label">{:L('NAVIGATION_CATEGORY')}</label>
+						<div class="controls">
+							<select name="cid" id="navcid_select">
+								<foreach name="navcats" item="vo">
+								<php>$navcid_selected=$navcid==$vo['navcid']?"selected":"";</php>
+								<option value="{$vo.navcid}" {$navcid_selected}>{$vo.name}</option>
+								</foreach>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('PARENT')}</label>
+						<div class="controls">
+							<select name="parentid">
+								<option value="0">/</option>
+								{$nav_trees}
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('LABEL')}</label>
+						<div class="controls">
+							<input type="text" name="label" value="{$label}"><span class="form-required">*</span>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('HREF')}</label>
+						<div class="controls">
+							<input type="radio" name="nav" id="outlink">
+							<input type="text" name="href" id="outlink_input" value="http://">
+							<input type="radio" name="nav" id="selecturl">
+							<select name="href" id="selecthref">
+								<option value="home">{:L('HOME')}</option>
+								<foreach name="navs" item="vo">
+								<option disabled>{$vo.name}</option>
+									<foreach name="vo['items']" item="voo">
+									<option value='{$voo.rule}'>{$voo.label}</option>
+									</foreach>
+								</foreach>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('TARGET')}</label>
+						<div class="controls">
+							<select name="target">
+								<option value="">{:L('TARGET_DEFAULT')}</option>
+								<option value="_blank">{:L('TARGET_BLANK')}</option>
+							</select>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('ICON')}</label>
+						<div class="controls">
+							<input type="text" name="icon" value="{$icon}">
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label">{:L('STATUS')}</label>
+						<div class="controls">
+							<select name="status">
+								<option value="1">{:L('DISPLAY')}</option>
+								<php>$status_selected=empty($status)?"selected":"";</php>
+								<option value="0" {$status_selected}>{:L('HIDDEN')}</option>
+							</select>
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-actions">
+					<input type="hidden" name="id" value="{$id}">
+					<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+					<a class="btn" href="{:U('nav/index')}">{:L('BACK')}</a>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		$(function() {
+			$("#navcid_select").change(function() {
+				if(location.search.indexOf("?")>=0){
+					location.href = location.href + "&cid=" + $(this).val();
+				}else{
+					location.href = location.href + "?cid=" + $(this).val();
+				}
+			});
+
+			$("#selecthref").click(function() {
+				checkChange(2);
+			});
+			$("input[name='href']").click(function() {
+				checkChange(1);
+			});
+
+			var opt = $("#selecthref option[value='" + '{$hrefold}' + "']");
+			if (opt.length > 0) {
+				opt.attr('selected', 'selected');
+				checkChange(2);
+			} else {
+				checkChange(1);
+				$('#outlink_input').val('{$hrefold}');
+			}
+
+			function checkChange(i) {
+				if (i == 1) {
+					//自动输入url
+					$('#outlink_input').attr('name', 'href');
+					$('#selecthref').removeAttr('name');
+					$('#outlink').attr({
+						'checked' : 'checked',
+						'name' : 'nav'
+					});
+				} else {
+					//选择链接url
+					$('#selecthref').attr('name', 'href');
+					$('#outlink_input').removeAttr('name');
+					$('#selecturl').attr({
+						'checked' : 'checked',
+						'name' : 'nav'
+					});
+				}
+			}
+		});
+	</script>
+</body>
+</html>

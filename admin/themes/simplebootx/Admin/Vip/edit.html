@@ -1,0 +1,50 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Vip/index')}">列表</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Vip/edit_post')}">
+		   <input type="hidden" name="id" value="{$vip['id']}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">时长</label>
+					<div class="controls">
+                        <input type="text"  value="{$long[$vip['length']]}" readonly>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="{$vip['orderno']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<!-- <div class="control-group">
+					<label class="control-label">名称</label>
+					<div class="controls">
+						<input type="text" name="name" value="{$vip['name']}">
+						<span class="form-required">*</span>
+					</div>
+				</div> -->
+				<div class="control-group">
+					<label class="control-label">所需{$configpub['name_coin']}</label>
+					<div class="controls">
+						<input type="text" name="coin"  value="{$vip['coin']}"  maxlength="9">
+						<span class="form-required">*</span>最多9位数
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Vip/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

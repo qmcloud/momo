@@ -1,0 +1,69 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('menu/index')}">{:L('ADMIN_MENU_INDEX')}</a></li>
+			<li><a href="{:U('menu/add')}">{:L('ADMIN_MENU_ADD')}</a></li>
+			<!-- <li><a href="{:U('menu/spmy_import_menu')}">{:L('ADMIN_MENU_SPMY_IMPORT_MENU')}</a></li> -->
+			<!-- <if condition="APP_DEBUG">
+			<li><a href="{:U('menu/lists')}">{:L('ADMIN_MENU_LISTS')}</a></li>
+			<li><a href="{:U('menu/spmy_export_menu')}">备份菜单</a></li>
+			<li><a href="{:U('menu/spmy_export_menu_lang')}">生成菜单多语言包</a></li>
+			</if> -->
+		</ul>
+		<form class="js-ajax-form" action="{:U('Menu/listorders')}" method="post">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+			<table class="table table-hover table-bordered table-list" id="menus-table">
+				<thead>
+					<tr>
+						<th width="80">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th>{:L('APP')}</th>
+						<th>{:L('NAME')}</th>
+						<th width="80">{:L('STATUS')}</th>
+						<th width="180">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					{$categorys}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="80">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th>{:L('APP')}</th>
+						<th>{:L('NAME')}</th>
+						<th width="80">{:L('STATUS')}</th>
+						<th width="180">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		$(document).ready(function() {
+			Wind.css('treeTable');
+			Wind.use('treeTable', function() {
+				$("#menus-table").treeTable({
+					indent : 20
+				});
+			});
+		});
+
+		setInterval(function() {
+			var refersh_time = getCookie('refersh_time_admin_menu_index');
+			if (refersh_time == 1) {
+				reloadPage(window);
+			}
+		}, 1000);
+		setCookie('refersh_time_admin_menu_index', 0);
+	</script>
+</body>
+</html>

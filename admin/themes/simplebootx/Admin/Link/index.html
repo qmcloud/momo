@@ -1,0 +1,65 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('link/index')}">{:L('ADMIN_LINK_INDEX')}</a></li>
+			<li><a href="{:U('link/add')}">{:L('ADMIN_LINK_ADD')}</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('Link/listorders')}">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('link/toggle',array('display'=>1))}" data-subcheck="true">{:L('DISPLAY')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('link/toggle',array('hide'=>1))}" data-subcheck="true">{:L('HIDE')}</button>
+			</div>
+			<php>$status=array("1"=>L('DISPLAY'),"0"=>L('HIDDEN'));</php>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th>{:L('NAME')}</th>
+						<th>{:L('LINK_ADDRESS')}</th>
+						<th width="45">{:L('STATUS')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="links" item="vo">
+					<tr>
+						<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.link_id}"></td>
+						<td><input name='listorders[{$vo.link_id}]' class="input input-order mr5" type='text' size='3' value='{$vo.listorder}'></td>
+						<td>{$vo.link_id}</td>
+						<td>{$vo.link_name}</td>
+						<td><a href="{$vo.link_url}" target="_blank">{$vo.link_url}</a></td>
+						<td>{$status[$vo['link_status']]}</td>
+						<td>
+							<a href="{:U('link/edit',array('id'=>$vo['link_id']))}">{:L('EDIT')}</a>|
+							<a href="{:U('link/delete',array('id'=>$vo['link_id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th>{:L('NAME')}</th>
+						<th>{:L('LINK_ADDRESS')}</th>
+						<th width="45">{:L('STATUS')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('link/toggle',array('display'=>1))}" data-subcheck="true">{:L('DISPLAY')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('link/toggle',array('hide'=>1))}" data-subcheck="true">{:L('HIDE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

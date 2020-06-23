@@ -1,0 +1,128 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			
+			<li class="active"><a >视频添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Video/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">视频状态</label>
+					
+						<div class="controls">
+							<label class="radio inline" ><input type="radio" name="status" value="1" checked  />通过</label>
+							<label class="radio inline" ><input type="radio" name="status" value="2" >不通过</label>
+						</div>
+					
+				</div>
+				<div class="control-group">
+					<label class="control-label">上下架状态</label>
+					<div class="controls">
+						<label class="radio inline" ><input type="radio" name="isdel" value="0" checked  />上架</label>
+						<label class="radio inline" ><input type="radio" name="isdel" value="1" >下架</label>
+					</div>
+				</div>
+
+				<div class="control-group" style="display: none;">
+					<label class="control-label">所有者</label>
+					<div class="controls">
+						<label class="radio inline" ><input type="radio" name="owner" value="0"   />管理员</label>
+						<label class="radio inline" ><input type="radio" name="owner" value="1"  checked>用户</label>
+					</div>
+				</div>
+
+				<div class="control-group" id="owner_uid">
+					<label class="control-label">视频所有者用户</label>
+					<div class="controls">
+						<input type="text" name="owner_uid" onkeyup="this.value=this.value.replace(/[^0-9-]+/,'');">
+						<span class="form-required">* 请填写用户id</span>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label">视频标题</label>
+					<div class="controls">
+						<input type="text" name="title">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				
+				
+				<div class="control-group">
+					<label class="control-label">图片</label>
+					<div class="controls">
+								<div >
+									<input type="hidden" name="thumb" id="thumb2" value="">
+									<a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb2',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+										    <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb2_preview" width="135" style="cursor: hand" />
+									</a>
+									<input type="button" class="btn btn-small" onclick="$('#thumb2_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb2').val('');return false;" value="取消图片">
+								</div>
+						<span class="form-required"></span>
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">视频上传型式</label>
+					<div class="controls">
+						<label class="radio inline" ><input type="radio" name="video_upload_type" value="0" checked  />视频链接</label>
+						<label class="radio inline" ><input type="radio" name="video_upload_type" value="1" >视频文件</label>
+					</div>
+				</div>
+
+				<div class="control-group video_url_area">
+					<label class="control-label">视频链接</label>
+					<div class="controls">
+						<input type="text" name="href">
+						<span class="form-required">* 以http://或https://开头</span>
+					</div>
+				</div>
+
+				<div class="control-group upload_video_area" style="display: none;">
+					<label class="control-label">上传视频</label>
+					<div class="controls">
+						<input type="file" name="file" />
+						<span class="form-required"></span>
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Video/passindex')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+	<script type="text/javascript">
+		$(function(){
+
+			$("input[name='video_upload_type']").click(function(){
+				var val=$("input[name='video_upload_type']:checked").val();
+				console.log(val);
+				if(val==0){
+					$(".video_url_area").show();
+					$(".upload_video_area").hide();
+				}else{
+					$(".video_url_area").hide();
+					$(".upload_video_area").show();
+					$("input[name='href']").val('');
+				}
+			});
+
+			$("input[name='owner']").on("click",function(){
+				var val=$(this).val();
+				if(val==1){ //所有者为用户
+					$("#owner_uid").show();
+				}else{
+					$("#owner_uid").hide();
+				}
+			});
+
+		});
+	</script>
+</body>
+</html>

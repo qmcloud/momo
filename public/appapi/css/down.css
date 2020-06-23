@@ -1,0 +1,75 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    width: 100%;
+    height: 100%;
+}
+.down{
+    width: 100%;
+    position: relative;
+}
+.down img.down_bg {
+    display: block;
+    width: 100%;
+    -webkit-user-select: none;
+    pointer-events: none;
+}
+.down .down_logo{
+    position:absolute;
+    top:5%;
+    width:100%;
+    text-align:center;
+}
+.down .down_logo img{
+    width:50px;
+}
+/*.box {
+    position: absolute;
+    width: 100%;
+    height: 730px;
+    bottom: 5.5rem;
+    left: 0;
+}
+.box a.ios {
+    background: url(../images/ios.png) no-repeat center center;
+    background-size: 100%;
+    margin-bottom: 0.5rem;
+}
+.box a.and {
+    background: url(../images/and.png) no-repeat center center;
+    background-size: 100%;
+    margin-bottom: 0.5rem;
+}
+.box a.comBtn {
+    display: block;
+    color: #ffffff;
+    width: 500px;
+    height: 200px;
+    margin: 0 auto;
+}*/
+
+.iosDownload{
+    width: 60%;
+    min-height: 70px;
+    max-height: 80px;
+    border-radius: .75rem;
+    background: url(../images/down/ios.png) no-repeat center center;
+    background-size: 100%;
+    position: absolute;
+    bottom: 35%;
+    left: 20%;
+}
+
+.androidDownload{
+    width: 60%;
+    min-height: 70px;
+    max-height: 80px;
+    border-radius: .75rem;
+    background: url(../images/down/and.png) no-repeat center center;
+    background-size: 100%;
+    position: absolute;
+    bottom: 25%;
+    left: 20%;
+}

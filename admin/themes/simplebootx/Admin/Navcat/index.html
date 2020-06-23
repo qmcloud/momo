@@ -1,0 +1,37 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('navcat/index')}">{:L('ADMIN_NAVCAT_INDEX')}</a></li>
+			<li><a href="{:U('navcat/add')}">{:L('ADMIN_NAVCAT_ADD')}</a></li>
+		</ul>
+		<form class="form-horizontal js-ajax-form" method="post">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th width="100">ID</th>
+						<th>{:L('NAME')}</th>
+						<th>{:L('DESCRIPTION')}</th>
+						<th width="120">{:L('MAIN_NAVCAT')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<foreach name="navcats" item="vo">
+				<tr>
+					<td>{$vo.navcid}</td>
+					<td>{$vo.name}</td>
+					<td>{$vo.remark}</td>
+					<td><php>$mainmenu=$vo['active']?L('YES'):L('NO');</php> {$mainmenu}</td>
+					<td>
+						<a href="{:U('navcat/edit',array('id'=>$vo['navcid']))}">{:L('EDIT')}</a>|
+						<a href="{:U('navcat/delete',array('id'=>$vo['navcid']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+					</td>
+				</tr>
+				</foreach>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

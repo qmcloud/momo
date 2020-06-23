@@ -1,0 +1,264 @@
+body{
+    background:#f5f5f5;
+}
+.main {
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.tab{
+    background:#fff;
+    height:55px;
+}
+.tab ul{}
+.tab ul li{
+    float:left;
+    width:50%;
+    height:50px;
+    line-height:50px;
+    text-align:center;
+    color:#969696;
+    font-size:1.6rem;
+}
+.tab ul li .tab_line{
+    display:none;
+    width: 30px;
+    height: 5px;
+    margin: 0 auto;
+    border-radius: 2px;
+}
+.tab ul li.on{
+    color:#323232;
+}
+.tab ul li.on .tab_line{
+    display:block;
+}
+.top-body{
+    background:#fff;
+}
+
+.main .title{
+	height:50px;
+	line-height:50px;
+	color:#646464;
+    border-bottom:1px solid #f5f5f5;
+    margin:0 10px;
+}
+
+
+.level {
+	position: relative;
+	padding-top:20px;
+	padding-bottom:20px;
+    background:url("../images/level/level_bg.png") no-repeat center bottom;
+    background-size:100%;
+}
+
+.level .speed
+{
+	overflow: hidden;
+}
+.level .speed .info
+{
+	height:120px;
+    text-align:center;
+}
+
+
+.level .speed .info .name{
+    position:relative;
+    margin: 0 auto;
+    padding-top: 9px;
+	width:96px;
+	height: 96px;
+	text-align:center;
+    z-index:0;
+}
+.level .speed .info .avatar_bg{
+    position:relative;
+    margin-top:-104px;
+ 	height:120px;
+	background:url(../images/level/level_thumb_bg.png) no-repeat top center;
+    background-size:auto 100%;
+    text-align:center;  
+    z-index:1
+}
+.level .speed .info .name img{
+    width:100%;
+    height:100%;
+    border-radius:50%;
+}
+
+.level .speed .info .tip{
+    position:relative;
+    margin:-28px auto 0;
+	width:180px;
+	height: 24px;
+	line-height:24px;
+	color: #fff;
+	text-align:center;
+    z-index:3;
+}
+
+.level .speed .level_val {
+	text-align: center;
+    line-height: 50px;
+	color:#646464;
+}
+
+.level .speed .level_jindu{
+    display: -webkit-flex; /* Safari */
+    display: flex;    
+    margin:0 15%;
+    justify-content: center;
+    align-items: center;
+}
+.level .speed .level_jindu_l{
+    
+    color:#c7c7c7;
+    font-size:1.2rem;
+}
+.level .speed .level_jindu_r{
+    
+    color:#c7c7c7;
+    font-size:1.2rem;
+}
+.level .speed .jindu{
+	width:80%;
+	height:4px;
+	overflow: hidden;
+	margin:0 15px;
+}
+
+.level .speed .jindu .levelnp {
+  display: block;
+  height: 4px;
+  width: 98%;
+  z-index: 10;
+  background: #ededeb;
+  border-radius: 4px;
+  text-align: center;
+}
+.level .speed .jindu .leveln {
+    height: 4px;
+    z-index: 5;
+}
+
+.level .speed .jindu .n1 {
+    background-color: #fff300;
+}
+.level .speed .jindu .n2 {
+    background-color: #ffc900;
+}
+
+.privilege{
+	padding:10px 0 20px;
+}
+.privilege ul {
+    padding-top: 20px;
+    margin: 0 60px;
+}
+.privilege ul li{
+	float:left;
+	width:50%;
+	text-align:center;
+}
+.privilege ul li img{
+	max-width:36%;
+}
+.privilege ul li .privilege_t{
+    color:#646464;
+    font-size:1.2rem;
+    font-weight:bold;
+	text-align:center;
+}
+.upgrade{
+	padding:10px 0 20px;
+}
+
+.upgrade .body{
+	text-align:center;
+}
+.upgrade .body img{
+	max-width:100%;
+}
+
+.tips{
+    margin:0 10px;
+	height:50px;
+	line-height:50px;
+    background:url('../images/right.png') no-repeat right center;
+    background-size:20px;
+}
+
+.tips a{
+    display:block;
+	color:#888888;
+	text-decoration:none;
+}
+
+/* 等级说明 */
+.explain{
+	
+}
+.explain .explain-top{
+	line-height:55px;
+	padding:0 10px;
+}
+
+.explain-top fieldset{
+  padding:10px 0;
+  border-top:#dfdfdf solid 1px;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+} 
+
+.explain-top legend{
+  color:#000;
+  padding:0 10px 0 0;
+  background:#fff;
+} 
+
+.explain .list{
+
+}
+.list table{
+	width:100%;
+}
+
+.list table tr:nth-child(odd){
+	background: #fcfcfc;
+}
+
+.list table tr:nth-child(even){
+	background: #fcfcfc;
+}
+
+.list table tr:first-child{
+	background:#fff;
+}
+.list table th,.list table td{
+	text-align:center;
+	line-height: 40px;
+    border-bottom:1px solid #f5f5f5;
+    border-left:1px solid #f5f5f5;
+    margin-left:-1px;
+}
+.list table td{
+	color:#646464;
+
+}
+.list table th td:first-child{
+    border-left:none;
+    margin-left:0;
+}
+.list table tr td:first-child{
+    border-left:none;
+    margin-left:0;
+}
+
+.list table img{
+    height:2rem;
+}

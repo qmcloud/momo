@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no" name="format-detection" />
+		<title>贡献</title>
+		<link href='__PUBLIC__/home/css/level.css' rel="stylesheet" type="text/css" >
+		<link href='__PUBLIC__/appapi/contribute/css/order.css' rel="stylesheet" type="text/css" >
+	</head>
+	<body>
+
+		<div>
+			<ul class="list">
+				<volist name="list" id="v">
+					<if condition="$i eq 1">
+					<li class="order1">
+						<div class="info">
+							<div class="avatar">
+								<img src="{$v['userinfo']['avatar']}" onerror="this.src='__PUBLIC__/images/headicon.png'">
+								<span></span>
+							</div>
+							<div class="name">
+								{$v['userinfo']['user_nicename']} 
+								<img src="__PUBLIC__/appapi/images/<if condition="$v['userinfo']['sex'] eq 1">man<else/>woman</if>.png" class="sex"> 
+								<span class="ICON-anchor-level ICON-al-{$v['userinfo']['level_anchor']}"></span>
+								<span class="ICON-noble-level ICON-nl-{$v['userinfo']['level']}"></span>
+							</div>
+							<div class="contribute">
+								贡献<span class="contribute-nums">{$v['total']}</span>收入
+							</div>
+						</div>				
+					</li>	
+					<else/>
+					<li>
+						<div class="nums">{$i}</div>
+						<div class="avatar">
+							<img src="{$v['userinfo']['avatar']}" onerror="this.src='__PUBLIC__/images/headicon.png'">
+						</div>
+						<div class="info">
+							<div class="name">
+								<span>{$v['userinfo']['user_nicename']}</span> 
+								<img src="__PUBLIC__/appapi/images/<if condition="$v['userinfo']['sex'] eq 1">man<else/>woman</if>.png" class="sex"> 
+								<span class="ICON-anchor-level ICON-al-{$v['userinfo']['level_anchor']}"></span>
+								<span class="ICON-noble-level ICON-nl-{$v['userinfo']['level']}"></span>
+							</div>
+							<div class="contribute">
+								<span class="contribute-nums">{$v['total']}</span>
+							</div>
+						</div>
+					</li>	
+					</if>
+				
+				</volist>
+
+
+			</ul>
+		</div>
+
+	</body>
+</html>

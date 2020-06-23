@@ -1,0 +1,24 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<div id="error_tips">
+			<h2>菜单备份成功！</h2>
+			<div class="error_cont">
+				<ul>
+					<li>菜单备份成功！</li>
+				</ul>
+				<div class="error_return">
+					<a href="{:U('menu/index')}" class="btn">关闭</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		var close_timeout = setTimeout(function() {
+			location.href = "{:U('menu/index')}";
+		}, 2000);
+	</script>
+</body>
+</html>

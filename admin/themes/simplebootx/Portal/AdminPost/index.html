@@ -1,0 +1,166 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="javascript:;">{:L('PORTAL_ADMINPOST_INDEX')}</a></li>
+			<li><a href="{:U('AdminPost/add',array('term'=>empty($term['term_id'])?'':$term['term_id']))}" target="_self">{:L('PORTAL_ADMINPOST_ADD')}</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('AdminPost/index')}">
+			分类： 
+			<select class="select_2" name="term">
+				<option value='0'>全部</option>{$taxonomys}
+			</select> &nbsp;&nbsp;
+			时间：
+			<input type="text" name="start_time" class="js-date" value="{$formget.start_time|default=''}" style="width: 80px;" autocomplete="off">-
+			<input type="text" class="js-date" name="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入关键字...">
+			<input type="submit" class="btn btn-primary" value="搜索" />
+		</form>
+		<form class="js-ajax-form" action="" method="post">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/listorders')}">{:L('SORT')}</button>
+				<!-- <button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/check',array('check'=>1))}" data-subcheck="true" style="display:none;">审核</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/check',array('uncheck'=>1))}" data-subcheck="true" style="display:none;">取消审核</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/top',array('top'=>1))}" data-subcheck="true" style="display:none;">置顶</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/top',array('untop'=>1))}" data-subcheck="true" style="display:none;">取消置顶</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/recommend',array('recommend'=>1))}" data-subcheck="true">推荐</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/recommend',array('unrecommend'=>1))}" data-subcheck="true">取消推荐</button> -->
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/delete')}" data-subcheck="true" data-msg="你确定删除吗？">{:L('DELETE')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/recommend',array('recommend'=>1))}" data-subcheck="true">推荐</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/recommend',array('unrecommend'=>1))}" data-subcheck="true">取消推荐</button>
+				<button class="btn btn-primary btn-small js-articles-move" type="button" style="display:none;">批量移动</button>
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">{:L('ID')}</th>
+						<th>{:L('TITLE')}</th>
+						<th>{:L('CATEGORY')}</th>
+						<th width="50" style="display:none;">{:L('HITS')}</th>
+						<th width="50" style="display:none;">{:L('COMMENT_COUNT')}</th>
+						<th width="50" style="display:none;">{:L('KEYWORDS')}</th>
+						<th width="50" style="display:none;">{:L('SOURCE')}</th>
+						<th width="50" style="display:none;">{:L('ABSTRACT')}</th>
+						<th width="50" style="display:none;">{:L('THUMBNAIL')}</th>
+						<th width="80">{:L('AUTHOR')}</th>
+						<th width="70">{:L('PUBLISH_DATE')}</th>
+					<th width="50">{:L('STATUS')}</th> 
+						<th width="70">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<php>
+				$status=array("1"=>"已审核","0"=>"未审核");
+				$top_status=array("1"=>"已置顶","0"=>"未置顶");
+				$recommend_status=array("1"=>"已推荐","0"=>"未推荐");
+				</php>
+				<foreach name="posts" item="vo">
+				<tr>
+					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.tid}" title="ID:{$vo.tid}"></td>
+					<td><input name="listorders[{$vo.tid}]" class="input input-order" type="text" size="5" value="{$vo.listorder}" title="ID:{$vo.tid}"></td>
+					<td> <span>{$vo.id}</span></td>
+					<td  style="display:none;"<a href="{:U('portal/article/index',array('id'=>$vo['tid']))}" target="_blank"> <span>{$vo.post_title}</span></a></td>
+					<td><a href="{:U('portal/page/news',array('id'=>$vo['id']))}" target="_blank"> <span>{$vo.post_title}</span></a></td>
+					<td>{$terms[$vo['term_id']]}</td>
+					<td style="display:none;">{$vo.post_hits}</td>
+					<td style="display:none;"><a href="javascript:open_iframe_dialog('{:U('comment/commentadmin/index',array('post_id'=>$vo['id']))}','评论列表')">{$vo.comment_count}</a></td>
+					<td style="display:none;">{$excerpt_keywords = empty($vo['post_keywords'])?"":'已填写'}</td>
+					<td style="display:none;">{$excerpt_source = empty($vo['post_source'])?" ":'已填写'}</td>
+					<td style="display:none;">{$excerpt_excerpt = empty($vo['post_excerpt'])?" ":'已填写'}</td>
+					<td style="display:none;">
+						<php>$smeta=json_decode($vo['smeta'],true);</php>
+						<if condition="!empty($smeta['thumb'])">
+							<a href="{:sp_get_asset_upload_path($smeta['thumb'])}" target='_blank'>查看</a>
+						</if>
+					</td>
+					<td>{$users[$vo['post_author']]['user_login']}</td>
+					<td>{$vo.post_date}</td>
+					<td style="display:none;">{$status[$vo['post_status']]}<br>{$top_status[$vo['istop']]}<br>{$recommend_status[$vo['recommended']]}</td>
+					<td>{$recommend_status[$vo['recommended']]}</td>
+					<td>
+						<a href="{:U('AdminPost/edit',array('term'=>empty($term['term_id'])?'':$term['term_id'],'id'=>$vo['id']))}">{:L('EDIT')}</a> | 
+						<a href="{:U('AdminPost/delete',array('term'=>empty($term['term_id'])?'':$term['term_id'],'tid'=>$vo['tid']))}" class="js-ajax-delete">{:L('DELETE')}</a></td>
+				</tr>
+				</foreach>
+				<tfoot>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th>{:L('TITLE')}</th>
+						<th>{:L('CATEGORY')}</th>
+						<th width="50" style="display:none;">{:L('HITS')}</th>
+						<th width="50" style="display:none;">{:L('COMMENT_COUNT')}</th>
+						<th width="50" style="display:none;">{:L('KEYWORDS')}</th>
+						<th width="50" style="display:none;">{:L('SOURCE')}</th>
+						<th width="50" style="display:none;">{:L('ABSTRACT')}</th>
+						<th width="50" style="display:none;">{:L('THUMBNAIL')}</th>
+						<th width="80">{:L('AUTHOR')}</th>
+						<th width="70">{:L('PUBLISH_DATE')}</th>
+						<th width="50">{:L('STATUS')}</th> 
+						<th width="70">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/listorders')}">{:L('SORT')}</button>
+				<!-- <button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/check',array('check'=>1))}" data-subcheck="true" style="display:none;">审核</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/check',array('uncheck'=>1))}" data-subcheck="true" style="display:none;">取消审核</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/top',array('top'=>1))}" data-subcheck="true" style="display:none;">置顶</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/top',array('untop'=>1))}" data-subcheck="true" style="display:none;">取消置顶</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/recommend',array('recommend'=>1))}" data-subcheck="true">推荐</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/recommend',array('unrecommend'=>1))}" data-subcheck="true">取消推荐</button> -->
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('AdminPost/delete')}" data-subcheck="true" data-msg="你确定删除吗？">{:L('DELETE')}</button>
+				<button class="btn btn-primary btn-small js-articles-move" type="button" style="display:none;">批量移动</button>
+			</div>
+			<div class="pagination">{$Page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		function refersh_window() {
+			var refersh_time = getCookie('refersh_time');
+			if (refersh_time == 1) {
+				window.location = "{:U('AdminPost/index',$formget)}";
+			}
+		}
+		setInterval(function() {
+			refersh_window();
+		}, 2000);
+		$(function() {
+			setCookie("refersh_time", 0);
+			Wind.use('ajaxForm', 'artDialog', 'iframeTools', function() {
+				//批量移动
+				$('.js-articles-move').click(function(e) {
+					var str = 0;
+					var id = tag = '';
+					$("input[name='ids[]']").each(function() {
+						if ($(this).attr('checked')) {
+							str = 1;
+							id += tag + $(this).val();
+							tag = ',';
+						}
+					});
+					if (str == 0) {
+						art.dialog.through({
+							id : 'error',
+							icon : 'error',
+							content : '您没有勾选信息，无法进行操作！',
+							cancelVal : '关闭',
+							cancel : true
+						});
+						return false;
+					}
+					var $this = $(this);
+					art.dialog.open("__ROOT__/index.php?g=portal&m=AdminPost&a=move&ids="+ id, {
+						title : "批量移动",
+						width : "80%"
+					});
+				});
+			});
+		});
+	</script>
+</body>
+</html>

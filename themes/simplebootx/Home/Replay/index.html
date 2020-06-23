@@ -1,0 +1,227 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/index.css"/>
+
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+	
+    <div class="scroll_top">
+			<div class="fullSlide">
+				
+				<div class="bd">
+					<ul>
+						<volist name='slide' id='vo' key='k'>
+							<li _src="url({$vo.slide_pic})" ><a target="_blank" href="{$vo.slide_url}"></a></li>
+		        </volist>
+					</ul>
+				</div>
+		
+				<div class="hd"><ul></ul></div>
+				<span class="prev"></span>
+				<span class="next"></span>
+			</div>        	
+    </div>		
+	
+	
+	<div id="doc-bd">
+		<div class="container clearfix">
+			<div class="main clearfix">
+				<div id="focuspic" class="focuspic feed-list">
+					<ul class="list">
+						<volist name="recommend" id="v">
+						 <if condition="$i eq '1'">
+						 <li class="special live feed"><a class="link clearfix" target="_blank" href="./{$v['id']}"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/>
+							<p class="user">
+								<span class="username">{$v['user_nicename']}</span><span class="watches"><span class="sub">{$v['liveinfo']['nums']}</span></span>
+							</p>
+							</a></li>
+						 <else/>
+							 <li class="normal  <if condition="$v['islive'] eq '1'">live<else/>review</if> feed"><a class="link clearfix" target="_blank" href="./{$v['id']}"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/>
+								<p class="user">
+									<span class="username">{$v['user_nicename']}</span><span class="watches"><span class="sub">{$v['liveinfo']['nums']}</span></span>
+								</p>
+								</a></li>
+						 </if>
+						
+						</volist>
+					</ul>
+				</div>
+				<!-- 热门直播 -->
+				<div class="g-box feed-list" id="hot">
+					<div class="box-hd">
+						<h2 class="box-title"><span class="icon"></span>热门直播</h2>
+					<!-- 	<a class="box-more" href="/category/1">查看更多 &gt;&gt;</a> -->
+					</div>
+					<div class="box-bd">
+						<ul class="list">
+						  <volist name="hot" id="v">
+							<li class="feed <if condition="$v['islive'] eq '1'">live<else/>review</if> "><a class="link" href="./{$v['userinfo']['id']}" target="_blank"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['userinfo']['avatar']}"/>
+							<p class="user">
+								<img class="avatar thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['userinfo']['avatar']}"/><span class="username">{$v['userinfo']['user_nicename']}</span>
+							</p>
+							<div class="comment">
+								<div class="comment-inner">
+									<if condition="$v['title']">
+										{$v['title']}
+									<else/>
+										此处应该有互动
+									</if>
+								</div>
+							</div>
+							</a></li>
+							</volist>
+							
+						</ul>
+					</div>
+				</div>				
+				<!-- 正在直播 -->
+				<div class="g-box feed-list" id="living">
+					<div class="box-hd">
+						<h2 class="box-title"><span class="icon"></span>正在直播</h2>
+					</div>
+					<div class="box-bd">
+						<ul class="list">
+						  <volist name="live" id="v">
+							<li class="feed <if condition="$v['islive'] eq '1'">live<else/>review</if>"><a class="link" href="./{$v['userinfo']['id']}" target="_blank"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['userinfo']['avatar']}"/>
+							<p class="user">
+								<img class="avatar thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['userinfo']['avatar']}"/><span class="username">{$v['userinfo']['user_nicename']}</span>
+							</p>
+							<div class="comment">
+								<div class="comment-inner">
+									<if condition="$v['title']">
+										{$v['title']}
+									<else/>
+										此处应该有互动
+									</if>
+								</div>
+							</div>
+							</a></li>
+							</volist>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="side clearfix">
+				<div class="download">
+					<div class="headline">
+						<a href="#" target="_blank"><img src="http://p0.qhimg.com/t012fba3e01107b75a7.jpg" width="100%" alt=""/>
+						<div class="logo-slogan">
+						</div>
+						</a>
+					</div>
+					<div class="btns clearfix">
+						<a href="{$config['app_android']}" class="btn-android" target="_blank"></a>
+						<a href="{$config['app_ios']}" class="btn-iphone" target="_blank"></a>
+					</div>
+					<dl class="qrcode">
+						<dt class="title">
+						<span>或扫描二维码下载直播APP</span>
+						</dt>
+						<dd class="pic">
+						<img src="{$config['qr_url']}" alt=""/>
+						</dd>
+					</dl>
+				</div>
+				<div class="sidebar">
+					<div class="g-box" id="author-top">
+						<div class="box-hd">
+							<h2 class="box-title"><span class="icon"></span>主播排行榜</h2>
+							<a href="" class="box-more"></a>
+						</div>
+						<div class="box-bd">
+							<ul class="rank-list">
+							  <volist name="anchorlist" id="v">
+								
+								<li class="item" data-userid="{$v['uid']}"><a href="#" class="link">
+								<div class="avatar">
+									<img src="{$v['userinfo']['avatar']}" width="45" height="45" alt=""/>
+									<span class="icon icon-top rank-{$i}"></span>
+								</div>
+								<div class="nickname">
+									{$v['userinfo']['user_nicename']}
+								</div>
+								</a>
+								<div class="fans">
+									<span class="icon icon-top"></span> {$v['light']}
+								</div>
+								 <if condition="$v['isAttention'] eq '1'">
+									<a href="###" class="btn-follow j-follow followed">已关注</a></li>
+								 <else/>
+									<a href="###" class="btn-follow j-follow ">+关注</a></li>
+									</if>
+								</volist>
+
+							</ul>
+						</div>
+					</div>
+					<div class="g-box" id="topic-plan">
+						<div class="box-hd">
+							<h2 class="box-title"><span class="icon"></span>专题策划</h2>
+							<a href="" class="box-more"></a>
+						</div>
+						<div class="box-bd">
+							<div class="topic">
+								<div class="pic">
+									<a href="{$ads[0]['url']}" target="_blank"><img src="{$ads[0]['thumb']}" width="245" height="130" alt=""/><span class="mask"></span></a>
+								</div>
+								<div class="content">
+									<h3 class="title"><a href="{$ads[0]['url']}" target="_blank">{$ads[0]['name']}</a></h3>
+									<p class="desc">
+										{$ads[0]['des']}
+									</p>
+									<p class="more">
+										<a href="{$ads[0]['url']}" target="_blank">查看详情</a>
+									</p>
+								</div>
+							</div>
+							<ul class="topics">
+							  <volist name="ads" id="v" offset="1" length="6">
+									<li><a href="{$v['url']}" target="_blank"><img src="{$v['thumb']}"/></a></li>
+							  </volist>
+
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+<tc_include file="Public:footer" />
+	<!--
+下线时将下面div元素的style改为"display:none;"
+上线时将下面div元素的style改为"display:block;"
+图片尺寸100X100
+-->
+	<div id="right-fixed-position" class="right-fixed-position" style="display:none;" >
+		<a href="#" class="close"></a>
+		<a href="#" class="link" target="_blank"><img src="#"/></a>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.SuperSlide.2.1.1.js"></script>  
+<script>
+(function(){
+	/* 控制左右按钮显示 */
+	jQuery(".fullSlide").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.5) },function(){ jQuery(this).find(".prev,.next").fadeOut() });
+
+	/* 调用SuperSlide */
+	jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click",
+		startFun:function(i){
+			var curLi = jQuery(".fullSlide .bd li").eq(i); /* 当前大图的li */
+			if( !!curLi.attr("_src") ){
+				curLi.css("background-image",curLi.attr("_src")).removeAttr("_src") /* 将_src地址赋予li背景，然后删除_src */
+			}
+		}
+	});	
+})()
+</script>
+<script>
+$(function(){
+	//图片延迟加载
+	$("img.thumb").lazyload({effect: "fadeIn"});		
+})
+</script>
+
+</body>
+</html>

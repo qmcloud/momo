@@ -1,0 +1,191 @@
+<admintpl file="header" />
+<style>
+.comment_lists_table{
+	border: 0;
+	width: 100%;
+}
+.comment_lists_table td{
+	border:0;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		
+
+		<form method="post" class="js-ajax-form">
+
+			<if condition="!empty($lists)">
+			<table class="table table-hover table-bordered">
+				
+				<tbody>
+					
+					<foreach name="lists" item="vo">
+						<tr>
+							<td align="center">
+								<table class="table table-hover table-bordered comment_lists_table">
+									<tbody>
+										<tr>
+											<td width="70%">{$vo['content']}</td>
+											<td width="30%">{$vo['user_nicename']}({$vo['uid']})</td>
+										</tr>
+										<tr>
+											<td>评论时间 : {$vo.addtime|date="Y-m-d H:i:s",###}</td>
+											<td>获赞数:{$vo['likes']}</td>
+										</tr>
+									</tbody>
+								</table>
+							</td>
+							
+						</tr>
+					</foreach>
+					
+				</tbody>
+			</table>
+
+			<else />
+				<table style="border: none;width: 100%;">
+					<tbody>
+						<tr>
+							<td style="border: none;height: 50px;line-height: 50px;text-align: center;">暂无评论数据~</td>
+						</tr>
+					</tbody>
+				</table>
+			</if>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/layer/layer.js"></script>
+	<script type="text/javascript">
+
+
+		var xiajia_status=0;
+		var del_status=0;
+
+		function xiajia(id){
+			var p={$p};
+
+			layer.open({
+			  type: 1,
+			  title:"是否确定将该视频下架",
+			  skin: 'layui-layer-rim', //加上边框
+			  area: ['30%', '30%'], //宽高
+			  content: '<div class="textArea"><textarea id="xiajia_reason" maxlength="50" placeholder="请输入下架原因,最多50字" /> </div><div class="textArea_btn" ><input type="button" id="xiajia" value="下架" onclick="xiajia_submit('+id+','+p+')" /><input type="button" onclick="layer.closeAll();" value="取消" /></div>'
+			});
+		}
+
+		function xiajia_submit(id,p){
+
+			var reason=$("#xiajia_reason").val();
+			if(xiajia_status==1){
+				return;
+			}
+			xiajia_status=1;
+			$.ajax({
+				url: '/index.php?g=Admin&m=Video&a=setXiajia',
+				type: 'POST',
+				dataType: 'json',
+				data: {id:id,reason: reason},
+				success:function(data){
+					var code=data.code;
+					if(code!=0){
+						layer.msg(data.msg);
+						return;
+					}
+					xiajia_status=0;
+					//设置按钮不可用
+					$("#xiajia").attr("disabled",true);
+					layer.msg("下架成功",{icon: 1,time:1000},function(){
+						layer.closeAll();
+						location.href='/index.php?g=Admin&m=Video&a=index&p='+p;
+					});
+				},
+				error:function(e){
+					$("#xiajia").attr("disabled",false);
+					console.log(e);
+				}
+			});
+			
+			
+		}
+
+		function del(id){
+			var p={$p};
+
+			layer.open({
+			  type: 1,
+			  title:"是否确定将该视频删除",
+			  skin: 'layui-layer-rim', //加上边框
+			  area: ['30%', '30%'], //宽高
+			  content: '<div class="textArea"><textarea id="del_reason" maxlength="50" placeholder="请输入删除原因,最多50字" /> </div><div class="textArea_btn" ><input type="button" id="delete" value="删除" onclick="del_submit('+id+','+p+')" /><input type="button" onclick="layer.closeAll();" value="取消" /></div>'
+			});
+		}
+
+		function del_submit(id,p){
+
+			var reason=$("#del_reason").val();
+
+			if(del_status==1){
+				return;
+			}
+
+			del_status=1;
+
+			$.ajax({
+				url: '/index.php?g=Admin&m=Video&a=del',
+				type: 'POST',
+				dataType: 'json',
+				data: {id:id,reason: reason},
+				success:function(data){
+					var code=data.code;
+					if(code!=0){
+						layer.msg(data.msg);
+						return;
+					}
+
+					del_status=0;
+					//设置按钮不可用
+					$("#delete").attr("disabled",true);
+
+					layer.msg("删除成功",{icon: 1,time:1000},function(){
+						layer.closeAll();
+						location.href='/index.php?g=Admin&m=Video&a=index&p='+p;
+					});
+				},
+				error:function(e){
+					$("#delete").attr("disabled",false);
+					console.log(e);
+				}
+			});
+			
+			
+		}
+
+		/*获取视频评论列表*/
+		function commentlists(videoid){
+			layer.open({
+				type: 2,
+				title: '视频评论列表',
+				shadeClose: true,
+				shade: 0.8,
+				area: ['60%', '90%'],
+				content: '/index.php?g=Admin&m=Video&a=commentlists&videoid='+videoid 
+			}); 
+		}
+	</script>
+
+	<script type="text/javascript">
+		function videoListen(id){
+			layer.open({
+			  type: 2,
+			  title: '观看视频',
+			  shadeClose: true,
+			  shade: 0.8,
+			  area: ['500px', '750px'],
+			  content: '/index.php?g=Admin&m=Video&a=video_listen&id='+id
+			}); 
+		}
+	</script>
+</body>
+</html>

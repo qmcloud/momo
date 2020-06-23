@@ -1,0 +1,15 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/index.css"/>
+
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+	 <form action="{:U('Jiazu/sqagent')}" method="post" enctype="multipart/form-data" id="createfamily">
+		<input type="file" class="family_logo" name="familyimg" />
+		 <button class="submit_btn">确认申请</button>
+	</form>
+</div>
+</body>
+</html>

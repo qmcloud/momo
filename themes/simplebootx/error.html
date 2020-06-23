@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/common.css"/>
+		<title>ThinkCMF-跳转提示</title>
+		<tc_include file="Public/head"/>
+		<style type="text/css">
+		*{ padding: 0; margin: 0; }
+		body{ background: #fff; font-family: '微软雅黑'; color: #333; font-size: 16px; }
+		.system-message{ padding: 24px 48px;text-align: center; }
+		.system-message h1{ font-size: 20px; font-weight: normal; line-height: 60px;text-align: center;}
+		.system-message .jump{ margin-top:-40px;text-align:center}
+		.system-message .success,.system-message .error{ line-height: 1.8em; font-size: 36px;margin-top:-40px}
+		.system-message .detail{ font-size: 12px; line-height: 20px; margin-top: 12px; display:none}
+		</style>
+	</head>
+<body class="body-white">
+	<tc_include file="Public:header" />
+	<div class="system-message">
+	<present name="message">
+	<h1>尚未登录</h1> 
+	<p class="success"><?php echo($message); ?></p>
+	<else/>
+	<!-- <h1>尚未登录</h1> -->
+	<p class="error" style="text-align:center"><img src="__PUBLIC__/home/images/Nologon.gif"></p>
+	</present>
+	<p class="detail"></p>
+	<p class="jump">
+	<a id="href" href="<?php echo($jumpUrl); ?>"></a><?php echo($error); ?><b id="wait"><?php echo($waitSecond); ?></b>
+	</p>
+	</div>
+	<script type="text/javascript">
+	(function(){
+	var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+	var interval = setInterval(function(){
+		var time = --wait.innerHTML;
+		if(time <= 0) {
+			location.href = href;
+			clearInterval(interval);
+		
+		};
+	}, 1000);
+	})();
+	</script>
+
+</body>
+</html>

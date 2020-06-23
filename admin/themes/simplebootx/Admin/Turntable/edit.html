@@ -1,0 +1,123 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('turntable/index')}">列表</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('turntable/edit_post')}">
+		   <input type="hidden" name="id" value="{$data['id']}">
+			<fieldset>
+                <div class="control-group">
+					<label class="control-label">类型</label>
+					<div class="controls" style="position:relative;">
+                        <select name="type" id="type">
+                            <volist name="type" id="vo">
+                            <option value="{$key}" <if condition="$data['type'] eq $key">selected</if> >{$vo}</option>
+                            </volist>
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+				<div id="coin" class="control-group" <if condition="$data['type'] neq 1">style="display:none"</if> >
+					<label class="control-label">钻石数</label>
+					<div class="controls">
+						<input type="text" name="coin" value="{$data['type_val']}"> 整数
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div id="offline" <if condition="$data['type'] neq 3">style="display:none"</if>>
+                <div class="control-group"  >
+					<label class="control-label">线下奖品名称</label>
+					<div class="controls">
+						<input type="text" name="name" value="{$data['type_val']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">奖品图片</label>
+					<div class="controls">
+                        <input type="hidden" name="thumb" id="thumb2" value="{$data['thumb']}">
+                        <a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb2',thumb_images,'1,jpg|jpeg|gif|png,1,,,1','','','');return false;">
+                            <if condition="$data['thumb'] neq ''">
+                            <img src="{:get_upload_path($data['thumb'])}" id="thumb2_preview" width="135" style="cursor: hand" />
+                            <else/>
+                            <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb2_preview" width="135" style="cursor: hand" />
+                            </if>
+                        </a>
+                        <input type="button" class="btn btn-small" onclick="$('#thumb2_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb2').val('');return false;" value="取消图片"> 建议尺寸：100X100
+						<span class="form-required"></span>
+					</div>
+				</div>
+                </div>
+                
+				<div id="gift" class="control-group" <if condition="$data['type'] neq 2">style="display:none"</if> >
+					<label class="control-label">礼物</label>
+					<div class="controls">
+						<select name="giftid">
+                            <volist name="gift" id="vo">
+                            <option value="{$vo['id']}" <if condition="$data['type_val'] eq $vo['id']">selected</if> >{$vo['giftname']}</option>
+                            </volist>
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div id="rate" class="control-group" <if condition="$data['type'] eq 0">style="display:none"</if>>
+					<label class="control-label">中奖比例</label>
+					<div class="controls">
+						<input type="text" name="rate" value="{$data['rate']}">% 范围：0.001% - 100% 
+						<span class="form-required">*</span>
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('turntable/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+    <script>
+    (function(){
+        $("#type").change(function(){
+            var type=$(this).val();
+            if(type==0){
+                $("#coin").hide();
+                $("#gift").hide();
+                $("#offline").hide();
+                $("#rate").hide();
+            }
+            
+            if(type==1){
+                $("#coin").show();
+                $("#gift").hide();
+                $("#offline").hide();
+                $("#rate").show();
+            }
+            
+            if(type==2){
+                $("#coin").hide();
+                $("#gift").show();
+                $("#offline").hide();
+                $("#rate").show();
+            }
+            
+            if(type==3){
+                $("#coin").hide();
+                $("#gift").hide();
+                $("#offline").show();
+                $("#rate").show();
+            }
+            
+        })
+    })()
+    </script>
+</body>
+</html>

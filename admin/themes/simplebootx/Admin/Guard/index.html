@@ -1,0 +1,56 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Guard/index')}">列表</a></li>
+			<!-- <li><a href="{:U('Guard/add')}">添加</a></li> -->
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('Guard/listorders')}">
+		  <div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+					   <th>序号</th>
+						<th align="center">ID</th>
+						<th>名称</th>
+						<th>类型</th>
+						<th>价格</th>
+						<th>时长</th>
+						<th>发布时间</th>
+						<th>更新时间</th>
+
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+					  <td><input name="listorders[{$vo['id']}]" type="text" size="3" value="{$vo['orderno']}" class="input input-order"></td>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['name']}</td>
+						<td>{$type_a[$vo['type']]}</td>
+						<td>{$vo['coin']}</td>
+						<td>{$vo['length']}{$length_type_a[$vo['length_type']]}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td>{$vo.uptime|date="Y-m-d H:i:s",###}</td>
+
+						<td align="center">	
+							<a href="{:U('Guard/edit',array('id'=>$vo['id']))}" >编辑</a>
+							<!-- <a href="{:U('Guard/del',array('id'=>$vo['id']))}"  class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a> -->
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+				<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

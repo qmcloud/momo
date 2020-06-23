@@ -1,0 +1,67 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#A" data-toggle="tab">{:L('QQ_CONNECT')}</a></li>
+			<li><a href="#B" data-toggle="tab">{:L('WEIBO_CONNECT')}</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('oauthadmin/setting_post')}">
+			<div class="tabbable">
+				<div class="tab-content">
+					<div class="tab-pane active" id="A">
+						<table width="100%" cellpadding="2" cellspacing="2">
+							<tbody>
+								<tr>
+									<td width="140">APPkey</td>
+									<td><input type="text" name="qq_key" value="{$Think.config.THINK_SDK_QQ.APP_KEY}" /></td>
+								</tr>
+								<tr>
+									<td>APPsecret</td>
+									<td><input type="text" name="qq_sec" value="{$Think.config.THINK_SDK_QQ.APP_SECRET}" /></td>
+								</tr>
+								<tr>
+									<td>授权回调页：</td>
+									<td>{:sp_get_host()}/index.php</td>
+								</tr>
+								<tr>
+									<td colspan="2"><a href="http://connect.qq.com/" target="_blank">{:L('CLICK_HERE')}</a>{:L('GET_QQ_APPKEY_AND_APPSECRET')}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="tab-pane" id="B">
+						<table width="100%">
+							<tbody>
+								<tr>
+									<td width="140">APPkey</td>
+									<td><input type="text" name="sina_key" value="{$Think.config.THINK_SDK_SINA.APP_KEY}" /></td>
+								</tr>
+								<tr>
+									<td>APPsecret</td>
+									<td><input type="text" name="sina_sec" value="{$Think.config.THINK_SDK_SINA.APP_SECRET}" /></td>
+								</tr>
+								<tr>
+									<td>{:L('CALLBACK_URL')}</td>
+									<td>{$callback_uri_root}sina</td>
+								</tr>
+								<tr>
+									<td>{:L('CANCEL_CALLBACK_URL')}</td>
+									<td>{:sp_get_host()}</td>
+								</tr>
+								<tr>
+									<td colspan="2"><a href="http://open.weibo.com/" target="_blank">{:L('CLICK_HERE')}</a> {:L('GET_WEIBO_APPKEY_AND_APPSECRET')}</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('SAVE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Vip/user_index')}">列表</a></li>
+			<li><a href="{:U('Vip/user_add')}">添加</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('Vip/user_listorders')}">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>用户ID</th>
+						<th>用户昵称</th>
+						<th>VIP类型</th>
+						<th>到期时间</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						
+						<td>{$vo['uid']}</td>
+						<td>{$vo['userinfo']['user_nicename']}</td>
+						<td>{$type[$vo['type']]}</td>
+						<td>{$vo.endtime|date="Y-m-d H:i:s",###}</td>
+						<td align="center">	
+							<a href="{:U('Vip/user_edit',array('id'=>$vo['id']))}" >编辑</a>
+							<a href="{:U('Vip/user_del',array('id'=>$vo['id']))}"  class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

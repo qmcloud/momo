@@ -1,0 +1,87 @@
+<admintpl file="header"/>
+</head>
+<body>
+<div class="wrap">
+  <ul class="nav nav-tabs">
+     <li class="active"><a href="{:U('Admin/backup/restore')}">{:L('ADMIN_BACKUP_RESTORE')}</a></li>
+  </ul>
+  <div class="common-form">
+    <form action="{:U('Admin/backup/import')}" method="post">
+    	<div class="table_list">
+    	<table width="100%" cellspacing="0" class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th align="left">{:L('NAME')}</th>
+                    <th>{:L('FILE_SIZE')}</th>
+                    <th>{:L('BACKUP_TIME')}</th>
+                    <th>{:L('ACTIONS')}</th>
+                </tr>
+            </thead>
+        	<tbody>
+            <volist name="backups" id="val">
+            <tr class="collapsed">
+                <td>
+                    <span style="padding-left: 20px" name="{$val.name}" class="expander"></span>
+                    {$val.name}
+                </td>
+                <td>{$val.total_size}kb</td>
+                <td>{$val.date_str}</td>
+                <td>
+                    <a href="{:U('Admin/backup/del_backup', array('backup'=>$val['name']))}"  class="js-ajax-delete">{:L('DELETE')}</a> | 
+                    <a href="{:U('Admin/backup/import', array('backup'=>$val['name']))}" class="js-ajax-dialog-btn" data-msg="确定恢复吗？">{:L('RESTORE')}</a>
+                </td>
+            </tr>
+            <volist name="val['vols']" id="vol">
+            <tr parent="{$val.name}" class="hide">
+                <td>{$vol.file}</td>
+                <td>{$vol.size}kb</td>
+                <td>{$val.date_str}</td>
+                <td>
+                    <a href="{:U('Admin/backup/download', array('backup'=>$val['name'], 'file'=>$vol['file']))}">{:L('DOWNLOAD')}</a>
+                </td>
+            </tr>
+            </volist>
+            </volist>
+        	</tbody>
+        </table>
+        </div>
+    </form>
+    </div> 
+</div>
+<style type="text/css">
+.hide{display:none;}
+.table_list tr.expanded td .expander{
+	background: url(__TMPL__Public/assets/images/tv-collapsable.gif) center center no-repeat;
+}
+.table_list tr.collapsed td .expander{
+	background: url(__TMPL__Public/assets/images/tv-expandable.gif) center center no-repeat;
+}
+</style>
+<script src="__PUBLIC__/js/common.js"></script>
+<script src="__PUBLIC__/weui/js/jquery-weui.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/weui/css/weui.min.css">
+<link rel="stylesheet" href="__PUBLIC__/weui/css/jquery-weui.min.css">	
+<script>
+$(function(){
+    $(".show_sub").click(function(){
+        $(this).attr("src",function(){
+            if(this.src == '__TMPL__Public/assets/images/tv-expandable.gif'){
+                return '__TMPL__Public/assets/images/tv-collapsable.gif';
+            } else {
+                return '__TMPL__Public/assets/images/tv-expandable.gif';
+            }
+        });
+        var sub_id = $(this).attr('sub');
+        $("tr[parent='"+sub_id+"']").toggle();
+    });
+    $('.expander').toggle(function(){
+        $(this).parent().parent().removeClass('collapsed').addClass('expanded');
+        $('tr[parent="'+$(this).attr('name')+'"]').show();
+    },function(){
+        $(this).parent().parent().removeClass('expanded').addClass('collapsed');
+        $('tr[parent="'+$(this).attr('name')+'"]').hide();
+    });
+});
+</script>
+</body>
+</html>

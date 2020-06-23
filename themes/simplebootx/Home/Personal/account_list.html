@@ -1,0 +1,215 @@
+<tc_include file="Public:head" />
+<title>账号管理</title>
+</head>
+<body style="background-color:#f3f3f3">
+<tc_include file="Public:header" />
+<tc_include file="Home/Personal:header" />
+<div class="buyvip" id="buyvip"></div>
+<div class="dds-dialog-bg" id="ds-dialog-bg"></div>
+<div class="container">
+	<div class="Firstfloor clearfix">
+		<div class="Leftlayout">
+			<tc_include file="Home/Personal:navigation" />
+		</div>
+		<div class="rightlayout">
+			<div class="clearfix">
+			
+				<div class="shouyez">
+					<h3 class="personal_h3">
+						<i class="h3_one"></i>
+						我的提现账号
+						<div class="linexi"></div>
+					</h3>
+					<div class="tixian-list hand" onclick="add()" >添加账号</div>
+				</div>
+				
+			</div>
+			<div class="schedule">
+				<div class="charge_table">
+					<table>
+					 <tbody>
+						<tr>
+							<th width="10%">类型</th>
+							<th width="30%">账号</th>
+							<th width="20%">所属行</th>
+							<th width="25%">姓名</th>
+							<th width="15%">操作</th>
+						</tr>
+						<volist name="list" id="v">
+							<tr>
+								<td width="10%">{$v['type_account']}</td>
+								<td width="30%">{$v['account']}</td>
+								<td width="20%">{$v['account_bank']}</td>
+								<td width="25%">{$v['name']}</td>
+								<td width="15%"  onclick="del({$v['id']})" class="hand">删除</td>
+							</tr>						
+						 </volist>
+						</tbody>						
+					</table>
+					<div class="page">
+						
+					</div>		    	   					
+				</div>
+			</div>
+				{$page}
+		</div>
+  </div>
+</div>
+
+<tc_include file="Public:footer" />
+<tc_include file="Home/Personal:footer" /> 
+<script type="text/javascript">
+	var uid="{$uid}";
+	var token="{$token}";
+	function del(zid){
+		$.ajax({
+			type: "POST",
+			url:'/api/public/?service=User.delUserAccount',
+			data:{
+				uid:uid,
+				token:token,
+				id:zid,
+			},// 你的formid
+			dataType:'json',
+			async: false,
+			error: function(){
+				layer.msg("删除失败！");
+			},
+			success: function(data){
+				layer.msg(data['data']['msg'],{time:2000},function(){
+					if(data['data']['code']==0){
+						window.location.reload();
+					}
+				});
+			}
+		});
+	}
+
+	function add(){
+		layer.open({
+		  type: 1,
+		  skin: 'layui-layer-demo', //样式类名
+		  closeBtn: 0, //不显示关闭按钮
+		  anim: 2,
+		  title:false,
+		  shadeClose: true, //开启遮罩关闭
+		  content: '<div id="popup">\
+					<div class="popup-title">添加提现账户</div>\
+					<div class="popup-type">\
+						<div class="type-div">账户类型</div>\
+						<div class="type-select">\
+							<select class="select-select" id="s_language" onchange="changeMoneyType()">\
+								<option value="1">支付宝</option>\
+								<option value="2">微信</option>\
+								<option value="3">银行卡</option>\
+							</select>\
+						</div>\
+					</div>\
+					<div class="type-input" id="zfb">\
+						<input type="text" class="zfb_account" placeholder="请输入支付宝账号"/>\
+						<input type="text" class="zfb_name" placeholder="请输入支付宝账号姓名"/>\
+					</div>\
+					<div class="type-input display_none" id="wx">\
+						<input type="text" class="wx_account" placeholder="请输入微信账号" style="ime-mode:disabled"/>\
+					</div>\
+					<div class="type-input display_none" id="yhk">\
+						<input type="text" class="ykk_bank" placeholder="请输入银行名称"/>\
+						<input type="text" class="ykk_account" placeholder="请输入银行卡账号"/>\
+						<input type="text" class="ykk_name" placeholder="请输入持卡人姓名"/>\
+					</div>\
+					<div class="type-button" onclick="addpost()">确认</div>\
+				</div>'
+		});
+	}
+	function addpost(){
+		var type=$("#s_language  option:selected").val();
+		var account_bank='';
+		var account='';
+		var name='';
+		if(type==1){
+			account=$(".zfb_account").val();
+			name=$(".zfb_name").val();
+			
+			if(account==''){
+				layer.msg("请输入支付宝账号");
+				return;
+			}else if(name==''){
+				layer.msg("请输入支付宝账号姓名");
+				return;
+			}else if(/[^\d]/.test(account)){
+				var temp=account.replace(/[^\d]/g,'');
+					$(".zfb_account").val(temp);
+					layer.msg("支付宝账号只能输入数字");
+					return;
+			}
+		}else if(type==2){
+			account=$(".wx_account").val();
+			if(account==''){
+				layer.msg("请输入微信账号");
+				return;
+			}
+		}else if(type==3){
+			account_bank=$(".ykk_bank").val();
+			account=$(".ykk_account").val();
+			name=$(".ykk_name").val();
+			if(account==''){
+				layer.msg("请输入银行名称");
+				return;
+			}else if(account==''){
+				layer.msg("请输入银行卡账号");
+				return;
+			}else if(name==''){
+				layer.msg("请输入持卡人姓名");
+				return;
+			}else if(/[^\d]/.test(account)){
+				var temp=account.replace(/[^\d]/g,'');
+					$(".ykk_account").val(temp);
+					layer.msg("银行卡账号只能输入数字");
+					return;
+			}
+		}
+		$.ajax({
+			type: "POST",
+			url:'/api/public/?service=User.setUserAccount',
+			data:{
+				uid:uid,
+				token:token,
+				type:type,
+				account_bank:account_bank,
+				account:account,
+				name:name,
+			},// 你的formid
+			dataType:'json',
+			async: false,
+			error: function(){
+				layer.msg("添加失败！");
+			},
+			success: function(data){
+				layer.msg(data['data']['msg'],{time:2000},function(){
+					if(data['data']['code']==0){
+						window.location.reload();
+					}
+				});
+			}
+		});
+	}
+	function changeMoneyType(){
+		var type=$("#s_language  option:selected").val();
+		if(type==1){
+			$("#wx").addClass('display_none');
+			$("#yhk").addClass('display_none');
+			$("#zfb").removeClass('display_none');
+		}else if(type==2){
+			$("#zfb").addClass('display_none');
+			$("#yhk").addClass('display_none');
+			$("#wx").removeClass('display_none');
+		}else if(type==3){
+			$("#wx").addClass('display_none');
+			$("#zfb").addClass('display_none');
+			$("#yhk").removeClass('display_none');
+		}
+
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<form method="post" class="js-ajax-form">
+			<table cellpadding="2" cellspacing="2" width="100%">
+				<tbody>
+					<tr>
+						<td width="140">上级:</td>
+						<td>
+							<select name="term_id">
+								{$terms_tree}
+							</select>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<button class="btn btn-primary js-ajax-submit" type="submit">移动</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

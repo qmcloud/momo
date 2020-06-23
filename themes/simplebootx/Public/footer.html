@@ -1,0 +1,86 @@
+	<div class="area-ft">
+		<div class="down-ft">
+			<div class="down-ft_one fl">
+				<div class="guan_wei">
+					<if condition="$config['sina_url'] neq ''"><a href="{$config['sina_url']}" target="_blank"></if>
+						<div class="guan_wei_icon fl">
+							<img src="{$config['sina_icon']}">
+						</div>
+						<div class="guan_wei_con fl">
+							<p class="guan_wei_title">{$config['sina_title']}</p>
+							<p class="guan_wei_desc">{$config['sina_desc']}</p>
+						</div>
+					<if condition="$config['sina_url'] neq ''"></a></if>
+					<div class="clearboth"></div>
+				</div>
+
+				<div class="guan_wei mar_top15">
+					<if condition="$config['qq_url'] neq ''"><a href="{$config['qq_url']}" target="_blank"></if>
+						<div class="guan_wei_icon fl">
+							<img src="{$config['qq_icon']}">
+						</div>
+						<div class="guan_wei_con fl">
+							<p class="guan_wei_title">{$config['qq_title']}</p>
+							<p class="guan_wei_desc">{$config['qq_desc']}</p>
+						</div>
+					<if condition="$config['qq_url'] neq ''"></a></if>
+					<div class="clearboth"></div>
+				</div>
+				
+			</div>
+			<div class="down-ft_two fl">
+				<ul class="ewm_list">
+					<li>
+						<p class="ewm_title">微信公众号</p>
+						<p class="ewm_icon"><img src="{$config['wechat_ewm']}"></p>
+					</li>
+					<li>
+						<p class="ewm_title">android版下载</p>
+						<p class="ewm_icon"><img src="{$config['apk_ewm']}"></p>
+					</li>
+					<li>
+						<p class="ewm_title">iPhone版下载</p>
+						<p class="ewm_icon"><img src="{$config['ipa_ewm']}"></p>
+					</li>
+					<div class="clearboth"></div>
+				</ul>
+			</div>
+			<div class="down-ft_three fl">
+				<ul class="href_list fl mar_left50">
+					<p>{$config['sitename']}</p>
+					<!-- <li><a href="/index.php?m=Shop&a=index">商城</a></li> -->
+					<!-- <li><a href="/index.php?m=Order&a=index">排行</a></li> -->
+				</ul>
+				<ul class="href_list fl">
+					<p>新手帮助</p>
+					<li><a >新手指引</a></li>
+					<li><a >赞助中心</a></li>
+					<li><a >资费介绍</a></li>
+				</ul>
+				<div class="clearboth"></div>
+			</div>
+			<div class="down-ft_four fl">
+				<p class="company_mobile">{$mobile}</p>
+				<p>客服热线(服务时间:8:00-16:00)</p>
+				<p>地址:{$config['address']}</p>
+			</div>
+			<div class="clearboth"></div>
+		</div>
+	</div>
+	<div id="doc-ft">
+		<div class="container">
+			<p class="footer">
+				{:nl2br($config['copyright'])}
+			</p>
+		</div>
+	</div>
+		
+	  <script src="__PUBLIC__/home/js/jquery.1.10.2.js"></script> 
+	  <script src="__PUBLIC__/home/js/jquery.lazyload.min.js"></script>
+		<script type="text/javascript">
+			window._DATA = window._DATA || {};
+			window._DATA.user = {$userinfo};
+		</script> 
+		<script type="text/javascript" src="__PUBLIC__/home/js/login.js"></script> 
+		<script type="text/javascript" src="__PUBLIC__/home/js/layer.js"></script> 
+

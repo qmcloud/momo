@@ -1,0 +1,31 @@
+<ul id="accordion" class="accordion">
+	    <li>
+	      <a class="homepage"  href="index.php?m=Personal&a=index"><!-- <i class="fa fa-paint-brush"></i> -->我的首页
+		  </a>
+		</li>
+		<li <if condition="$personal eq 'Set'">class="gangkaishi open"<else/>class="gangkaishi"</if>>
+			<div class="link" >账号设置<i class="fa fa-chevron-down"></i></div>
+			<ul <if condition="$personal eq 'Set'">class="submenu pedisplay"<else/>class="submenu"</if>>
+				<li><a href="index.php?m=Personal&a=modify">基本资料</a></li>
+				<li><a href="index.php?m=Personal&a=photo">修改头像</a></li>
+				<li><a href="index.php?m=Personal&a=updatepass">修改密码</a></li>
+			</ul>
+		</li>
+		<li <if condition="$personal eq 'follow'">class="gangkaishi open"<else/>class="gangkaishi"</if>>
+			<div class="link">我的社交<i class="fa fa-chevron-down"></i></div>
+			<ul <if condition="$personal eq 'follow'">class="submenu pedisplay"<else/>class="submenu"</if>>
+				<li><a href="index.php?m=Personal&a=follow">我的关注</a></li>
+				<li><a href="index.php?m=Personal&a=fans">我的粉丝</a></li>
+				<li><a href="index.php?m=Personal&a=namelist">我的黑名单</a></li>
+				<li><a href="index.php?m=Personal&a=admin">我的管理员</a></li>
+				<li><a href="index.php?m=Personal&a=live">我的直播</a></li>
+			</ul>
+		</li>
+		<li <if condition="$personal eq 'card'">class="gangkaishi open"<else/>class="gangkaishi"</if>>
+			<div class="link">我的认证<i class="fa fa-chevron-down"></i></div>
+			<ul <if condition="$personal eq 'card'">class="submenu pedisplay"<else/>class="submenu"</if>>
+				<li><a href="index.php?m=Personal&a=card">我要认证</a></li>
+				<li><a href="index.php?m=Personal&a=exchange">提现中心</a></li>
+			</ul>
+		</li>
+	</ul>

@@ -1,0 +1,43 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<form method="post" class="js-ajax-form">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>来源</th>
+						<th>用户名</th>
+						<th>头像</th>
+						<th>绑定账号</th>
+						<th>首次登录时间</th>
+						<th>最后登录时间</th>
+						<th>最后登录IP</th>
+						<th>登录次数</th>
+						<th align="center">操作</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo._from}</td>
+						<td>{$vo._name}</td>
+						<td><img width="25" height="25" src="{$vo.head_img}"/></td>
+						<td>{$vo['lock_to_id']|default='无'}</td>
+						<td>{:date('Y-m-d H:i:s', $vo['create_time'])}</td>
+						<td>{:date('Y-m-d H:i:s', $vo['last_login_time'])}</td>
+						<td>{$vo.last_login_ip}</td>
+						<td>{$vo.login_times}</td>
+						<td align="center"><a href="{:U('oauthadmin/delete',array('id'=>$vo['id']))}" class="js-ajax-delete">删除</a></td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

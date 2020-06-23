@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <title>认证</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-family: Helvetica;}
+        body{background-color: #46CACC;}
+        a{text-decoration: none;color: #fff;}
+        .bg{width: 100%;}
+        .three{width: 100%;margin-top: -4px;}
+        .btn{width: 84%;
+        height: 44px;border: solid 1px #ECE39E;border-radius: 44px;background-color: #65CFC5;
+        line-height: 44px;font-size: 1.2em;color: #ECE39E;text-align: center;margin-left: 7.5%;margin-top: 2%;}
+        #apiy{font-size: 0.7em;text-align: center;color: #ACE3E5;margin-top: 6%;margin-bottom:7px;}
+    </style>
+    <script src="__PUBLIC__/js/jquery.js"></script></head>
+<body>
+<img src="__PUBLIC__/rz/images/index_bg.jpg" class="bg">
+<img src ="__PUBLIC__/rz/images/index_three.jpg" class="three">
+<div class="btn">立即申请</div>
+<!--<div id="apiy">暂只开放影视演员认证 即将开放更多 敬请期待</div>-->
+</body>
+</html>
+<script>
+$(".btn").click(function(){ 
+window.location.href="./index.php?g=User&m=Rz&a=submit&uid={$uid}";
+})
+</script>

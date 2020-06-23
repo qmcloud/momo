@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<tc_include file="Appapi/Public/head" />
+		<title>下级分成</title>
+		<link href='__PUBLIC__/appapi/css/agent.css' rel="stylesheet" type="text/css" >
+	</head>
+<body >
+
+	<div class="profit">
+		<ul>
+			<volist name="list" id="v">
+			<li>
+				<img class="thumb" src="{$v['userinfo']['avatar']}">
+				<div class="info">
+					<p class="name">{$v['userinfo']['user_nicename']}</p>
+					<p class="id">ID: {$v['userinfo']['id']}</p>
+				</div>
+				<div class="info2">
+					<p class="icon"><img src="__PUBLIC__/appapi/images/votes.png" class="votes"></p>
+					<p class="coin">{$v['total']}</p>
+				</div>
+			</li>
+			</volist>
+		</ul>
+	</div>
+	<empty name="list">
+	<div class="empty"></div>
+	</empty>
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script>
+	$(function(){
+		function getlistmore(){
+			$.ajax({
+				url:'/index.php?g=appapi&m=Agent&a=one_more',
+				data:{'page':page,'uid':uid,'token':token},
+				type:'post',
+				dataType:'json',
+				success:function(data){
+					if(data.nums>0){
+							var nums=data.nums;
+							var list=data.data;
+							var html='';
+							for(var i=0;i<nums;i++){
+								html='<li>\
+										<img class="thumb" src="'+list[i]['userinfo']['avatar']+'">\
+										<div class="info">\
+											<p class="name">'+list[i]['userinfo']['user_nicename']+'</p>\
+											<p class="id">ID: '+list[i]['userinfo']['id']+'</p>\
+										</div>\
+										<div class="info2">\
+											<p class="icon"><img src="/public/appapi/images/votes.png"></p>\
+											<p class="coin">'+list[i]['total']+'</p>\
+										</div>\
+									</li>';
+							}
+						$(".profit ul").append(html);
+					}
+					
+					if(data.isscroll==1){
+						page++;
+						isscroll=true;
+					}
+				}
+			})
+		}
+		var page=2; 
+		var isscroll=true; 
+
+		$(window).scroll(function(){  
+				var srollPos = $(window).scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)  		
+				var totalheight = parseFloat($(window).height()) + parseFloat(srollPos);  
+				if(($(document).height()-50) <= totalheight  && isscroll) {  
+						isscroll=false;
+						getlistmore()
+				}  
+		});  
+
+	})
+	</script>
+</body>
+</html>

@@ -1,0 +1,403 @@
+.cashier_content,.cashier_head {
+	position: relative;
+	box-sizing: border-box
+}
+.cashier_content {
+	top: 30px;
+	width: 1032px;
+	margin: 0 auto;
+	border-radius: 4px;
+	border: 1px solid #c8ced1;
+	box-shadow: 2px 2px 3px #e7e7e7;
+	min-height: 480px;
+	background-color: #fff
+}
+
+.cashier_head {
+	width: 100%;
+	height: 78px;
+	border-bottom: 1px solid #f2f4f3;
+	cursor: default
+}
+
+.cashier_head_logo {
+	position: absolute;
+	top: 16px;
+	left: 24px;
+	width: 154px;
+	height: 46px;
+	
+}
+
+.cashier_head_right {
+	position: absolute;
+	right: 24px;
+	height: 78px;
+	padding-top: 25px;
+	box-sizing: border-box
+}
+
+.cashier_head_img {
+	width: 40px;
+	height: 40px;
+	overflow: hidden;
+	border-radius: 50%;
+	margin-right: 10px;
+	background-size: cover;
+	display: inline-block
+}
+
+.cashier_center,.cashier_info {
+	width: 100%;
+	box-sizing: border-box
+}
+
+.cashier_head_name {
+	display: inline-block;
+	height: 40px;
+	line-height: 40px;
+	vertical-align: top;
+	font-size: 14px;
+	color: #656565
+}
+
+.cashier_center {
+	padding: 0 24px
+}
+
+.cashier_info {
+	height: 162px;
+	padding: 24px 0 0
+}
+
+.cashier_info_logo {
+	width: 124px;
+	height: 124px;
+	background: url(../img/image_22.png) 100% 100% no-repeat;
+	float: left
+}
+
+.cashier_info_right {
+	font-size: 14px;
+	line-height: 26px;
+	margin-left: 12px;
+	float: left
+}
+
+.cashier_info_title {
+	color: #9f9f9f
+}
+
+.cashier_info_msg {
+	float: left;
+	width: 357px
+}
+
+.cashier_info_rmsg {
+	float: left
+}
+
+.cashier_inset {
+	min-height: 100px;
+	width: 984px;
+	background-color: #fcfcfc;
+	border: 1px solid #ececec;
+	box-sizing: border-box;
+	padding: 22px 12px 24px;
+	color: #252525
+}
+
+.cashier_bank_line {
+	width: 100%;
+	border-top: 1px solid #ececec;
+	margin-top: 24px
+}
+
+.cashier_bank_list {
+	width: 100%;
+	box-sizing: border-box
+}
+
+.cashier_bank_top {
+	margin: 16px 0
+}
+
+.cashier_bank_back.up {
+	margin: 11px 0 0 916px;
+	color: #3299c7;
+	font-size: 14px;
+	cursor: pointer
+}
+
+.cashier_bank_back.down {
+	margin: 11px 0 0 863px;
+	color: #3299c7;
+	font-size: 14px;
+	cursor: pointer;
+	width: 84px
+}
+
+.changeCss {
+	height: 42px;
+	overflow: hidden
+}
+
+.cashier_checkbox {
+	cursor: pointer;
+	margin-bottom: 28px
+}
+
+.cashier_checkbox_icon {
+	float: left;
+	width: 14px;
+	height: 14px;
+	background: url(../img/icon.png) -9px -9px;
+	margin-right: 8px;
+	border-radius: 4px
+}
+
+.cashier_checkbox_icon.open {
+	background: url(../img/icon.png) -9px -41px
+}
+
+.cashier_checkbox_txt {
+	float: left;
+	height: 14px;
+	line-height: 14px
+}
+
+.checkbox_choice.open {
+	background-color: #00a1d6
+}
+
+.cashier_pay_way {
+	width: 100%;
+	height: 30px
+}
+
+.cashier_pay_icon span {
+	border-radius: 4px;
+	margin-right: 9px;
+	border: 1px solid #ddd;
+	width: 150px;
+	height: 42px;
+	box-sizing: border-box;
+	display: inline-block;
+	cursor: pointer
+}
+
+.cashier_pay_icon span:last-child {
+	margin-right: 0
+}
+
+.cashier_checked {
+	border-color: #2996C4!important
+}
+
+.cashier_alipay {
+	background: url(../img/logo_alipay.png) center no-repeat
+}
+
+.cashier_paypal {
+	background: url(https://static-s.bilibili.com/bpay/img/logo_paypal.png) center no-repeat
+}
+
+.cashier_visa {
+	background: url(https://static-s.bilibili.com/bpay/img/logo_visa.png) center no-repeat
+}
+
+.cashier_bank {
+	background: url(../img/logo_unionpay.png) center no-repeat
+}
+
+.cashier_wechat {
+	background: url(https://static-s.bilibili.com/bpay/img/logo_weixin.png) -4px -10px no-repeat
+}
+
+.cashier_bb {
+	background: url(../img/image_bb.png) center no-repeat
+}
+
+.cashier_bottom {
+	margin-top: 24px;
+	border-top: 1px solid #f2f4f3;
+	min-height: 148px;
+	position: relative
+}
+
+.cashier_pay_qrcode {
+	width: 168px;
+	height: 160px;
+	overflow: hidden;
+	margin: 8px 0 0 24px
+}
+
+.cashier_qrcode_name {
+	margin: 8px 0 0 66px
+}
+
+.wechat {
+	width: 168px;
+	height: 160px;
+	display: none
+}
+
+.alipay {
+	margin: -77px 0 0 -66px;
+	position: relative
+}
+
+#iframeQrcode {
+	border: 0;
+	-webkit-transform: scale(.68);
+	-moz-transform: scale(.68);
+	-o-transform: scale(.68);
+	transform: scale(.68);
+	filter: progid:DXImageTransform.Microsoft.Matrix(M11=.6, M12=0, M21=0, M22=.6, Dx=0, Dy=0)
+}
+
+.cashier_bottom_left {
+	margin-bottom: 16px;
+	display: none
+}
+
+.cashier_bottom_right {
+	position: absolute;
+	right: 0;
+	bottom: 98px;
+	box-sizing: border-box;
+	padding-right: 24px;
+	font-size: 14px;
+	width: 214px
+}
+
+.cashier_bb_balance {
+	display: none;
+	color: #9f9f9f;
+	margin-bottom: 10px
+}
+
+.cashier_bb_num {
+	float: right
+}
+
+.cashier_button {
+	position: absolute;
+	right: 24px;
+	bottom: 32px
+}
+
+.cashier_all_num {
+	color: #3299c7;
+	font-size: 20px;
+	float: right;
+	font-weight: 700;
+	margin-top: -4px
+}
+
+.cashier_bank_middle span {
+	width: 150px;
+	height: 42px;
+	display: inline-block;
+	box-sizing: border-box;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	margin-right: 9px;
+	margin-bottom: 9px;
+	overflow: hidden;
+	cursor: pointer;
+	text-align: center
+}
+
+.cashier_bank_middle span img {
+	margin: 6px 0 0 6px
+}
+
+.cashier_bank_click {
+	border-color: #2996c4!important
+}
+
+.cashier_success_icon {
+	margin: 42px auto 0;
+	background: url(../img/image_success.png) no-repeat;
+	width: 467px;
+	height: 282px
+}
+
+.cashier_success_msg {
+	width: 100%;
+	margin-top: 24px;
+	font-size: 30px
+}
+
+.cashier_success_pay {
+	font-size: 14px;
+	color: #3299c7;
+	display: inline-block;
+	margin: 16px 0 36px 430px
+}
+
+.wechat_head {
+	width: 100%;
+	font-size: 16px;
+	margin-top: 24px;
+	text-align: center;
+}
+
+.wechat_head_info {
+	color: #3299c7
+}
+
+.wechat_qrcode {
+	width: 260px;
+	height: 260px;
+	margin: 16px auto 0;
+	border: 1px solid #ececec;
+	box-sizing: border-box;
+	padding: 5px 0 0 5px
+}
+
+.wechat_btn {
+	width: 306px;
+	height: 55px;
+	margin: 8px auto 24px;
+	background-color: #fbfbfb;
+	border: 1px solid #e3e3e3;
+	border-radius: 6px;
+	box-sizing: border-box;
+	padding: 12px;
+	font-size: 16px
+}
+
+.wechat_btn_icon {
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	background: url(../images/icon.png) -34px -2px no-repeat
+}
+
+.wechat_btn_info {
+	display: inline-block;
+	vertical-align: 56%;
+	margin-left: 4px;
+	cursor: default
+}
+
+.ieHead {
+	width: 40px;
+	height: 40px
+}
+
+.cashier_alipay_info {
+	margin-top: 16px;
+	cursor: default
+}
+
+.cashier_alipay_info i {
+	font-weight: 700;
+	color: #fe0000
+}
+
+.hide {
+	display: none
+}

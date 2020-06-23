@@ -1,0 +1,262 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/index.css"/>
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+	<div class="top_line"></div>
+	<div class="index_live">
+		<div style="height: 20px;"></div>
+		<div class="index_live_area">
+			<div class="index_live_area_left">
+				<div id="video" style="width: 100%; height: 590px;"></div>
+				<div class="video_mask">
+					<a href="/{$firstUid}" target="_blank">
+						<div class="video_mask_center">
+							<p><img src="__PUBLIC__/home/images/index/enter_room.png"></p>
+							<p>进入直播间</p>
+						</div>
+					</a>
+				</div>
+			</div>
+			<div class="index_live_area_right">
+				<ul>
+					<volist name="indexLive" id="vo">
+						<li <if condition="$i eq '1'"> class="on" </if> data-pull="{$vo['pull']}" data-uid="{$vo['uid']}" ><img src="{$vo['thumb']}"></li>
+					</volist>
+				</ul>
+			</div>
+			<div class="clearboth"></div>
+		</div>
+
+		<div class="scroll_top">
+			<div class="fullSlide">
+				
+				<div class="bd">
+					<ul style="width:100%;height: 120px;">
+						<volist name='slide' id='vo' key='k'>
+							<li _src="url({$vo.slide_pic})" ><a target="_blank" href="{$vo.slide_url}"></a></li>
+		        </volist>
+					</ul>
+				</div>
+		
+				<div class="hd"><ul></ul></div>
+				<!-- <span class="prev"></span>
+				<span class="next"></span> -->
+			</div>        	
+    	</div>	
+	</div>
+    	
+	
+	
+	<div id="doc-bd">
+		<div class="container clearfix">
+			<div class="main_top_pic"><img src="__PUBLIC__/home/images/index/main_top.png"></div>
+			<div class="main clearfix">
+
+				<div id="focuspic" class="focuspic feed-list">
+					<ul class="list">
+						<volist name="recommend" id="v">
+
+							 <li class="normal  feed <if condition="$i eq '1'"> mar_left0</if>" >
+							 	<p class="normal_title">{$v['user_nicename']}</p>
+								<a class="link clearfix" target="_blank" href="/{$v['uid']}">
+									<img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['thumb']}"/>
+								</a>
+							</li>
+
+						</volist>
+					</ul>
+				</div>
+				<div class="gray_line"></div>
+				<!-- 热门直播 -->
+				<div class="g-box feed-list" id="hot">
+					<div class="box-hd">
+						<h2 class="box-title"><span class="icon"><img src="__PUBLIC__/home/images/index/remen.png"></span>热门直播</h2>
+					<!-- 	<a class="box-more" href="/category/1">查看更多 &gt;&gt;</a> -->
+					</div>
+					<div class="box-bd">
+						<ul class="list">
+						  <volist name="hot" id="v">
+							<li class="feed <if condition="$v['islive'] eq '1'">live<else/></if> "><a class="link" href="/{$v['uid']}" target="_blank"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['thumb']}"/>
+							<div class="user">
+								<div class="user_left fl"><img class="avatar thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/></div>
+								<div class="user_right fl">
+									<p class="username">{$v['user_nicename']}</p>
+									<p class="bottom">
+										<span class="type">{$v['signature']}</span>
+										<span class="nums">{$v['nums']}</span>
+									</p>
+								</div>
+								
+							</div>
+							
+							</a></li>
+							</volist>
+							
+						</ul>
+					</div>
+				</div>
+				<div class="gray_line"></div>				
+				<!-- 最新直播 -->
+				<div class="g-box feed-list" id="living">
+					<div class="box-hd">
+						<h2 class="box-title"><span class="icon"><img src="__PUBLIC__/home/images/index/zuixin.png"></span>最新直播</h2>
+					</div>
+					<div class="box-bd">
+						<ul class="list">
+						  <volist name="live" id="v">
+
+							<li class="feed <if condition="$v['islive'] eq '1'">live<else/></if>"><a class="link" href="/{$v['uid']}" target="_blank"><img class="screenshot thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['thumb']}"/>
+							<div class="user">
+								<div class="user_left fl"><img class="avatar thumb" src="__PUBLIC__/home/images/lazyload.png" data-original="{$v['avatar']}"/></div>
+								<div class="user_right fl">
+									<p class="username">{$v['user_nicename']}</p>
+									<p class="bottom">
+										<span class="type">{$v['signature']}</span>
+										<span class="nums">{$v['nums']}</span>
+									</p>
+								</div>
+								
+							</div>
+							
+							</a></li>
+							</volist>
+						</ul>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+	</div>
+<tc_include file="Public:footer" />
+
+<div class="fix_area">
+	<div class="fix_area_left fl">
+		<div class="fix_area_left_con">
+			<p>扫一扫</p>
+			<p>手机看直播</p>
+			<p class="ewm_img"><img src="{$config['apk_ewm']}"></p>
+			<p class="app_ewm_name">Android APP</p>
+		</div>
+	</div>
+	<div class="fix_area_right fl">
+		<p class="app_type_icon app_type_android mar_top75">
+			<img src="__PUBLIC__/home/images/index/az.png">
+		</p>
+		<p class="app_type_icon app_type_apple">
+			<img src="__PUBLIC__/home/images/index/pg1.png">
+		</p>
+		<p class="go_top">
+			<img src="__PUBLIC__/home/images/index/zhiding.png">
+		</p>
+	</div>
+	<div class="clearboth"></div>
+</div>
+	<!--
+下线时将下面div元素的style改为"display:none;"
+上线时将下面div元素的style改为"display:block;"
+图片尺寸100X100
+-->
+	<div id="right-fixed-position" class="right-fixed-position" style="display:none;" >
+		<a href="#" class="close"></a>
+		<a href="#" class="link" target="_blank"><img src="#"/></a>
+	</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.SuperSlide.2.1.1.js"></script>  
+<script>
+(function(){
+	/* 控制左右按钮显示 */
+	jQuery(".fullSlide").hover(function(){ jQuery(this).find(".prev,.next").stop(true,true).fadeTo("show",0.5) },function(){ jQuery(this).find(".prev,.next").fadeOut() });
+
+	/* 调用SuperSlide */
+	jQuery(".fullSlide").slide({ titCell:".hd ul", mainCell:".bd ul", effect:"fold",  autoPlay:true, autoPage:true, trigger:"click",
+		startFun:function(i){
+			var curLi = jQuery(".fullSlide .bd li").eq(i); /* 当前大图的li */
+			if( !!curLi.attr("_src") ){
+				curLi.css("background-image",curLi.attr("_src")).removeAttr("_src") /* 将_src地址赋予li背景，然后删除_src */
+			}
+		}
+	});	
+})()
+</script>
+<script>
+$(function(){
+	//图片延迟加载
+	$("img.thumb").lazyload({effect: "fadeIn"});		
+})
+</script>
+
+<!-- 视频播放start -->
+<script type="text/javascript" src="__PUBLIC__/home/ckplayer/ckplayer.js"></script>
+<script type="text/javascript">
+	var videoObject = {
+		container: '#video', //容器的ID或className
+		variable: 'player',//播放函数名称
+		poster:'http://img.ksbbs.com/material/poster.jpg',//封面图片
+		//flashplayer:true,
+		video: '{$firstLive}',		
+		autoplay:true,
+		flashplayer:false,
+
+	};
+	var player = new ckplayer(videoObject);
+</script>
+<!-- 视频播放end -->
+<script type="text/javascript">
+	$(function(){
+		$(".index_live_area_right ul li").click(function(){
+			if($(this).hasClass("on")){
+				return;
+			}
+			$(this).siblings().removeClass("on");
+			$(this).addClass("on");
+			//$("#video video").attr("src","http://img.ksbbs.com/asset/Mon_1703/eb048d7839442d0.mp4");
+			videoObject.video=$(this).attr("data-pull");
+			$(".video_mask a").attr("href","/"+$(this).attr("data-uid"));
+			var player = new ckplayer(videoObject);
+		});
+
+		$(".index_live_area_left").mouseover(function() {
+			$(".video_mask").show();
+		});
+		$(".index_live_area_left").mouseleave(function() {
+			$(".video_mask").hide();
+		});
+
+
+		var apk_ewm='{$config['apk_ewm']}';
+		var ios_ewm='{$config['ipa_ewm']}';
+
+		$(".app_type_apple").mouseover(function(){
+			$(this).find('img').attr("src","/public/home/images/index/pg.png");
+			$(".app_type_android").find('img').attr("src","/public/home/images/index/az1.png");
+			$(".ewm_img").find("img").attr("src",ios_ewm);
+			$(".app_ewm_name").text("iOS App");
+		});
+			
+		
+
+		$(".app_type_apple").mouseleave(function(){
+			$(this).find('img').attr("src","/public/home/images/index/pg1.png");
+			$(".app_type_android").find('img').attr("src","/public/home/images/index/az.png");
+			$(".ewm_img").find("img").attr("src",apk_ewm);
+			$(".app_ewm_name").text("Android App");
+		});
+
+		$(".go_top").mouseover(function() {
+			$(this).find("img").attr("src",'/public/home/images/index/zhiding1.png');
+		});
+		$(".go_top").mouseleave(function() {
+			$(this).find("img").attr("src",'/public/home/images/index/zhiding.png');
+		});
+		
+		$(".go_top").click(function(){
+			document.body.scrollTop = 0;
+    		document.documentElement.scrollTop = 0;
+		});
+	});
+</script>
+</body>
+</html>

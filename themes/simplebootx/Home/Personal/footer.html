@@ -1,0 +1,83 @@
+<script type="text/javascript">
+//全局变量
+var GV = {
+    DIMAUB: "__ROOT__/",
+    JS_ROOT: "public/js/",
+    TOKEN: ""
+};
+$(function()
+{
+	  /* 时间控件 */
+     $("input.js-date").datePicker();
+}
+)
+</script>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script>
+$(function(){
+  //打开上传视频窗口
+  $('.dianji').click(function()
+	{
+		$("#datas").css('display','none');
+		$("#modify").css('display','block');
+  });  
+	$('.hersquxiao').click(function()
+	{
+		$("#modify").css('display','none');
+		$("#datas").css('display','block');
+  });
+  $('.hersbaocun').click(function()
+	{
+	  var name=$("#name").val();
+	  if(name!=""&&name!="请输入新昵称")
+		{ 
+			if(name.length>8)
+			{
+				layer.alert('昵称最多为八位', 
+				{
+					skin: 'layui-layer-molv' //样式类名
+					,closeBtn: 0,
+					shift: 5,
+					icon: 2,
+				}, function(){
+				layer.closeAll();
+				});
+			}
+			else
+			{
+				$.getJSON("/index.php?g=home&m=Personal&a=edit_name", {name:name},
+				function(data)
+				{
+					if(data["state"]==0)
+					{
+					 	layer.alert('修改完成', 
+						{
+							skin: 'layui-layer-molv' //样式类名
+							,closeBtn: 0,
+							shift: 5,
+							icon: 1
+						}, function(){
+							window.location.href="";
+						});
+					}
+				});
+			}
+    }
+	  else
+	  {
+			layer.alert('昵称不能为空', 
+			{
+				skin: 'layui-layer-molv' //样式类名
+				,closeBtn: 0,
+				shift: 5,
+				icon: 2,
+			}, function(){
+			 layer.closeAll();
+			});
+	  }      
+  });
+	})
+</script>  
+<script src="__PUBLIC__/js/wind.js"></script>	
+<script type="text/javascript" src="__PUBLIC__/js/datePicker/datePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/personal.js"></script> 

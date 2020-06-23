@@ -1,0 +1,70 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Guide/index')}">列表</a></li>
+			<li class="active"><a >添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Guide/add_post')}">
+			<fieldset>
+                <input type="hidden" name="type" value="{$type}">
+				<div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="0">
+						<span class="form-required"></span>
+					</div>
+				</div>
+                <if condition="$type eq 0">
+				<div class="control-group">
+					<label class="control-label">图片</label>
+					<div class="controls">
+                        <input type="hidden" name="thumb" id="thumb2" value="">
+                        <a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb2',thumb_images,'1,jpg|jpeg|gif|png,1,,,1','','','');return false;">
+                                <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb2_preview" width="135" style="cursor: hand" />
+                        </a>
+                        <input type="button" class="btn btn-small" onclick="$('#thumb2_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb2').val('');return false;" value="取消图片">
+						<span class="form-required"></span>
+					</div>
+				</div>
+                </if>
+                <if condition="$type eq 1">
+                <div class="control-group">
+					<label class="control-label">视频</label>
+					<div class="controls">
+                        <input type="text" value="" style="width:500px;">  <input type="file" name="file">
+                        <input type="button" class="btn btn-small" onclick="$('#thumb3').val('');return false;" value="取消"> 仅限MP4格式 10M以内
+						<span class="form-required"></span>
+					</div>
+				</div>
+                </if>
+
+                <div class="control-group">
+					<label class="control-label">链接</label>
+					<div class="controls">
+						<input type="text" name="href" value="">点击打开的页面链接 http开头
+						<span class="form-required"></span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('guide/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+    <script>
+        (function(){
+            $("#swftype label.radio").on('click',function(){
+                var v=$("input",this).val();
+                var b=$("#swftype_bd_"+v);
+                b.siblings().hide();
+                b.show();
+            })
+        })()
+    </script>
+</body>
+</html>

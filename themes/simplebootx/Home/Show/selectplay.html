@@ -1,0 +1,66 @@
+<div class="dialog-tc">
+ 
+	<div class="mode">
+		<a>直播配置</a>
+		<span onclick="liveType.closePorp()" class="rotate"></span>
+	</div>
+	<div class="mount_title">直播标题</div>
+	<div class="mount_num" style="display:block"> 
+		<input id="title"  placeholder="请填写标题"  type="text" class="minput-text">
+	</div>
+	<div class="mount_title">直播类型</div>
+	<div class="mount-method" id="mount_method" data-type="0">
+		<volist name="config.live_type" id="vo">
+			<a class="<if condition='$i eq 1'>mount_btn_on<else/>mount_btn_no</if>" id="btn{$vo['0']}">{$vo['1']}</a>
+		</volist>
+	</div>
+	<div class="mount_num" id="mount_num"> 
+		<input id="gift_number"  placeholder="" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')"  type="text" class="minput-text">
+	</div>
+	<div class="mount_num" id="mount_select"> 
+		<select id="gift_select">
+			<volist name="config.live_time_coin" id="vo">
+			<option value="{$vo}">{$vo}{$config['name_coin']}/分钟</option>
+			</volist>
+		</select>
+	</div>
+	<div class="deal-footer">
+		<a class="mount_con" onclick="liveType.other()">确定</a>
+		<a class="mount_cancel" id="mount_cancel">取消</a>
+	</div>
+</div>
+
+<script type="text/javascript">
+	$("#mount_method a").click(function(){
+			$(this).attr("class","mount_btn_on");
+			$(this).siblings().attr("class","mount_btn_no");
+			var id=$(this).attr("id");
+			if(id=="btn1" || id=="btn2")
+			{
+				$("#mount_num input").val("");
+				if(id=="btn1")
+				{
+					$("#mount_num input").attr("placeholder","请设置密码");
+				}
+				else
+				{
+					$("#mount_num input").attr("placeholder","请设置金额");
+				}
+				$("#mount_select").css('display','none');
+				$("#mount_num").css('display','block');
+				
+			}
+			else if(id=="btn3"){
+				$("#mount_num").css('display','none');
+				$("#mount_select").css('display','block');
+			}
+			else
+			{
+				$("#mount_num").css('display','none');
+				$("#mount_select").css('display','none');
+			}
+	});
+	$("#mount_cancel").click(function(){
+		liveType.closePorp()
+	});
+</script>

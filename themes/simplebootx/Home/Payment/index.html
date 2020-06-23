@@ -1,0 +1,168 @@
+<tc_include file="Public:head" />
+<title>充值页面</title>
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/payment.css"/>
+</head>
+<body>
+
+	<tc_include file="Public:header" />
+
+<div class="wrapper">
+
+
+<div id="doc-bd">
+    <div id="charge-container" class="container clearfix">
+        <div class="side">
+            <ul class="sidebar">
+                <li class="active">
+                    <a href="#">钻石充值</a>
+                </li>
+            </ul>
+        </div>
+        <div class="main">
+            <ul class="breadcrumb clearfix">
+                <li class="step1 active">
+                    1.确认支付信息
+                </li>
+                <li class="step2">
+                    2.扫码支付
+                </li>
+                <li class="step3">
+                    3.支付成功
+                </li>
+            </ul>
+			<div style="display:block" id="xuanze">
+				<form id="fpost" action="__URL__/chargepay/" method="post" target="_blank">
+					<input type="hidden" name="changeid" value="{$lists[0]['id']}" id="changeid">
+					<input type="hidden" name="c_PPPayID" value="" id="c_PPPayID">
+					<ul class="chargebox">
+						<li class="step1 active">
+							<div class="row user-info clearfix">
+								<div class="label">
+									当前充值账号：
+								</div>
+								<div class="content clearfix">
+									<a href="#" class="red" target="_blank">
+										<b class="nickname">{$user["user_nicename"]}</b>
+										<b class="uid">({$user["id"]})</b>
+									</a>
+									 <span class="balance-label">您的钻石余额：<b class="red balance">{$user["coin"]}</b></span>
+								 </div>
+							</div>
+							<div class="row charge-select clearfix">
+								<div class="label">
+									充值数量：
+								</div>
+								<div class="content">
+									<ul id="package-list" class="package-list clearfix" >
+										<volist name="lists" id="v">
+										<li class="item <if condition="$i eq 1">active</if>" data-amount="{$v['coin']}" data-price="{$v['money']}" data-id="{$v['id']}">
+											<a data-text="{$v['money']}" href="javascript:void(0);">
+												<b class="amount">{$v['name']} <if condition="$v['give'] gt 0"><span>送{$v['give']}</span></if></b>
+												<b class="price">¥{$v['money']}</b>
+											</a>
+										</li>
+										</volist>
+									</ul>
+								</div>
+							</div>
+							<div class="row charge-cost clearfix">
+								<div class="label">
+									应付金额：
+								</div>
+								<div class="content">
+									<b id="c_Money1" class="cost red">{$lists[0]['money']}</b>元
+								</div>
+							</div>
+							<div class="row charge-source clearfix">
+								<div class="label">
+									支付平台：
+								</div>
+								<div class="content">
+									<ul id="charge-source-list" class="charge-source-list clearfix" bk="">
+									<if condition="$getConfigPri['aliapp_pc'] eq '1'">
+										<li class="item alipay "  data-index="0" data-source="zhifubao" data-title="支付宝">
+											<a href="javascript:void(0);" data-text="支付宝">
+												<img src="__PUBLIC__/home/images/zhifubao.jpg">
+											</a>
+										</li>
+									</if>
+									<if condition="$getConfigPri['wx_switch_pc'] eq '1'">
+										<li class="item weixin"  data-index="1" data-source="weixin" data-title="微信支付">
+											<a href="javascript:void(0);" data-text="微信支付">
+												<img src="__PUBLIC__/home/images/weixin.jpg">
+											</a>
+										</li>
+									</if>
+                                    
+                                    <if condition="$getConfigPri['aliscan_switch'] eq '1'">
+										<li class="item weixin"  data-index="2" data-source="aliscan" data-title="支付宝当面付">
+											<a href="javascript:void(0);" data-text="支付宝当面付">
+												<img src="__PUBLIC__/home/images/dangmianfu.jpg">
+											</a>
+										</li>
+									</if>
+									</ul>
+								</div>
+							</div>
+							<div class="row charge-submit clearfix">
+								<div class="content">
+									<if condition="$getConfigPri['aliapp_pc'] eq '1' OR $getConfigPri['wx_switch_pc'] eq '1' OR $getConfigPri['aliscan_switch'] eq '1'">
+										<a class="btn btn-submit" href="javascript:charge_submit();" >立即支付</a>
+									<else/>
+										<a class="btn btn-submit">本网站未开通支付</a>
+									</if>
+									<div class="charge-errormsg ">
+										<img src=""><span class="msg red"></span>
+									</div>
+								</div>
+							</div>
+				   
+					  
+						
+					   </li>
+					</ul>
+				</form>
+			</div>			
+        </div>
+    </div>
+</div>
+
+<div class="chargecover"></div>
+<div class="charge-pay-tip">
+    <div class="qrcode-container">
+    </div>
+    <div class="btn-group">
+        <a class="btn btn-complete" href="javascript:void(0);">支付完成</a>
+        <a class="btn btn-problem" target="_blank" href="http://bbs.360safe.com/forum.php?mod=viewthread&amp;tid=6999505&amp;page=1">遇到问题?</a>
+    </div>
+</div>
+<div class="charge-bankpay-tip">
+    <div class="title">
+        请支付订单
+        <a class="close modify" href="javascript:void(0);">×</a>
+    </div>
+    <div class="content">
+        <div class="tip">
+            请您在<strong class="timer"><span class="hour">2</span>小时<span class="minute">0</span>分<span class="second">0</span>秒</strong>内，在新打开的支付页面中完成支付...
+        </div>
+        <div class="btn-group">
+            <a class="btn btn-complete" href="javascript:void(0);">支付完成</a>
+            <a class="btn btn-problem" target="_blank" href="http://bbs.360safe.com/forum.php?mod=viewthread&amp;tid=6999505&amp;page=1">遇到问题?</a>
+        </div>
+        <div class="tail">
+            <a class="modify" href="javascript:void(0);">&lt;返回修改支付方式</a>
+        </div>
+    </div>
+</div>
+
+</div>
+<tc_include file="Public:footer" />
+
+
+<script type="text/javascript" src="__PUBLIC__/home/js/payment.js?t=1570610246"></script>
+
+
+
+</body>
+</html>

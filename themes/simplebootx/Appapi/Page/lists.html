@@ -1,0 +1,28 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>关于我们</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta content="telephone=no" name="format-detection" />
+<!-- Set render engine for 360 browser -->
+<meta name="renderer" content="webkit">
+
+<!-- No Baidu Siteapp-->
+<meta http-equiv="Cache-Control" content="no-siteapp"/>
+<link href="__PUBLIC__/appapi/css/page.css" rel="stylesheet">
+</head>
+
+<body class="body-white">
+	<div class="container tc-main">	
+	  <ul class="page_list">
+		  <volist name="page" id="vo">
+				<li><a href="./index.php?g=appapi&m=page&a=pagecon&id={$vo.id}">{$vo.title}</a></li>
+			</volist>
+		</ul>
+	</div>
+	<!-- /container -->
+</body>
+</html>

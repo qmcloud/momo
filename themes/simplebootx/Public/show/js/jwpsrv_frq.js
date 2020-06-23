@@ -1,0 +1,1 @@
+jwplayer.jwpsrv.setSampleFrequency(0.0001);

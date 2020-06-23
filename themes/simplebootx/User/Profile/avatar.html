@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>{$site_name}</title>
+<meta name="keywords" content="{$site_seo_keywords}" />
+<meta name="description" content="{$site_seo_description}">
+<meta name="author" content="ThinkCMF">
+<tc_include file="Public:head" />
+<style type="text/css">
+.tab-content{overflow: visible;}
+
+.uploaded_avatar_area{
+	margin-top: 20px;
+}
+.uploaded_avatar_btns{
+	margin-top: 20px;
+}
+.uploaded_avatar_area .uploaded_avatar_btns{display: none;}
+</style>
+</head>
+<body class="body-white" id="top">
+	<tc_include file="Public:nav" />
+
+		<div class="container tc-main">
+                <div class="row">
+                    <div class="span3">
+	                    <tc_include file="Public:usernav"/>
+                    </div>
+                    <div class="span9">
+                           <div class="tabs">
+                               <ul class="nav nav-tabs">
+                                   <li class="active"><a href="#one" data-toggle="tab"><i class="fa fa-user"></i> 修改头像</a></li>
+                               </ul>
+                               <div class="tab-content">
+                                   <div class="tab-pane active" id="one">
+                                   		<if condition="empty($avatar)">
+							            	<img src="__TMPL__/Public/images/headicon_128.png" class="headicon"/>
+							            <else/>
+							            	<img src="{:sp_get_user_avatar_url($avatar)}?t={:time()}" class="headicon"/>
+							            </if>
+                                   		<input type="file" onchange="avatar_upload(this)" id="avatar_uploder"  name="file"/>
+                                   		<div class="uploaded_avatar_area">
+                                   		
+                                   		<div class="uploaded_avatar_btns">
+                                   			<a class="btn btn-primary confirm_avatar_btn" onclick="update_avatar()">确定</a>
+                                   			<a class="btn" onclick="reloadPage()">取消</a>
+                                   		</div>
+                                   		</div>
+                                   </div>
+                               </div>							
+                           </div>
+                    </div>
+                </div>
+
+		<tc_include file="Public:footer" />
+
+	</div>
+	<!-- /container -->
+
+	<tc_include file="Public:scripts" />
+	<script type="text/javascript">
+	function update_avatar(){
+		var area=$(".uploaded_avatar_area img").data("area");
+		$.post("{:U('profile/avatar_update')}",area,
+				function(data){
+			if(data.status==1){
+				reloadPage(window);
+			}
+			
+		},"json");
+		
+	}
+	function avatar_upload(obj){
+		var $fileinput=$(obj);
+		/* $(obj)
+		.show()
+		.ajaxComplete(function(){
+			$(this).hide();
+		}); */
+		Wind.css("jcrop");
+		Wind.use("ajaxfileupload","jcrop","noty",function(){
+			$.ajaxFileUpload({
+				url:"{:U('profile/avatar_upload')}",
+				secureuri:false,
+				fileElementId:"avatar_uploder",
+				dataType: 'json',
+				data:{},
+				success: function (data, status){
+					if(data.status==1){
+						$("#avatar_uploder").hide();
+						var $uploaded_area=$(".uploaded_avatar_area");
+						$uploaded_area.find("img").remove();
+						var $img=$("<img/>").attr("src","__UPLOAD__avatar/"+data.data.file);
+						$img.prependTo($uploaded_area);
+						$(".uploaded_avatar_btns").show();
+						$img.Jcrop({
+					    	aspectRatio:1/1,
+					    	setSelect: [ 0, 0, 100, 100 ],
+					    	onSelect: function(c){
+					    		$img.data("area",c);
+					    	}
+					    });
+						
+					}else{
+						noty({text: data.info,
+                    		type:'error',
+                    		layout:'center'
+                    	});
+					}
+					
+				},
+				error: function (data, status, e){}
+			});
+		});
+		
+		
+		
+		return false;
+	}
+</script>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+</head>
+<body style="background-color:#f3f3f3">
+<tc_include file="Public:header" />
+<tc_include file="Home/Personal:header" />
+<div class="container">
+	<div class="Firstfloor clearfix">
+		<div class="Leftlayout clearfix">
+			<tc_include file="Home/Personal:navigation" />
+		</div>
+        <div class="rightlayout">
+                    <if condition="$auth['status'] eq '1' or $auth['status'] eq '0'">
+                    <p class="page_title"><if condition="$auth eq '0'">认证审核中<else/>审核成功</if></p>
+                    <div class="area_bd">
+                        <div class="F_creBox">
+                            <div class="F_crePro">
+                             <div <if condition="$auth['status'] eq '0'">class="F_creProC1" <else/>class="F_creProC2" </if>></div>
+                             <div class="F_proD">
+                                <span>1</span>
+                                填写资料
+                             </div>
+                              <div class="F_proD one">
+                                <span>2</span>
+                                试播审核
+                             </div>
+                              <div class="F_proD two">
+                                <span>3</span>
+                                审核完成
+                             </div>
+                            </div>
+                        </div>
+                    </div>
+                    <else/>
+                    <div class="authtop">
+                        <p>以下内容为必填项，为保证您的利益，请如实填写</p>
+                    </div>
+                    <p class="card_shibai"><if condition="$auth['status'] eq '2'">认证失败，请填写真实信息重新认证<br>原因：{$auth['reason']}</if></p>
+                    <div style="width:600px;margin:0 auto;margin-top:30px">
+                        <div class="content"> 
+                            <div class="card_in">
+                                <div>
+                                    <span class="span1">真实姓名</span>
+                                    <input type="text" id="real_name" placeholder="请填写您的真实姓名"/>
+                                </div>
+                                <div class="line"></div>
+                                <div>
+                                    <span class="span1">手机号码</span>
+                                    <input type="text" id="mobile" placeholder="请填写您的手机号"/>
+                                </div>
+                                <div class="line"></div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content2" style="width:600px;margin:0 auto;margin-top:30px">
+                        <div class="card_in">
+							<div>
+								<span class="span1">身份证号</span>
+								<input type="text" id="cer_no" placeholder="请填写您的身份证号"/><br>
+							</div>
+							<div class="line"></div>
+    <!--<span class="span1" style="font-size:0.7em">海外及港澳台用户请填写和上传护照/港澳身份证 /台胞证</span>-->
+							<div id="resident">
+								<img src="public/rz/images/auth_face.jpg" class="fl img-sfz" data-index="ipt-file1" onclick="file_click($(this))">
+								<img src="public/rz/images/auth_back.jpg" class="fl img-sfz" data-index="ipt-file2" onclick="file_click($(this))">
+								<img src="public/rz/images/auth_handle.jpg" class="fl img-sfz" data-index="ipt-file3" onclick="file_click($(this))">
+								<div class="cl"></div>
+								<div class="shad shadd" data-select="ipt-file1">
+										<div class="title-upload">正在上传中...</div>
+										<div id="progress1">
+											<div class="progress ipt-file1"></div>
+										</div>
+								</div>
+								<div class="shad2 shadd" data-select="ipt-file2">
+									<div class="title-upload">正在上传中...</div>
+									<div id="progress2">
+										<div class="progress ipt-file2"></div>
+									</div>
+								</div>
+								<div class="shad3 shadd" data-select="ipt-file3">
+									<div class="title-upload">正在上传中...</div>
+									<div id="progress3">
+										<div class="progress ipt-file3"></div>
+									</div>
+								</div>
+								<div class="box-upload1 box-upload" data-index="ipt-file1" onclick="file_click($(this))">
+									<img src="" class="img-upload" >
+								</div>
+								<div class="box-upload2 box-upload" data-index="ipt-file2" onclick="file_click($(this))">
+									<img src="" class="img-upload">
+								</div>
+								<div class="box-upload3 box-upload" data-index="ipt-file3" onclick="file_click($(this))">
+									<img src="" class="img-upload">
+								</div>
+								<input value="" type="hidden" name="front_view" class="sf1">
+								<input value="" type="hidden" name="bank_view" class="sf2">
+								<input value="" type="hidden" name="handset_view" class="sf3">
+							</div>
+							<div id="upload"></div>
+							<img src="public/rz/images/id_handle2.jpg" style="width: 90%;margin: 6% 5% 0 3%;">
+							<br>
+						</div>
+                    </div>
+                    <div class="title4" style="text-align: center;padding-top: 20px;">认证即同意 <a style="color:#ffd350 " href="./index.php?g=portal&m=page&a=index&id=10" target="_blank">主播协议</a></div>
+                    <div class="aply">提交认证</div>
+				</div>
+			</if>
+	</div>
+ </div>
+</div>
+<script type="text/javascript" language="javascript">
+ var _show = {
+			"uid": "<?php echo $uid; ?>",
+		}
+</script>
+<tc_include file="Public:footer" />
+<tc_include file="Home/Personal:footer" />
+<script type="text/javascript" src="__PUBLIC__/home/js/card.js"></script>
+<script type="text/javascript" src="__PUBLIC__/rz/js/ajaxfileupload.js"></script>
+</body>
+</html>
+
+   
+
+

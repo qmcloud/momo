@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <title>提交成功</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-family: Helvetica;}
+        .title2{color: #526165;font-size: 1.0em;text-align: center;margin-top: 2%;}
+        img{width: 18%;margin: 30% 40% 9%;}
+    </style>
+</head>
+<body>
+<img src="__PUBLIC__/rz/images/success.jpg">
+<div class="title2">工作人员正在飞速审核中，请耐心等待</div>
+<a href="inke://startlive" id="inke"></a>
+<input type="hidden" id="from_source" value="">
+</body>
+</html>
+<script src="__PUBLIC__/js/jquery.js"></script>
+<script type="text/javascript">
+    var from_source = $('#from_source').val();
+    if(from_source == 1) {
+        setTimeout(function () {
+            document.getElementById("inke").click();
+        }, 2000);
+    }
+
+
+</script>

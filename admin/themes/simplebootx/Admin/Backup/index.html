@@ -1,0 +1,67 @@
+<admintpl file="header"/>
+</head>
+<body>
+<div class="wrap">
+  <ul class="nav nav-tabs">
+     <li class="active"><a href="{:U('Admin/backup/index')}">{:L('ADMIN_BACKUP_INDEX')}</a></li>
+  </ul>
+  <div class="common-form">
+        <form action="{:U('Admin/backup/index_post')}" method="post">
+	        <div class="table_list">
+	        <table width="100%" cellspacing="0" class="table_form">
+	            <tr>
+	        	    <td width="150" align="right">{:L('VOLUME_SIZE')}</td>
+	        	    <td>
+	                    <input type="text" name="sizelimit" value="{$sizelimit}" size="10"> K
+	                    &nbsp;&nbsp;({:L('VOLUME_SIZE_HELP_TEXT')})
+	                </td>
+	          	</tr>
+	            <tr>
+	        	    <td align="right">{:L('NAME')}</td>
+	        	    <td><input type="text" name="backup_name" value="{$backup_name}"></td>
+	          	</tr>
+	            <tr>
+	        	    <td align="right">{:L('BACKUP_TYPE')}</td>
+	        	    <td>
+	                	<label><input type="radio" checked="checked" value="full" name="backup_type" onclick="javascript:$('#js-showtables').hide();"> {:L('BACKUP_ALL')} &nbsp;&nbsp;</label>
+	                    <label><input type="radio" value="custom" name="backup_type" onclick="javascript:$('#js-showtables').show();"> {:L('CUSTOM_BACKUP')}</label>
+	                </td>
+	          	</tr>
+	            <tr id="js-showtables">
+	                <td align="right">
+	                    <label><input name="selectall" type="checkbox" checked="checked" value="" onclick="javascript:$('.js-checkitem').attr('checked', this.checked);" /> {:L('SELECT_ALL')}</label>
+	                </td>
+	                <td colspan="2">
+	                    <volist name="tables" id="val">
+	                        <label class="checkbox inline" style="width:200px;"><input name="backup_tables[{$val}]" type="checkbox" value="-1" checked="checked" class="js-checkitem" />&nbsp;&nbsp;{$val}</label>
+	                    </volist>
+	                </td>
+	            </tr>
+	          	<tr>
+	        	    <td></td>
+	        	    <td><input type="submit" name="dosubmit" value="{:L('START_BACKUP')}" class="btn btn-primary" style="margin-top: 10px;"></td>
+	          	</tr>
+	        </table>
+	        </div>
+        </form>
+    </div>
+</div>
+<style type="text/css">
+#js-showtables{display:none;}
+.checkbox.inline{
+	margin-left: 10px;
+}
+</style>
+<script src="__PUBLIC__/js/common.js"></script>
+<script src="__PUBLIC__/weui/js/jquery-weui.min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/weui/css/weui.min.css">
+<link rel="stylesheet" href="__PUBLIC__/weui/css/jquery-weui.min.css">		
+<script>
+(function(){
+  $(".btn-primary").click(function(){
+		$.showLoading("处理中...");
+	})
+})()
+</script>
+</body>
+</html>

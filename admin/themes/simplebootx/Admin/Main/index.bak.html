@@ -1,0 +1,86 @@
+<admintpl file="header" />
+<style>
+.home_info li em {
+	float: left;
+	width: 120px;
+	font-style: normal;
+}
+li {
+	list-style: none;
+}
+</style>
+<link href="__PUBLIC__/simpleboot/css/admin.css"  rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="admin_index">
+		<div class="layer">
+			<div class="modular">
+				<span class="title"><a>会员统计</a></span>
+				<span class="info"><a>注册量：</a><a class="data">{$users_admin['register']}</a></span>
+				<span class="info"><a>主播数量：</a><a class="data">{$users_admin['auth']}</a></span>
+				<span class="info"><a href="{:U('Liveing/index')}">正在直播的主播：</a><a class="data">{$users_admin['live']}</a></span>
+				<span class="info"></span>
+			</div>
+			<div class="modular">
+				<span class="title"><a>充值数据</a></span>
+				<span class="info">
+					<a>今日线上充值金额：</a>
+					<a class="data">{$charge_admin['money_my']}</a>
+					共<a class="data">{$charge_admin['money_my_count']}</a>单
+				</span>
+				<span class="info">
+					<a>今日手动充值点数：</a>
+					<a class="data">{$charge_admin['money_amdin']}</a>
+					共<a class="data">{$charge_admin['money_amdin_count']}</a>单
+				</span>
+				<span class="info"></span>
+				<span class="info"></span>
+			</div>
+			<div class="modular">
+				<span class="title"><a>充值来源</a></span>
+				<span class="info"><a>支付宝：</a><a class="data">{$source['source_zfb']}</a></span>
+				<span class="info"><a>微信：</a><a class="data">{$source['source_wx']}</a></span>
+				<span class="info"><a>苹果支付：</a><a class="data">{$source['source_ios']}</a></span>
+				<span class="info"></span>
+			</div>
+		</div>
+		<div class="layer">
+			<div class="modular">
+				<span class="title"><a>主播审核</a></span>
+				<span class="info"><a href="{:U('Userauth/index')}">待审核的主播：</a><a class="data">{$examine}</a></span>
+				<span class="info"></span>
+				<span class="info"></span>
+				<span class="info"></span>
+			</div>
+			<div class="modular">
+				<span class="title"><a>提现数据</a></span>
+				<span class="info">
+					<a>提现金额：</a>
+					<a class="data">{$cashrecord['total']}</a>
+				</span>
+				<span class="info">
+					<a>已成功提现金额：</a>
+					<a class="data">{$cashrecord['success']}</a>
+				</span>
+				<span class="info">
+					<a>待处理提现主播：</a>
+					<a class="data">{$cashrecord['info']}</a>
+				</span>
+				<span class="info">
+					<a>待处理提现金额：</a>
+					<a class="data">{$cashrecord['fail']}</a>
+				</span>
+			</div>
+			<div class="modular" style="height: 206px;">
+				<span class="title"><a>热门主播</a></span>
+				 <volist name="hot" id="v">
+					<span class="remen">
+						<img src="{$v['avatar']}"/> {$v['user_nicename']}
+					</span>
+				 </volist>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

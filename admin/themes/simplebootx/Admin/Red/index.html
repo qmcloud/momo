@@ -1,0 +1,58 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >列表</a></li>
+		</ul>
+		
+		<form class="well form-search" method="post" action="{:U('Red/index')}">
+
+			会员： 
+			<input type="text" name="uid" style="width: 200px;" value="{$formget.uid}" placeholder="请输入会员id...">&nbsp;&nbsp;
+			<input type="submit" class="btn btn-primary" value="搜索">
+		</form>		
+		<form method="post" class="js-ajax-form" >
+
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">编号</th>
+						<th>发送者（ID）</th>
+						<th>红包类型</th>
+						<th>发放类型</th>
+
+						<th>已抢/总金额</th>
+						<th>已抢/总个数</th>
+						<th>描述</th>
+						<th>生效时间</th>
+						<th>添加时间</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>					
+						<td>{$vo['userinfo']['user_nicename']} ( {$vo['uid']} ) </td>
+						<td>{$type[$vo['type']]}  </td>
+						<td>{$type_grant[$vo['type_grant']]}</td>
+						<td>{$vo['coin_rob']}/{$vo['coin']}</td>
+						<td>{$vo['nums_rob']}/{$vo['nums']}</td>
+						<td>{$vo['des']}</td>
+						<td>{$vo.effecttime|date="Y-m-d H:i:s",###}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td align="center">	
+                            <a href="{:U('Red/index2',array('redid'=>$vo['id']))}" >领取记录</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

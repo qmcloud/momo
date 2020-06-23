@@ -1,0 +1,70 @@
+/* 
+ *聊天窗口样式表
+ */
+.chatIcon{
+	position: fixed;bottom: 20px;right: 30px;background: #4FC1FF;width: 60px;height: 40px;line-height: 40px;text-align: center;
+}
+.chatWindow{
+	position: fixed;
+	right: 5px;
+	bottom:10px;
+	z-index: 10;
+	width: 300px;
+	height: 500px;
+	border: 1px solid #CCC;
+	border-radius: 8px;
+	box-shadow: 2px 1px 10px #989898;
+
+}
+.chatLists{
+	float:left;
+	width: 100px;
+	position: relative;
+	height: 500px;
+	background: #E3E3E3;
+	border-right: 1px solid #D1D1D1;
+	border-radius: 6px 0 0 6px;
+}
+.chatSearchIcon{
+	position: absolute;
+	right: 0;
+	bottom:0;
+	width: 25px;
+	height: 25px;
+	background: none;
+	cursor: pointer;
+}
+.chatInfo{
+	float: right;
+	width: 188px;
+	height: 490px;
+	overflow: auto;
+	background: #FFF;
+	padding:5px;
+	border-radius: 0 6px 6px 0;
+}
+.chatSearch{//点击私信查找按钮时添加元素调用该样式类
+	width: 380px;
+	height: 30px;
+	line-height: 30px;
+	background: green;
+	position: fixed;
+	bottom:10px;
+	padding: 0;
+	border-radius: 6px;
+	
+}
+.searchBtn{
+	width: 60px;
+	height: 25px;
+}
+input[name="chatSearchInfo"]{
+	margin-top: -10px;
+	width: 150px;
+	height: 25px;
+	line-height: 25px;
+	outline: none;
+}
+.clearboth{
+	clear: both;
+}

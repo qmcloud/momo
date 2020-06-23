@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+    <title>身份信息</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-family: Helvetica;}
+        .title2{color: #526165;font-size: 1.0em;text-align: center;margin-top: 4%;}
+        img{width: 18%;margin: 30% 41% 9%;}
+        p{font-size: 0.9em;color: #B4C1C7;text-align: left;margin-left: 23%;line-height: 150%}
+        .alink{color:#00D8C9;text-decoration:underline; }
+    </style>
+</head>
+<body>
+<img src="__PUBLIC__/appapi/auth/images/error.jpg">
+<div class="title2">您的认证没有通过，请<a class="alink" href="./index.php?g=Appapi&m=auth&a=index&uid={$uid}&token={$token}&reset=1">重新认证</a><br/><br/><p>{$reason}<br></p></div>
+
+<tc_include file="Appapi/Public/footer" />
+</body>
+</html>

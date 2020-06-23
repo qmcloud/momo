@@ -1,0 +1,327 @@
+body{
+    font-size: 0.28rem;
+    background:#f5f5f5;
+}
+
+.layui-layer-title{
+    font-size:0.32rem;
+}
+.layui-layer-btn a{
+    font-size:0.3rem;
+}
+
+.tab{
+    background:#fff;
+    margin-bottom:0.2rem;
+    height:1.1rem;
+}
+.tab ul{}
+.tab ul li{
+    float:left;
+    width:33.33%;
+    height:1rem;
+    line-height:1rem;
+    text-align:center;
+    color:#969696;
+    font-size:0.3rem;
+}
+.tab ul li .tab_line{
+    display:none;
+    width: 0.46rem;
+    height: 0.06rem;
+    margin: -0.2rem auto 0;
+    border-radius: 0.04rem;
+}
+.tab ul li.on{
+    color:#323232;
+}
+.tab ul li.on .tab_line{
+    display:block;
+}
+
+.tab_bd{
+    position:absolute;
+    width:100%;
+    height: calc(100% - 1.3rem);
+    overflow: auto;
+    background:#fff;
+}
+.tab_bd{}
+.tab_bd .bd_title{
+    padding: 0.4rem 0 0.3rem 0;
+    text-align: center;
+    font-size:0.24rem;
+    background: #fff;
+}
+.tab_bd .bd_title .bd_title_line{}
+.tab_bd .bd_title .bd_title_txt{
+    margin:0 0.1rem;
+    font-weight:bold;
+}
+.tab_bd .bd_content{
+    padding:0.2rem 0.2rem 0.4rem;
+    background:#fff;
+}
+.tab_bd .bd_content ul{}
+.tab_bd .bd_content ul li{
+    float:left;
+    width:50%;
+}
+.tab_bd .bd_content ul li img{
+    max-width:100%;
+    max-height:100%;
+}
+.vip{}
+.vip .bd_content{
+    padding:0 0 0 0.3rem;
+}
+.vip .bd_content ul li{
+    width:3.3rem;
+    height:1.8rem;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+}
+.vip .bd_content ul li:nth-child(2n+1){
+    margin-right:0.3rem;
+    background-image:url('../images/mall/vip_bg1.png');
+}
+.vip .bd_content ul li:nth-child(2n+2){
+    background-image:url('../images/mall/vip_bg2.png');
+}
+.vip .bd_content ul li .v_t{
+    margin-top:0.38rem;
+    padding-left:0.3rem;
+    color:#fff;
+    font-size:0.36rem;
+}
+.vip .bd_content ul li .v_d{
+    margin-top:0.22rem;
+    padding-left:0.3rem;
+    color:#fff;
+    font-size:0.24rem;
+}
+.vip .vip_button{
+    margin:0.74rem auto;
+    width:5rem;
+    height:0.8rem;
+    line-height:0.8rem;
+    text-align:center;
+    color:#fff;
+    font-size:0.3rem;
+    border-radius:0.4rem;
+}
+.vip .vip_end{
+    text-align:center;
+    color:#646464;
+}
+
+/* VIP购买弹窗 */
+.vip .vip_buy_body{
+	background:#fff;
+}
+
+.vip .vip_buy_body .vip_buy_list{
+    padding:0 0.2rem;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_t{
+    display:inline-block;
+    width:1.6rem;
+    height:1rem;
+    line-height:1rem;
+    color:#646464;
+    font-size:0.3rem;
+    font-weight:bold;
+    vertical-align:top;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_b{
+    display:inline-block;
+    height:1rem;
+    line-height:1rem;
+    font-size:0.3rem;
+    vertical-align:top;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_b ul{
+    padding:0.1rem 0;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_b ul li{
+    position:relative;
+    float:left;
+    margin-left:0.2rem;
+    padding:0 0.2rem;
+    height:0.76rem;
+    line-height:0.76rem;
+    text-align:center;
+    color:#969696;
+    font-size:0.3rem;
+    border:0.02rem solid #f5f5f5;
+    border-radius:0.1rem;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_b ul li:first-child{
+    margin-left:0;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_b ul li.on{
+    color:#FF6131;
+    border:0.02rem solid #FF6131;
+}
+.vip .vip_buy_body .vip_buy_list .vip_buy_list_b ul li.on:after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    right:0;
+    width:0.24rem;
+    height:0.24rem;
+    background:url("../images/mall/vip_select.png") no-repeat right bottom;
+    background-size:0.24rem;
+}
+.vip .vip_buy_body #vip_total_coin{
+    color:#FF6131;
+}
+.vip .vip_buy_body #user_coin{
+    color:#FF6131;
+}
+.vip .vip_buy_body .vip_submit_bd{
+    margin-top:0.2rem;
+    padding:0.3rem 0.2rem;
+    border-top:0.02rem solid #f5f5f5;
+}
+
+.vip .vip_buy_body .vip_submit_bd .vip_submit_bd_r{
+    float:right;
+    margin-top:0.06rem;
+    padding:0 0.5rem;
+    height:0.88rem;
+    line-height:0.88rem;
+    background:#FF6131;
+    border-radius:0.5rem;
+    color:#fff;
+    font-size:0.3rem;
+}
+img.coin{
+    height:0.32rem;
+}
+/* 靓号 */
+.liang .bd_content {
+    padding:0 0 0 0.3rem;
+}
+.liang .bd_content ul li{
+    margin-bottom:0.3rem;
+    width:3.3rem;
+    height:2rem;
+    background-size:contain;
+    background-repeat:no-repeat;
+    background-position:center;
+    
+    -moz-box-sizing: border-box;  /*Firefox3.5+*/
+	-webkit-box-sizing: border-box; /*Safari3.2+*/
+	-o-box-sizing: border-box; /*Opera9.6*/
+	-ms-box-sizing: border-box; /*IE8*/
+	box-sizing: border-box;    
+}    
+
+.liang .bd_content ul li:nth-child(4n+1){
+    margin-right:0.3rem;
+    background-image:url('../images/mall/liang_bg1.png');
+}
+.liang .bd_content ul li:nth-child(4n+2){
+    background-image:url('../images/mall/liang_bg2.png');
+}
+.liang .bd_content ul li:nth-child(4n+3){
+    margin-right:0.3rem;
+    background-image:url('../images/mall/liang_bg3.png');
+}
+.liang .bd_content ul li:nth-child(4n+4){
+    background-image:url('../images/mall/liang_bg4.png');
+}
+.liang .bd_content ul li .liang_id{
+    margin:0.3rem 0 0 0.39rem;
+    font-size:0.36rem;
+    font-weight:600;
+    color:#fff;
+}
+.liang .bd_content ul li .liang_coin{
+    margin:0 0 0 0.39rem;
+    height:0.52rem;
+    font-weight:400;
+    color:#ffffff;
+    font-size:0.24rem;
+}
+.liang .bd_content ul li .liang_buy{
+    margin:0 auto 0;
+    width:0.88rem;
+    height:0.4rem;
+    line-height:0.4rem;
+    text-align:center;
+    color:#fff;
+    border:1px solid #fff;
+    border-radius:0.2rem;
+}
+
+/* 坐骑 */
+.car .bd_content{
+    padding:0.3rem 0 0 0.3rem;
+}
+.car .bd_content ul li{
+    margin-bottom:0.3rem;
+    width:3.3rem;
+    height:3.8rem;
+    
+    -moz-box-sizing: border-box;  /*Firefox3.5+*/
+	-webkit-box-sizing: border-box; /*Safari3.2+*/
+	-o-box-sizing: border-box; /*Opera9.6*/
+	-ms-box-sizing: border-box; /*IE8*/
+	box-sizing: border-box;    
+    text-align:center;
+}
+
+.car .bd_content ul li:nth-child(4n+1){
+    margin-right:0.3rem;
+}
+.car .bd_content ul li:nth-child(4n+3){
+    margin-right:0.3rem;
+}
+.car .bd_content ul li:nth-child(3n+1){
+    background:url(../images/mall/car_bg1.png) no-repeat center;
+    background-size:contain;
+}
+.car .bd_content ul li:nth-child(3n+2){
+    background:url(../images/mall/car_bg2.png) no-repeat center;
+    background-size:contain;
+}
+.car .bd_content ul li:nth-child(3n+3){
+    background:url(../images/mall/car_bg3.png) no-repeat center;
+    background-size:contain;
+}
+
+.car .bd_content ul li .car_img{
+    margin-top:0.24rem;
+    height:1.75rem;
+}
+.car .bd_content ul li .car_img img{
+    max-width:100%;
+    max-height:100%;
+}
+.car .bd_content ul li .car_title{
+    color:#fff;
+    font-size:0.36rem;
+    font-weight:600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.car .bd_content ul li .car_coin{
+    height:0.42rem;
+    color:#fff;
+    font-size:0.24rem;
+}
+.car .bd_content ul li .car_buy{
+    margin:0 auto 0;
+    width:0.88rem;
+    height:0.4rem;
+    line-height:0.4rem;
+    text-align:center;
+    color:#ffffff;
+    font-size:0.2rem;
+    border:1px solid #ffffff;
+    border-radius:0.2rem;
+}

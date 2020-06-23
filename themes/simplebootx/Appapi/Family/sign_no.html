@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css?t=1561712925"/>
+    <title>申请进度</title>
+</head>
+<body>
+	<div class="sign_no">
+		<div class="speed">
+			<div class="speed_thumb"><img src="__PUBLIC__/appapi/images/family/sign_no.png"></div>
+			<div class="speed_title">很遗憾，您解除签约的申请被拒！</div>
+			<div class="speed_tips">
+				原因：{$userfam['signout_reason']}
+			</div>
+		</div>
+		<a class="reset button_default" href="/index.php?g=Appapi&m=Family&a=home&uid={$uid}&token={$token}">进入家族中心</a>
+	</div>
+    <tc_include file="Appapi/Public/footer" />
+</body>
+</html>

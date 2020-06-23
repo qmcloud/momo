@@ -1,0 +1,89 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Gift/index')}">礼物列表</a></li>
+			<li class="active"><a >礼物添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Gift/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">礼物分类</label>
+					<div class="controls">
+						<select name="sid">
+						    <option value="0">默认分类</option>
+						   <volist name="gift_sort" id="vo">
+							     <option value="{$key}">{$vo}</option>
+							 </volist>			
+							 
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">礼物类型</label>
+					<div class="controls">
+						<label class="radio inline" for="type_0"><input type="radio" name="type" value="0" id="type_0" checked >普通礼物</label>
+						<label class="radio inline" for="type_1"><input type="radio" name="type" value="1" id="type_1"  >连续礼物</label>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="0">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">礼物名称</label>
+					<div class="controls">
+						<input type="text" name="giftname">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">所需点数</label>
+					<div class="controls">
+						<input type="text" name="needcoin">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group" style="display:none;"> 
+					<label class="control-label">小图</label>
+					<div class="controls">
+								<div >
+									<input type="hidden" name="gifticon_mini" id="thumb1" value="">
+									<a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb1',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+										    <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb1_preview" width="135" style="cursor: hand" />
+									</a>
+									<input type="button" class="btn btn-small" onclick="$('#thumb1_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb1').val('');return false;" value="取消图片">
+								</div>
+						<span class="form-required"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">图片</label>
+					<div class="controls">
+								<div >
+									<input type="hidden" name="gifticon" id="thumb2" value="">
+									<a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb2',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+										    <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb2_preview" width="135" style="cursor: hand" />
+									</a>
+									<input type="button" class="btn btn-small" onclick="$('#thumb2_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb2').val('');return false;" value="取消图片">
+								</div>
+						<span class="form-required"></span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Gift/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

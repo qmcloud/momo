@@ -1,0 +1,48 @@
+<admintpl file="header" />
+
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('Gift/index')}">礼物列表</a></li>
+			<li class="active"><a >列表</a></li>
+			<li><a href="{:U('Luckrate/add',array('giftid'=>$giftid))}">添加</a></li>
+		</ul>
+        <form class="well form-search" name="form1" method="post" action="">
+            	{$giftinfo['giftname']}
+		</form>
+		<form method="post" class="js-ajax-form">
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>数量</th>
+						<th>倍数</th>
+						<th>中奖概率</th>
+						<th>是否全站通知</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+                        <td>{$vo['nums']}</td>
+                        <td>{$vo['times']}</td>
+                        <td>{$vo['rate']}%</td>
+                        <td><if condition="$vo['isall'] eq 1">是<else/>否</if></td>
+						<td align="center">	
+							<a href="{:U('Luckrate/edit',array('id'=>$vo['id']))}" >编辑</a>
+							 |
+                            <a href="{:U('Luckrate/del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

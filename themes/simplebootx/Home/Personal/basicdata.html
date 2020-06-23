@@ -1,0 +1,60 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+</head>
+<body style="background-color:#f3f3f3">
+<tc_include file="Public:header" />
+<tc_include file="Home/Personal:header" />
+<div class="container">
+	
+   <div class="Firstfloor clearfix">
+   <div class="Leftlayout">
+	<tc_include file="Home/Personal:navigation" />
+	</div>
+	<div class="rightlayout">
+	 <div class="jiben">
+	   <h3>基本资料</h3>
+	   <form id="fpost" action="__URL__/personal/" method="post">
+	    <div>
+		  <label class="label">昵称：</label>
+            <div>
+                <input class="jiebankuang" type="text" name="nickName" placeholder="用户昵称" value="{$info['user_nicename']}">
+             </div>
+		</div>
+		 <div>
+            <label class="label">性别：</label>
+            <div class="ctr">
+                <label class="radio">
+                    <input type="radio" name="gender" value="1" <?php if($info['sex'] == "1") echo "checked=checked;"?>>
+                    男
+                </label>
+                <label class="radio">
+                    <input type="radio" name="gender" value="2" <?php if($info['sex'] == "2") echo "checked=checked;"?>>
+                    女
+                </label>
+				 <label class="radio">
+                    <input type="radio" name="gender" value="0" <?php if($info['sex'] == "0") echo "checked=checked;"?>>
+                    保密
+                </label>
+            </div>
+        </div>
+		<div class="form-ctr">
+            <label class="label">签名：</label>
+			<input class="jiebankuangd" type="text" name="signature" placeholder="签名" value="{$info['signature']}">
+
+         </div>
+		
+        <div class="form-ctr UC-mt">
+            <div class="ctr">
+                <a class="baocunj" href="javascript:personal_data();">保存</a>
+            </div>
+        </div>
+	   </form>
+	 </div>
+	 
+	</div>
+  </div>
+
+</div>
+<tc_include file="Public:footer" />
+</body>
+</html>

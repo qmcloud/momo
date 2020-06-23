@@ -1,0 +1,64 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >音乐分类</a></li>
+			<li><a href="{:U('Music/classify_add')}">添加</a></li>
+		</ul>
+		<form class="well form-search" method="post" action="{:U('Music/classify')}">
+
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入分类名称">
+			<input type="submit" class="btn btn-primary" value="搜索">
+		</form>
+		<form method="post" class="js-ajax-form" action="{:U('Music/classify_listorders')}">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th>序号</th>
+						<th align="center">ID</th>
+						<th>分类名称</th>
+						<th>分类图标</th>
+						<th>添加时间</th>
+						<th>修改时间</th>
+						<th>是否删除</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<php>$isdel=array("0"=>"否","1"=>"是");</php>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td><input name="listorders[{$vo['id']}]" type="text" size="3" value="{$vo['orderno']}" class="input input-order"></td>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['title']}</td>
+						<td><img src="{$vo['img_url']}" width="50px" height="50px"></td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td><if condition="$vo['updatetime'] neq '0'">{$vo.updatetime|date="Y-m-d H:i:s",###}<else />--</if></td>
+						
+						<td>{$isdel[$vo['isdel']]}</td>
+						<td align="center">
+							<a href="{:U('Music/classify_edit',array('id'=>$vo['id']))}" >编辑</a>|
+							<if condition="$vo['isdel'] eq '0'">
+							<a href="{:U('Music/classify_del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？删除后对应分类下的音乐将不显示">删除</a>
+							<else />
+							<a href="{:U('Music/classify_canceldel',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要取消删除吗？">取消删除</a>
+							</if>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

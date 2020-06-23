@@ -1,0 +1,61 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('ad/index')}">{:L('ADMIN_AD_INDEX')}</a></li>
+			<li><a href="{:U('ad/add')}">{:L('ADMIN_AD_ADD')}</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('ad/toggle',array('display'=>1))}" data-subcheck="true">{:L('DISPLAY')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('ad/toggle',array('hide'=>1))}" data-subcheck="true">{:L('HIDE')}</button>
+			</div>
+			<php> $status=array("1"=>L('DISPLAY'),"0"=>L('HIDDEN')); </php>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">ID</th>
+						<th>{:L('NAME')}</th>
+						<th>{:L('HOW_TO_USE')}</th>
+						<th width="45">{:L('STATUS')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="ads" item="vo">
+					<tr>
+						<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.ad_id}"></td>
+						<td>{$vo.ad_id}</td>
+						<td>{$vo.ad_name}</td>
+						<php>$usercode="{".":sp_getad('".$vo['ad_name']."')}";</php>
+						<td>{$usercode}</td>
+						<td>{$status[$vo['status']]}</td>
+						<td>
+							<a href="{:U('ad/edit',array('id'=>$vo['ad_id']))}">{:L('EDIT')}</a> |
+							<a href="{:U('ad/delete',array('id'=>$vo['ad_id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="16"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">ID</th>
+						<th>{:L('NAME')}</th>
+						<th>{:L('HOW_TO_USE')}</th>
+						<th width="45">{:L('STATUS')}</th>
+						<th width="120">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('ad/toggle',array('display'=>1))}" data-subcheck="true">{:L('DISPLAY')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('ad/toggle',array('hide'=>1))}" data-subcheck="true">{:L('HIDE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

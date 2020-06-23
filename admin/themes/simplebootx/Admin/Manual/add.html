@@ -1,0 +1,39 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Manual/index')}">手动充值记录</a></li>
+			<li class="active"><a >手动充值</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Manual/add_post')}">
+			<fieldset>
+
+
+				<div class="control-group">
+					<label class="control-label">会员</label>
+					<div class="controls">
+						<input type="text" name="user_login">
+						<span class="form-required">*</span>
+							会员ID
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">充值点数</label>
+					<div class="controls">
+						<input type="text" name="coin" onkeyup="this.value=this.value.replace(/[^\d-]/g,'')">
+						<span class="form-required">*</span>
+					
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Manual/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

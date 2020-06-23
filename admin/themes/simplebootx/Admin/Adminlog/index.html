@@ -1,0 +1,57 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >记录</a></li>
+
+		</ul>
+		<form class="well form-search" name="form1" method="post" style="float:left" action="">
+			时间：
+			<input type="text" name="start_time" class="js-date date" id="start_time" value="{$formget.start_time}" style="width: 80px;" autocomplete="off">-
+			<input type="text" class="js-date date" name="end_time" id="end_time" value="{$formget.end_time}" style="width: 80px;" autocomplete="off"> &nbsp; &nbsp;
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入管理员ID...">
+			<input type="button" class="btn btn-primary" value="搜索" onclick="form1.action='{:U('Adminlog/index')}';form1.submit();"/>
+			<input type="button" class="btn btn-primary" style="background-color: #1dccaa;" value="导出" onclick="form1.action='{:U('Adminlog/export')}';form1.submit();"/>	
+		</form>	
+    	
+		<form method="post" class="js-ajax-form" >
+
+		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>管理员ID</th>
+						<th>管理员</th>
+						<th>操作</th>
+						<th>IP</th>
+						<th>时间</th>
+
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['adminid']}</td>
+						<td>{$vo['admin']}</td>
+						<td>{$vo['action']}</td>
+						<td>{:long2ip($vo['ip'])}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td align="center">	
+ 							<!-- <a href="{:U('Gift/edit',array('id'=>$vo['id']))}" >编辑</a> | -->
+							<!-- <a href="{:U('Charge/del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>  -->
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

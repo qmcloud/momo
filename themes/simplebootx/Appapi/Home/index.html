@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<tc_include file="Appapi/Public/head" />
+		<title>{$info['user_nicename']}的主页</title>
+		<link href='__PUBLIC__/appapi/css/homepage.css?t=2' rel="stylesheet" type="text/css" >
+	</head>
+<body>
+    <div class="top">
+        <div class="top_avatar">
+            <img src="{$info['avatar']}">
+        </div>
+        <div class="top_bg">
+        </div>
+        <div class="top_info">
+            <div class="top_info_t">
+                <div class="top_info_t_avatar">
+                    <img src="{$info['avatar']}">
+                </div>
+                <div class="top_info_t_bd">
+                    <p class="top_info_t_bd_name">{$info['user_nicename']}</p>
+                    <p>
+                        <img class="sex" src="__PUBLIC__/appapi/images/<if condition="$info['sex'] eq 1">man<else/>woman</if>.png">
+                        <img class="levelanchor" src="{$levelanchorlist[$info['level_anchor']]['thumb']}">
+                        <img class="level" src="{$levellist[$info['level']]['thumb']}">
+                    </p>
+                    <p class="top_info_t_bd_id">ID:{$info['id']}</p>
+                </div>
+            </div>
+            <div class="top_info_d">
+                <span>{$info['fans']}</span>粉丝
+                <span class="top_info_d_s">|</span>
+                <span>{$info['follows']}</span>关注
+            </div>
+            <div class="top_info_b">{$info['signature']}</div>
+            
+        </div>
+    </div>
+    <div class="line5"></div>
+    <div class="label down">
+        <div class="label_title">主播印象</div>
+        <div class="label_bd">
+            <volist name="labels" id="v">
+            <span style="background:{$v['colour']}">{$v['name']}</span>
+            </volist>
+            <span class="add">+添加印象</span>
+        </div>
+    </div>
+    <div class="line5"></div>
+    <div class="rank down">
+        <div class="rank_left">
+            <img src="__PUBLIC__/appapi/images/homepage/contribute.png">
+            {$config['name_votes']}贡献榜
+        </div>
+        <div class="rank_right">
+            <volist name="contribute" id="v">
+            <img class="avatar" src="{$v['avatar']}">
+            </volist>
+            <img class="right" src="__PUBLIC__/appapi/images/right.png">
+        </div>
+    </div>
+    <div class="line10"></div>
+    <div class="tab clearfix">
+        <ul>
+            <!-- <li>视频</li> -->
+            <li class="on">
+                <div class="tab_t">
+                    <p>直播</p>
+                    <div class="tab_line button_default"></div>
+                </div>
+                {$livenums}
+            </li>
+            
+        </ul>
+    </div>
+    <div class="tab_bd live clearfix">
+        <ul>
+            <volist name="liverecord" id="v">
+            <li>
+                <div class="live_left">
+                    <p class="live_left_t">{$v['title']}</p>
+                    <p class="live_left_d">{$v['datestarttime']} {$v['length']}</p>
+                </div>
+                <div class="live_right">
+                    <p class="live_right_nums">{$v['nums']}</p>
+                    <p class="live_right_d">人看过直播</p>
+                </div>
+            </li>
+            </volist>
+        </ul>
+    </div>
+    
+    <div class="body_bottom down">
+        <span>关注</span>
+        <span>私信</span>
+        <span>拉黑</span>
+    </div>
+    
+</body>
+
+<tc_include file="Appapi/Public/footer" />
+<script>
+	(function(){
+		var isiPad = /iPad/i.test(navigator.userAgent);
+		var isiPhone = /iPhone|iPod/i.test(navigator.userAgent);
+		var isAndroid = /Android/i.test(navigator.userAgent);
+		var isWeixin = /MicroMessenger/i.test(navigator.userAgent);
+		var isQQ = /QQ/i.test(navigator.userAgent);
+		var isIOS = (isiPad || isiPhone);
+		var isWeibo = /Weibo/i.test(navigator.userAgent);
+		var isApp = (isAndroid || isIOS);
+        
+		var href='';
+		if(isIOS){
+			href='{$config['app_ios']}';
+		}else{
+			href='{$config['app_android']}';
+		}
+		
+        
+		$(".down").on("click",function(){
+            location.href=href;
+		})
+	})()
+</script>
+</body>
+</html>

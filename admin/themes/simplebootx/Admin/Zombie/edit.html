@@ -1,0 +1,93 @@
+﻿<admintpl file="header"/>
+<style>
+ .controls img{
+     max-width:200px;
+ }
+</style>
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="#">编辑</a></li>
+		</ul>
+		<form class="form-horizontal js-ajax-forms" action="{:U('Zombie/edit_post')}" method="post">
+			<fieldset>
+			   <input type="hidden" name="id" value="{$userinfo['id']}" id="id"/>
+				<div class="control-group">
+					<label class="control-label">用户名</label>
+					<div class="controls">
+						<input type="text" name="user_login" value="{$userinfo['user_login']}" id="user_login" readonly/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">昵称</label>
+					<div class="controls">
+						<input type="text" name="user_nicename" value="{$userinfo['user_nicename']}" id="user_nicename"/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+		<!-- 		<div class="control-group">
+					<label class="control-label">邮箱</label>
+					<div class="controls">
+						<input type="text" name="user_email" value="{$userinfo['user_email']}" id="user_email"/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">绑定微信号</label>
+					<div class="controls">
+						<input type="text" name="weixin" value="{$userinfo['weixin']}" id="weixin"/>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">个人网站</label>
+					<div class="controls">
+						<input type="text" name="user_url" value="{$userinfo['user_url']}" id="user_url"/>
+						<span class="form-required">*</span>
+					</div>
+				</div> -->
+				<div class="control-group">
+					<label class="control-label">头像/封面</label>
+					<div class="controls">
+								<div >
+									<input type="hidden" name="avatar" id="thumb" value="{$userinfo['avatar']}">
+									<a href="javascript:void(0);" onclick="flashuploadcut('thumb_images', '附件上传','thumb',thumb_images,'1,jpg|jpeg|gif|png|bmp,1,,,1','','','');return false;">
+									  <if condition="$userinfo['avatar'] neq ''">
+												<img src="{$userinfo['avatar']}" id="thumb_preview" width="135" style="cursor: hand" />
+										<else/>
+										    <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb_preview" width="135" style="cursor: hand" />
+										</if>
+									</a>
+									<input type="button" class="btn btn-small" onclick="$('#thumb_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb').val('');return false;" value="取消图片">
+								</div>
+						<span class="form-required"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">性别</label>
+					<div class="controls">
+						<label class="radio inline" for="sex_1"><input type="radio" name="sex" value="1" id="sex_1" <if condition="$userinfo['sex'] eq '1'">checked</if> />男</label>
+						<label class="radio inline" for="sex_2"><input type="radio" name="sex" value="2" id="sex_2" <if condition="$userinfo['sex'] eq '2'">checked</if> >女</label>
+					</div>
+				</div>								
+				
+				<div class="control-group">
+					<label class="control-label">个性签名</label>
+					<div class="controls">
+						<textarea name="signature" rows="2" cols="20" id="signature" class="inputtext" style="height: 100px; width: 500px;">{$userinfo['signature']}</textarea>
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">编辑</button>
+				<a class="btn" href="javascript:history.go(-1);">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+</body>
+</html>

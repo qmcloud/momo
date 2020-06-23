@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <tc_include file="Appapi/Public/head" />
+	<link type="text/css" rel="stylesheet" href="__PUBLIC__/appapi/css/family.css"/>
+    <title>主播数据</title>
+</head>
+<body class="long">
+	<div class="profit_bg">
+        <notempty name="list">
+		<div class="profit_ul_t">
+			<span>主播</span>
+			<span>时间</span>
+			<span>直播时长</span>
+		</div>
+        </notempty>
+		<div class="profit_ul clear">
+			<ul>
+				<volist name="list" id="v">
+				<li>
+					<span>{$v['userinfo']['user_nicename']}</span>
+					<span>{$v['time']}</span>
+					<span>{$v['total']}</span>
+				</li>
+				</volist>
+                <empty name="list">
+                    <div class="li_empty">
+                        <p class="title"></p>
+                        <p class="des">暂时还没有主播数据</p>
+                    </div>
+                </empty>
+			</ul>
+		</div>
+	</div>
+
+	<script>
+		var uid='{$uid}';
+		var token='{$token}';
+		var familyid='{$familyid}';
+	</script>
+	<tc_include file="Appapi/Public/footer" />
+	<script>
+	$(function(){
+		function getlistmore(){
+			$.ajax({
+				url:'/index.php?g=appapi&m=Family&a=long_more',
+				data:{'page':page,'uid':uid,'token':token,'familyid':familyid},
+				type:'post',
+				dataType:'json',
+				success:function(data){
+					if(data.nums>0){
+							var nums=data.nums;
+							var list=data.data;
+							var html='';
+							for(var i=0;i<nums;i++){
+								html='<li>\
+										<span>'+list[i]['userinfo']['user_nicename']+'</span>\
+										<span>'+list[i]['time']+'</span>\
+										<span>'+list[i]['total']+'</span>\
+									</li>';
+							}
+						
+						$(".profit_ul ul").append(html);
+					}
+					
+					if(data.isscroll==1){
+						page++;
+						isscroll=true;
+					}
+				}
+			})
+		}
+		var page=2; 
+		var isscroll=true; 
+
+		$(".profit_ul").scroll(function(){  
+				var srollPos = $(".profit_ul").scrollTop();    //滚动条距顶部距离(页面超出窗口的高度)  		
+				var totalheight = parseFloat($(".profit_ul").height()) + parseFloat(srollPos);  
+				if(($(document).height()-50) <= totalheight  && isscroll) {  
+						isscroll=false;
+						getlistmore()
+				}  
+		});  
+
+	})
+	</script>	
+</body>
+</html>

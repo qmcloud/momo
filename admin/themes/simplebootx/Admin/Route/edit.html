@@ -1,0 +1,44 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li><a href="{:U('setting/site')}">网站信息</a></li>
+			<li><a href="{:U('route/index')}">URL美化</a></li>
+			<li><a href="{:U('route/add')}">添加URL规则</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('route/edit_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">原始网址:</label>
+					<div class="controls">
+						<input type="text" name="full_url" value="{$full_url}"><span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">显示网址:</label>
+					<div class="controls">
+						<input type="text" name="url" value="{$url}"><span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">是否启用:</label>
+					<div class="controls">
+						<select name="status">
+							<option value="1">启用</option>
+							<php>$status_selected=$status?"":"selected";</php>
+							<option value="0" {$status_selected}>禁用</option>
+						</select>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<input type="hidden" name="id" value="{$id}">
+				<button type="submit" class="btn btn-primary js-ajax-submit">保存</button>
+				<a class="btn" href="{:U('route/index')}">返回</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Liveing/index')}">列表</a></li>
+			<li class="active"><a >添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Liveing/add_post')}">
+			<fieldset>
+				<div class="control-group">
+					<label class="control-label">用户ID</label>
+					<div class="controls">
+						<input type="text" name="uid" value="{$live['uid']}">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label">直播分类</label>
+					<div class="controls">
+						<select name="liveclassid">
+						    <option value="0">默认分类</option>
+						   <volist name="liveclass" id="vo">
+							     <option value="{$vo['id']}">{$vo['name']}</option>
+							 </volist>			
+							 
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label">房间类型</label>
+					<div class="controls" id="cdn">				
+						<label class="radio inline"><input type="radio" value="0" name="type" checked="checked">普通房间</label>
+						<label class="radio inline"><input type="radio" value="1" name="type">密码房间</label>
+						<label class="radio inline"><input type="radio" value="2" name="type">门票房间</label>
+						<label class="radio inline"><input type="radio" value="3" name="type">计时房间</label>
+					</div>
+				</div>
+				<div>
+					<div id="cdn_switch_1" class="hide">
+						<div class="control-group">
+							<label class="control-label">密码或价格</label>
+							<div class="controls">				
+								<input type="text" name="type_val" value="{$live['type_val']}" id="type_val"> 
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="control-group">
+					<label class="control-label">视频地址</label>
+					<div class="controls">
+						<input type="text" name="pull" value="{$live['pull']}">
+						<span class="form-required">*</span> 视频格式：MP4 *
+					</div>
+				</div>
+
+				<div class="control-group">
+					<label class="control-label">视频类型</label>
+					<div class="controls">				
+						<label class="radio inline"><input type="radio" value="1" name="anyway" checked="checked">横屏</label>
+						<label class="radio inline"><input type="radio" value="0" name="anyway">竖屏</label>
+						
+					</div>
+				</div>
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Liveing/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+	(function(){
+		$("#cdn label.radio").on('click',function(){
+			var v=$("input",this).val();
+			var b=$("#cdn_switch_1");
+			if(v==0){
+				b.hide();
+				$("#type_val").val('');
+			}else{
+				b.show();
+			}
+		})
+	})()
+	</script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+
+<div class="dialog-tc">
+  <span onclick="closePorp()" class="closes"><span>
+</div>
+<div class="ckplayer">
+	<div class="playerzmblbkjP" id="playerzmblbkjP">
+	</div>
+</div>
+		<script type="text/javascript">
+			$(function(){
+            
+                var videoObject = {
+                    container: '#playerzmblbkjP', //容器的ID或className
+                    variable: 'player',//播放函数名称
+                    //poster:_DATA.live.pull,//封面图片
+                    //flashplayer:true,
+                    video: '{$live['pull']}',		
+                    autoplay:true,
+                    flashplayer:false,
+                };
+                var player = new ckplayer(videoObject);
+			})
+		</script>

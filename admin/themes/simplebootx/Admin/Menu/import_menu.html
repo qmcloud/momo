@@ -1,0 +1,38 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<div id="error_tips">
+			<h2>
+				<if condition="empty($errormenus)">
+					菜单导入成功！
+				<else />
+					菜单导入失败！
+				</if>
+			</h2>
+			<div class="error_cont">
+				<ul>
+					<if condition="empty($errormenus)">
+						菜单导入成功！
+					<else /> 
+						<foreach name="errormenus" item="vo">
+						<li>{$vo}导入失败!</li>
+						</foreach>
+					</if>
+				</ul>
+				<div class="error_return">
+					<a href="{:U('menu/index')}" class="btn">返回</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<if condition="empty($errormenus)">
+		<script>
+			var close_timeout = setTimeout(function() {
+				location.href = "{:U('menu/index')}";
+			}, 2000);
+		</script>
+	</if>
+</body>
+</html>

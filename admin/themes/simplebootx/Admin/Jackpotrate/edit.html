@@ -1,0 +1,44 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Jackpotrate/index',array('giftid'=>$data['giftid']))}">列表</a></li>
+			<li class="active"><a >编辑</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Jackpotrate/edit_post')}">
+		   <input type="hidden" name="id" value="{$data['id']}">
+			<fieldset>
+                <div class="control-group">
+					<label class="control-label">数量</label>
+					<div class="controls">
+                        <select name="nums">
+                            <volist name="numslist" id="v">
+                            <option value="{$v}" <if condition="$data['nums'] eq $v">selected</if>>{$v}</option>
+                            </volist>
+                        </select>
+						<span class="form-required"></span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">奖池概率</label>
+					<div class="controls">
+                        <volist name="jackpot_level" id="v">
+                            {$v['levelid']}级：<input type="text" name="rate_jackpot[{$v['levelid']}]"  value="{$data['rate_jackpot'][$v['levelid']]}">% 最小支持0.001%<br><br>
+                        </volist>
+					</div>
+				</div>
+                
+                
+
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('EDIT')}</button>
+				<a class="btn" href="{:U('Jackpotrate/index',array('giftid'=>$data['giftid']))}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

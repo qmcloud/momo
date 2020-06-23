@@ -1,0 +1,54 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('Ads/sort_index')}">分类列表</a></li>
+			<li><a href="{:U('Ads/sort_add')}">分类添加</a></li>
+		</ul>
+		<form method="post" class="js-ajax-form" action="{:U('Ads/sort_listorders')}">
+		  <div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+					  <th>序号</th>
+						<th align="center">ID</th>
+						<th>分类名称</th>
+						<th>发布时间</th>
+
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<foreach name="lists" item="vo">
+					<tr>
+					  <td><input name="listorders[{$vo['id']}]" type="text" size="3" value="{$vo['orderno']}" class="input input-order"></td>
+						<td align="center">{$vo.id}</td>
+						
+						<td>{$vo['sortname']}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+
+						<td align="center">	
+								<a href="{:U('Ads/sort_edit',array('id'=>$vo['id']))}" >编辑</a>|
+							<if condition="$vo['id'] neq 1">
+								<a href="{:U('Ads/sort_del',array('id'=>$vo['id']))}"  class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>
+							<else/>
+								不允许删除
+							</if>
+								
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+				<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

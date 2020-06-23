@@ -1,0 +1,106 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('slide/index')}">{:L('ADMIN_SLIDE_INDEX')}</a></li>
+			<li><a href="{:U('slide/add')}">{:L('ADMIN_SLIDE_ADD')}</a></li>
+		</ul>
+		<form class="well form-search" method="post" id="cid-form">
+			<select class="select_2" name="cid" style="width: 100px;" id="selected-cid">
+				<option value=''>{:L('ALL')}</option>
+				<foreach name="categorys" item="vo">
+				<php>$cid_select=$vo['cid']===$slide_cid?"selected":"";</php>
+				<option value="{$vo.cid}"{$cid_select}>{$vo.cat_name}</option>
+				</foreach>
+			</select>
+		</form>
+		<form class="js-ajax-form" method="post">
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/listorders')}">{:L('SORT')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/toggle',array('display'=>1))}" data-subcheck="true">{:L('DISPLAY')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/toggle',array('hide'=>1))}" data-subcheck="true">{:L('HIDDEN')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/delete')}" data-subcheck="true">{:L('DELETE')}</button>
+			</div>
+			<php> $status=array("1"=>L('DISPLAY'),"0"=>L('HIDDEN')); </php>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th width="200">{:L('TITLE')}</th>
+					<!-- 	<th width="200">{:L('DESCRIPTION')}</th> -->
+						<th width="100">{:L('LINK')}</th>
+						<th width="50">{:L('IMAGE')}</th>
+						<th width="50">{:L('STATUS')}</th>
+						<th width="100">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<foreach name="slides" item="vo">
+				<tr>
+					<td><input type="checkbox" class="js-check" data-yid="js-check-y" data-xid="js-check-x" name="ids[]" value="{$vo.slide_id}"></td>
+					<td><input name='listorders[{$vo.slide_id}]' class="input input-order mr5" type='text' size='3' value='{$vo.listorder}'></td>
+					<td>{$vo.slide_id}</td>
+					<td>{$vo.slide_name}</td>
+					<!-- <td>{$slide_des = mb_substr($vo['slide_des'], 0, 48,'utf-8')}</td> -->
+					<td>{$vo.slide_url}</td>
+					<td>
+						<if condition="!empty($vo['slide_pic'])">
+							<a href="{:sp_get_asset_upload_path($vo['slide_pic'])}" target="_blank">{:L('VIEW')}</a>
+						</if>
+					</td>
+					<td>{$status[$vo['slide_status']]}</td>
+					<td>
+						<a href="{:U('slide/edit',array('id'=>$vo['slide_id']))}">{:L('EDIT')}</a>
+						<a href="{:U('slide/delete',array('id'=>$vo['slide_id']))}" class="js-ajax-delete">{:L('DELETE')}</a>
+						<if condition="empty($vo['slide_status']) eq 1">
+							<a href="{:U('slide/cancelban',array('id'=>$vo['slide_id']))}" class="js-ajax-dialog-btn" data-msg="确定显示此幻灯片吗？">{:L('DISPLAY')}</a>
+						<else /> 
+							<a href="{:U('slide/ban',array('id'=>$vo['slide_id']))}" class="js-ajax-dialog-btn" data-msg="确定隐藏此幻灯片吗？">{:L('HIDE')}</a>
+						</if>
+					</td>
+				</tr>
+				</foreach>
+				<tfoot>
+					<tr>
+						<th width="15"><label><input type="checkbox" class="js-check-all" data-direction="x" data-checklist="js-check-x"></label></th>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th width="200">{:L('TITLE')}</th>
+						<!-- <th width="200">{:L('DESCRIPTION')}</th> -->
+						<th width="100">{:L('LINK')}</th>
+						<th width="50">{:L('IMAGE')}</th>
+						<th width="50">{:L('STATUS')}</th>
+						<th width="100">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/listorders')}">{:L('SORT')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/toggle',array('display'=>1))}" data-subcheck="true">{:L('DISPLAY')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/toggle',array('hide'=>1))}" data-subcheck="true">{:L('HIDDEN')}</button>
+				<button class="btn btn-primary btn-small js-ajax-submit" type="submit" data-action="{:U('slide/delete')}" data-subcheck="true">{:L('DELETE')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		setCookie('refersh_time', 0);
+		function refersh_window() {
+			var refersh_time = getCookie('refersh_time');
+			if (refersh_time == 1) {
+				window.location.reload();
+			}
+		}
+		setInterval(function() {
+			refersh_window()
+		}, 3000);
+		$(function() {
+			$("#selected-cid").change(function() {
+				$("#cid-form").submit();
+			});
+		});
+	</script>
+</body>
+</html>

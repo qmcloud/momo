@@ -1,0 +1,58 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Luckrate/index',array('giftid'=>$giftid))}">列表</a></li>
+			<li class="active"><a >添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Luckrate/add_post')}">
+			<fieldset>
+                <input type="hidden" name="giftid" value="{$giftid}">
+                <div class="control-group">
+					<label class="control-label">数量</label>
+					<div class="controls">
+                        <select name="nums">
+                            <volist name="numslist" id="v">
+                            <option value="{$v}">{$v}</option>
+                            </volist>
+                        </select>
+						<span class="form-required"></span>
+					</div>
+				</div>
+
+                <div class="control-group">
+					<label class="control-label">倍数</label>
+					<div class="controls">
+						<input type="text" name="times"  value="0"> 
+						<span class="form-required"></span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">是否全站</label>
+					<div class="controls" id="type">
+						<label class="radio inline" for="type_0"><input type="radio" name="isall" value="0" id="type_0" checked >否</label>
+						<label class="radio inline" for="type_1"><input type="radio" name="isall" value="1" id="type_1"  >是</label>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                
+                <div class="control-group">
+					<label class="control-label">中奖概率</label>
+					<div class="controls">
+						<input type="text" name="rate"  value="0">%  最小支持0.001%
+						<span class="form-required"></span>
+					</div>
+				</div>
+                
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Luckrate/index',array('giftid'=>$giftid))}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+</body>
+</html>

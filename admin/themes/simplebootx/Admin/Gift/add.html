@@ -1,0 +1,169 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li ><a href="{:U('Gift/index')}">礼物列表</a></li>
+			<li class="active"><a >礼物添加</a></li>
+		</ul>
+		<form method="post" class="form-horizontal js-ajax-form" action="{:U('Gift/add_post')}">
+			<fieldset>
+				<div class="control-group" style="display:none;">
+					<label class="control-label">礼物分类</label>
+					<div class="controls">
+						<select name="sid">
+						    <option value="0">默认分类</option>
+						   <volist name="gift_sort" id="vo">
+							     <option value="{$key}">{$vo}</option>
+							 </volist>			
+							 
+						</select>
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">礼物类型</label>
+					<div class="controls" id="type">
+						<label class="radio inline" for="type_0"><input type="radio" name="type" value="0" id="type_0" checked >普通礼物</label>
+						<label class="radio inline" for="type_1"><input type="radio" name="type" value="1" id="type_1"  >豪华礼物</label>
+
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label">礼物标识</label>
+					<div class="controls" style="position:relative;" id="mark">
+						<label class="radio inline" for="mark_0"><input type="radio" name="mark" value="0" id="mark_0" checked >普通</label>
+						<label class="radio inline" for="mark_1"><input type="radio" name="mark" value="1" id="mark_1"  >热门</label>
+						<label class="radio inline" for="mark_2"><input type="radio" name="mark" value="2" id="mark_2"  >守护</label>
+						<label class="radio inline" for="mark_3"><input type="radio" name="mark" value="3" id="mark_3"  >幸运</label>
+						<span class="form-required">*</span>
+                        <div id="tips" style="position: absolute;left: 300px;top: 0;display:none;">
+                            <span style="color:#ff0000">幸运礼物说明</span><br>
+                            1.用户送出去幸运礼物时，幸运礼物的价值将分成三份，分别为主播、奖池和平台，后台可以设置主播和奖池获得的比例，剩下的归属于平台，主播和奖池的比例不要超过100%【谨记】<br>
+                            2.后台可设置某个礼物为幸运礼物<br>
+                            3.成为幸运礼物后，可设置幸运礼物的的中奖设置以及奖池设置，以下是幸运礼物和奖池说明<br>
+                                a)在中奖设置中可设置每个礼物每组每个倍数的中奖概率【如：小黄瓜 每组送10个中10倍的概率为 5%，小黄瓜 每组送100个中10倍的概率为 <br>6%】，当用户中奖后，返还的奖励以当组礼物总价值为基数返还【如送了一组10个的，总价值为100，中了10倍，那么会获得1000钻石】<br>
+                                b)奖池说明：奖池分为三个阶段，后台可设置每个奖池的金额下限，直接当奖池里边的金额达到最低的金额限制时，奖池才会开启，当有用户中奖时，会赢走奖池内的所有奖金<br>
+                                c)幸运礼物与奖池说明：后台可设置每个幸运礼物每个组数相对于奖池每个阶段的中奖概率【如：小黄瓜每组10个对于奖池1阶段的中奖概率为0.01%，】，建议设置：礼物价值越高中奖概率越高，每组数量越多中奖概率越大<br>
+                        </div>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">序号</label>
+					<div class="controls">
+						<input type="text" name="orderno" value="0">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">礼物名称</label>
+					<div class="controls">
+						<input type="text" name="giftname">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">所需点数</label>
+					<div class="controls">
+						<input type="text" name="needcoin">
+						<span class="form-required">*</span>
+					</div>
+				</div>
+				<div class="control-group" style="display:none;"> 
+					<label class="control-label">小图</label>
+					<div class="controls">
+                        <input type="hidden" name="gifticon_mini" id="thumb1" value="">
+                        <a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb1',thumb_images,'1,jpg|jpeg|gif|png,1,,,1','','','');return false;">
+                                <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb1_preview" width="135" style="cursor: hand" />
+                        </a>
+                        <input type="button" class="btn btn-small" onclick="$('#thumb1_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb1').val('');return false;" value="取消图片">
+						<span class="form-required"></span>
+					</div>
+				</div>
+				<div class="control-group">
+					<label class="control-label">图片</label>
+					<div class="controls">
+                        <input type="hidden" name="gifticon" id="thumb2" value="">
+                        <a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb2',thumb_images,'1,jpg|jpeg|gif|png,1,,,1','','','');return false;">
+                                <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb2_preview" width="135" style="cursor: hand" />
+                        </a>
+                        <input type="button" class="btn btn-small" onclick="$('#thumb2_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb2').val('');return false;" value="取消图片">
+						<span class="form-required"></span>
+					</div>
+				</div>
+                <div class="control-group" id="swftype">
+					<label class="control-label">动画类型</label>
+					<div class="controls">
+						<label class="radio inline" for="swftype_0"><input type="radio" name="swftype" value="0" id="swftype_0" checked >GIF</label>
+						<label class="radio inline" for="swftype_1"><input type="radio" name="swftype" value="1" id="swftype_1"  >SVGA</label>
+
+						<span class="form-required">*</span>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label">动画图片</label>
+					<div class="controls">
+                        <input type="hidden" name="swf" id="thumb3" value="">
+                        <a href="javascript:void(0);" onclick="flashupload('thumb_images', '附件上传','thumb3',thumb_images,'1,gif,1,,,1','','','');return false;" id="swftype_bd_0">
+                            <img src="__TMPL__Public/assets/images/default-thumbnail.png" id="thumb3_preview" width="135" style="cursor: hand" />
+                        </a>
+                        
+                        <a href="javascript:void(0);" id="swftype_bd_1" style="display:none">
+                            <input type="file" name="file">
+                        </a>
+                        
+                        <input type="button" class="btn btn-small" onclick="$('#thumb3_preview').attr('src','__TMPL__Public/assets/images/default-thumbnail.png');$('#thumb3').val('');return false;" value="取消图片">
+						<span class="form-required"></span>
+					</div>
+				</div>
+                <div class="control-group">
+					<label class="control-label">动画时间</label>
+					<div class="controls">
+						<input type="text" name="swftime" value="0">秒  精度：小数点后两位
+						<span class="form-required">*</span>
+					</div>
+				</div>
+			</fieldset>
+			<div class="form-actions">
+				<button type="submit" class="btn btn-primary js-ajax-submit">{:L('ADD')}</button>
+				<a class="btn" href="{:U('Gift/index')}">{:L('BACK')}</a>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/content_addtop.js"></script>
+    <script>
+        (function(){
+            $("#swftype label.radio").on('click',function(){
+                var v=$("input",this).val();
+                var b=$("#swftype_bd_"+v);
+                b.siblings().hide();
+                b.show();
+            })
+            
+            $("#type label.radio").on('click',function(){
+                var v=$("input",this).val();
+                if(v==0){
+                    $("#mark_3").removeAttr('disabled')
+                }else{
+                    if($("#mark_3").attr("checked")){
+                        $("#mark_0").attr('checked','checked');
+                        $("#tips").hide();
+                    }
+                    $("#mark_3").attr('disabled','disabled');
+                }
+            })
+            
+            $("#mark label.radio").on('change',function(){
+                var v=$("input",this).val();
+                if(v==3){
+                    $("#tips").show();
+                }else{
+                    $("#tips").hide();
+                }
+            })
+        })()
+    </script>
+</body>
+</html>

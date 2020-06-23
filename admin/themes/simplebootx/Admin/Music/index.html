@@ -1,0 +1,110 @@
+<admintpl file="header" />
+<style>
+.table img{
+	max-width:100px;
+	max-height:100px;
+}
+</style>
+</head>
+<body>
+	<div class="wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a >背景音乐列表</a></li>
+			<li><a href="{:U('Music/music_add')}">添加</a></li>
+		</ul>
+		
+		<form class="well form-search" method="post" action="{:U('Music/index')}">
+			选择分类：
+			<select class="select_2" name="classify_id">
+				<option value="">全部</option>
+				<volist name="classify" id="vo">
+					<option value="{$vo['id']}" <if condition="$formget.classify_id eq $vo['id']">selected</if> >{$vo['title']}</option>		
+				</volist>
+					
+			</select>
+
+			<!-- 选择上传类型：
+			<select class="select_2" name="upload_type">
+				<option value="0">全部</option>
+				
+				<option value="1" <if condition="$formget.upload_type eq 1">selected</if> >管理员上传</option>		
+				<option value="2" <if condition="$formget.upload_type eq 2">selected</if> >用户上传</option>
+					
+			</select> -->
+			关键字： 
+			<input type="text" name="keyword" style="width: 200px;" value="{$formget.keyword}" placeholder="请输入音乐名称">
+			<input type="submit" class="btn btn-primary" value="搜索">
+		</form>		
+		
+		<form method="post" class="js-ajax-form" >
+		
+			<table class="table table-hover table-bordered">
+				<thead>
+					<tr>
+						<th align="center">ID</th>
+						<th>音乐名称</th>
+						<th>演唱者</th>
+						<th>上传类型</th>
+						<th>上传者</th>
+						<th>封面</th>
+						<th>音乐长度</th>
+						<th>音乐地址</th>
+						<th>使用次数</th>
+						<th>是否删除</th>
+						<th>所属分类</th>
+						<th>添加时间</th>
+						<th>修改时间</th>
+						<th align="center">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+					<php>$upload_type=array("1"=>"管理员","2"=>"用户");$isdel=array("0"=>"否","1"=>"是");</php>
+					<foreach name="lists" item="vo">
+					<tr>
+						<td align="center">{$vo.id}</td>
+						<td>{$vo['title']}</td>
+						<td>{$vo['author']}</td>
+						<td>{$upload_type[$vo['upload_type']]}</td>
+						<td>{$vo['uploader_nicename']}({$vo['uploader']})</td>
+						<td><img src="{$vo['img_url']}" width="50" height="50"></td>
+						<td>{$vo['length']}</td>
+						<td style="max-width: 300px;word-break:break-all;">{$vo['file_url']}</td>
+						<td>{$vo['use_nums']}</td>
+						<td>{$isdel[$vo['isdel']]}</td>
+						<td>{$vo['classify_title']}</td>
+						<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+						<td><if condition="$vo['updatetime'] neq '0'">{$vo.updatetime|date="Y-m-d H:i:s",###}<else />--</if></td>
+						<td align="center">
+							<a href="javascript:void(0)" onclick="musicListen({$vo['id']})" >试听</a>
+							|
+							<a href="{:U('Music/music_edit',array('id'=>$vo['id']))}" >编辑</a>
+							 |
+							 <if condition="$vo['isdel'] eq '0'">
+							 <a href="{:U('Music/music_del',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要删除吗？">删除</a>
+							 <else />
+							 <a href="{:U('Music/music_canceldel',array('id'=>$vo['id']))}" class="js-ajax-dialog-btn" data-msg="您确定要取消删除吗？">取消删除</a>
+							</if>
+						</td>
+					</tr>
+					</foreach>
+				</tbody>
+			</table>
+			<div class="pagination">{$page}</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script src="__PUBLIC__/layer/layer.js"></script>
+	<script type="text/javascript">
+		function musicListen(id){
+			layer.open({
+			  type: 2,
+			  title: '音乐试听',
+			  shadeClose: true,
+			  shade: 0.8,
+			  area: ['500px', '140px'],
+			  content: 'Admin/Music/music_listen/id/'+id
+			}); 
+		}
+	</script>
+</body>
+</html>

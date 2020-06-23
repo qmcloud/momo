@@ -1,0 +1,60 @@
+<admintpl file="header" />
+</head>
+<body>
+	<div class="wrap js-check-wrap">
+		<ul class="nav nav-tabs">
+			<li class="active"><a href="{:U('nav/index')}">{:L('ADMIN_NAV_INDEX')}</a></li>
+			<li><a href="{:U('nav/add',array('cid'=>$navcid))}">{:L('ADMIN_NAV_ADD')}</a></li>
+		</ul>
+
+		<form class="well form-search" id="mainform" action="{:U('nav/index')}" method="post">
+			<select id="navcid_select" name="cid">
+				<foreach name="navcats" item="vo"> <php>$navcid_selected=$navcid==$vo['navcid']?"selected":"";</php>
+				<option value="{$vo.navcid}"{$navcid_selected}>{$vo.name}</option>
+				</foreach>
+			</select>
+		</form>
+		<form class="js-ajax-form" action="{:U('nav/listorders')}" method="post">
+			<div class="table-actions">
+				<button type="submit" class="btn btn-primary btn-small js-ajax-submit">{:L('SORT')}</button>
+			</div>
+			<table class="table table-hover table-bordered table-list">
+				<thead>
+					<tr>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th>{:L('NAVIGATION_NAME')}</th>
+						<th width="80">{:L('STATUS')}</th>
+						<th width="180">{:L('ACTIONS')}</th>
+					</tr>
+				</thead>
+				<tbody>
+				{$categorys}
+				</tbody>
+				<tfoot>
+					<tr>
+						<th width="50">{:L('SORT')}</th>
+						<th width="50">ID</th>
+						<th>{:L('NAVIGATION_NAME')}</th>
+						<th width="80">{:L('STATUS')}</th>
+						<th width="180">{:L('ACTIONS')}</th>
+					</tr>
+				</tfoot>
+			</table>
+			<div class="table-actions">
+				<button type="submit" class="btn btn-primary btn-small js-ajax-submit">{:L('SORT')}</button>
+			</div>
+		</form>
+	</div>
+	<script src="__PUBLIC__/js/common.js"></script>
+	<script>
+		$(function() {
+
+			$("#navcid_select").change(function() {
+				$("#mainform").submit();
+			});
+
+		});
+	</script>
+</body>
+</html>

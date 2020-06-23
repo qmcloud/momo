@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="telephone=no" name="format-detection">
+    <title>收支明细</title>
+    <style type="text/css">
+        *{margin: 0;padding: 0;font-family: Helvetica;}
+        body{background-color: #fff;font-size:12px;}
+        a{text-decoration: none;color: #fff;}
+        .bg{width: 100%;}
+        .three{width: 100%;margin-top: -4px;}
+        .btn{width: 84%;
+        height: 44px;border: solid 1px #ECE39E;border-radius: 44px;background-color: #65CFC5;
+        line-height: 44px;font-size: 1.2em;color: #ECE39E;text-align: center;margin-left: 7.5%;margin-top: 2%;}
+        #apiy{font-size: 0.7em;text-align: center;color: #ACE3E5;margin-top: 6%;margin-bottom:7px;}
+		#myTab_Content0,#myTab_Content1,#myTab_Content2{background-color: #a3feff;}
+		.none{display:none;}
+		td{background:#fff; padding:10px;}
+		th{background:#a3feff; padding:10px;}
+		#myTab{width:100%; height:40px;overflow:hidden;}
+		#myTab li {width:33.33%; height:38px;float:left;list-style-type:none;text-align:center;line-height:38px;}
+		.active{background:#a3feff;}
+		.TabTitle{margin-top:3px;}
+    </style>
+	    <script src="__PUBLIC__/js/jquery.js"></script>
+		<script src="__PUBLIC__/js/huakuai.js"></script>
+		</head>
+
+
+<body>
+<div class="nTab">
+
+            <div class="TabTitle">
+
+                <ul id="myTab">
+
+                    <li class="active" onclick="nTabs(this,0);" >发送礼物</li>
+
+                    <li class="normal" onclick="nTabs(this,1);" >接收礼物</li>
+
+                    <li class="normal" onclick="nTabs(this,2);">充值记录</li>
+
+                  
+
+                </ul>
+
+            </div>
+
+            
+
+          
+
+            
+
+            <div class="TabContent">
+
+                 <div id="myTab_Content0">
+					<table class="table table-hover table-bordered" width="100%" cellspacing="1" cellpadding="50">
+						<thead>
+							<tr>
+								<th>礼物</th>
+								<th>单价</th>
+								<th>个数</th>
+								<th>时间</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<php>$status=array("0"=>"未支付","1"=>"已完成");</php>
+							<foreach name="sendgift" item="vo">
+							<tr>
+								<td>{$vo['giftname']}</td>
+								<td>{$vo['needcoin']}</td>
+								<td>{$vo['giftcount']}</td>
+								<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+
+							</tr>
+							</foreach>
+						</tbody>
+					</table>
+                 </div>
+
+                <div id="myTab_Content1" class="none">
+
+					<table class="table table-hover table-bordered" width="100%" cellspacing="1" cellpadding="50">
+						<thead>
+							<tr>
+								<th>礼物</th>
+								<th>单价</th>
+								<th>个数</th>
+								<th>时间</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<php>$status=array("0"=>"未支付","1"=>"已完成");</php>
+							<foreach name="getgift" item="vo">
+							<tr>
+								<td>{$vo['giftname']}</td>
+								<td>{$vo['needcoin']}</td>
+								<td>{$vo['giftcount']}</td>
+								<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+
+							</tr>
+							</foreach>
+						</tbody>
+					</table>
+                </div>
+
+                <div id="myTab_Content2" class="none">
+					<table class="table table-hover table-bordered" width="100%" cellspacing="1" cellpadding="50">
+						<thead>
+							<tr>
+								<th>金额</th>
+								<th>点数</th>
+								<th>状态</th>
+								<th>时间</th>
+
+
+							</tr>
+						</thead>
+						<tbody>
+							<php>$status=array("0"=>"未支付","1"=>"已完成");</php>
+							<foreach name="cost" item="vo">
+							<tr>
+								<td>{$vo['money']}</td>
+								<td>{$vo['coin']}</td>
+								<td>{$status[$vo['status']]}</td>
+								<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+
+							</tr>
+							</foreach>
+						</tbody>
+					</table>
+               </div>
+
+               
+
+            </div>
+
+        </div>
+
+
+</body>
+</html>

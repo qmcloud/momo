@@ -1,0 +1,38 @@
+<tc_include file="Public:head" />
+<title>{$site_name}</title>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/home/css/download.css"/>
+</head>
+<body>
+<div class="wrapper">
+	<tc_include file="Public:header" />
+	<div class="down">
+		<div class="container">
+			<div class="down_info">
+				<div class="down_info_btn">
+					<a class="down_android" href="{$config['apk_url']}" target="_block">Android版下载</a>
+					<a class="down_ios" href="{$config['ipa_url']}" target="_block">IOS版下载</a>
+				</div>
+				
+				<div class="down_info_bottom">
+					<p>商务合作：3002541659</p>
+					<p>email：yunbaokj@126.com</p>
+				</div>
+			</div>
+			<div class="down_app">
+				<img src="__PUBLIC__/home/images/download/down_app.png">
+			</div>
+			<div class="down_bottom">
+				{:nl2br($config['copyright'])}
+			</div>
+		</div>
+	</div>
+</div>
+  <script src="__PUBLIC__/home/js/jquery.1.10.2.js"></script> 
+    <script type="text/javascript">
+        window._DATA = window._DATA || {};
+        window._DATA.user = {$userinfo};
+    </script> 
+    <script type="text/javascript" src="__PUBLIC__/home/js/login.js"></script> 
+    <script type="text/javascript" src="__PUBLIC__/home/js/layer.js"></script> 
+</body>
+</html>
