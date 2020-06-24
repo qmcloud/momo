@@ -4,6 +4,8 @@
 **技术交流：**
 ![技术交流群](https://img-blog.csdnimg.cn/20200623093238797.png)
 
+博客地址：https://blog.csdn.net/u012115197/article/details/106916635
+
 ----------------
 [web演示地址：](http://www.jinqianlive.com) http://www.jinqianlive.com
 
@@ -40,7 +42,7 @@ IOS 视频演示：
 # 前端
 - **集小视频/IM聊天/直播等功能于一体的直播项目。界面仿制抖音|火山小视频|陌陌直播|比心陪玩等。**
 
-![截图](https://img-blog.csdnimg.cn/20200623094230336.png)
+![截图](https://img-blog.csdnimg.cn/20200623094230115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70)
 ![截图](https://img-blog.csdnimg.cn/20200623094230125.png)
 ![截图](https://img-blog.csdnimg.cn/20200623094230115.png)
 ![截图](https://img-blog.csdnimg.cn/2020062309423093.png)
