@@ -1,6 +1,9 @@
 ### 直播源码,短视频,直播带货,游戏陪玩,仿比心,猎游,tt语音聊天,美女约玩,陪玩系统源码开黑,约玩源码
 
 ----------------
+### 后台: laravel-admin 前端: VUE 移动: Android + ios 
+
+----------------
 **技术交流：**
 ![技术交流群](https://img-blog.csdnimg.cn/20200623093238797.png)
 
@@ -498,61 +501,13 @@ WebSocket Client：实现html5的浏览器都支持WebSocket对象，如不支�
 
 ------------
 
-### 后台一键安装 直接访问入口即可 初始admin admin 
-采用Bootstrap3精确定制的lyui除了拥有100%bootstrap体验外，融合了更多适合国人使用的前端组建。并且一套代码适应多种屏幕大小。
+### 后台一键安装 直接访问入admin 
+
 
 ## 目录结构
 ```
-├─index.php 入口文件
-│
-├─Addons 插件目录
-├─Application 应用模块目录
-│  ├─Admin 后台模块
-│  │  ├─Conf 后台配置文件目录
-│  │  ├─Common 后台函数目录
-│  │  ├─Controller 后台控制器目录
-│  │  ├─Model 后台模型目录
-│  │  └─View 后台视图文件目录
-│  │
-│  ├─Common 公共模块目录（不能直接访问）
-│  │  ├─Behavior 行为扩展目录
-│  │  ├─Builder Builder目录
-│  │  ├─Common 公共函数文件目录
-│  │  ├─Conf 公共配置文件目录
-│  │  ├─Controller 公共控制器目录
-│  │  ├─Model 公共模型目录
-│  │  └─Util 第三方类库目录
-│  │
-│  ├─Home 前台模块
-│  │  ├─Conf 前台配置文件目录
-│  │  ├─Common 前台函数目录
-│  │  ├─Controller 前台控制器目录
-│  │  ├─Model 前台模型目录
-│  │  ├─TagLib 前台标签库目录
-│  │  └─View 模块视图文件目录
-│  │
-│  ├─Install 安装模块
-│  │  ├─Conf 配置文件目录
-│  │  ├─Common 函数目录
-│  │  ├─Controller 控制器目录
-│  │  ├─Model 模型目录
-│  │  └─View 模块视图文件目录
-│  │
-│  └─... 扩展的可装卸功能模块
-│
-├─Public 应用资源文件目录
-│  ├─libs 第三方插件类库目录
-│  ├─css gulp编译样式结果存放目录
-│  └─js gulp编译脚本结果存放目录
-│
-├─Runtime 应用运行时目录
-├─Framework 框架目录
-└─Uploads 上传根目录
+
 ```
-
-##问题反馈
-
-在使用中有任何问题，欢迎反馈给我们，可以用以下联系方式跟我们交流
 
 *
 ##整套直播教学视频 进群后@群主索取
