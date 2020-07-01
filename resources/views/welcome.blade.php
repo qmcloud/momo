@@ -68,12 +68,12 @@
         <div class="flex-center position-ref full-height">
             <div class="content">
                 <div class="title m-b-md">
-                    XiaoTShop
+                    Live
                 </div>
 
                 <div class="links">
                     <a href="{{ url('/admin') }}">后台管理系统</a>
-                    <a href="https://github.com/sqc157400661/XiaoTShop">GitHub地址</a>
+                   
                     <a href="https://laravel-china.org/docs/laravel/5.5">laravel手册</a>
                 </div>
             </div>
