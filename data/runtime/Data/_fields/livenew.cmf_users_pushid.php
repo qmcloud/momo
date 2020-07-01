@@ -1,1 +1,0 @@
-a:4:{i:0;s:3:"uid";i:1;s:6:"pushid";s:3:"_pk";s:3:"uid";s:5:"_type";a:2:{s:3:"uid";s:16:"int(10) unsigned";s:6:"pushid";s:12:"varchar(255)";}}
