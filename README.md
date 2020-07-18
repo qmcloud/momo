@@ -4,8 +4,9 @@
 ### 后台: laravel-admin 前端: VUE 移动: Android + ios 
 
 ----------------
-**技术交流：**
-![技术交流群](https://img-blog.csdnimg.cn/20200623093238797.png)
+
+**技术群：**
+![技术群](https://img-blog.csdnimg.cn/20200623093238797.png)
 
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
