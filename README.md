@@ -20,7 +20,7 @@
 账号 ：test
 密码： test
 
-安卓下载：https://baoya.lanzous.com/icsdtxa （用手机浏览器打开下载，不要用微信直接下载）
+安卓下载：https://baoya.lanzous.com/imcL9e57tej （用手机浏览器打开下载，不要用微信直接下载）
 
 IOS 视频演示：
 
@@ -28,7 +28,6 @@ IOS 视频演示：
 提取码：v929
 
 文档地址：http://www.jinqianlive.com/appapi/listAllApis.php?type=expand
-
 ----------------
 
 
