@@ -8,6 +8,8 @@
 **技术群：**
 ![技术群](https://img-blog.csdnimg.cn/20200623093238797.png)
 
+微信：BCFind5 【请备注好信息】
+
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
 ----------------
@@ -465,52 +467,3 @@ vi /etc/hosts
     |+ Store
       |- File.php // 默认用内存tmpfs文件系统(linux /dev/shm)存放天着数据，如果不是linux请手动修改$shm_dir
       |- Redis.php // 将聊天数据存放到Redis
-    |- Server.php // 继承实现WebSocket的类，完成某些业务功能
-  |+ vendor // 依赖包目录
-```
-
-2.Socket Server与Socket Client通信数据格式
-
-如：登录
-
-Client发送数据
-
-```js
-{"cmd":"login","name":"xdy","avatar":"http://tp3.sinaimg.cn/1586005914/50/5649388281/1"}
-```
-
-Server响应登录
-
-```js
-{"cmd":"login", "fd": "31", "name":"xdy","avatar":"http://tp3.sinaimg.cn/1586005914/50/5649388281/1"}
-```
-
-可以看到cmd属性，client与server发送时数据都有指定，主要是用于client或者server的回调处理函数。
-
-3.需要理清的几种协议或者服务的关系
-
-http协议：超文本传输协议。单工通信，等着客户端请求之后响应。
-
-WebSocket协议：是HTML5一种新的协议，它是实现了浏览器与服务器全双工通信。服务器端口与客户端都可以推拉数据。
-
-Web服务器：此项目中可以用基于Swoole的App Server充当Web服务器，也可以用传统的nginx/apache作为web服务器
-
-Socket服务器：此项目中浏览器的WebSocket客户端连接的服务器，swoole_framework中有实现WebSocket协议PHP版本的服务器。
-
-WebSocket Client：实现html5的浏览器都支持WebSocket对象，如不支持此项目中有提供flash版本的实现。
-
-
-------------
-
-### 后台一键安装 直接访问入admin 
-
-
-## 目录结构
-```
-
-```
-
-*
-##整套直播教学视频 进群后@群主索取
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623094714713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
-
