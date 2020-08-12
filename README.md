@@ -13,12 +13,15 @@
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
 ----------------
-[web演示地址：](http://www.jinqianlive.com) http://www.jinqianlive.com
 
-[后台演示地址：](http://www.jinqianlive.com/admin) http://www.jinqianlive.com/admin
+### 团队接活
 
-账号 ：test
-密码： test
+| 类目        | 价格   |  商业授权  |
+| --------   | -----:  | :----:  |
+| 基础开源版本      | $0        |   无（不可商用）     |
+| 授权版本          |   $15000  |   有（可以商用）   |
+| 定制，系统优化，重构等|    $30000|  有（可以商用）  |
+
 
 安卓下载：https://baoya.lanzous.com/imcL9e57tej （用手机浏览器打开下载，不要用微信直接下载）
 
