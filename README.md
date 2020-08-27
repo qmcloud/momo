@@ -8,6 +8,10 @@
 **技术群：**
 ![技术群](https://img-blog.csdnimg.cn/20200623093238797.png)
 
+
+为了避免发广告及虚假用户，请先Github star此项目，然后附上Github账号(非邮箱)申请入群
+纯技术群，入群有一定门槛，谢谢理解。
+----------------
 微信：BCFind5 【请备注好信息】
 
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
