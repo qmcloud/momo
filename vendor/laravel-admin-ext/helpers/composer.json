@@ -1,0 +1,33 @@
+{
+    "name": "laravel-admin-ext/helpers",
+    "description": "Helpers extension for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "helpers"],
+    "homepage": "https://github.com/laravel-admin-extensions/helpers",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "z-song",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Admin\\Helpers\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Admin\\Helpers\\HelpersServiceProvider"
+            ]
+        }
+    }
+}

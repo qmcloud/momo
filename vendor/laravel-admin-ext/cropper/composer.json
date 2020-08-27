@@ -1,0 +1,34 @@
+{
+    "name": "laravel-admin-ext/cropper",
+    "description": "Integrate Cropper into laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension","cropper","image"],
+    "homepage": "https://github.com/laravel-admin-extensions/cropper",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "EVA09",
+            "email": "940173803@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Cropper\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Cropper\\CropperServiceProvider"
+            ]
+
+        }
+    }
+}

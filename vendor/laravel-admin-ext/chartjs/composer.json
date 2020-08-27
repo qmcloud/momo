@@ -1,0 +1,34 @@
+{
+    "name": "laravel-admin-ext/chartjs",
+    "description": "Use Chartjs in laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "chartjs"],
+    "homepage": "https://github.com/laravel-admin-ext/chartjs",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "song",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Chartjs\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Chartjs\\ChartjsServiceProvider"
+            ]
+
+        }
+    }
+}

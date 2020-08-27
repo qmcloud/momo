@@ -1,0 +1,36 @@
+{
+    "name": "laravel-admin-ext/redis-manager",
+    "description": "Redis manager for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "redis", "manager"],
+    "homepage": "https://github.com/laravel-admin-extensions/redis-manager",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "z-song",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.5",
+        "predis/predis": "~1.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "laravel/laravel": "~5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\Admin\\RedisManager\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\Admin\\RedisManager\\RedisManagerServiceProvider"
+            ]
+
+        }
+    }
+}

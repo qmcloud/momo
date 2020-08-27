@@ -1,0 +1,34 @@
+{
+    "name": "laravel-admin-ext/daterangepicker",
+    "description": "Integrates daterangepicker into laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "form", "daterangepicker"],
+    "homepage": "https://github.com/laravel-admin-ext/daterangepicker",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "song",
+            "email": "zosong@126.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\DateRangePicker\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\DateRangePicker\\DateRangePickerServiceProvider"
+            ]
+
+        }
+    }
+}
