@@ -25,7 +25,7 @@ class DummyClass extends StepForm
     {
         //dump($request->all());
 
-        admin_success('Processed successfully.');
+        admin_success('操作成功.');
 
         return $this->next($request->all());
     }

@@ -4657,6 +4657,65 @@
         ]
     },
     {
+        "name": "qiniu/php-sdk",
+        "version": "v7.2.10",
+        "version_normalized": "7.2.10.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/qiniu/php-sdk.git",
+            "reference": "d89987163f560ebf9dfa5bb25de9bd9b1a3b2bd8"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/qiniu/php-sdk/zipball/d89987163f560ebf9dfa5bb25de9bd9b1a3b2bd8",
+            "reference": "d89987163f560ebf9dfa5bb25de9bd9b1a3b2bd8",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "php": ">=5.3.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "~4.0",
+            "squizlabs/php_codesniffer": "~2.3"
+        },
+        "time": "2019-10-28T10:23:23+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "Qiniu\\": "src/Qiniu"
+            },
+            "files": [
+                "src/Qiniu/functions.php"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Qiniu",
+                "email": "sdk@qiniu.com",
+                "homepage": "http://www.qiniu.com"
+            }
+        ],
+        "description": "Qiniu Resource (Cloud) Storage SDK for PHP",
+        "homepage": "http://developer.qiniu.com/",
+        "keywords": [
+            "cloud",
+            "qiniu",
+            "sdk",
+            "storage"
+        ]
+    },
+    {
         "name": "ralouphie/getallheaders",
         "version": "3.0.3",
         "version_normalized": "3.0.3.0",
@@ -8505,6 +8564,73 @@
             "assert",
             "check",
             "validate"
+        ]
+    },
+    {
+        "name": "zgldh/qiniu-laravel-storage",
+        "version": "v0.10.3",
+        "version_normalized": "0.10.3.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/zgldh/qiniu-laravel-storage.git",
+            "reference": "abb9b8e2ef53d44b6a07ba4e4df0dde21f15eff3"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/zgldh/qiniu-laravel-storage/zipball/abb9b8e2ef53d44b6a07ba4e4df0dde21f15eff3",
+            "reference": "abb9b8e2ef53d44b6a07ba4e4df0dde21f15eff3",
+            "shasum": "",
+            "mirrors": [
+                {
+                    "url": "https://mirrors.aliyun.com/composer/dists/%package%/%reference%.%type%",
+                    "preferred": true
+                }
+            ]
+        },
+        "require": {
+            "league/flysystem": "^1.0",
+            "php": ">=5.3.3",
+            "qiniu/php-sdk": "^7.2"
+        },
+        "time": "2019-08-03T11:01:48+00:00",
+        "type": "library",
+        "extra": {
+            "laravel": {
+                "providers": [
+                    "zgldh\\QiniuStorage\\QiniuFilesystemServiceProvider"
+                ]
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "zgldh\\QiniuStorage\\": "src/"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "zgldh",
+                "email": "zgldh@hotmail.com",
+                "role": "Original Developer"
+            },
+            {
+                "name": "abcsun",
+                "email": "chenglongsun_nj@163.com",
+                "homepage": "http://github.com/abcsun",
+                "role": "Developer"
+            }
+        ],
+        "description": "Qiniu Resource (Cloud) Storage SDK for Laravel 5",
+        "keywords": [
+            "cloud",
+            "laravel",
+            "qiniu",
+            "sdk",
+            "storage"
         ]
     }
 ]

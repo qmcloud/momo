@@ -12,5 +12,8 @@ Route::group([
 ], function (Router $router) {
 
     $router->get('/', 'HomeController@index')->name('home');
-
+    //设置
+    $router->get('forms/settings', 'FormController@settings');
+    //私密
+    $router->get('forms/configpris', 'FormController@configpris');
 });

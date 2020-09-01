@@ -26,6 +26,9 @@
 | 授权版本          |   $15000  |   有（可以商用）   |
 | 定制，系统优化，重构等|    $30000|  有（可以商用）  |
 
+----------------
+
+后台 http://www.jinqianlive.com/admin/   账号test 密码 test123
 
 安卓下载：https://baoya.lanzous.com/imcL9e57tej （用手机浏览器打开下载，不要用微信直接下载）
 

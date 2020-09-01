@@ -103,4 +103,9 @@ return [
     'prev'                   => '上一步',
     'next'                   => '下一步',
     'quick_create'           => '快速创建',
+    //操作成功
+    '操作成功.'=>'操作成功',
+    'Site seo title'=>'SEO标题',
+    'Site seo keywords'=>'SEO关键字',
+    'Site seo description'=>'SEO描述'
 ];

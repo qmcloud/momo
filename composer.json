@@ -22,7 +22,8 @@
         "laravel-admin-ext/scheduling": "^1.1",
         "laravel/framework": "^7.24",
         "laravel/tinker": "^2.0",
-        "predis/predis": "^1.1"
+        "predis/predis": "^1.1",
+        "zgldh/qiniu-laravel-storage": "^0.10.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
@@ -48,7 +49,8 @@
         "classmap": [
             "database/seeds",
             "database/factories"
-        ]
+        ],
+        "files": ["app/Helpers/function.php"]
     },
     "autoload-dev": {
         "psr-4": {

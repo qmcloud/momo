@@ -72,6 +72,22 @@ return [
             'visibility' => 'public',
             'url' => env('APP_URL').'/uploads',
         ],
+        //七牛
+        'qiniu' => [
+            'driver'  => 'qiniu',
+            'domains' => [
+                'default'   => 'xxxxx.com1.z0.glb.clouddn.com', //你的七牛域名
+                'https'     => 'dn-yourdomain.qbox.me',         //你的HTTPS域名
+                'custom'    => 'static.abc.com',                //Useless 没啥用，请直接使用上面的 default 项
+            ],
+            'access_key'=> '',  //AccessKey
+            'secret_key'=> '',  //SecretKey
+            'bucket'    => '',  //Bucket名字
+            'notify_url'=> '',  //持久化处理回调地址
+            'access'    => 'public',  //空间访问控制 public 或 private
+            'hotlink_prevention_key' => 'afc89ff8bd2axxxxxxxxxxxxxxbb', // CDN 时间戳防盗链的 key。 设置为 null 则不启用本功能。
+//            'hotlink_prevention_key' => 'cbab68a279xxxxxxxxxxab509a', // 同上，备用
+        ],
 
     ],
 
