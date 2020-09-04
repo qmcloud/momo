@@ -194,6 +194,7 @@ class ComposerStaticInit010524ab82d37f4911cac9b0853eeeea
         array (
             'Asm89\\Stack\\' => 12,
             'App\\' => 4,
+            'AdminNewDev\\Adminlte\\' => 21,
         ),
     );
 
@@ -556,6 +557,10 @@ class ComposerStaticInit010524ab82d37f4911cac9b0853eeeea
         array (
             0 => __DIR__ . '/../..' . '/app',
         ),
+        'AdminNewDev\\Adminlte\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/wenxuanjun/laravel-adminlte3/src',
+        ),
     );
 
     public static $prefixesPsr0 = array (
@@ -580,6 +585,9 @@ class ComposerStaticInit010524ab82d37f4911cac9b0853eeeea
     );
 
     public static $classMap = array (
+        'AdminNewDev\\Adminlte\\Adminlte' => __DIR__ . '/..' . '/wenxuanjun/laravel-adminlte3/src/Adminlte.php',
+        'AdminNewDev\\Adminlte\\AdminlteServiceProvider' => __DIR__ . '/..' . '/wenxuanjun/laravel-adminlte3/src/AdminlteServiceProvider.php',
+        'AdminNewDev\\Adminlte\\Http\\Controllers\\AdminlteController' => __DIR__ . '/..' . '/wenxuanjun/laravel-adminlte3/src/Http/Controllers/AdminlteController.php',
         'App\\Admin\\Actions\\ClearCache' => __DIR__ . '/../..' . '/app/Admin/Actions/ClearCache.php',
         'App\\Admin\\Actions\\Document\\CloneDocument' => __DIR__ . '/../..' . '/app/Admin/Actions/Document/CloneDocument.php',
         'App\\Admin\\Actions\\Document\\CopyDocuments' => __DIR__ . '/../..' . '/app/Admin/Actions/Document/CopyDocuments.php',

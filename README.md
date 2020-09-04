@@ -461,15 +461,80 @@ __6. 绑定host与访问聊天窗口（可选）__
 vi /etc/hosts
 ```
 
-快速了解项目架构
+
 ----
 
-1.后台目录结构
+####后台框架怎么用？
+#### 克隆项目
 
 ```
-app/Admin
-├── Controllers
-│   ├── ExampleController.php
-│   └── HomeController.php
-├── bootstrap.php
-└── routes.php
+git clone https://github.com/DOUBLE-Baller/momo.git
+```
+
+#### 进入项目
+```shell
+cd laravel-admin
+```
+
+#### 安装功能包
+```shell
+composer install 
+```
+
+#### 复制.env文件
+```shell
+cp .env.example .env
+```
+
+#### 生成密钥
+```shell
+php artisan key:generate
+```
+
+#### 运行迁移
+```shell
+# 注意修改.env文件的数据库信息
+php artisan migrate
+```
+
+#### 建立文件链接(如果报错请百度解决，都是小问题)
+```shell
+php artisan storage:link
+```
+
+#### 初始化数据库
+```shell
+php artisan db:seed-sql 
+# 输入yes
+```
+
+> 后台地址：http://laravel-admin/admin 账户：admin，密码：admin
+
+#### 创建后台控制器
+
+```shell
+# 以创建用户管理为例
+php artisan admin:controller UserController
+```
+
+> 注意：控制器里面修改相应模型，变量，视图即可，视图请参考`auth`里面的代码
+
+#### 使用说明
+
+> 搜索和导出功能需自己完善
+
+- 路由文件：app/Admin/routes.php
+- 配置文件：config/admin.php
+- 语言文件：resources/lang/zh-CN/admin.php
+- 后台控制器路径：app/Admin/Controllers
+- 后台视图路径：app/Admin/Views
+- 视图请参考`auth`里面的代码
+- 视图页面代码请参考adminlte2.4文件
+- 资源文件：public/plugins
+- 获取登录用户`Admin::user()`
+- 获取登录用户ID`Admin::id()`
+- 判断登录用户是否是某个角色(判断角色标识)`Admin::isAdmin('slug'['slug','slug'])`
+- 视图获取登录用户`admin('user')`
+- 视图获取登录用户ID`admin('id')`
+- 视图判断登录用户是否是某个角色(判断角色标识)`admin('isAdmin','slug'['slug','slug'])`
+

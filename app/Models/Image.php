@@ -42,7 +42,6 @@ class Image extends Model
             //本地上传
             $fileName = $this->uploadBD($file);
         }
-
         return $fileName;
 
     }

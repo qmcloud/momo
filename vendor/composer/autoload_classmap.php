@@ -6,6 +6,9 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AdminNewDev\\Adminlte\\Adminlte' => $vendorDir . '/wenxuanjun/laravel-adminlte3/src/Adminlte.php',
+    'AdminNewDev\\Adminlte\\AdminlteServiceProvider' => $vendorDir . '/wenxuanjun/laravel-adminlte3/src/AdminlteServiceProvider.php',
+    'AdminNewDev\\Adminlte\\Http\\Controllers\\AdminlteController' => $vendorDir . '/wenxuanjun/laravel-adminlte3/src/Http/Controllers/AdminlteController.php',
     'App\\Admin\\Actions\\ClearCache' => $baseDir . '/app/Admin/Actions/ClearCache.php',
     'App\\Admin\\Actions\\Document\\CloneDocument' => $baseDir . '/app/Admin/Actions/Document/CloneDocument.php',
     'App\\Admin\\Actions\\Document\\CopyDocuments' => $baseDir . '/app/Admin/Actions/Document/CopyDocuments.php',

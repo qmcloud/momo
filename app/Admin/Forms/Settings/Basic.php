@@ -30,10 +30,12 @@ class Basic extends Form
         $data=$request->all();
 
         $website_logo="website_logo";
-        empty($this->uploadimgs($request,$website_logo))?$data[$website_logo]=$this->uploadimgs($request,$website_logo):[];
+        $website_logo_url=$this->uploadimgs($request,$website_logo);
+        empty($website_logo_url)?[]:$data[$website_logo]=$website_logo_url;
 
         $website_text_logo="website_text_logo";
-        empty($this->uploadimgs($request,$website_text_logo))?$data[$website_text_logo]=$this->uploadimgs($request,$website_text_logo):[];
+        $website_text_logo_url=$this->uploadimgs($request,$website_text_logo);
+        empty($website_text_logo_url)?[]:$data[$website_text_logo]=$website_text_logo_url;
 
         $res = \App\Models\Option::updateOrCreate(
             ['option_name' => $this->option_name], ['option_value' => json_encode($data, JSON_UNESCAPED_UNICODE)]
@@ -60,8 +62,8 @@ class Basic extends Form
         $this->text('website_title', '站点标题');
         $this->text('website_slogan', '站点标语')->help('请上传图片格式');
         $this->text('website_logo', '站点LOGO地址');
-        //$this->image('website_logo', '站点LOGO')->help('请上传图片格式');
-        $this->qiniuImages('website_logo', '商品图')->sortable(); // 普通用法
+        $this->image('website_logo', '站点LOGO')->help('请上传图片格式');
+
         $this->text('website_text_logo', '站点LOGO文字地址');
         $this->image('website_text_logo', '站点LOGO文字');
 
@@ -71,10 +73,6 @@ class Basic extends Form
         $this->text('website_icp', '备案信息')->help("调用方式：config('website_icp')");
         $this->textarea('website_statistics', '网站统计代码')->help("网站统计代码，支持百度、Google、cnzz等，调用方式：config('website_statistics')");
 
-        $this->saving(function (\Encore\Admin\Form $form) {
-            $paths = \Hanson\LaravelAdminQiniu\Qiniu::getPaths(request('qiniu_website_logo')); // 需要 qiniu_ 作为前缀的字段
-            echo $paths;
-        });
     }
 
     /**
@@ -105,7 +103,7 @@ class Basic extends Form
     protected function uploadimgs($request,$name){
         if(!empty($request->file($name))){ //"website_text_logo"
             $text_logopath= \App\Models\Image::upload_img($request->file($name));
-            if($text_logopath){
+            if(!empty($text_logopath)){
                 return $text_logopath;
             }else{
                 return "";
