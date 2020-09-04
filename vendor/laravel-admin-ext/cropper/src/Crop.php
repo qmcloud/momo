@@ -28,7 +28,8 @@ class Crop extends File
 
     protected function preview()
     {
-        return $this->objectUrl($this->value);
+        if(!is_null($this->value()))
+            return $this->objectUrl($this->value());
     }
 
     /**
@@ -69,7 +70,7 @@ class Crop extends File
         } else if (preg_match('/data:image\/.*?;base64/is',$base64)) {
             //检查是否是base64编码
             //base64转图片缓存 返回的是绝对路径
-            $image = $this->base64_image_content($base64,public_path('uploads/base64img_cache'));
+            $image = $this->base64_image_content($base64,storage_path('app/public/images/base64img_cache'));
             if ($image !== false) {
                 $image = new UploadedFile($image['path'],$image['filename']);
                 $this->name = $this->getStoreName($image);

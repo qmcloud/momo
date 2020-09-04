@@ -1,3 +1,37 @@
+v1.1.4 (2020-08-31)
+================================================================================
+
+- Improved @method annotations for methods responding to Redis commands defined
+  by `Predis\ClientInterface` and `Predis\ClientContextInterface`. (PR #456 and
+  PR #497, other fixes applied after further analysys).
+
+- __FIX__: the client can now handle ACL authentication when connecting to Redis
+  6.x simply by passing both `username` and `password` to connection parameters.
+  See [the Redis docs](https://redis.io/topics/acl) for details on this topic.
+
+- __FIX__: NULL or zero-length string values passed to `password` and `database`
+  in the connection parameters list do not trigger spurious `AUTH` and `SELECT`
+  commands anymore when connecting to Redis (ISSUE #436).
+
+- __FIX__: initializing an iteration over a client instance when it is connected
+  to a standalone Redis server will not throw an exception anymore, instead it
+  will return an iterator that will run for just one loop returning a new client
+  instance using the underlying single-node connection (ISSUE #552, PR #556).
+
+- __FIX__: `Predis\Cluster\Distributor\HashRingaddNodeToRing()` was calculating
+  the hash required for distribution by using `crc32()` directly instead of the
+  method `Predis\Cluster\Hash\HashGeneratorInterface::hash()` implemented by the
+  class itself. This bug fix does not have any impact on existing clusters that
+  use client-side sharding based on this distributor simply because it does not
+  take any external hash generators so distribution is not going to be affected.
+
+- __FIX__: `SORT` now always trigger a switch to the master node in replication
+  configurations instead of just when the `STORE` modifier is specified, this is
+  because `SORT` is always considered to be a write operation and actually fails
+  with a `-READONLY` error response when executed against a replica node. (ISSUE
+  #554).
+
+
 v1.1.3 (2020-08-18)
 ================================================================================
 

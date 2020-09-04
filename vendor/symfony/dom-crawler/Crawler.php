@@ -182,8 +182,7 @@ class Crawler implements \Countable, \IteratorAggregate
      */
     public function addHtmlContent(string $content, string $charset = 'UTF-8')
     {
-        // Use HTML5 parser if the content is HTML5 and the library is available
-        $dom = null !== $this->html5Parser && strspn($content, " \t\r\n") === stripos($content, '<!doctype html>') ? $this->parseHtml5($content, $charset) : $this->parseXhtml($content, $charset);
+        $dom = $this->parseHtmlString($content, $charset);
         $this->addDocument($dom);
 
         $base = $this->filterRelativeXPath('descendant-or-self::base')->extract(['href']);
@@ -223,7 +222,9 @@ class Crawler implements \Countable, \IteratorAggregate
         }
 
         $internalErrors = libxml_use_internal_errors(true);
-        $disableEntities = libxml_disable_entity_loader(true);
+        if (LIBXML_VERSION < 20900) {
+            $disableEntities = libxml_disable_entity_loader(true);
+        }
 
         $dom = new \DOMDocument('1.0', $charset);
         $dom->validateOnParse = true;
@@ -233,7 +234,9 @@ class Crawler implements \Countable, \IteratorAggregate
         }
 
         libxml_use_internal_errors($internalErrors);
-        libxml_disable_entity_loader($disableEntities);
+        if (LIBXML_VERSION < 20900) {
+            libxml_disable_entity_loader($disableEntities);
+        }
 
         $this->addDocument($dom);
 
@@ -1119,7 +1122,9 @@ class Crawler implements \Countable, \IteratorAggregate
         $htmlContent = $this->convertToHtmlEntities($htmlContent, $charset);
 
         $internalErrors = libxml_use_internal_errors(true);
-        $disableEntities = libxml_disable_entity_loader(true);
+        if (LIBXML_VERSION < 20900) {
+            $disableEntities = libxml_disable_entity_loader(true);
+        }
 
         $dom = new \DOMDocument('1.0', $charset);
         $dom->validateOnParse = true;
@@ -1129,7 +1134,9 @@ class Crawler implements \Countable, \IteratorAggregate
         }
 
         libxml_use_internal_errors($internalErrors);
-        libxml_disable_entity_loader($disableEntities);
+        if (LIBXML_VERSION < 20900) {
+            libxml_disable_entity_loader($disableEntities);
+        }
 
         return $dom;
     }
@@ -1225,5 +1232,36 @@ class Crawler implements \Countable, \IteratorAggregate
         }
 
         return new CssSelectorConverter($this->isHtml);
+    }
+
+    /**
+     * Parse string into DOMDocument object using HTML5 parser if the content is HTML5 and the library is available.
+     * Use libxml parser otherwise.
+     */
+    private function parseHtmlString(string $content, string $charset): \DOMDocument
+    {
+        if ($this->canParseHtml5String($content)) {
+            return $this->parseHtml5($content, $charset);
+        }
+
+        return $this->parseXhtml($content, $charset);
+    }
+
+    private function canParseHtml5String(string $content): bool
+    {
+        if (null === $this->html5Parser) {
+            return false;
+        }
+        if (false === ($pos = stripos($content, '<!doctype html>'))) {
+            return false;
+        }
+        $header = substr($content, 0, $pos);
+
+        return '' === $header || $this->isValidHtml5Heading($header);
+    }
+
+    private function isValidHtml5Heading(string $heading): bool
+    {
+        return 1 === preg_match('/^\x{FEFF}?\s*(<!--[^>]*?-->\s*)*$/u', $heading);
     }
 }
