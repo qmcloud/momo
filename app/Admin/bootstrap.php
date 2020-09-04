@@ -8,6 +8,7 @@ use App\Admin\Extensions\Nav;
 use Encore\Admin\Form;
 use Encore\Admin\Facades\Admin;
 use Encore\Admin\Grid\Column;
+use App\Admin\Extensions\Image;
 /**
  * Laravel-admin - admin builder based on Laravel.
  * @author z-song <https://github.com/z-song>
@@ -27,6 +28,9 @@ use Encore\Admin\Grid\Column;
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+
+Form::extend('image', Image::class);
 
 Admin::navbar(function (\Encore\Admin\Widgets\Navbar $navbar) {
     $navbar->right(new Actions\ClearCache());

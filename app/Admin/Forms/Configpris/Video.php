@@ -27,10 +27,16 @@ class Video extends Form
     {
         //dump($request->all());
         $this->BaseValidator($request->all())->validate();
+        $data=$request->all();
+
+        $reg_reward="reg_reward";
+        $this->uploadimgs($request,$reg_reward)?$data[$reg_reward]=$this->uploadimgs($request,$reg_reward):[];
 
         $res = \App\Models\Option::updateOrCreate(
-            ['option_name' => $this->option_name], ['option_value' => json_encode($request->all(), JSON_UNESCAPED_UNICODE)]
+            ['option_name' => $this->option_name], ['option_value' => json_encode($data, JSON_UNESCAPED_UNICODE)]
         );
+
+
 
         if ($res) {
             admin_success('操作成功.');
@@ -50,6 +56,8 @@ class Video extends Form
             'on'  => ['value' => 1, 'text' => '打开', 'color' => 'primary'],
             'off' => ['value' => 2, 'text' => '关闭', 'color' => 'default'],
         ]);
+
+        $this->text('reg_reward',"视频水印图片网络地址");
 
         $this->image('reg_reward',"视频水印图片");
 
@@ -81,5 +89,19 @@ class Video extends Form
         return Validator::make($data, [
 
         ]);
+    }
+
+    protected function uploadimgs($request,$name){
+        if(!empty($request->file($name))){ //"website_text_logo"
+            $text_logopath= \App\Models\Image::upload_img($request->file($name));
+            if($text_logopath){
+                return $text_logopath;
+            }else{
+                return "";
+            }
+
+        }else{
+            return "";
+        }
     }
 }
