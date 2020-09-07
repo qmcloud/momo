@@ -30,7 +30,8 @@ class Video extends Form
         $data=$request->all();
 
         $reg_reward="reg_reward";
-        $this->uploadimgs($request,$reg_reward)?$data[$reg_reward]=$this->uploadimgs($request,$reg_reward):[];
+        $path=$this->uploadimgs($request,$reg_reward);
+        empty($path)?[]:$data[$reg_reward]=$path;
 
         $res = \App\Models\Option::updateOrCreate(
             ['option_name' => $this->option_name], ['option_value' => json_encode($data, JSON_UNESCAPED_UNICODE)]

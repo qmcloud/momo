@@ -64,9 +64,9 @@ class Upload extends Form
 
         return empty($res)?[
             'file_size'       => 100,
-            'file_ext'      => ['doc', 'docx', 'xls', 'ppt', 'pptx', 'pdf', 'wps', 'txt', 'rar', 'zip', 'gz', 'bz2', '7z'],
+            'file_ext'      => ['doc', 'docx', 'xls', 'ppt', 'pptx', 'pdf', 'wps', 'txt', 'rar', 'zip', 'gz', 'bz2', '7z','mp4'],
             'image_size'       => 100,
-            'image_ext'      => ['gif', 'bmp', 'jpeg', 'png'],
+            'image_ext'      => ['gif', 'bmp', 'jpeg', 'png','jpg'],
         ]:json_decode($res[0]['option_value'],true);
     }
 

@@ -14,5 +14,5 @@
 
     </div>
     <!-- Default to the left -->
-    <strong>Powered by <a href="https://github.com/z-song/laravel-admin" target="_blank">laravel-admin</a></strong>
+    <strong><a href="https://github.com/DOUBLE-Baller/momo" target="_blank"> Github：https://github.com/DOUBLE-Baller/momo</a></strong>
 </footer>

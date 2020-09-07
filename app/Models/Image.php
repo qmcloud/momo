@@ -5,6 +5,7 @@ namespace App\Models;
 use App\Models\Config;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Mockery\Exception;
 use function GuzzleHttp\Psr7\str;
 use Qiniu\Storage\UploadManager;
 use Qiniu\Auth;
@@ -31,7 +32,6 @@ class Image extends Model
     }
 
     protected function upload_img($file=[]){
-
         // 此时 $this->upload如果成功就返回文件名不成功返回false
         //读取配置判断是存储类型
         $DBTYPEConfig=Config::get("settings_db.dbtype");
@@ -53,50 +53,53 @@ class Image extends Model
      * @return [type]                            [description]
      */
     public function uploadBD($file, $disk='public') {
-        // 1.是否上传成功
-        if (! $file->isValid()) {
-            return false;
-        }
-
-        // 2.是否符合文件类型 getClientOriginalExtension 获得文件后缀名
-        $fileExtension = $file->getClientOriginalExtension();
-        $ExtensionConfig=Config::get("settings_upload");
-        if(! in_array($fileExtension, $ExtensionConfig['image_ext'])) {
-            return false;
-        }
-
-        // 3.判断大小是否符合 2M
-        $tmpFile = $file->getRealPath();
-        if($ExtensionConfig['image_size']!=0){
-            if (((filesize($tmpFile)/1024)/1024) >= $ExtensionConfig['image_size']) {
+        try {
+            // 1.是否上传成功
+            if (! $file->isValid()) {
                 return false;
             }
-        }
-
-        // 4.是否是通过http请求表单提交的文件
-        if (! is_uploaded_file($tmpFile)) {
-            return false;
-        }
-
-        // 5.每天一个文件夹,分开存储, 生成一个随机文件名
-        $fileName = 'images/'.date('Y_m_d').'/'.md5(time()) .mt_rand(0,9999).'.'. $fileExtension;
-        /*
-         * 通过映射到 public/images 方可显示 使用命令 php artisan storage:link
-         *
-         * 我自己在执行这个命令的时候报了个错symlink() has been disabled for security reasons.
-         *
-         * 这是因为symlink()这个函数被禁用了，打开php.ini文件，搜索disable_functions
-         * */
-        if (Storage::disk($disk)->put($fileName, file_get_contents($tmpFile)) ){
-            //echo $_SERVER["SERVER_NAME"]."/".Storage::url($fileName);die;
-            $url=$_SERVER["SERVER_NAME"].Storage::url($fileName);
-            if(strstr($url,"http") || strstr($url,"https")){
-                return $url;
-            }else{
-                return "http://".$url;
+            // 2.是否符合文件类型 getClientOriginalExtension 获得文件后缀名
+            $fileExtension = $file->getClientOriginalExtension();
+            $ExtensionConfig=Config::get("settings_upload");
+            if(! in_array($fileExtension, $ExtensionConfig['image_ext'])) {
+                return false;
             }
 
+            // 3.判断大小是否符合 2M
+            $tmpFile = $file->getRealPath();
+            if($ExtensionConfig['image_size']!=0){
+                if (((filesize($tmpFile)/1024)/1024) >= $ExtensionConfig['image_size']) {
+                    return false;
+                }
+            }
+
+            // 4.是否是通过http请求表单提交的文件
+            if (! is_uploaded_file($tmpFile)) {
+                return false;
+            }
+
+            // 5.每天一个文件夹,分开存储, 生成一个随机文件名
+            $fileName = 'images/'.date('Y_m_d').'/'.md5(time()) .mt_rand(0,9999).'.'. $fileExtension;
+            /*
+             * 通过映射到 public/images 方可显示 使用命令 php artisan storage:link
+             *
+             * 我自己在执行这个命令的时候报了个错symlink() has been disabled for security reasons.
+             *
+             * 这是因为symlink()这个函数被禁用了，打开php.ini文件，搜索disable_functions
+             * */
+            if (Storage::disk($disk)->put($fileName, file_get_contents($tmpFile)) ){
+                $url=$_SERVER["SERVER_NAME"].Storage::url($fileName);
+                if(strstr($url,"http") || strstr($url,"https")){
+                    return $url;
+                }else{
+                    return "http://".$url;
+                }
+
+            }
+        }catch (Exception $e){
+
         }
+
     }
 
     /**

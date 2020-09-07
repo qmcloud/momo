@@ -15,6 +15,8 @@ Route::group([
     $router->get('forms/settings', 'FormController@settings');
     //私密
     $router->get('forms/configpris', 'FormController@configpris');
-
-    $router->resource('auths', AuthController::class);
+    //技能认证
+    $router->resource('attestations', AttestationController::class);
+    //身份认证
+    $router->resource('skills', SkillController::class);
 });

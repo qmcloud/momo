@@ -8,10 +8,10 @@ use Encore\Admin\Traits\AdminBuilder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Auth extends Model
+class Attestation extends Model
 {
 
-    protected $table = 'auths';
+    protected $table = 'attestations';
 
     public $sortable = [
 
