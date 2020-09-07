@@ -1,0 +1,33 @@
+{
+    "name": "wenxuanjun/laravel-adminlte3",
+    "description": "AdminLTE3 for laravel-admin",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension", "AdminLTE3"],
+    "homepage": "https://github.com/wenxuanjun/laravel-adminlte3",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "wenxuanjun",
+            "email": "wendster@163.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "AdminNewDev\\Adminlte\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "AdminNewDev\\Adminlte\\AdminlteServiceProvider"
+            ]
+
+        }
+    }
+}

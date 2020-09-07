@@ -15,4 +15,6 @@ Route::group([
     $router->get('forms/settings', 'FormController@settings');
     //私密
     $router->get('forms/configpris', 'FormController@configpris');
+
+    $router->resource('auths', AuthController::class);
 });
