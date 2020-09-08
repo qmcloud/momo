@@ -30,9 +30,9 @@
 
 后台 http://www.jinqianlive.com/admin/   账号test 密码 test123
 
-安卓下载：https://baoya.lanzous.com/imcL9e57tej （用手机浏览器打开下载，不要用微信直接下载）
+直播短视频app下载：https://baoya.lanzous.com/imcL9e57tej （用手机浏览器打开下载，不要用微信直接下载）
 
-陪玩app下载：https://baoya.lanzous.com/i17OOemsofi （用手机浏览器打开下载，不要用微信直接下载）
+陪玩app下载：https://baoya.lanzous.com/izTEKgg0yhi （用手机浏览器打开下载，不要用微信直接下载）
 
 IOS 视频演示：
 
@@ -45,7 +45,9 @@ IOS 视频演示：
 
 
 ### 系统截图
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200629173236938.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_2,color_FFFFFF,t_70#pic_center)
+![app端](https://img-blog.csdnimg.cn/20200629173236938.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_2,color_FFFFFF,t_70#pic_center)
+
+![后台界面](https://img-blog.csdnimg.cn/20200907180807339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
 ----------------
 
