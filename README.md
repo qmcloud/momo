@@ -34,10 +34,8 @@
 
 陪玩app下载：https://baoya.lanzous.com/izTEKgg0yhi （用手机浏览器打开下载，不要用微信直接下载）
 
-IOS 视频演示：
+IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
 
-链接：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 
-提取码：v929
 
 文档地址：http://www.jinqianlive.com/appapi/listAllApis.php?type=expand
 
