@@ -65,7 +65,7 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
-        // 配置目录可以自己定义
+        // 配置目录可以自己定义 裁剪
         'admin' => [
             'driver' => 'local',
             'root' => public_path('uploads'),
@@ -74,19 +74,16 @@ return [
         ],
         //七牛
         'qiniu' => [
-            'driver'  => 'qiniu',
+            'driver' => 'qiniu',
             'domains' => [
-                'default'   => 'xxxxx.com1.z0.glb.clouddn.com', //你的七牛域名
-                'https'     => 'dn-yourdomain.qbox.me',         //你的HTTPS域名
-                'custom'    => 'static.abc.com',                //Useless 没啥用，请直接使用上面的 default 项
+                'default'  => 'lightpaper.lightpaper.cn', //你的七牛域名
+                'https'   => 'xxxxx',     //你的HTTPS域名
+                'custom'  => 'lightpaper.lightpaper.cn',   //你的自定义域名
             ],
-            'access_key'=> '',  //AccessKey
-            'secret_key'=> '',  //SecretKey
-            'bucket'    => '',  //Bucket名字
-            'notify_url'=> '',  //持久化处理回调地址
-            'access'    => 'public',  //空间访问控制 public 或 private
-            'hotlink_prevention_key' => 'afc89ff8bd2axxxxxxxxxxxxxxbb', // CDN 时间戳防盗链的 key。 设置为 null 则不启用本功能。
-//            'hotlink_prevention_key' => 'cbab68a279xxxxxxxxxxab509a', // 同上，备用
+            'access_key'=> 'KVFi3hnLviRlbRrvmpg2J1QQUMD0gd90sS1KFajm', //AccessKey
+            'secret_key'=> 'eHTRy87MGmT7WtL8UDHXBsxPPuvEm75RoaVhH61D', //SecretKey
+            'bucket'  => 'lightpaper', //Bucket名字
+            'notify_url'=> '', //持久化处理回调地址
         ],
 
     ],

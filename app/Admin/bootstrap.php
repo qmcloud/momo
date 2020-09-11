@@ -29,6 +29,8 @@ use App\Admin\Extensions\Image;
 
 Encore\Admin\Form::forget(['map', 'editor']);
 
+//批量上传 七牛or本地
+Encore\Admin\Form::extend('chunk_file', \Encore\ChunkFileUpload\ChunkFileField::class);
 
 Form::extend('image', Image::class);
 

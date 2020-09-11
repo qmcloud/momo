@@ -20,6 +20,7 @@ use Illuminate\Queue\CallQueuedClosure;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Support\HtmlString;
 use Symfony\Component\HttpFoundation\Response;
+use App\Models\Config;
 
 if (! function_exists('abort')) {
     /**
@@ -960,4 +961,39 @@ if (! function_exists('view')) {
 
         return $factory->make($view, $data, $mergeData);
     }
+
+    if (! function_exists('getConfigs')) {
+        /**
+         * Throw an HttpException with the given data.
+         *
+         * @param  name
+         *
+         * @param
+         * @return void
+         *
+         * @throws
+         * @throws
+         */
+        function getConfigs($name)
+        {
+            if(!empty($name)){
+
+                $point=strstr($name, ".");
+                if($point){
+                    $op=explode('.',$name);
+                    $data=Config::where('option_name', $op[0])->get()->toArray();
+                    $value=json_decode($data[0]['option_value'],true);
+                    return $value[$op[1]];
+                }else{
+                    $data=Config::where('option_name', $name)->get()->toArray();
+                    $value=json_decode($data[0]['option_value'],true);
+                    return $value;
+                }
+
+            }else{
+                return "";
+            }
+        }
+    }
+
 }

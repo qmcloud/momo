@@ -18,7 +18,7 @@ class SkillController extends AdminController
 {
 
     protected $title = '技能验证';
-    protected $optionArr=[0=>'审核中',1=>'审核完成',2=>'驳回'];
+    protected $optionArr=[0=>'待审核',1=>'审核完成',2=>'驳回'];
     protected function detail($id)
     {
         $show = new Show(Skill::findOrFail($id));
@@ -28,7 +28,7 @@ class SkillController extends AdminController
             ->title('post基本信息')
             ->tools(function ($tools) {
                 $tools->disableEdit();
-            });;
+            });
 
 
         $show->created_at();
@@ -77,10 +77,7 @@ class SkillController extends AdminController
         //$grid->quickSearch();
 
         $grid->column('id', 'ID')->sortable();
-
         $grid->column('uid', 'UID')->sortable();
-
-        $grid->column('channel',"认证频道");
 
         $optionArr=$this->optionArr;
         // 第六列显示released字段，通过display($callback)方法来格式化显示输出
@@ -103,45 +100,12 @@ class SkillController extends AdminController
         $grid->filter(function ($filter) {
             $filter->like('uid','UID');
             $filter->like('channel',"认证频道");
-            $filter->equal('status',"审核状态")->select([0=> '审核中',1=>'审核完成',2=>'驳回']);
+            $filter->equal('status',"审核状态")->select($this->optionArr);
             // 设置created_at字段的范围查询
             $filter->between('created_at', '创建时间')->datetime();
         });
 
         return $grid;
-    }
-
-    protected function _form()
-    {
-        $form = new Form(new Skill);
-
-        $form->row(function ($row) {
-            $row->width(2)->display('id', 'ID');
-        });
-
-        $form->row(function ($row) {
-            $row->width(4)->text('title', '文章标题')->rules('min:3|max:5')->help('标题标题标题标题标题标题标题');
-            $row->width(4)->select('author_id', '选择作者')->options(function ($id) {
-                $user = User::find($id);
-
-                if ($user) {
-                    return [$user->id => $user->name];
-                }
-            })->ajax('/demo/api/users');
-            $row->width(2)->number('rate', '评分');
-            $row->width(2)->switch('released', '发布?');
-        });
-
-        $form->row(function ($row) {
-            $row->width(5)->listbox('tags', '选择标签')->options(Tag::all()->pluck('name', 'id'))->settings(['selectorMinimalHeight' => 300]);
-            $row->width(7)->textarea('content', '文章内容')->rows(19)->help('标题标题标题标题标题标题标题');
-        });
-
-        $form->row(function ($row) {
-            $row->width(6)->datetimeRange('created_at', 'updated_at', '创建时间');
-        });
-
-        return $form;
     }
 
     /**
@@ -203,7 +167,4 @@ class SkillController extends AdminController
         return Auth::onlyTrashed()->find($request->get('ids'))->each->restore();
     }
 
-    private function returnoption(){
-        return  [0=>'审核中',1=>'审核完成',2=>'驳回'];
-    }
 }

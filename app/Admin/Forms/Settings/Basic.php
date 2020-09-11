@@ -59,8 +59,10 @@ class Basic extends Form
             'on'  => ['value' => 1, 'text' => '打开', 'color' => 'primary'],
             'off' => ['value' => 2, 'text' => '关闭', 'color' => 'default'],
         ])->help('站点关闭后将不能访问，后台可正常登录');
+
         $this->text('website_title', '站点标题');
         $this->text('website_slogan', '站点标语')->help('请上传图片格式');
+
         $this->text('website_logo', '站点LOGO地址');
         $this->image('website_logo', '站点LOGO')->help('请上传图片格式');
 

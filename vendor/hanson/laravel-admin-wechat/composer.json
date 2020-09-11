@@ -1,0 +1,31 @@
+{
+    "name": "hanson/laravel-admin-wechat",
+    "authors": [
+        {
+            "name": "Hanson",
+            "email": "h@hanc.cc"
+        }
+    ],
+    "require": {
+        "overtrue/wechat": "^4.2",
+        "tymon/jwt-auth": "^1.0"
+    },
+    "require-dev": {
+        "encore/laravel-admin": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hanson\\LaravelAdminWechat\\": "src/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hanson\\LaravelAdminWechat\\WechatServiceProvider"
+            ]
+        }
+    }
+}

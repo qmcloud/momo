@@ -24,28 +24,42 @@
 | --------   | -----:  | :----:  |
 | 基础开源版本      | $0        |   无（不可商用）     |
 | 授权版本          |   $15000  |   有（可以商用）   |
-| 定制，系统优化，重构等|    $30000|  有（可以商用）  |
+| 定制，系统优化，重构，商业合作等|    $30000起|  有（可以商用）  |
 
 ----------------
 
-后台 http://www.jinqianlive.com/admin/   账号test 密码 test123
 
-直播短视频app下载：https://baoya.lanzous.com/imcL9e57tej （用手机浏览器打开下载，不要用微信直接下载）
+----------------
+[gihub地址：](https://github.com/DOUBLE-Baller/momo) https://github.com/DOUBLE-Baller/momo
 
-陪玩app下载：https://baoya.lanzous.com/izTEKgg0yhi （用手机浏览器打开下载，不要用微信直接下载）
+[web演示地址：](http://www.jinqianlive.com) http://www.jinqianlive.com 
 
+[直播后台演示地址：](http://www.jinqianlive.com/admin) http://www.jinqianlive.com/admin
+
+账号 ：test
+密码： test
+
+----------------
+[直播短视频app下载](https://baoya.lanzous.com/imcL9e57tej) https://baoya.lanzous.com/imcL9e57tej（用手机浏览器打开下载，不要用微信直接下载）
+
+----------------
+[陪玩app下载](https://baoya.lanzous.com/izTEKgg0yhi ) https://baoya.lanzous.com/izTEKgg0yhi （用手机浏览器打开下载，不要用微信直接下载）
+
+----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
 
+----------------
 
 文档地址：http://www.jinqianlive.com/appapi/listAllApis.php?type=expand
 
 ----------------
 
+**前端展示**
+![前端展示](https://img-blog.csdnimg.cn/20200908194734911.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
-### 系统截图
-![app端](https://img-blog.csdnimg.cn/20200629173236938.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_2,color_FFFFFF,t_70#pic_center)
-
+**后台界面**
 ![后台界面](https://img-blog.csdnimg.cn/20200907180807339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
+
 
 ----------------
 
@@ -57,17 +71,11 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 * [CDN技术详解](https://book.douban.com/subject/10759173/)
 
 ### 技术结构
-# 前端
+# 前端 
 - **集小视频/IM聊天/直播等功能于一体的直播项目。界面仿制抖音|火山小视频|陌陌直播|比心陪玩等。**
 
-![截图](https://img-blog.csdnimg.cn/20200623094230115.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70)
-![截图](https://img-blog.csdnimg.cn/20200623094230125.png)
-![截图](https://img-blog.csdnimg.cn/20200623094230115.png)
-![截图](https://img-blog.csdnimg.cn/2020062309423093.png)
-![截图](https://img-blog.csdnimg.cn/2020062309423090.png)
-![截图](https://img-blog.csdnimg.cn/2020062309423076.png)
-![截图](https://img-blog.csdnimg.cn/2020062309423027.png)
-![截图](https://img-blog.csdnimg.cn/2020062309423017.png)
+#### *注意：*前端的具体细技术细节请移至前端篇赘述，本贴暂不描述前端内容。
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200909110034788.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
 # 后端
 
@@ -77,13 +85,11 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
-4. 视频服务提供视频直播，傍路直播，转码、存储、点播等。
-5. 聊天服务提供直播群聊，私聊，消息通知等。
-6. 定时监控：监听主播异常掉线情况、直播消息推送等。
-
-
+4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp 和 golang的）。
+5. golang +kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
+6. etcd + grpc + docker 系统监控：监听主播异常掉线情况、直播消息推送等。
+ 
 ------------
-
 
 **视频服务**
 
@@ -140,7 +146,8 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 
 `ffplay rtmp://192.168.100.33/live/35`
 
-######点播配置
+
+**点播配置**
 
 1. 建立媒体文件夹`/mnt/hgfs/dn_class/vod`
 **把媒体文件 35.mp4复制到/mnt/hgfs/dn_class/vod目录下。
@@ -218,7 +225,7 @@ export GOPATH=/data/apps/go
 $ source /etc/profile
 ```
 
-### 四、部署goim
+### 四、部署im
 1.下载goim及依赖包
 ```sh
 $ yum install hg
@@ -249,7 +256,7 @@ $ cp job-log.xml $GOPATH/bin/
 ```
 到此所有的环境都搭建完成！
 
-### 五、启动goim
+### 五、启动im
 ```sh
 $ cd /$GOPATH/bin
 $ nohup $GOPATH/bin/router -c $GOPATH/bin/router.conf 2>&1 > /data/logs/goim/panic-router.log &
@@ -261,7 +268,8 @@ $ nohup $GOPATH/bin/job -c $GOPATH/bin/job.conf 2>&1 > /data/logs/goim/panic-job
 
 ### 六、测试
 ## Arch
-[外链图片转存失败,源站可能有防盗链机制,建议将图片保存下来直接上传(img-KjKxuMMz-1592875894063)(https://github.com/DOUBLE-Baller/WebRTC_IM/raw/master/goim-server/docs/arch.png)]
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200908200113599.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
+
 
 ### Benchmark Server
 | CPU | Memory | OS | Instance |
@@ -323,23 +331,226 @@ router 属于有状态节点，logic可以使用一致性hash配置节点，增�
 
 job 根据kafka的partition来扩展多job工作方式，具体可以参考下kafka的partition负载
 
+------------
+## PHP 为什么 “慢” ？？？
+### Laravel + Swoole 提速 30倍
 
-### 使用PHP+Swoole实现的网页即时聊天工具，
+ - 复用容器
+ - 启用协程
+ - 数据库连接池
 
-* 全异步非阻塞Server，可以同时支持数百万TCP连接在线
-* 基于websocket+flash_websocket支持所有浏览器/客户端/移动端
-* 支持单聊/群聊/组聊等功能
-* 支持永久保存聊天记录，使用MySQL存储
-* 基于Server PUSH的即时内容更新，登录/登出/状态变更/消息等会内容即时更新
-* 用户列表和在线信息使用Redis存储
-* 支持发送连接/图片/语音/视频/文件
-* 支持Web端直接管理所有在线用户和群组
+ ----    
+
+>  - 复用容器
+>  熟悉 Laravel 的朋友都知道 IoC 容器是整个框架的核心，几乎所有 Laravel 提供的服务都被注册在 IoC 容器中。每当容器启动时，Laravel 就会将大部分服务注册到容器中来，有些服务还会去加载文件，比如配置、路由等，可以说启动容器是比较 “耗时” 的。我们再次观察上面的脚本，可以看到 request 回调的第一行就是创建 IoC 容器（$app），这也意味着每次在处理请求时都会创建一次容器，这样不仅重复执行了许多代码，还造成不小的 IO 开销，所以上述脚本显然不是最优的做法。那我们试试只创建一个容器，再让所有的请求都复用这个容器。我们可以在 worker 进程启动时（也就是 workerStart 回调中）创建并启动容器，这样在 request 回调中就能复用了。现在将 swoole.php 如下：
+
+```php
+<?php
+
+require __DIR__.'/vendor/autoload.php';
+
+use HuangYi\Shadowfax\Http\Request;
+use HuangYi\Shadowfax\Http\Response;
+use Illuminate\Contracts\Http\Kernel;
+use Illuminate\Http\Request as IlluminateRequest;
+use Swoole\Http\Server;
+
+$server = new Server('127.0.0.1', 9501);
+
+$server->set([
+    'worker_num' => 1,
+    'enable_coroutine' => false,
+]);
+
+$app = null;
+
+$server->on('workerStart', function () use (&$app) {
+    $app = require __DIR__.'/bootstrap/app.php';
+
+    $app->instance('request', IlluminateRequest::create('http://localhost'));
+
+    $app->make(Kernel::class)->bootstrap();
+});
+
+$server->on('request', function ($request, $response) use (&$app) {
+    $kernel = $app->make(Kernel::class);
+
+    $illuminateResponse = $kernel->handle(
+        $illuminateRequest = Request::make($request)->toIlluminate()
+    );
+
+    Response::make($illuminateResponse)->send($response);
+
+    $kernel->terminate($illuminateRequest, $illuminateResponse);
+});
+
+$server->start();
+```
+>  - 启用协程
+>  协程是 Swoole 的最强武器，也是实现高并发的精髓所在。那么在 Laravel 中使用协程会有问题吗？首先启动 Swoole 的协程特性，将 enable_coroutine 设置为 true 即可，然后在 routes/web.php 里面添加两个路由：
+
+```php
+<?php
+
+use Swoole\Coroutine;
+
+app()->singleton('counter', function () {
+    $counter = new stdClass;
+    $counter->number = 0;
+
+    return $counter;
+});
+
+Route::get('one', function () {
+    app('counter')->number = 1;
+
+    Coroutine::sleep(5);
+
+    echo sprintf("one: %d\n", app('counter')->number);
+});
+
+Route::get('two', function () {
+    app('counter')->number = 2;
+
+    Coroutine::sleep(5);
+
+    echo sprintf("two: %d\n", app('counter')->number);
+});
+```
+
+> 上述代码首先在容器里面注册了一个 counter 单例，路由 one 将 counter 单例的 number 属性设置为 1，然后模拟协程被挂起 5 秒，恢复后打印出 number 属性的值。路由 two 也类似，只是将 number 属性设置为了 2。启动服务器后，我们先访问 one，然后立马访问 two（间隔不要超过 5 秒）。我们可以观察到 Console 输出的信息为：
+```shell
+one: 2
+two: 2
+```
+>  - 数据库连接池
+> 注意： 在协程环境下使用数据库如果不配合连接池，就会造成连接异常。当然，使用 Swoole 的 Channel 来创建连接池非常简单，但是如果直接在业务代码中使用连接池，程序员需要自行控制何时取何时回收，而且还不能使用 Laravel 的 Model 了，这点我是绝对不能接受的。还有一点，由于在业务代码中使用了 Swoole 的接口，这意味着你的程序必须运行在 Swoole 之上，再也无法切回 PHP-FPM 了。Shadowfax 做到了无感知的使用连接池，开发者依然像平时那样用 Model 来查询或者更新数据，唯一需要做的就是将程序中使用到的数据库连接名配置到 db_pools 当中即可。Shadowfax 是如何做到的呢？我们只需要搞清楚一点就能明白原理了，Laravel 中的数据库连接都是通过 Illuminate\Database\DatabaseManager::connection() 方法来获取的，我们可以继承这个类并改造 connection() 方法，如果取的是 db_pools 中配置的连接，那么就从对应的连接池中获取。最后使用这个改造后的类注覆盖原来的 db 服务即可。具体的实现就请阅读源码 。
+
+```php
+<?php
+
+namespace HuangYi\Shadowfax\Laravel;
+
+use Illuminate\Database\Connection;
+use Illuminate\Database\Connectors\ConnectionFactory;
+use Illuminate\Database\DatabaseManager as LaravelDatabaseManager;
+
+class DatabaseManager extends LaravelDatabaseManager
+{
+    use HasConnectionPools;
+
+    /**
+     * The callback to be executed to reconnect to a database in pool.
+     *
+     * @var callable
+     */
+    protected $poolReconnector;
+
+    /**
+     * Create a new DatabaseManager instance.
+     *
+     * @param  \Illuminate\Contracts\Foundation\Application  $app
+     * @param  \Illuminate\Database\Connectors\ConnectionFactory  $factory
+     * @param  array  $poolsConfig
+     * @return void
+     */
+    public function __construct($app, ConnectionFactory $factory, array $poolsConfig = [])
+    {
+        parent::__construct($app, $factory);
+
+        $this->poolsConfig = $poolsConfig;
+
+        $this->poolReconnector = function ($connection) {
+            $this->poolReconnect($connection);
+        };
+    }
+
+    /**
+     * Get a database connection instance.
+     *
+     * @param  string|null  $name
+     * @return \Illuminate\Database\ConnectionInterface
+     */
+    public function connection($name = null)
+    {
+        $name = $name ?: $this->getDefaultConnection();
+
+        if (! $this->isPoolConnection($name)) {
+            return parent::connection($name);
+        }
+
+        if ($connection = $this->getConnectionFromContext($name)) {
+            return $connection;
+        }
+
+        return $this->getConnectionFromPool($name);
+    }
+
+    /**
+     * Resolve the connection.
+     *
+     * @param  string  $name
+     * @return \Illuminate\Database\Connection
+     */
+    protected function resolveConnection($name)
+    {
+        [$database, $type] = $this->parseConnectionName($name);
+
+        $connection = $this->configure($this->makeConnection($database), $type);
+
+        $connection->setReconnector($this->poolReconnector);
+
+        return $connection;
+    }
+
+    /**
+     * Get the connection key in coroutine context.
+     *
+     * @param  string  $name
+     * @return string
+     */
+    protected function getConnectionKeyInContext($name)
+    {
+        return 'db.connections.'.$name;
+    }
+
+    /**
+     * Reconnect to the given database.
+     *
+     * @param  string|null  $name
+     * @return \Illuminate\Database\Connection
+     */
+    public function reconnect($name = null)
+    {
+        $name = $name ?: $this->getDefaultConnection();
+
+        if (! $this->isPoolConnection($name)) {
+            return parent::reconnect($name);
+        }
+    }
+
+    /**
+     * Reconnect the connection in pool.
+     *
+     * @param  \Illuminate\Database\Connection  $connection
+     * @return \Illuminate\Database\Connection
+     */
+    public function poolReconnect(Connection $connection)
+    {
+        $connection->disconnect();
+
+        $fresh = $this->makeConnection($connection->getName());
+
+        return $connection
+            ->setPdo($fresh->getRawPdo())
+            ->setReadPdo($fresh->getRawReadPdo());
+    }
+}
+```
 
 
- ----
-|安装| 
- ----
-swoole扩展
+
+swoole扩展安装
 ```shell
 pecl install swoole
 ```
@@ -348,9 +559,6 @@ swoole框架
 ```shell
 composer install
 ```
-
-运行
-----
 将`webroot`目录配置到Nginx/Apache的虚拟主机目录中，使`webroot/`可访问。
 
 详细部署说明
@@ -368,26 +576,25 @@ mv composer.phar /usr/local/bin/composer
 
 __2. composer install__
 
-切换到PHPWebIM项目目录，执行指令composer install，如很慢则
+切换到PHPWeb项目目录，执行指令composer install，如很慢则
 
 ```shell
 composer install --prefer-dist
 ```
 
-__3. Ningx配置__
+__3. Ningx配置HTTPS__
 
-* 这里未使用swoole_framework提供的Web AppServer  
 * Apache请参照Nginx配置，自行修改实现
-* 这里使用了`im.swoole.com`作为域名，需要配置host或者改成你的域名
+* 这里使用了`www.xxx.com`作为域名，需要配置host或者改成你的域名
 
 ```shell
 server {
     listen       80;
-    server_name  im.swoole.com;
+    server_name  www.xxx.com;
     index index.html index.php;
     
     location / {
-        root   /path/to/webim/webroot;
+        root   /path/to/web/webroot;
 
         proxy_set_header X-Real-IP $remote_addr;
         if (!-e $request_filename) {
@@ -403,68 +610,36 @@ server {
 }
 ```
 `**注意：https下必须采取wss  So-有两种方案 1.采用nginx 反向代理4431端口 swoole 的端口和4431进行通讯。2.swoole 确认是否启用了openssl，是否在编译时加入了--enable-openssl的支持,然后在set 证书路径即可。两种方案选择其一就好，不过第一种方案有个潜在神坑就是你通过反向代理拿不到真实的IP地址了,这点值得注意，Nginx有办法拿到真实的ip，不懂可以私聊我，光wss的坑太多了就不一一说了。**`  
-__4. 修改配置__
 
-* 配置`configs/db.php`中数据库信息，将聊天记录存储到MySQL中
-* 配置`configs/redis.php`中的Redis服务器信息，将用户列表和信息存到Redis中
+------------
 
-表结构
-```sql
-CREATE TABLE `webim_history` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `addtime` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  `name` varchar(64) COLLATE utf8mb4_bin NOT NULL,
-  `avatar` varchar(255) COLLATE utf8mb4_bin NOT NULL,
-  `type` varchar(12) COLLATE utf8mb4_bin NOT NULL,
-  `msg` text COLLATE utf8mb4_bin NOT NULL,
-  `send_ip` varchar(20) COLLATE utf8mb4_bin,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin
+## 何为 laravel-admin
+是一个可以快速帮你构建后台管理的工具，它提供的页面组件和表单元素等功能，能帮助你使用很少的代码就实现功能完善的后台管理功能
+
+**特性**
+
+ - 内置用户和权限系统
+ - model-grid支持快速构建数据表格
+ - model-form支持快速构建数据表单
+ - model-tree支持快速构建树状数据
+ - 内置40+种form元素组件、以及支持扩展组件
+ - 支持Laravel的多种模型关系
+ - mysql、mongodb、pgsql等多数据库支持
+ - 支持引入第三方前端库
+ - 数据库和artisan命令行工具的web实现
+ - 支持自定义图表
+ - 多种常用web组件
+ - 支持本地和oss文件上传
+
+## 目录结构
 ```
-
-* 修改`configs/webim.php`中的选项，设置服务器的URL和端口
-```php
-$config['server'] = array(
-    //监听的HOST
-    'host' => '0.0.0.0',
-    //监听的端口
-    'port' => '9503',
-    //WebSocket的URL地址，供浏览器使用的
-    'url' => 'ws://im.xxx.com:9503',
-    //用于Comet跨域，必须设置为web页面的URL
-    //比如你的网站静态页面放在 http://im.xxx.com:8888/main.html
-    //这里就是 http://im.xxx.com:8888
-    'origin' => 'http://im.xxx.com:8888',
-);
+app/Admin
+├── Controllers
+│   ├── ExampleController.php
+│   └── HomeController.php
+├── bootstrap.php
+└── routes.php
 ```
-
-* server.host server.port 项为WebIM服务器即WebSocket服务器的IP与端口，其他选择项根据具体情况修改
-* server.url对应的就是服务器IP或域名以及websocket服务的端口，这个就是提供给浏览器的WebSocket地址
-* server.origin为Comet跨域设置，必须修改origin才可以支持IE等不支持WebSocket的浏览器
-
-__5. 启动WebSocket服务器__
-
-```shell
-php server.php start 
-```
-
-IE浏览器不支持WebSocket，需要使用FlashWebSocket模拟，请修改flash_policy.php中对应的端口，然后启动flash_policy.php。
-```shell
-php webim/flash_policy.php
-```
-
-__6. 绑定host与访问聊天窗口（可选）__
-
-如果URL直接使用IP:PORT，这里不需要设置。
-
-```shell
-vi /etc/hosts
-```
-
-
-----
-
-####后台框架怎么用？
 #### 克隆项目
 
 ```
@@ -473,7 +648,7 @@ git clone https://github.com/DOUBLE-Baller/momo.git
 
 #### 进入项目
 ```shell
-cd laravel-admin
+cd momo
 ```
 
 #### 安装功能包
@@ -508,7 +683,7 @@ php artisan db:seed-sql
 # 输入yes
 ```
 
-> 后台地址：http://laravel-admin/admin 账户：admin，密码：admin
+> 后台地址：http://xxxx/admin 账户：admin，密码：admin
 
 #### 创建后台控制器
 
@@ -537,4 +712,12 @@ php artisan admin:controller UserController
 - 视图获取登录用户`admin('user')`
 - 视图获取登录用户ID`admin('id')`
 - 视图判断登录用户是否是某个角色(判断角色标识)`admin('isAdmin','slug'['slug','slug'])`
+
+==问题反馈==
+
+**在使用中有任何问题，欢迎反馈给我们，可以用以下联系方式跟我们交流**
+
+
+~~整套直播教学视频 进群后@群主索取~~
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623094714713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 

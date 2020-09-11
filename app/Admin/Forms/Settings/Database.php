@@ -47,16 +47,27 @@ class Database extends Form
     public function form()
     {
 
-        $this->select('dbtype', '存储类型')->options(['Qiniu'=>'七牛云存储','Local'=>'本地存储'])
+        $this->select('dbtype', '存储类型')->options(['Local'=>'本地存储','Qiniu'=>'七牛云存储','Ali'=>'阿里OSS','Tx'=>"腾讯OSS"])
             ->when('Qiniu', function (Form $form) {
-                $form->text("qn_accessKey","accessKey")->help('AccessKey')->rules("required");
+                /*$form->text("qn_accessKey","accessKey")->help('AccessKey')->rules("required");
                 $form->text("qn_secretKey","accessKey")->help('SecretKey')->rules("required");
                 $form->select("qn_protocol","http协议")->options(["http"=>"http","https"=>"https"])->help('AccessKey')->rules("required");
                 $form->text("bucket","bucket")->help('Bucket名字')->rules("required");
                 $form->text("qn_name","文件名")->help('文件名')->rules("required");
-                $form->text("notify_url","notify_url")->help('回调地址');
+                $form->text("notify_url","notify_url")->help('回调地址');*/
+
+            })->rules('required')
+            ->when('Ali', function (Form $form) {
+                /*$form->text("qn_accessKey","accessKey")->help('AccessKey')->rules("required");
+                $form->text("qn_secretKey","accessKey")->help('SecretKey')->rules("required");
+                $form->select("qn_protocol","http协议")->options(["http"=>"http","https"=>"https"])->help('AccessKey')->rules("required");
+                $form->text("bucket","bucket")->help('Bucket名字')->rules("required");
+                $form->text("qn_name","文件名")->help('文件名')->rules("required");
+                $form->text("notify_url","notify_url")->help('回调地址');*/
 
             })->rules('required');
+        $this->text('disk', '文件夹')->default("qq407193275")->rules('required')->help('默认磁盘文件夹');
+        $this->text('limit', '上传个数')->default(5)->rules('required')->help('批量个数');
         $this->text('path', '备份根路径')->rules('required')->help('路径必须以 / 结尾');
         $this->text('backup_size', '备份卷大小')->rules('required')->help('该值用于限制压缩后的分卷最大长度。单位：B；建议设置20M');
         $this->radio('zip', '备份是否压缩')->options([1 => '是', 0 => '否'])->help('压缩备份文件需要PHP环境支持 gzopen, gzwrite函数');

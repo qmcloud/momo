@@ -19,4 +19,9 @@ Route::group([
     $router->resource('attestations', AttestationController::class);
     //身份认证
     $router->resource('skills', SkillController::class);
+    //技能订单
+    $router->resource('skillorder', SkillorderController::class);
+    //动态列表
+    $router->resource('dynamic', DynamicController::class);
+
 });

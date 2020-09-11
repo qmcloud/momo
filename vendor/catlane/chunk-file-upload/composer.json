@@ -1,0 +1,34 @@
+{
+    "name": "catlane/chunk-file-upload",
+    "description": "文件上传小扩展，可支持大文件分块分片上传到七牛云or本地，优化您上传大文件的苦恼",
+    "type": "library",
+    "keywords": ["laravel-admin", "extension","catlane","chunk_file"],
+    "homepage": "https://github.com/catlane/chunk-file-upload",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "杨宇辉",
+            "email": "catlane@foxmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0.0",
+        "qiniu/php-sdk": "^7.2",
+        "encore/laravel-admin": "~1.6"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Encore\\ChunkFileUpload\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Encore\\ChunkFileUpload\\ChunkFileUploadServiceProvider"
+            ]
+        }
+    }
+}

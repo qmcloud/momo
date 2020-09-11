@@ -1,0 +1,28 @@
+{
+    "name": "overtrue/laravel-filesystem-qiniu",
+    "description": "A Qiniu storage filesystem for Laravel.",
+    "require": {
+        "php": ">=5.5.9",
+        "league/flysystem": "^1.0",
+        "overtrue/flysystem-qiniu": "^1.0.2"
+    },
+    "autoload": {
+        "psr-4": {
+            "Overtrue\\LaravelFilesystem\\Qiniu\\": "src"
+        }
+    },
+    "authors": [
+        {
+            "name": "overtrue",
+            "email": "i@overtrue.me"
+        }
+    ],
+    "license": "MIT",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Overtrue\\LaravelFilesystem\\Qiniu\\QiniuStorageServiceProvider"
+            ]
+        }
+    }
+}
