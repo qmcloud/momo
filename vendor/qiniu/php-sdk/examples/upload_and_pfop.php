@@ -14,7 +14,7 @@ $auth = new Auth($accessKey, $secretKey);
 $key = 'php-logo.png';
 $uploadMgr = new UploadManager();
 
-$pfop = "imageMogr2/rotate/90|saveas/" . \Qiniu\base64_urlSafeEncode($bucket . ":php-logo-rotate.png");
+$pfop = "imageMogr2/rotate/90|saveas/" . \Qiniu\base64_urlSafeEncode($bucket . ":php-logo-rotate.png')}}");
 
 //转码完成后通知到你的业务服务器。（公网可以访问，并相应200 OK）
 $notifyUrl = 'http://notify.fake.com';
