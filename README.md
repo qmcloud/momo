@@ -1,7 +1,7 @@
 ### 直播源码,短视频,直播带货,游戏陪玩,仿比心,猎游,tt语音聊天,美女约玩,陪玩系统源码开黑,约玩源码
 
 ----------------
-### 后台: laravel-admin 前端: VUE 移动: Android + ios 
+### 后台: laravel-admin 前端: VUE 移动: Android + ios ### 分布式架构 IM,API等: Consul + Go Micro + Micro API + kafka + Docker 等
 
 ----------------
 
@@ -87,9 +87,12 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 3. MYSQL 服务提供静态数据的存储。
 4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp 和 golang的）。
 5. golang +kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
-6. etcd + grpc + docker 系统监控：监听主播异常掉线情况、直播消息推送等。
+6. consul + grpc + docker 系统监控：监听主播异常掉线情况、直播消息推送等。
  
 ------------
+**分布式架构**
+
+--待续--
 
 **视频服务**
 
