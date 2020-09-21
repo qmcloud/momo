@@ -1,7 +1,7 @@
 ### 直播源码,短视频,直播带货,游戏陪玩,仿比心,猎游,tt语音聊天,美女约玩,陪玩系统源码开黑,约玩源码
 
 ----------------
-### 后台: laravel-admin 前端: VUE 移动: Android + ios ### 分布式架构 IM,API等: Consul + Go Micro + Micro API + kafka + Docker 等
+### 后台: laravel-admin 前端: VUE 移动: Android + ios  分布式架构 IM,API等: Consul + Go Micro + Micro API + kafka + Docker 等
 
 ----------------
 
