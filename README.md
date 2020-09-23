@@ -96,20 +96,28 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 
 **针对市面上现有的直播系统多为单机裸奔版本，系统臃肿，业务耦合 IM API等不可横向扩展，所以采用分布式尤为必要，采用到技术如下：**
 
-后台管理：**laravel**
+后台管理：**laravel** 
+
 分布式：**go mirco + micro api + etcd + kafka**等 
+
 前端：**vue**
+
 移动端： **ios+android+小程序**等
+
 数据库：**mysql+redis**
+
 通讯框架：**gprc**
+
 长连接通讯协议：**protocol buffers**
 
 
 ### 环境搭建
   **准备工具先，比如需要开发的东西，虚拟机镜像，工具等等。**
+
 网盘链接：https://pan.baidu.com/s/1WsfqcAZ8Ph6id39gbOMjbQ 
 提取码：7nq3
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200922185921775.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
+
 **安装虚拟机**
 > 1.安装虚拟机 centos7 系统  镜像链接: [https://www.centos.org/download/](https://www.centos.org/download/)	此处省略··
 
@@ -131,7 +139,9 @@ export GO111MODULE=on
 export GOPROXY=https://goproxy.io
 ```
 **成功**
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200922210610471.png#pic_center)
+
 **安装etcd**
 ```bash
 curl -L https://github.com/coreos/etcd/releases/download/v3.3.2/etcd-v3.3.2-linux-amd64.tar.gz -o etcd-v3.3.2-linux-amd64.tar.gz
@@ -149,7 +159,9 @@ mv etcd-v3.3.2-linux-amd64/etcd* /$GOPATH/bin
 ./etcd 
 ```
 **成功**
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200922213137699.png#pic_center)
+
 **安装 Protobuf 相关工具**
 
 ```bash
@@ -177,6 +189,7 @@ make && make install
 protoc --version
 ```
 ![成功](https://img-blog.csdnimg.cn/20200922221355356.png#pic_center)
+
 **安装 protoc-gen-micro**
 ```bash
 go get -u github.com/micro/protoc-gen-micro
@@ -186,10 +199,13 @@ go get -u github.com/micro/protoc-gen-micro
 go get -u github.com/golang/protobuf/protoc-gen-go
 
 cp protoc-gen-* /usr/local/bin/
-```
+
 至此你的$GOPATH/bin下有如下文件 复制一份到/usr/local/bin 下
+```
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200922222247686.png#pic_center)
-**编写dome测试一把**
+
+**编写代码测试一把**
 ```golang
 mkdir /www/go/live/proto
 然后在 proto 目录下创建一个 Protobuf 格式的服务接口声明文件 live.proto：
@@ -285,26 +301,33 @@ micro api --handler=rpc
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200922233014118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
 访问IP:8080 如图 有防火墙的请添加规则放开8080端口即可访问！![在这里插入图片描述](https://img-blog.csdnimg.cn/20200922233410216.png#pic_center)
-**ok 到此基础环境搭建完成 下面运行远程调用 api **
+
+**ok 到此基础环境搭建完成 下面运行远程调用 api**
 ```bash
 micro call go.micro.api.Live Live.Call '{"name": "momo"}'
 ```
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200923111240482.png#pic_center)
 
 
-### 编写代码
-**项目目录：**
+### 项目代码
+>项目目录：
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200923112617559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
 > server:       服务启动入口 
+>
 > config:       服务配置
+>
 > app:     每个服务私有代码 
+>
 > comm:   服务共有代码 
+>
 > sql:          项目sql文件
+>
 > test:         长连接测试脚本
 
 
 **app服务介绍**
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20200923113249111.png#pic_center)
 
 ```bash
@@ -332,9 +355,7 @@ micro call go.micro.api.Live Live.Call '{"name": "momo"}'
 ```
 
 
-**视频服务**
-
-**直播配置**
+## 视频服务
 
 **RTMP服务添加一个application这个名字可以任意起，也可以起多个名字，由于是直播我就叫做它live，如果打算弄多个序列的直播就可以live_cctv。**
    
