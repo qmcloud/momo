@@ -1,20 +1,20 @@
 ### 直播源码,短视频,直播带货,游戏陪玩,仿比心,猎游,tt语音聊天,美女约玩,陪玩系统源码开黑,约玩源码
 
 ----------------
-### 前端: VUE 移动: Android + ios
+### 前端: VUE 移动端: Android + ios
 
-###微服务（Docker容器）组成：
+### 微服务（Docker容器）组成：
 
-goim ：不多说 B站 IM架构
-livego ：基于golang开发的高性能rtmp服务器 实测机型：阿里云32核64G独享服务器 30000路并发拉流，cpu占用率不到50%！
-webrtc ：Janus Gateway：Meetecho优秀的通用WebRTC服务器（SFU）；
-MongoDB ：云时代构建的基于文档的分布式数据库；
-Redis：内存中的数据结构存储，用作数据库，缓存和消息代理；
-kafka ：队列 群聊，私聊，消息通知等。
-Coturn ：TURN和STUN Server的开源项目；
-Nginx ：高性能负载平衡器，Web服务器和有HTTP3 / Quiche和Brtoli支持的反向代理；
-Docker：用于构建、部署和管理容器化应用程序的平台。
-后台管理界面: php laravel  
+- **goim** ：不多说 B站 IM架构
+- **livego** ：基于golang开发的高性能rtmp服务器 实测机型：阿里云32核64G独享服务器 30000路并发拉流，cpu占用率不到50%！
+- **webrtc** ：Janus Gateway：Meetecho优秀的通用WebRTC服务器（SFU）；
+- **MongoDB** ：云时代构建的基于文档的分布式数据库；
+- **Redis**：内存中的数据结构存储，用作数据库，缓存和消息代理；
+- **kafka** ：队列 群聊，私聊，消息通知等。
+- **Coturn** ：TURN和STUN Server的开源项目；
+- **Nginx** ：高性能负载平衡器，Web服务器和有HTTP3 / Quiche和Brtoli支持的反向代理；
+- **Docker**：用于构建、部署和管理容器化应用程序的平台。
+- **后台管理界面**: php7 laravel  
 ----------------
 
 
