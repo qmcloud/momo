@@ -22,6 +22,13 @@ func main() {
 		c.Json(http.StatusOK, egg.H{"filepath": c.Param("filepath")})
 	})
 
+	v1 := r.Group("/v1")
+	{
+		v1.Get("/a", func(c *egg.Context) {
+			c.HTML(http.StatusOK, "<h1>Hello</h1>")
+		})
+	}
+
 	r.Run(":8888")
 
 }

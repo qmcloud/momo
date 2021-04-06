@@ -10,28 +10,54 @@ type HandlerFunc func(*Context)
 
 //定义调用
 type Engine struct {
+	*RouterGroup
 	router *router
+	groups []*RouterGroup //储存所有的groups
+}
+
+//定义group分组
+type RouterGroup struct {
+	prefix string       //前缀
+	parent *RouterGroup //分组
+	engine *Engine      //all router 支持引擎
+
 }
 
 //定义初始化
 func New() *Engine {
-	return &Engine{router: newRouter()}
+	engine := &Engine{router: newRouter()}
+	engine.RouterGroup = &RouterGroup{engine: engine}
+	engine.groups = []*RouterGroup{engine.RouterGroup}
+	return engine
+}
+
+//group
+func (group *RouterGroup) Group(prefix string) *RouterGroup {
+	engine := group.engine
+	newGroup := &RouterGroup{
+		prefix: group.prefix + prefix,
+		parent: group,
+		engine: engine,
+	}
+	engine.groups = append(engine.groups, newGroup)
+	return newGroup
 }
 
 //addRoute
-func (e *Engine) addRoute(method string, pattern string, handle HandlerFunc) {
-	log.Printf("Route %4s - %s", method, pattern)
-	e.router.addRoute(method, pattern, handle)
+func (group *RouterGroup) addRoute(method string, pattern string, handle HandlerFunc) {
+	patterns := group.prefix + pattern
+	log.Printf("Route %4s - %s", method, patterns)
+	group.engine.router.addRoute(method, patterns, handle)
 }
 
 //get
-func (e *Engine) Get(pattern string, handle HandlerFunc) {
-	e.addRoute("GET", pattern, handle)
+func (group *RouterGroup) Get(pattern string, handle HandlerFunc) {
+	group.addRoute("GET", pattern, handle)
 }
 
 //post
-func (e *Engine) Post(pattern string, handle HandlerFunc) {
-	e.addRoute("POST", pattern, handle)
+func (group *RouterGroup) Post(pattern string, handle HandlerFunc) {
+	group.addRoute("POST", pattern, handle)
 }
 
 //run
