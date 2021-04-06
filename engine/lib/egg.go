@@ -3,6 +3,7 @@ package egg
 import (
 	"log"
 	"net/http"
+	"strings"
 )
 
 //定义 HandlerFunc 抽象 通过*Context 上下文传递
@@ -17,9 +18,10 @@ type Engine struct {
 
 //定义group分组
 type RouterGroup struct {
-	prefix string       //前缀
-	parent *RouterGroup //分组
-	engine *Engine      //all router 支持引擎
+	prefix      string        //前缀
+	parent      *RouterGroup  //分组
+	middlewares []HandlerFunc // 支持 middleware
+	engine      *Engine       //ALL router 支持引擎
 
 }
 
@@ -60,12 +62,24 @@ func (group *RouterGroup) Post(pattern string, handle HandlerFunc) {
 	group.addRoute("POST", pattern, handle)
 }
 
-//run
-func (e *Engine) Run(addr string) (err error) {
-	return http.ListenAndServe(addr, e)
+// Use is defined to add middleware to the group
+func (group *RouterGroup) Use(middlewares ...HandlerFunc) {
+	group.middlewares = append(group.middlewares, middlewares...)
 }
 
 func (e *Engine) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	var middlewares []HandlerFunc
+	for _, group := range e.groups {
+		if strings.HasPrefix(r.URL.Path, group.prefix) {
+			middlewares = append(middlewares, group.middlewares...)
+		}
+	}
 	c := newContext(w, r)
+	c.handlers = middlewares
 	e.router.handle(c)
+}
+
+//run
+func (e *Engine) Run(addr string) (err error) {
+	return http.ListenAndServe(addr, e)
 }

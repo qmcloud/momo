@@ -84,14 +84,16 @@ func (r *router) getRoute(method string, part string) (*node, map[string]string)
 
 //handle 通过contex 参数作为上下文传递
 func (r *router) handle(c *Context) {
+	n, params := r.getRoute(c.Method, c.Path)
 
-	node, params := r.getRoute(c.Method, c.Path)
-	if node != nil {
+	if n != nil {
+		key := c.Method + "-" + n.pattern
 		c.Params = params
-		key := c.Method + "-" + node.pattern
-		r.handlers[key](c)
+		c.handlers = append(c.handlers, r.handlers[key])
 	} else {
-		c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
+		c.handlers = append(c.handlers, func(c *Context) {
+			c.String(http.StatusNotFound, "404 NOT FOUND: %s\n", c.Path)
+		})
 	}
-
+	c.Next()
 }

@@ -17,6 +17,11 @@ type Context struct {
 	Path       string
 	Method     string
 	Params     map[string]string
+	// middleware
+	handlers []HandlerFunc
+	index    int
+	// engine pointer
+	engine *Engine
 }
 
 //初始化新建contex上下文
@@ -26,6 +31,16 @@ func newContext(w http.ResponseWriter, r *http.Request) *Context {
 		Req:    r,
 		Path:   r.URL.Path,
 		Method: r.Method,
+		index:  -1, //index 标识执行到第几个中间件
+	}
+}
+
+//中间件 Next
+func (c *Context) Next() {
+	c.index++
+	s := len(c.handlers)
+	for ; c.index < s; c.index++ {
+		c.handlers[c.index](c)
 	}
 }
 
@@ -54,6 +69,11 @@ func (c *Context) Status(code int) {
 //设置header头信息
 func (c *Context) SetHeader(key string, value string) {
 	c.Write.Header().Set(key, value)
+}
+
+func (c *Context) Fail(code int, err string) {
+	c.index = len(c.handlers)
+	c.Json(code, H{"message": err})
 }
 
 /****

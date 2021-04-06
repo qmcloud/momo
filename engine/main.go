@@ -12,7 +12,8 @@ func main() {
 		// expect /hello?name=geektutu
 		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Query("name"), c.Path)
 	})
-
+	//middleware
+	r.Use(egg.Logger())
 	r.Get("/hello/:name", func(c *egg.Context) {
 		// expect /hello/geektutu
 		c.String(http.StatusOK, "hello %s, you're at %s\n", c.Param("name"), c.Path)
@@ -25,7 +26,7 @@ func main() {
 	v1 := r.Group("/v1")
 	{
 		v1.Get("/a", func(c *egg.Context) {
-			c.HTML(http.StatusOK, "<h1>Hello</h1>")
+			c.HTML(http.StatusOK, "<h1>V1</h1>")
 		})
 	}
 
