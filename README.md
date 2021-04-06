@@ -51,9 +51,6 @@
 ----------------
 [陪玩app下载](http://app.6sjs.com/wej8) http://app.6sjs.com/wej8  （用手机浏览器打开下载，不要用微信直接下载）
   
-账号： 18503869347
-密码： tqd123456
-
 ----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
 
