@@ -40,13 +40,7 @@
 
 ----------------
 
-
-----------------
-[gihub地址：](https://github.com/DOUBLE-Baller/momo) https://github.com/DOUBLE-Baller/momo
-
-[web演示地址：](http://www.jinqianlive.com) http://www.jinqianlive.com 
-
-[直播后台演示地址：](http://www.jinqianlive.com/admin) http://www.jinqianlive.com/admin
+[后台演示地址：](http://www.jinqianlive.com/admin) http://www.jinqianlive.com/admin
 
 账号 ：test
 密码： test
@@ -55,7 +49,10 @@
 [直播短视频app下载](https://baoya.lanzous.com/imcL9e57tej) https://baoya.lanzous.com/imcL9e57tej（用手机浏览器打开下载，不要用微信直接下载）
 
 ----------------
-[陪玩app下载](https://baoya.lanzous.com/izTEKgg0yhi ) https://baoya.lanzous.com/izTEKgg0yhi （用手机浏览器打开下载，不要用微信直接下载）
+[陪玩app下载](http://app.6sjs.com/wej8) http://app.6sjs.com/wej8  （用手机浏览器打开下载，不要用微信直接下载）
+  
+账号： 18503869347
+密码： tqd123456
 
 ----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
