@@ -15,3 +15,9 @@ func Logger() HandlerFunc {
 		log.Printf("[%d] %s in %v", c.StatusCode, c.Req.RequestURI, time.Since(t))
 	}
 }
+
+func Test() HandlerFunc {
+	return func(c *Context) {
+		log.Printf("[%d] %s", c.StatusCode, c.Req.RequestURI)
+	}
+}
