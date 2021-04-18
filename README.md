@@ -1,6 +1,17 @@
 ### 直播源码,短视频,直播带货,游戏陪玩,仿比心,猎游,tt语音聊天,美女约玩,陪玩系统源码开黑,约玩源码
 
 ----------------
+<div align=center>
+<img src="https://img.shields.io/badge/php-7.3-blue"/>
+<img src="https://img.shields.io/badge/golang-1.13-blue"/>
+<img src="https://img.shields.io/badge/gin-1.4.0-lightBlue"/>
+<img src="https://img.shields.io/badge/vue-2.6.10-brightgreen"/>
+<img src="https://img.shields.io/badge/element--ui-2.12.0-green"/>
+<img src="https://img.shields.io/badge/gorm-1.9.12-red"/>
+</div>
+
+[English](./README-en.md) | 简体中文
+
 ### 前端: VUE 移动端: Android + ios
 
 ### 微服务（Docker容器）组成：
@@ -14,12 +25,12 @@
 - **Coturn** ：TURN和STUN Server的开源项目；
 - **Nginx** ：高性能负载平衡器，Web服务器和有HTTP3 / Quiche和Brtoli支持的反向代理；
 - **Docker**：用于构建、部署和管理容器化应用程序的平台。
-- **后台管理界面**: php7 laravel  
+- **后台管理界面**: php（老业务php后台）+ gin（API接口重构）+ vue + Element-UI 
 ----------------
 
 
 **技术群：**
-![技术群](https://img-blog.csdnimg.cn/20200623093238797.png)
+![](https://img-blog.csdnimg.cn/20200623093238797.png)
 
 
 纯技术群，入群有一定门槛，谢谢理解。
@@ -28,15 +39,16 @@
 
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
+
 ----------------
 
-### 团队接活
+### 商业合作 （UI设计，定制开发，系统重构，代理推广等）
 
 | 类目        | 价格   |  商业授权  |
 | --------   | -----:  | :----:  |
-| 基础开源版本      | ￥0        |   无（不可商用）     |
-| 授权版本          |   ￥15000  |   有（可以商用）   |
-| 定制，系统优化，重构，商业合作等|    ￥30000起|  有（可以商用）  |
+| 基础开源版本（php+go的基础版本仅供学习使用）      | ￥0        |   无（不可商用）     |
+| php国内商用版本       |   ￥15000  |   有（可以商用）  |
+| golang海外商用版本		|    ￥30000起|  有（可以商用）|
 
 ----------------
 
@@ -86,14 +98,14 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 ## 后端
 
 **系统开发语言**
--  **PHP 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP 语言开发，所有服务提供横向扩展。**
+-  **PHP|golang 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP + golang 语言开发，所有服务提供横向扩展。**
 
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
 4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp 和 golang的）。
 5. golang +kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
-6. consul + grpc + docker 系统监控：监听主播异常掉线情况、直播消息推送等。
+6. consul + grpc 系统监控：监听主播异常掉线情况、直播消息推送等。
  
 ------------
 ## 分布式架构
@@ -450,8 +462,7 @@ micro call go.micro.api.Live Live.Call '{"name": "momo"}'
 ```			
 ------------
 
-
-**聊天服务**
+## goim聊天服务
 
 #### 特性
  * 轻量级
@@ -600,6 +611,7 @@ router 属于有状态节点，logic可以使用一致性hash配置节点，增�
 job 根据kafka的partition来扩展多job工作方式，具体可以参考下kafka的partition负载
 
 ------------
+
 ## PHP 为什么 “慢” ？？？
 ### Laravel + Swoole 提速 30倍
 
@@ -816,69 +828,6 @@ class DatabaseManager extends LaravelDatabaseManager
 }
 ```
 
-
-
-swoole扩展安装
-```shell
-pecl install swoole
-```
-
-swoole框架
-```shell
-composer install
-```
-将`webroot`目录配置到Nginx/Apache的虚拟主机目录中，使`webroot/`可访问。
-
-详细部署说明
-----
-
-__1. 安装composer(php依赖包工具)__
-
-```shell
-curl -sS https://getcomposer.org/installer | php
-mv composer.phar /usr/local/bin/composer
-```
-
-注意：如果未将php解释器程序设置为环境变量PATH中，需要设置。因为composer文件第一行为#!/usr/bin/env php，并不能修改。
-更加详细的对composer说明：http://blog.csdn.net/zzulp/article/details/18981029
-
-__2. composer install__
-
-切换到PHPWeb项目目录，执行指令composer install，如很慢则
-
-```shell
-composer install --prefer-dist
-```
-
-__3. Ningx配置HTTPS__
-
-* Apache请参照Nginx配置，自行修改实现
-* 这里使用了`www.xxx.com`作为域名，需要配置host或者改成你的域名
-
-```shell
-server {
-    listen       80;
-    server_name  www.xxx.com;
-    index index.html index.php;
-    
-    location / {
-        root   /path/to/web/webroot;
-
-        proxy_set_header X-Real-IP $remote_addr;
-        if (!-e $request_filename) {
-            rewrite ^/(.*)$ /index.php;
-        }
-    }
-    
-    location ~ .*\.(php|php5)?$ {
-	    fastcgi_pass  127.0.0.1:9000;
-	    fastcgi_index index.php;
-	    include fastcgi.conf;
-    }
-}
-```
-`**注意：https下必须采取wss  So-有两种方案 1.采用nginx 反向代理4431端口 swoole 的端口和4431进行通讯。2.swoole 确认是否启用了openssl，是否在编译时加入了--enable-openssl的支持,然后在set 证书路径即可。两种方案选择其一就好，不过第一种方案有个潜在神坑就是你通过反向代理拿不到真实的IP地址了,这点值得注意，Nginx有办法拿到真实的ip，不懂可以私聊我，光wss的坑太多了就不一一说了。**`  
-
 ------------
 
 ## 何为 laravel-admin
@@ -985,7 +934,6 @@ php artisan admin:controller UserController
 
 **在使用中有任何问题，欢迎反馈给我们，可以用以下联系方式跟我们交流**
 
+English | [简体中文](./README.md)
 
-~~整套直播教学视频 进群后@群主索取~~
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200623094714713.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
