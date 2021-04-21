@@ -1,0 +1,88 @@
+package v1
+
+import (
+	"crypto/cipher"
+	"crypto/des"
+	"encoding/hex"
+	"leopardlive/global"
+	"leopardlive/model/request"
+	"leopardlive/model/response"
+	"leopardlive/service"
+
+	"go.uber.org/zap"
+
+	"github.com/gin-gonic/gin"
+)
+
+// @Tags InitDB
+// @Summary 初始化用户数据库
+// @Produce  application/json
+// @Param data body request.InitDB true "初始化数据库参数"
+// @Success 200 {string} string "{"code":0,"data":{},"msg":"自动创建数据库成功"}"
+// @Router /init/initdb [post]
+func InitDB(c *gin.Context) {
+	if global.GVA_DB != nil {
+		global.GVA_LOG.Error("非法访问")
+		response.FailWithMessage("非法访问", c)
+		return
+	}
+	var dbInfo request.InitDB
+	if err := c.ShouldBindJSON(&dbInfo); err != nil {
+		global.GVA_LOG.Error("参数校验不通过", zap.Any("err", err))
+		response.FailWithMessage("参数校验不通过", c)
+		return
+	}
+	if err := service.InitDB(dbInfo); err != nil {
+		global.GVA_LOG.Error("自动创建数据库失败", zap.Any("err", err))
+		response.FailWithMessage("自动创建数据库失败，请查看后台日志", c)
+		return
+	}
+	response.OkWithData("自动创建数据库成功", c)
+}
+
+// @Tags CheckDB
+// @Summary 初始化用户数据库
+// @Produce  application/json
+// @Success 200 {string} string "{"code":0,"data":{},"msg":"探测完成"}"
+// @Router /init/checkdb [post]
+func CheckDB(c *gin.Context) {
+	if global.GVA_DB != nil {
+		global.GVA_LOG.Info("数据库无需初始化")
+		response.OkWithDetailed(gin.H{
+			"needInit": false,
+		}, "数据库无需初始化", c)
+		return
+	} else {
+		global.GVA_LOG.Info("前往初始化数据库")
+		response.OkWithDetailed(gin.H{
+			"needInit": true,
+		}, "前往初始化数据库", c)
+		return
+	}
+}
+
+//CBC解密
+func DecryptDES_CBC(src, key string) string {
+	keyByte := []byte(key)
+	data, err := hex.DecodeString(src)
+	if err != nil {
+		panic(err)
+	}
+	block, err := des.NewCipher(keyByte)
+	if err != nil {
+		panic(err)
+	}
+	iv := keyByte //用密钥作为向量(不建议这样使用)
+	mode := cipher.NewCBCDecrypter(block, iv)
+	plaintext := make([]byte, len(data))
+	mode.CryptBlocks(plaintext, data)
+	plaintext = PKCS5UnPadding(plaintext)
+	return string(plaintext)
+}
+
+//明文减码算法
+func PKCS5UnPadding(origData []byte) []byte {
+	length := len(origData)
+	unpadding := int(origData[length-1])
+	return origData[:(length - unpadding)]
+}
