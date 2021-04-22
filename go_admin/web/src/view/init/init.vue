@@ -1,33 +1,36 @@
 <template>
   <div class="init">
-    <p class="in-one a-fadeinT">欢迎使用LeopardLive</p>
-    <p class="in-two a-fadeinT">您需要初始化您的数据库并且填充初始数据</p>
+    <p class="in-one a-fadeinT">{{$t('install.title')}}</p>
+    <p class="in-two a-fadeinT">{{$t('install.instll')}}</p>
+    
     <div class="form-card in-three a-fadeinB">
       <el-form ref="form" :model="form" label-width="100px">
-        <el-form-item label="授权码验证">
-          <el-input v-model="form.lincese" placeholder="请输入授权码"></el-input>
+        <button @click="switchLang">EN/中文</button>
+        <el-form-item label="lincese"> 
+          <el-input v-model="form.lincese" placeholder=""></el-input>
         </el-form-item>
         <el-form-item label="host">
-          <el-input v-model="form.host" placeholder="请输入数据库链接"></el-input>
+          <el-input v-model="form.host" placeholder="$t('install.mysqllink')"></el-input>
         </el-form-item>
         <el-form-item label="port">
-          <el-input v-model="form.port" placeholder="请输入数据库端口"></el-input>
+          <el-input v-model="form.port" placeholder="$t('install.mysqlport')"></el-input>
         </el-form-item>
         <el-form-item label="userName">
-          <el-input v-model="form.userName" placeholder="请输入数据库用户名"></el-input>
+          <el-input v-model="form.userName" placeholder="$t('install.mysqluser')"></el-input>
         </el-form-item>
         <el-form-item label="password">
           <el-input
             v-model="form.password"
-            placeholder="请输入数据库密码（没有则为空）"
+            placeholder=""
           ></el-input>
+          <p>{{this.$t('install.mysqlpass')}}</p>
         </el-form-item>
         <el-form-item label="dbName">
-          <el-input v-model="form.dbName" placeholder="请输入数据库名称"></el-input>
+          <el-input v-model="form.dbName" placeholder='$t("install.init")'></el-input>
         </el-form-item>
         <el-form-item>
           <div style="text-align: right">
-            <el-button type="primary" @click="onSubmit">立即初始化</el-button>
+            <el-button type="primary" @click="onSubmit">{{$t('install.init')}}</el-button>
           </div>
         </el-form-item>
       </el-form>
@@ -48,10 +51,28 @@ export default {
         userName: "root",
         password: "",
         dbName: "Leopard",
-      },
+      }
     };
   },
   methods: {
+    reload:function(){
+        this.isRouterAlive=false;
+        this.$nextTick(function(){
+            this.isRouterAlive=true
+        })
+    },
+    switchLang () {
+      let lang = ''
+      this.lang=localStorage.getItem('lang')
+      if (this.lang == 'en') {
+        lang = 'cn'
+      } else {
+        lang = 'en'
+      }
+      localStorage.setItem('lang',lang)
+      this.$i18n.locale = lang
+      
+    },
     async onSubmit() {
       const loading = this.$loading({
         lock: true,
@@ -72,9 +93,10 @@ export default {
       } catch (err) {
           loading.close();
       }
-    },
+    }
   },
 };
+
 </script>
 <style lang="scss">
 .init {
