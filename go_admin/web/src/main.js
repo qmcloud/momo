@@ -115,6 +115,7 @@ Dialog.props.closeOnClickModal.default = false
 import router from '@/router/index'
 //引如多语言
 import i18n from './i18n/i18n'
+
 // time line css
 import '../node_modules/timeline-vuejs/dist/timeline-vuejs.css'
 

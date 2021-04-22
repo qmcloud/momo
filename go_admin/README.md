@@ -180,3 +180,18 @@ swag init
 - [ ] 导入，导出Excel
 - [ ] Echart图表支持
 - [ ] 单独前端使用模式以及数据模拟
+
+## 7.坑
+- mysql最好是 5.6 版本 如果大于 5.6 会报 Specified key was too long; max key length is 1000 bytes
+ 只需需改 
+type CasbinRule struct {
+	ID    uint   `gorm:"primaryKey;autoIncrement"`
+	Ptype string `gorm:"size:20"`
+	V0    string `gorm:"size:20"`
+	V1    string `gorm:"size:60"`
+	V2    string `gorm:"size:20"`
+	V3    string `gorm:"size:20"`
+	V4    string `gorm:"size:20"`
+	V5    string `gorm:"size:20"`
+}
+的size值即可

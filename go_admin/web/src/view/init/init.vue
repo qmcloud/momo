@@ -10,13 +10,13 @@
           <el-input v-model="form.lincese" placeholder=""></el-input>
         </el-form-item>
         <el-form-item label="host">
-          <el-input v-model="form.host" placeholder="$t('install.mysqllink')"></el-input>
+          <el-input v-model="form.host" placeholder=""></el-input>
         </el-form-item>
         <el-form-item label="port">
-          <el-input v-model="form.port" placeholder="$t('install.mysqlport')"></el-input>
+          <el-input v-model="form.port" placeholder=""></el-input>
         </el-form-item>
         <el-form-item label="userName">
-          <el-input v-model="form.userName" placeholder="$t('install.mysqluser')"></el-input>
+          <el-input v-model="form.userName" placeholder=""></el-input>
         </el-form-item>
         <el-form-item label="password">
           <el-input
@@ -26,7 +26,7 @@
           <p>{{this.$t('install.mysqlpass')}}</p>
         </el-form-item>
         <el-form-item label="dbName">
-          <el-input v-model="form.dbName" placeholder='$t("install.init")'></el-input>
+          <el-input v-model="form.dbName" placeholder=''></el-input>
         </el-form-item>
         <el-form-item>
           <div style="text-align: right">
