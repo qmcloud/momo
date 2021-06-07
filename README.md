@@ -1,6 +1,8 @@
 ### 直播源码,短视频,直播带货,游戏陪玩,仿比心,猎游,tt语音聊天,美女约玩,陪玩系统源码开黑,约玩源码
 
 ----------------
+[English](./README-en.md) | 简体中文
+
 <div align=center>
 <img src="https://img.shields.io/badge/php-7.3-blue"/>
 <img src="https://img.shields.io/badge/golang-1.13-blue"/>
@@ -10,7 +12,6 @@
 <img src="https://img.shields.io/badge/gorm-1.9.12-red"/>
 </div>
 
-[English](./README-en.md) | 简体中文
 
 ### 前端: VUE 移动端: Android + ios
 
@@ -54,13 +55,13 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ----------------
 
-[后台演示地址：](http://www.jinqianlive.com/admin) http://www.jinqianlive.com/admin
+[后台演示地址：](http://live1219.dasddf.club/admin) http://live1219.dasddf.club/admin
 
-账号 ：test
-密码： test
+账号：admin
+密码：live1219
 
 ----------------
-[直播短视频app下载](https://baoya.lanzous.com/imcL9e57tej) https://baoya.lanzous.com/imcL9e57tej（用手机浏览器打开下载，不要用微信直接下载）
+[直播短视频app下载](https://baoya.lanzoui.com/iLDf3pwegqd) https://baoya.lanzoui.com/iLDf3pwegqd（用手机浏览器打开下载，不要用微信直接下载）
 
 ----------------
 [陪玩app下载](http://app.6sjs.com/wej8) http://app.6sjs.com/wej8  （用手机浏览器打开下载，不要用微信直接下载）
@@ -70,7 +71,7 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 
 ----------------
 
-文档地址：http://www.jinqianlive.com/appapi/listAllApis.php?type=expand
+文档地址：http://live1219.dasddf.club/appapi/listAllApis.php?type=expand
 
 ----------------
 
@@ -374,18 +375,19 @@ micro call go.micro.api.Live Live.Call '{"name": "momo"}'
 
 
 ## 视频服务
-
-README ： https://github.com/DOUBLE-Baller/momo/tree/master/livego
 ------------
 
+README ： https://github.com/DOUBLE-Baller/momo/tree/master/livego
+
+
 ## goim聊天服务
+------------
 
 README ：https://github.com/DOUBLE-Baller/momo/tree/master/IM
 
 ==问题反馈==
 
-**在使用中有任何问题，欢迎反馈给我们，可以用以下联系方式跟我们交流**
+**在使用中有任何问题，欢迎反馈给我们**
 
-English | [简体中文](./README.md)
-
+https://github.com/DOUBLE-Baller/momo/issues
 
