@@ -55,6 +55,8 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ----------------
 
+[上线APP搜：]() 【欢心交友】 
+
 [后台演示地址：](http://live1219.dasddf.club/admin) http://live1219.dasddf.club/admin
 
 账号：admin
