@@ -34,7 +34,6 @@
 ![](https://img-blog.csdnimg.cn/20200623093238797.png)
 
 
-纯技术群，入群有一定门槛，谢谢理解。
 ----------------
 微信：BCFind5 【请备注好信息】
 
@@ -57,7 +56,10 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 [上线APP搜：]() 【欢心交友】 
 
-[直播短视频带货app下载](https://wwa.lanzoui.com/ilOakvjblda) https://wwa.lanzoui.com/ilOakvjblda（用手机浏览器打开下载，不要用微信直接下载）
+**演示：**
+![](https://qr.api.cli.im/newqr/create?data=https%3A%2F%2Fwwa.lanzoui.com%2FilOakvjblda&level=H&transparent=false&bgcolor=%23FFFFFF&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=84&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=165a2a9dd311adb79839a6d0139f85d8)
+
+[直播短视频带货app下载](https://wwa.lanzoui.com/ilOakvjblda) 点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
   
 ----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
