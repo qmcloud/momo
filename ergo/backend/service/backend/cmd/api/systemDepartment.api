@@ -1,0 +1,76 @@
+syntax = "v1"
+
+info(
+	title: "部门管理"
+	desc: "部门管理"
+	author: "qin"
+	email: "361018729@qq.com"
+)
+
+type(
+	SystemDepartmentPostReq {
+		Ancestors      string    `db:"ancestors" json:"ancestors,default="`             // 祖级列表
+		CreateBy      string    `db:"create_by" json:"create_by,default="`             // 创建者
+		Email      string    `db:"email" json:"email,default="`             // 邮箱
+		Id      int64    `db:"id" json:"id,optional"`             //
+		Leader      string    `db:"leader" json:"leader,default="`             // 负责人
+		Name      string    `db:"name" json:"name,default="`             // 部门名称
+		ParentId      int64    `db:"parent_id" json:"parent_id,default=0"`             // 父级ID
+		Phone      string    `db:"phone" json:"phone,default="`             // 联系电话
+		Sort      int64    `db:"sort" json:"sort,default=0"`             // 排序
+		Status      int64    `db:"status" json:"status,default=0"`             // 部门状态（0正常 1停用）
+		UpdateBy      string    `db:"update_by" json:"update_by,default="`             // 更新者
+
+	}
+	SystemDepartmentReply {
+		Id       int64  `json:"id"`
+		Name string `json:"name"`
+	}
+
+	SystemDepartmentListReq {
+		Page     int64  `json:"page,optional,default=1" form:"page,optional,default=1"`
+		PageSize int64  `json:"pageSize,optional,default=10" form:"pageSize,optional,default=10"`
+		Keyword  string `json:"keyword,optional" form:"pageSize,optional"`
+	}
+	SystemDepartmentDelReq {
+		Id int64 `json:"id"`
+	}
+	SystemDepartmentDelBatchReq {
+		Ids string `json:"ids"`
+	}
+)
+
+@server(
+	group: systemDepartment
+	jwt: Auth
+	middleware: CheckLogin // 路由中间件声明
+)
+service admin-api {
+	//	列表
+	@handler SystemDepartmentList
+	post /systemDepartment/list(SystemDepartmentListReq) returns (SystemDepartmentReply)
+
+	// 获取父级
+	@handler SystemDepartmentParentList
+	post /systemDepartment/parentList(SystemDepartmentListReq) returns (SystemDepartmentReply)
+
+	//	删除
+	@handler SystemDepartmentDelete
+	delete /systemDepartment/delete(SystemDepartmentDelReq) returns (SystemDepartmentReply)
+
+	//	删除批量
+	@handler SystemDepartmentDeleteBatch
+	delete /systemDepartment/deleteBatch(SystemDepartmentDelBatchReq) returns (SystemDepartmentReply)
+
+	//	查询数据
+	@handler SystemDepartmentFindOne
+	post /systemDepartment/find(SystemDepartmentDelReq) returns (SystemDepartmentReply)
+
+	// 添加
+	@handler SystemDepartmentAdd
+	post /systemDepartment/add (SystemDepartmentPostReq) returns (SystemDepartmentReply)
+
+	// 更新
+	@handler SystemDepartmentUpdate
+	put /systemDepartment/update (SystemDepartmentPostReq) returns (SystemDepartmentReply)
+}

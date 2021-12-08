@@ -1,0 +1,102 @@
+type RequestEmpty {
+	Name string `json:"name,optional"`
+}
+type Request {
+	Name      string `json:"name,optional"`
+	NameSpace string `json:"name_space,optional"`
+}
+
+type RequestCreateDeployment {
+	Namespace string `json:"namespace"`
+	Name      string `json:"name"`
+	Replicas  int32  `json:"replicas"`
+	Image     string `json:"image"`
+	Labels    string `json:"labels"`
+	Ports     string `json:"ports"`
+}
+
+type RequestCreateService {
+	Namespace string `json:"namespace"`
+	Name      string `json:"name"`
+	AppName   string `json:"appName"`
+	Labels    string `json:"labels"`
+	Ports     string `json:"ports"`
+}
+
+type RequestCreateIngress {
+	Namespace string `json:"namespace"`
+	Name      string `json:"name"`
+	Host      string `json:"host"`
+	//paths
+}
+
+type Response {
+	Message string `json:"message"`
+}
+
+service k8s-api {
+	@handler CreateDeployment
+	post /k8s/createDeployment(RequestCreateDeployment) returns (Response);
+	
+	@handler DeleteDeployment
+	delete /k8s/deleteDeployment(Request) returns (Response);
+	
+	@handler UpdateDeployment
+	put /k8s/updateDeployment(RequestCreateDeployment) returns (Response);
+	
+	@handler GetDeployment
+	post /k8s/getDeployment(Request) returns (Response);
+	
+	@handler ListDeployment
+	post /k8s/listDeployment(Request) returns (Response);
+	
+	// namespace
+	@handler CreateNamespace
+	post /k8s/createNameSpace(RequestEmpty) returns (Response);
+	
+	@handler DeleteNamespace
+	delete /k8s/deleteNameSpace(RequestEmpty) returns (Response);
+	
+	@handler ListNameSpace
+	get /k8s/listNameSpace(RequestEmpty) returns (Response);
+	
+	// Service
+	//https://www.cnblogs.com/wuchangblog/p/14178487.html
+	@handler CreateService
+	post /k8s/createService(RequestCreateService) returns (Response);
+	
+	@handler DeleteService
+	delete /k8s/deleteService(Request) returns (Response);
+	
+	@handler UpdateService
+	put /k8s/updateService(RequestCreateService) returns (Response);
+	
+	@handler GetService
+	post /k8s/getService(Request) returns (Response);
+	
+	@handler ListService
+	post /k8s/listService(Request) returns (Response);
+	
+	// Ingress
+	// https://github.com/cliterb/kube-client-example/blob/master/example/ingress.go
+	@handler ListIngress
+	post /k8s/listIngress(Request) returns (Response);
+	
+	@handler GetIngress
+	post /k8s/getIngress(Request) returns (Response);
+	
+	@handler DeleteIngress
+	delete /k8s/deleteIngress(Request) returns (Response);
+	
+	@handler CreateIngress
+	post /k8s/createIngress(RequestCreateIngress) returns (Response);
+	
+	@handler UpdateIngress
+	put /k8s/updateIngress(RequestCreateIngress) returns (Response);
+	
+	// pods
+	// https://www.cnblogs.com/wuchangblog/p/14155080.html
+	@handler ListPods
+	post /k8s/listPods(Request) returns (Response);
+	
+}

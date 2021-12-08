@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package systemuserget;
+
+message Request {
+  int64 id = 1;
+}
+
+message Response {
+  string nick_name = 1;
+}
+
+service Systemusergeter {
+  rpc getSystemuser(Request) returns(Response);
+}

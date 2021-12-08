@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gozero-mis-frontend
+  name: gozero-mis-frontend
+  namespace: gozero
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gozero-mis-frontend
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gozero-mis-frontend
+    spec:
+      containers:
+      - image: registry.cn-shanghai.aliyuncs.com/xptools/gozero_mis_frontend:v1.0.0
+        name: gozero-mis-frontend
+        resources: {}
+      imagePullSecrets:
+      - name: gozero-docker-registry
+status: {}

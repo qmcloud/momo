@@ -1,0 +1,69 @@
+syntax = "v1"
+
+info(
+	title: "角色管理"
+	desc: "角色管理"
+	author: "qin"
+	email: "361018729@qq.com"
+)
+
+type(
+SystemRolePostReq {
+	Id      int64    `db:"id" json:"id,optional"`             // 
+Name      string    `db:"name" json:"name,optional"`             // 角色名
+ParentId      int64    `db:"parent_id" json:"parent_id,default=0"`             // 父级ID
+Sort      int64    `db:"sort" json:"sort,default=0"`             // 排序
+
+	}
+SystemRoleReply {
+		Id       int64  `json:"id"`
+		Name string `json:"name"`
+	}
+
+SystemRoleListReq {
+		Page     int64  `json:"page,optional,default=1" form:"page,optional,default=1"`
+		PageSize int64  `json:"pageSize,optional,default=10" form:"pageSize,optional,default=10"`
+		Keyword  string `json:"keyword,optional" form:"pageSize,optional"`
+	}
+SystemRoleDelReq {
+		Id int64 `json:"id"`
+	}
+SystemRoleDelBatchReq {
+		Ids string `json:"ids"`
+	}
+)
+
+@server(
+	group: systemRole
+	jwt: Auth
+	middleware: CheckLogin // 路由中间件声明
+)
+service admin-api {
+	//	列表
+	@handler SystemRoleList
+	post /systemRole/list(SystemRoleListReq) returns (SystemRoleReply)
+
+	// 获取父级
+	@handler MenuParentList
+	post /systemRole/parentList(SystemRoleListReq) returns (SystemRoleReply)
+
+	//	删除
+	@handler SystemRoleDelete
+	delete /systemRole/delete(SystemRoleDelReq) returns (SystemRoleReply)
+
+	//	删除批量
+	@handler SystemRoleDeleteBatch
+	delete /systemRole/deleteBatch(SystemRoleDelBatchReq) returns (SystemRoleReply)
+
+	//	查询数据
+	@handler SystemRoleFindOne
+	post /systemRole/find(SystemRoleDelReq) returns (SystemRoleReply)
+
+	// 添加
+	@handler SystemRoleAdd
+	post /systemRole/add (SystemRolePostReq) returns (SystemRoleReply)
+
+	// 更新
+	@handler SystemRoleUpdate
+	put /systemRole/update (SystemRolePostReq) returns (SystemRoleReply)
+}

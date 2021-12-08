@@ -1,0 +1,66 @@
+syntax = "v1"
+
+info(
+	title: "Api管理"
+	desc: "Api管理"
+	author: "qin"
+	email: "361018729@qq.com"
+)
+
+type(
+	SystemApiPostReq {
+		ApiGroup      string    `db:"api_group" json:"api_group,optional"`             // api组
+		Description      string    `db:"description" json:"description,optional"`             // api中文描述
+		Id      int64    `db:"id" json:"id,optional"`             //
+		Method      string    `db:"method" json:"method,default=POST"`             // 请求方法
+		Path      string    `db:"path" json:"path,optional"`             // api路径
+
+	}
+	SystemApiReply {
+		Id       int64  `json:"id"`
+		Name string `json:"name"`
+	}
+
+	SystemApiListReq {
+		Page     int64  `json:"page,optional,default=1" form:"page,optional,default=1"`
+		PageSize int64  `json:"pageSize,optional,default=10" form:"pageSize,optional,default=10"`
+		Keyword  string `json:"keyword,optional" form:"pageSize,optional"`
+	}
+	SystemApiDelReq {
+		Id int64 `json:"id"`
+	}
+	SystemApiDelBatchReq {
+		Ids string `json:"ids"`
+	}
+)
+
+@server(
+	group: systemApi
+	jwt: Auth
+	middleware: CheckLogin // 路由中间件声明
+)
+service admin-api {
+	//	列表
+	@handler SystemApiList
+	post /systemApi/list(SystemApiListReq) returns (SystemApiReply)
+
+	//	删除
+	@handler SystemApiDelete
+	delete /systemApi/delete(SystemApiDelReq) returns (SystemApiReply)
+
+	//	删除批量
+	@handler SystemApiDeleteBatch
+	delete /systemApi/deleteBatch(SystemApiDelBatchReq) returns (SystemApiReply)
+
+	//	查询数据
+	@handler SystemApiFindOne
+	post /systemApi/find(SystemApiDelReq) returns (SystemApiReply)
+
+	// 添加
+	@handler SystemApiAdd
+	post /systemApi/add (SystemApiPostReq) returns (SystemApiReply)
+
+	// 更新
+	@handler SystemApiUpdate
+	put /systemApi/update (SystemApiPostReq) returns (SystemApiReply)
+}

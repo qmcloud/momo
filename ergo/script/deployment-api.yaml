@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gozero-admin-api
+  name: gozero-admin-api
+  namespace: gozero
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gozero-admin-api
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: gozero-admin-api
+    spec:
+      containers:
+      - image: registry.cn-shanghai.aliyuncs.com/xptools/gozero_admin_api:v1.0.1
+        name: gozero-admin-api
+        resources: {}
+      imagePullSecrets:
+      - name: gozero-docker-registry
+status: {}

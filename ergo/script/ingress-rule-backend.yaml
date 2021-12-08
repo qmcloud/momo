@@ -1,0 +1,18 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: gozero-mis-frontend-ingress
+  namespace: gozero
+spec:
+  rules:
+  - host: gozero.myhost.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: gozero-mis-frontend-svc
+          servicePort: 80
+      - path: /uploads
+        backend:
+          serviceName: gozero-admin-api-svc
+          servicePort: 8888

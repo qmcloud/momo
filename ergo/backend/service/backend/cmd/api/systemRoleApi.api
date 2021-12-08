@@ -1,0 +1,74 @@
+syntax = "v1"
+
+info(
+	title: "角色Api关系"
+	desc: "角色Api关系"
+	author: "qin"
+	email: "361018729@qq.com"
+)
+
+type(
+SystemRoleApiPostReq {
+	PType      string    `db:"p_type" json:"p_type,default="`             //
+	V0      string    `db:"v0" json:"v0,default="`             //
+	V1      string    `db:"v1" json:"v1,default="`             //
+	V2      string    `db:"v2" json:"v2,default="`             //
+	V3      string    `db:"v3" json:"v3,default="`             //
+	V4      string    `db:"v4" json:"v4,default="`             //
+	V5      string    `db:"v5" json:"v5,default="`             //
+	}
+RoleApisReq {
+	SystemRoleApiPostReqs []SystemRoleApiPostReq `json:"role_apis"`
+	RoleId                int64                  `json:"role_id"`
+}
+SystemRoleApiReply {
+		Id       int64  `json:"id"`
+		Name string `json:"name"`
+	}
+
+SystemRoleApiListReq {
+		Page     int64  `json:"page,optional,default=1" form:"page,optional,default=1"`
+		PageSize int64  `json:"pageSize,optional,default=10" form:"pageSize,optional,default=10"`
+		Keyword  string `json:"keyword,optional" form:"pageSize,optional"`
+	}
+SystemRoleApiDelReq {
+		Id int64 `json:"id"`
+	}
+SystemRoleApiDelBatchReq {
+		Ids string `json:"ids"`
+	}
+)
+
+@server(
+	group: systemRoleApi
+	jwt: Auth
+	middleware: CheckLogin // 路由中间件声明
+)
+service admin-api {
+	//	列表
+	@handler SystemRoleApiList
+	post /systemRoleApi/list(SystemRoleApiListReq) returns (SystemRoleApiReply)
+
+	@handler SystemRoleApisByRoleId
+	post /systemRoleApi/byRoleId(SystemRoleApiDelReq) returns (SystemRoleApiReply)
+
+	//	删除
+	@handler SystemRoleApiDelete
+	delete /systemRoleApi/delete(SystemRoleApiDelReq) returns (SystemRoleApiReply)
+
+	//	删除批量
+	@handler SystemRoleApiDeleteBatch
+	delete /systemRoleApi/deleteBatch(SystemRoleApiDelBatchReq) returns (SystemRoleApiReply)
+
+	//	查询数据
+	@handler SystemRoleApiFindOne
+	post /systemRoleApi/find(SystemRoleApiDelReq) returns (SystemRoleApiReply)
+
+	// 添加
+	@handler SystemRoleApiAdd
+	post /systemRoleApi/add (RoleApisReq) returns (SystemRoleApiReply)
+
+	// 更新
+	@handler SystemRoleApiUpdate
+	put /systemRoleApi/update (SystemRoleApiPostReq) returns (SystemRoleApiReply)
+}

@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+  name: gozero-admin-api-ingress
+  namespace: gozero
+spec:
+  rules:
+  - host: gozero.myhost.com
+    http:
+      paths:
+      - path: /api(/|$)(.*)
+        backend:
+          serviceName: gozero-admin-api-svc
+          servicePort: 8888

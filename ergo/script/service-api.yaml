@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: gozero-admin-api
+  name: gozero-admin-api-svc
+  namespace: gozero
+spec:
+  ports:
+  - port: 8888
+    protocol: TCP
+    targetPort: 8888
+  selector:
+    app: gozero-admin-api
+  type: NodePort
+status:
+  loadBalancer: {}

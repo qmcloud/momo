@@ -1,0 +1,74 @@
+syntax = "v1"
+
+info(
+	title: "角色菜单关系"
+	desc: "角色菜单关系"
+	author: "qin"
+	email: "361018729@qq.com"
+)
+
+type(
+SystemRoleMenuPostReq {
+	Id      int64    `db:"id" json:"id,optional"`             // 
+MenuId      int64    `db:"menu_id" json:"menu_id,default=0"`             // 菜单ID
+RoleId      int64    `db:"role_id" json:"role_id,default=0"`             // 角色ID
+
+	}
+SystemRoleMenuReply {
+		Id       int64  `json:"id"`
+		Name string `json:"name"`
+	}
+
+SystemRoleMenuListReq {
+		Page     int64  `json:"page,optional,default=1" form:"page,optional,default=1"`
+		PageSize int64  `json:"pageSize,optional,default=10" form:"pageSize,optional,default=10"`
+		Keyword  string `json:"keyword,optional" form:"pageSize,optional"`
+	}
+SystemRoleMenuDelReq {
+		Id int64 `json:"id"`
+	}
+SystemRoleMenuDelBatchReq {
+		Ids string `json:"ids"`
+	}
+
+SystemRoleMenuAddReq {
+	MenuIds string `json:"menu_ids"`
+	RoleId int64 `json:"role_id"`
+}
+
+
+)
+
+@server(
+	group: systemRoleMenu
+	jwt: Auth
+	middleware: CheckLogin // 路由中间件声明
+)
+service admin-api {
+	//	列表
+	@handler SystemRoleMenuList
+	post /systemRoleMenu/list(SystemRoleMenuListReq) returns (SystemRoleMenuReply)
+
+	@handler SystemRoleMenusByRoleId
+	post /systemRoleMenu/byRoleId(SystemRoleMenuAddReq) returns (SystemRoleMenuReply)
+
+	//	删除
+	@handler SystemRoleMenuDelete
+	delete /systemRoleMenu/delete(SystemRoleMenuDelReq) returns (SystemRoleMenuReply)
+
+	//	删除批量
+	@handler SystemRoleMenuDeleteBatch
+	delete /systemRoleMenu/deleteBatch(SystemRoleMenuDelBatchReq) returns (SystemRoleMenuReply)
+
+	//	查询数据
+	@handler SystemRoleMenuFindOne
+	post /systemRoleMenu/find(SystemRoleMenuDelReq) returns (SystemRoleMenuReply)
+
+	// 添加
+	@handler SystemRoleMenuAdd
+	post /systemRoleMenu/add (SystemRoleMenuAddReq) returns (SystemRoleMenuReply)
+
+	// 更新
+	@handler SystemRoleMenuUpdate
+	put /systemRoleMenu/update (SystemRoleMenuPostReq) returns (SystemRoleMenuReply)
+}
