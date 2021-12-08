@@ -15,7 +15,7 @@
 
 ### 前端: VUE 移动端: Android + ios
 
-### 微服务（Docker容器）组成：
+### 微服务（K8s,Docker容器）组成：
 
 - **goim** ：不多说 B站 IM架构
 - **livego** ：基于golang开发的高性能rtmp服务器 实测机型：阿里云32核64G独享服务器 30000路并发拉流，cpu占用率不到50%！
@@ -26,7 +26,7 @@
 - **Coturn** ：TURN和STUN Server的开源项目；
 - **Nginx** ：高性能负载平衡器，Web服务器和有HTTP3 / Quiche和Brtoli支持的反向代理；
 - **Docker**：用于构建、部署和管理容器化应用程序的平台。
-- **后台管理界面**: php（老业务php后台）+ gin（API接口重构）+ vue + Element-UI 
+- **后台管理界面**: php版 | golang版 + vue + Element-UI 
 ----------------
 
 
@@ -45,12 +45,6 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 ----------------
 
 ### 商业合作 （UI设计，定制开发，系统重构，代理推广等）
-
-| 类目        | 价格   |  商业授权  |
-| --------   | -----:  | :----:  |
-| 基础开源版本（php+go的基础版本仅供学习使用）      | ￥0        |   无（不可商用）     |
-| php版本       |   ￥15000  |   有（可以商用）  |
-| golang海外商用版本		|    ￥30000起|  有（可以商用）|
 
 ----------------
 
@@ -93,82 +87,43 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 #### *注意：*前端的具体细技术细节请移至前端篇赘述，本贴暂不描述前端内容。
 ![陪玩app](https://img-blog.csdnimg.cn/20210406163759968.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
-## 后端
+## 后端语言
 
 **系统开发语言**
--  **PHP|golang 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP + golang 语言开发，所有服务提供横向扩展。**
+-  **PHP|golang 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP|golang 语言开发，所有服务提供横向扩展。**
 
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
-4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp 和 golang的）。
+4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp SRS Livego 和 golang的）。
 5. golang +kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
-6. consul + grpc 系统监控：监听主播异常掉线情况、直播消息推送等。
+6. etcd + grpc 系统监控：监听主播异常掉线情况、直播消息推送等。
  
 ------------
-## 分布式架构
+## golang微服务架构
 
-	注：本教程适用于 Go 1.13 版本，因为 Go 1.11 才正式引入了 Go Module 作为包管理器。
+**微服务介绍**
 
-**针对市面上现有的直播系统多为单机裸奔版本，系统臃肿，业务耦合 IM API等不可横向扩展，所以采用分布式尤为必要，采用到技术如下：**
+1. 轻松获得支撑千万日活服务的稳定性
+2. 内建级联超时控制、限流、自适应熔断、自适应降载等微服务治理能力，无需配置和额外代码
+3. 微服务治理中间件可无缝集成到其它现有框架使用
+4. 极简的 API 描述，一键生成各端代码
+5. 自动校验客户端请求参数合法性
+6. 大量微服务治理和并发工具包
 
-后台管理：**laravel** 
+**架构图**
 
-分布式：**go mirco + micro api + etcd + kafka**等 
+![ ](https://gitee.com/baoyalive/baoyalive/blob/master/doc/doc.jpg)
 
-前端：**vue**
+**代码目录说明**
+├── code-dir
+│   ├── app  // app代码
+│   ├── backend // 后台接口，rpc
+│   ├── backendweb // 后台vue页面代码
+│   ├── script // 数据库脚本，简化的kubernetes部署脚本
+│   ├── .gitignore // git控制忽略文件
+│   ├── LICENSE // LICENSE文件，使用的是MIT LICENSE
 
-移动端： **ios+android+小程序**等
-
-数据库：**mysql+redis**
-
-通讯框架：**gprc**
-
-长连接通讯协议：**protocol buffers**
-
-
-### 项目代码
->项目目录：
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200923112617559.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
-
-> server:       服务启动入口 
->
-> config:       服务配置
->
-> app:     每个服务私有代码 
->
-> comm:   服务共有代码 
->
-> sql:          项目sql文件
->
-> test:         长连接测试脚本
-
-
-**app服务介绍**
-
-![在这里插入图片描述](https://img-blog.csdnimg.cn/20200923113249111.png#pic_center)
-
-```bash
-1.tcp_conn
-维持与客户端的TCP长连接，心跳，以及TCP拆包粘包，消息编解码
-2.ws_conn
-维持与客户端的WebSocket长连接，心跳，消息编解码
-3.logic
-设备信息，好友信息，群组信息管理，消息转发逻辑
-4.user
-可以根据自己的业务需求，进行扩展,也可以替换成自己的业务服务器
-```
-**客户端接入流程**
-```bash
-1.调用LogicExt.RegisterDevice接口，完成设备注册，获取设备ID（device_id）,注意，一个设备只需完成一次注册即可，后续如果本地有device_id,就不需要注册了，举个例子，如果是APP第一次安装，就需要调用这个接口，后面即便是换账号登录，也不需要重新注册。
-2.调用UserExt.SignIn接口，完成账户登录，获取账户登录的token。
-3.建立长连接，使用步骤2拿到的token，完成长连接登录。
-如果是web端,需要调用建立WebSocket时,将user_id,device_id,token，以URL参数的形式传递到服务器，完成长连接登录，例如：ws://localhost:8081/ws?user_id={user_id}&device_id={device_id}&token={token}
-如果是APP端，就需要建立TCP长连接，在完成建立TCP长连接时，第一个包应该是长连接登录包（SignInInput），如果信息无误，客户端就会成功建立长连接。
-4.使用长连接发送消息同步包（SyncInput），完成离线消息同步，注意：seq字段是客户端接收到消息的最大同步序列号，如果用户是换设备登录或者第一次登录，seq应该传0。
-接下来，用户可以使用LogicExt.SendMessage接口来发送消息，消息接收方可以使用长连接接收到对应的消息。
-
-```
 
 ## 视频服务
 ------------
