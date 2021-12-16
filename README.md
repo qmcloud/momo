@@ -113,7 +113,7 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 
 **架构图**
 
-![](https://github.com/DOUBLE-Baller/momo/tree/master/doc/doc.jpg)
+![](https://github.com/DOUBLE-Baller/momo/blob/master/doc/doc.jpg?raw=true)
 
 **代码目录说明**
 
