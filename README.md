@@ -60,7 +60,7 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 
 ----------------
 
-文档地址：http://live1219.dasddf.club/appapi/listAllApis.php?type=expand
+文档地址：https://www.yuque.com/yson
 
 ----------------
 
@@ -118,8 +118,8 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 **代码目录说明**
 
 ```
-├── code-dir
-│   ├── app  // app代码
+├── ergo
+│   ├── app  // app代码
 │   ├── backend // 后台接口，rpc
 │   ├── backendweb // 后台vue页面代码
 │   ├── script // 数据库脚本，简化的kubernetes部署脚本
