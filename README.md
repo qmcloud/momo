@@ -29,18 +29,17 @@
 - **后台管理界面**: php版 | golang版 + vue + Element-UI 
 ----------------
 
-
 **技术群：**
 ![](https://img-blog.csdnimg.cn/20200623093238797.png)
-
 
 ----------------
 微信：BCFind5 【请备注好信息】
 
+文档地址：https://www.52webrtc.top
+
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
 Gitee：https://gitee.com/baoyalive/baoyalive.git
-
 
 ----------------
 
@@ -57,10 +56,6 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
   
 ----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
-
-----------------
-
-文档地址：https://www.yuque.com/yson
 
 ----------------
 
