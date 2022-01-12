@@ -82,24 +82,23 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 #### *注意：*前端的具体细技术细节请移至前端篇赘述，本贴暂不描述前端内容。
 ![陪玩app](https://img-blog.csdnimg.cn/20210406163759968.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
-## 后端语言
+## PHP框架开发
 
-**系统开发语言**
--  **PHP|golang 视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理采用PHP|golang 语言开发，所有服务提供横向扩展。**
+-  **PHP版本视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理及API采用PHP语言开发**
 
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
-4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp SRS Livego 和 golang的）。
-5. golang +kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
-6. etcd + grpc 系统监控：监听主播异常掉线情况、直播消息推送等。
+4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp SRS + WebRtc）。
+5. kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
+6. prometheus系统监控：监听主播异常掉线情况、直播消息推送等。
  
 ------------
 ## golang微服务架构
 
 **微服务介绍**
 
-1. 轻松获得支撑千万日活服务的稳定性
+1. 轻松获得支撑百万日活服务的稳定性
 2. 内建级联超时控制、限流、自适应熔断、自适应降载等微服务治理能力，无需配置和额外代码
 3. 微服务治理中间件可无缝集成到其它现有框架使用
 4. 极简的 API 描述，一键生成各端代码
