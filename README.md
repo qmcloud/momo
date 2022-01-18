@@ -120,7 +120,55 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 │   ├── .gitignore // git控制忽略文件
 │   ├── LICENSE // LICENSE文件，使用的是MIT LICENSE
 ```
+**网关**
+```
+nginx做网关，使用nginx的auth模块，调用后端的backend服务统一鉴权，业务内部不鉴权，如果涉及到业务资金比较多也可以在业务中进行二次鉴权。
+另外，很多同学觉得nginx做网关不太好，这块原理基本一样，可以自行替换成apisix、kong等
+```
+**开发模式**
+```
+本项目使用的是微服务开发，api （http） + rpc（grpc） ， api充当聚合服务，复杂、涉及到其他业务调用的统一写在rpc中，如果一些不会被其他服务依赖使用的简单业务，可以直接写在api的logic中
+```
+**日志**
+```
+关于日志，统一使用filebeat收集，上报到kafka中，logstash把kafka数据源同步到elasticsearch中，再通过kibana进行分析处理展示等。
+```
+**监控**
+```
+监控采用prometheus，只需要配置就可以了，这里可以看项目中的配置
+```
+**链路追踪**
+```
+默认jaeger、zipkin支持，只需要配置就可以了，可以看配置
+```
+**消息队列**
+```
+这里使用可kq，kq是基于kafka做的高性能消息队列
+```
+**延迟队列、定时任务**
+```
+延迟队列、定时任务本项目使用的是asynq ， google团队给予redis开发的简单中间件，
+当然了asynq也支持消息队列，你也可也把kq消息队列替换成这个，毕竟只需要redis不需要在去维护一个kafka也是不错的
+链接：https://github.com/hibiken/asynq
+```
+**分布式事务**
+```
+分布式事务准备使用的是dtm，本项目目前还未使用到，后续准备直接集成就好了，如果读者使用直接去看那个源码就行了
+```
+**部署**
+```
+部署的话，目前这个直接使用docker可以部署整套技术栈，如果上k8s的话 ，通过goctl生成k8s的yaml文件也非常简单。
 
+我说下思路，搭建一个gitlab、jenkins、harbor
+
+1、将代码放在gitlab
+
+2、在gitlab创建流水线，基本是一个服务一个流水线了
+
+3、流水线步骤 ：
+
+拉取代码--->ci检测（这里可以省略哈，自己看着办）--->构建镜像（Dockerfile可以通过goctl自动生成）-->推送到harbor镜像服务--->使用kubectl去k8s拉取镜像（ack、ask都行，ask无法使用daemonset 不能用filebeat）---->ok
+```
 
 ## 视频服务
 ------------
