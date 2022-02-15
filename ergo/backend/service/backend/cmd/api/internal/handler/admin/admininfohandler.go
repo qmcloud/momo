@@ -5,7 +5,7 @@ import (
 	"backend/service/backend/cmd/api/internal/logic/admin"
 	"backend/service/backend/cmd/api/internal/svc"
 	"fmt"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 	"net/http"
 )
 

@@ -7,7 +7,7 @@ import (
 	"backend/service/backend/cmd/rpc/systemuserget/internal/svc"
 	"backend/service/backend/cmd/rpc/systemuserget/systemuserget"
 
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type GetSystemuserLogic struct {

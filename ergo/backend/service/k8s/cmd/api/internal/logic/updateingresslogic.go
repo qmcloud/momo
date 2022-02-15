@@ -5,7 +5,7 @@ import (
 	"backend/service/k8s/cmd/api/internal/svc"
 	"backend/service/k8s/cmd/api/internal/types"
 	"context"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 	//exv1beta "k8s.io/api/extensions/v1beta1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"

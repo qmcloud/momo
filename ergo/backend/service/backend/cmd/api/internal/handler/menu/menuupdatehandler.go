@@ -7,7 +7,7 @@ import (
 	"backend/service/backend/cmd/api/internal/svc"
 	"backend/service/backend/cmd/api/internal/types"
 
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func MenuUpdateHandler(ctx *svc.ServiceContext) http.HandlerFunc {

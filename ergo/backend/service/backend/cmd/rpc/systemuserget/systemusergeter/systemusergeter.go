@@ -10,7 +10,7 @@ import (
 
 	"backend/service/backend/cmd/rpc/systemuserget/systemuserget"
 
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type (
