@@ -1,0 +1,645 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>腾讯会议v0.0.1</title>
+    <link rel="stylesheet" type="text/css" href="css/vue.css" />
+    <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.9/vue.min.js"></script>
+    <!-- <script src="js/socket.io.js"></script> -->
+    <script src="https://cdn.bootcdn.net/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script>
+      // WebRTC配置文件
+      const THSConfig = {
+        // 信令服务器
+        signalServer: 'wss://localhost:8443',
+        // Offer/Answer模型请求配置
+        offerOptions: {
+          offerToReceiveAudio: true, // 请求接收音频
+          offerToReceiveVideo: true, // 请求接收视频
+        },
+        // ICE服务器
+        iceServers: {
+          iceServers: [
+            { urls: 'stun:stun.xten.com' }, // Safri兼容：url -> urls
+            { urls: 'stun:stun1.l.google.com:19302' },
+            { urls: 'stun:stun2.l.google.com:19302' },
+            { urls: 'stun:stun3.l.google.com:19302' },
+            { urls: 'stun:stun4.l.google.com:19302' },
+            { urls: 'stun:stun01.sipphone.com' },
+            { urls: 'stun:stun.ekiga.net' },
+            { urls: 'stun:stun.fwdnet.net' },
+            { urls: 'stun:stun.ideasip.com' },
+            { urls: 'stun:stun.iptel.org' },
+            { urls: 'stun:stunserver.org' },
+            { urls: 'stun:stun.softjoys.com' },
+            { urls: 'stun:stun.voiparound.com' },
+            { urls: 'stun:stun.voipbuster.com' },
+            { urls: 'stun:stun.voipstunt.com' },
+            { urls: 'stun:stun.voxgratia.org' },
+          ]
+        }
+      }
+    </script>
+</head>
+<body>
+    <div id="root">
+      <!-- 加入界面 -->
+      <div class="login" v-if="!showRoom">
+        <p class="title">
+          <span class="tip">山寨版</span>
+          <span>腾讯会议</span>
+          <span class="ver">v0.0.1</span>
+        </p>
+        <input class="room-id" v-model="roomId" type="text" placeholder="会议ID">
+        <input class="room-id" v-model="userName" type="text" placeholder="您的名称">
+        <button class="join" @click="join"><span>加入会议</span></button>
+      </div>
+      <!-- 会议界面 -->
+      <div class="room" v-else>
+        <!-- 视频区 -->
+        <div class="video-box">
+          <!-- 讲台 -->
+          <div class="video-leader">
+            <video ref="leaderVideo" autoplay :muted="leaderId === socketId"></video>
+            <div class="leader-name">{{ leaderName }}</div>
+          </div>
+          <!-- 听众 -->
+          <div class="video-group" ref="remoteDiv">
+            <div class="user" ref="localUser" v-show="leaderId !== socketId">
+              <video ref="localVideo" :id="socketId" autoplay muted></video>
+              <div class="user-name">{{ userName }}</div>
+            </div>
+            
+          </div>
+        </div>
+        <!-- 控制区 -->
+        <div class="tool-box">
+          <div class="tool-item" @click="exit">
+            <img src="imgs/exit.png" />
+            <span>离开会议</span>
+          </div>
+          <div class="tool-item" @click="goStage">
+            <img src="imgs/stage.png" />
+            <!-- <span>上讲台</span> -->
+            <span>上电视</span>
+          </div>
+          <div class="tool-item" @click="handleVoice">
+            <img :src="voiceStatus ? 'imgs/mic-on.png' : 'imgs/mic-off.png'" />
+            <span>语音</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // 兼容处理
+      const PeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+      const SessionDescription = window.RTCSessionDescription || window.mozRTCSessionDescription || window.webkitRTCSessionDescription;
+      const GET_USER_MEDIA = navigator.getUserMedia ? "getUserMedia" : navigator.mozGetUserMedia ? "mozGetUserMedia" : navigator.webkitGetUserMedia ? "webkitGetUserMedia" : "getUserMedia";
+      const v = document.createElement("video");
+      const SRC_OBJECT = 'srcObject' in v ? "srcObject" : 'mozSrcObject' in v ? "mozSrcObject" : 'webkitSrcObject' in v ? "webkitSrcObject" : "srcObject";
+      
+      new Vue({
+        el: "#root",
+        data() {
+          let _this = this;
+          return {
+            socket: null, // socket连接
+            localStream: null, // 本地stream
+            socketId: null, // 本地socket id
+            roomId: '1', // 房间 id
+            userName: _this.generateUserName(), // 用户名称
+            rtcPeerConnects: {}, // 对RTCPeerConnection连接进行缓存
+            roomUsers: {}, // 房间里的用户数据
+            leaderId: '', // 讲台socket id
+            leaderName: '', // 主持人名称
+
+            // 页面控制
+            showRoom: false, // 显示房间
+            voiceStatus: true, // 声音状态
+          }
+        },
+        // 方法集合，供其他调用：this.$options.methods.handleClick();
+        methods: {
+          /**************** 交互方法-start *********************/
+      
+          /**
+           * 加入或者创建会议
+           */
+          join: function() {
+            const _this = this;
+            // 获取用户输入的房间号
+            const roomid = String(this.roomId).replace(/\s+/g, '');
+            if (!roomid) {
+              alert('房间号不能为空');
+              return;
+            };
+            this.socket = io(THSConfig.signalServer);
+            this.socketListen(this.socket);
+            // 显示房间
+            this.showRoom = true;
+            //启动摄像头
+            if (this.localStream == null) {
+              this.openCamera().then(stream => {
+                _this.localStream = stream; // 保存本地视频到全局变量 _this.$refs.localUser.children[0]
+                _this.pushStreamToVideo(_this.$refs.localVideo, stream);
+                // 成功打开摄像头后，开始创建或者加入输入的房间号
+                console.log('创建或者加入房间', roomid)
+                _this.socket.emit('createAndJoinRoom', {
+                  room: roomid,
+                  name: _this.userName,
+                });
+              }).catch(e => alert(`getUserMedia() error: ${e.name}`));
+            }
+          },
+
+          /**
+           * 退出会议
+           */
+          exit: function() {
+            if (this.leaderId === this.socketId) {
+              this.closeCamera(this.$refs.leaderVideo);
+            } else {
+              this.closeCamera(this.$refs.localVideo);
+            }
+            // 隐藏房间
+            this.showRoom = false;
+            // 构建数据
+            const data = {
+              from: this.socketId, // 全局变量，我方的socketId
+              name: this.userName,
+              room: this.roomId, // 全局变量，当前房间号
+            };
+            // 向信令服务器发出退出信号，让其转发给房间里的其他用户
+            this.socket.emit('exit', data);
+            // 数据重置
+            this.socketId = '';
+            this.roomId = '';
+            // 关闭每个peer连接
+            for (let i in this.rtcPeerConnects) {
+              let pc = this.rtcPeerConnects[i];
+              pc.close();
+              pc = null;
+            }
+            // 重置RTCPeerConnection连接
+            this.rtcPeerConnects = {};
+            // 移除本地视频
+            this.localStream = null;
+            //移除远程视频
+            this.$refs.remoteDiv.innerHTML = '';
+          },
+
+          /**
+           * 上讲台
+           */
+          goStage: function() {
+            if (this.leaderId === this.socketId) {
+              // alert('您现在已经是主持人，请勿重复点击');
+              return;
+            }
+            this.socket.emit('leader', {
+              from: this.socketId,
+              name: this.userName,
+              room: this.roomId,
+            });
+          },
+
+          /**
+           * 检测主持人，并将主持人视频设置到大屏上
+           */
+          checkLeader: function() {
+            // 将上一个主持人小视频显示 注意本地视频在user层上无id
+            const userDivs = document.getElementsByClassName('user');
+            if (userDivs.length > 0) {
+              for (let i = 0; i < userDivs.length; i++) {
+                if (userDivs[i].id && userDivs[i].style.display === 'none' && userDivs[i].id !== this.leaderId + '-div') {
+                  userDivs[i].style.display = 'block';
+                  userDivs[i].muted = false;
+                }
+              }
+            }
+            // 将主持人小视频隐藏
+            const leaderDiv = document.getElementById(this.leaderId + '-div');
+            if (leaderDiv) { // 主持人退出后，leaderDiv不存在了
+              document.getElementById(this.leaderId).muted = true;
+              document.getElementById(this.leaderId + '-div').style.display = 'none';
+            }
+            // 将主持人视频设置到大屏上
+            this.pushStreamToVideo(this.$refs.leaderVideo, document.getElementById(this.leaderId)[SRC_OBJECT]);
+          },
+
+          /**
+           * 切换语音状态
+           */
+          handleVoice: function() {
+            this.voiceStatus = !this.voiceStatus;
+            this.localStream.getAudioTracks()[0].enabled = this.voiceStatus;
+          },
+
+          /**
+           * 生成随机用户名
+           */
+          generateUserName: function() {
+            return '游客_' + String(Math.random()).padEnd(6, '0').substr(2,4);
+          },
+
+
+          /**************** 交互方法-end *********************/
+
+          
+
+          /**************** 媒体控制-start *********************/
+          /**
+           * 启动摄像头
+           */
+          openCamera: function() {
+            return navigator.mediaDevices[GET_USER_MEDIA]({
+              audio: true,
+              video: true
+            });
+          },
+
+          /**
+           * 关闭摄像头
+           * @param {dom} video video节点
+           */
+          closeCamera: function(video) {
+            video[SRC_OBJECT].getTracks()[0].stop(); // audio
+            video[SRC_OBJECT].getTracks()[1].stop(); // video
+          },
+
+          /**
+           * 视频流绑定到video节点展示
+           * @param {dom} video video节点
+           * @param {obj} stream 视频流
+           */
+          pushStreamToVideo: function(video, stream) {
+            console.log('视频流绑定到video节点展示', video, stream)
+            video[SRC_OBJECT] = stream;
+          },
+          /**************** 媒体控制-end *********************/
+
+
+          /**************** socket监听-start *********************/
+          socketListen: function(socket) {
+            const _this = this;
+            /**
+             * 监听signal server创建房间或者加入房间成功的消息，signal server会判断房间里是否有人
+             */
+            socket.on('created', async data => {
+              // data: [id,room,peers]
+              console.log('created: ', data);
+              // 保存signal server给我分配的socketId
+              _this.socketId = data.id;
+              // 保存创建房间或者加入房间的room id
+              _this.roomId = data.room;
+              // 获取主持人id
+              _this.leaderId = data.roomInfo.leaderId;
+              _this.leaderName = data.roomInfo.leaderName;
+              // 如果data.peers = []，说明房间里没有人，是创建房间，以下步骤则不会执行
+              // 如果data.peers != []，说明房间里有人，是加入房间，给返回的每一个peers，创建WebRtcPeerConnection并发送offer消息
+              for (let i = 0; i < data.peers.length; i++) {
+                const otherSocketId = data.peers[i].id;
+                // 存储用户数据
+                _this.roomUsers[otherSocketId] = data.peers[i];
+                // 创建WebRtcPeerConnection // 注意：这个函数是下一个步骤写的。
+                const pc = _this.getWebRTCConnect(otherSocketId);
+                // 创建offer
+                const offer = await pc.createOffer(THSConfig.offerOptions);
+                // 发送offer
+                _this.onCreateOfferSuccess(pc, otherSocketId, offer);
+              }
+              if (_this.leaderId === _this.socketId) {
+                _this.pushStreamToVideo(_this.$refs.leaderVideo, _this.$refs.localVideo[SRC_OBJECT]);
+              }
+            });
+
+            /**
+             * 监听signal server他人加入房间的消息
+             */
+            socket.on('joined', data => {
+              // 存储用户数据
+              this.roomUsers[data.id] = {
+                id: data.id,
+                userInfo: data,
+              };
+            });
+
+            /**
+             * 监听signal server转发过来的offer消息，将对方的描述信息加入到PeerConnection中，然后构建answer
+             */
+            socket.on('offer', data => {
+              // data:  [from,to,room,sdp]
+              console.log('收到offer: ', data);
+              // 获取RTCPeerConnection
+              const pc = _this.getWebRTCConnect(data.from);
+              console.log('getWebRTCConnect: ', pc);
+              // 构建RTCSessionDescription参数
+              const rtcDescription = {
+                type: 'offer',
+                sdp: data.sdp
+              };
+
+              console.log('offer设置远端setRemoteDescription')
+              // 设置远端setRemoteDescription
+              pc.setRemoteDescription(new SessionDescription(rtcDescription));
+              console.log('setRemoteDescription: ', rtcDescription);
+
+              // createAnswer
+              pc.createAnswer(THSConfig.offerOptions)
+                .then(offer => _this.onCreateAnswerSuccess(pc, data.from, offer))
+                .catch(error => _this.onCreateAnswerError(error));
+            });
+
+            /**
+             * 监听signal server转发过来的answer消息，将对方的描述信息加入到PeerConnection中
+             */
+            socket.on('answer', data => {
+              // data:  [from,to,room,sdp]
+              console.log('收到answer: ', data);
+              // 获取RTCPeerConnection
+              const pc = _this.getWebRTCConnect(data.from);
+
+              // 构建RTCSessionDescription参数
+              const rtcDescription = {
+                type: 'answer',
+                sdp: data.sdp
+              };
+
+              console.log('answer设置远端setRemoteDescription')
+              console.log('setRemoteDescription: ', rtcDescription);
+              //设置远端setRemoteDescription
+              pc.setRemoteDescription(new SessionDescription(rtcDescription));
+            });
+
+            /**
+             * 监听signal server转发过来的candidate消息
+             */
+            socket.on('candidate', data => {
+              // data:  [from,to,room,candidate[sdpMid,sdpMLineIndex,sdp]]
+              console.log('candidate: ', data);
+              const iceData = data.candidate;
+              
+              // 获取RTCPeerConnection
+              const pc = _this.getWebRTCConnect(data.from);
+              
+              const rtcIceCandidate = new RTCIceCandidate({
+                candidate: iceData.sdp,
+                sdpMid: iceData.sdpMid,
+                sdpMLineIndex: iceData.sdpMLineIndex
+              });
+
+              console.log('添加对端Candidate')
+              // 添加对端Candidate
+              pc.addIceCandidate(rtcIceCandidate);
+            });
+
+            /**
+             * 监听leader 他人上讲台时间
+             */
+             socket.on('leader', data => {
+              console.log('leader: ', data);
+              // 切换主持人
+              this.leaderId = data.roomInfo?.leaderId || data.from;
+              this.leaderName = data.roomInfo?.leaderName || data.name;
+              this.checkLeader();
+            });
+
+            /**
+             * 监听signal server转发过来的exit消息，和退出房间的客户端断开连接
+             */
+            socket.on('exit', data => {
+              // data: [from,room]
+              console.log('exit: ', data);
+              // 获取RTCPeerConnection
+              const pc = _this.rtcPeerConnects[data.from];
+              if (typeof (pc) == 'undefined') {
+                return;
+              } else {
+                // RTCPeerConnection关闭
+                _this.getWebRTCConnect(data.from).close;
+
+                // 删除peer对象
+                _this.removeRtcConnect(data.from)
+
+                // 删除用户数据
+                delete _this.roomUsers[data.from];
+
+                // 移除video
+                this.$refs.remoteDiv.removeChild(document.getElementById(data.from + '-div'));
+
+                // 如果是主持人，移除主持人视频
+                if (data.from === this.leaderId) {
+                  this.$refs.leaderVideo[SRC_OBJECT] = null;
+                  this.leaderId = '';
+                  this.leaderName = '系统：主持人已离开';
+                }
+              }
+            });
+          },
+          /**************** socket监听-end *********************/
+
+
+          /**************** WebRTC API-start *********************/
+          /**
+           * 获取RTCPeerConnection
+           * @param {string} otherSocketId 对方socketId
+           */
+          getWebRTCConnect: function(otherSocketId) {
+            const _this = this;
+            if (!otherSocketId) return;
+            // 查询全局中是否已经保存了连接
+            let pc = this.rtcPeerConnects[otherSocketId];
+            console.log('建立连接：', otherSocketId, pc)
+            if (typeof (pc) === 'undefined') { // 如果没有保存，就创建RTCPeerConnection
+              // 构建RTCPeerConnection
+              pc = new PeerConnection(THSConfig.iceServers); // PeerConnection是4.3.2定义的兼容处理
+
+              // 设置获取icecandidate信息回调 此处可暂时忽略，将在4.3.5讲解
+              pc.onicecandidate = e => this.onIceCandidate(pc, otherSocketId, e);
+              // 设置获取对端stream数据回调-track方式 此处可暂时忽略，将在4.3.5讲解
+              pc.ontrack = e => {
+                console.log('我接到数据流了！！', pc, otherSocketId, e)
+                this.onTrack(pc, otherSocketId, e);
+              }
+              // 设置获取对端stream数据回调 此处可暂时忽略，将在4.3.5讲解
+              pc.onremovestream = e => this.onRemoveStream(pc, otherSocketId, e);
+              // peer设置本地流 此处可暂时忽略，将在4.3.5讲解
+              if (this.localStream != null) {
+                this.localStream.getTracks().forEach(track => {
+                  pc.addTrack(track, this.localStream);
+                });
+              }
+
+              // 缓存peer连接
+              this.rtcPeerConnects[otherSocketId] = pc;
+            }
+            return pc;
+          },
+
+          /**
+           * 移除RTCPeerConnection连接缓存
+           * @param {string} otherSocketId 对方socketId
+           */
+          removeRtcConnect: function(otherSocketId) {
+            delete this.rtcPeerConnects[otherSocketId];
+          },
+
+          /**************** WebRTC API-end *********************/
+
+
+          /**************** 回调处理-start *********************/
+          /**
+           * offer创建成功回调
+           * @param {*} pc 
+           * @param {*} otherSocketId 
+           * @param {*} offer 
+           */
+          onCreateOfferSuccess: function(pc, otherSocketId, offer) {
+            console.log('createOffer: success ' + ' id:' + otherSocketId + ' offer: ', offer);
+            // 设置本地setLocalDescription 将自己的描述信息加入到PeerConnection中
+            pc.setLocalDescription(offer);
+            // 构建offer
+            const message = {
+              from: this.socketId,
+              to: otherSocketId,
+              room: this.roomId,
+              sdp: offer.sdp
+            };
+            console.log('发送offer消息', message)
+            // 发送offer消息
+            this.socket.emit('offer', message);
+          },
+
+          /**
+           * answer创建成功回调
+           * @param {*} pc 
+           * @param {*} otherSocketId 
+           * @param {*} offer 
+           */
+           onCreateAnswerSuccess: function(pc, otherSocketId, offer) {
+            console.log('createAnswer: success ' + ' id:' + otherSocketId + ' offer: ', offer);
+            // 设置本地setLocalDescription，将对方的描述信息加入到PeerConnection中
+            pc.setLocalDescription(offer);
+            // 构建answer信息
+            const message = {
+              from: this.socketId,
+              to: otherSocketId,
+              room: this.roomId,
+              sdp: offer.sdp
+            };
+            console.log('发送answer消息', message)
+            // 发送answer消息
+            this.socket.emit('answer', message);
+          },
+
+          /**
+           * RTCPeerConnection 事件回调，获取icecandidate信息回调
+           * @param {*} pc 
+           * @param {*} otherSocketId 
+           * @param {*} event 
+           */
+          onIceCandidate: function(pc, otherSocketId, event) {
+            console.log('onIceCandidate to ' + otherSocketId + ' candidate: ', event);
+            if (event.candidate !== null) {
+              // 构建信息 [from,to,room,candidate[sdpMid,sdpMLineIndex,sdp]]
+              const message = {
+                from: this.socketId,
+                to: otherSocketId,
+                room: this.roomId,
+                candidate: {
+                  sdpMid: event.candidate.sdpMid,
+                  sdpMLineIndex: event.candidate.sdpMLineIndex,
+                  sdp: event.candidate.candidate
+                }
+              };
+              console.log('向信令服务器发送candidate', message)
+              // 向信令服务器发送candidate
+              this.socket.emit('candidate', message);
+            }
+          },
+
+          /**
+           * 获取对端stream数据回调-ontrack模式
+           * @param {*} pc pushStreamToVideo
+           * @param {*} otherSocketId 
+           * @param {*} event 
+           */
+          onTrack: function(pc, otherSocketId, event) {
+            console.log('onTrack from: ' + otherSocketId);
+            console.log(this.roomUsers)
+            console.log(event)
+            if (!document.getElementById(otherSocketId)) { // TODO 未知原因：会两次onTrack，就会导致建立两次dom
+              // <div class="user" id="xxx-div">
+              //   <video id="xxx" autoplay="autoplay">
+              //   <div class="user-name"></div>
+              // </div>
+
+              // 外层容器
+              const userDiv = document.createElement('div');
+              userDiv.className = 'user';
+              userDiv.id = `${ otherSocketId }-div`;
+
+              // 视频video
+              const video = document.createElement('video');
+              video.id = otherSocketId;
+              video.autoplay = 'autoplay'
+              // video.muted = 'muted'
+
+              // 昵称
+              const nameDiv = document.createElement('div');
+              nameDiv.className = 'user-name';
+              nameDiv.innerText = this.roomUsers[otherSocketId].userInfo.name;
+              
+              userDiv.appendChild(video);
+              userDiv.appendChild(nameDiv);
+              this.$refs.remoteDiv.appendChild(userDiv);
+            }
+            this.pushStreamToVideo(document.getElementById(otherSocketId), event.streams[0]);
+            this.checkLeader();
+          },
+
+          /**
+           * onRemoveStream回调
+           * @param {*} pc 
+           * @param {*} otherSocketId 
+           * @param {*} event 
+           */
+          onRemoveStream: function(pc, otherSocketId, event) {
+            console.log('onRemoveStream from: ' + otherSocketId);
+            // peer关闭
+            this.getWebRTCConnect(otherSocketId).close;
+            // 删除peer对象
+            this.removeRtcConnect(otherSocketId)
+            // 移除video
+            this.$refs.remoteDiv.removeChild(document.getElementById(otherSocketId + '-div'));
+          },
+
+          /**
+           * answer创建失败回调
+           * @param {*} error 
+           */
+          onCreateAnswerError: function(error) {
+            console.log('createAnswer: fail error ' + error);
+          },
+          
+          /**************** 回调处理-end *********************/
+
+        },
+        // 生命周期函数
+        beforeCreate: function() { },
+        created: function() {
+          // this.$options.methods.getData(); // 初始化完成调用methods内的函数
+        },
+        beforeMount: function() {  },
+        mounted: function() {  },
+        beforeUpdate: function() {  },
+        updated: function() {  },
+        beforeDestroy: function() {  },
+        destroyed: function() {  },
+        
+      })
+    </script>
+</body>
+</html>

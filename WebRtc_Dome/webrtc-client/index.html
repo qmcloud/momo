@@ -1,0 +1,30 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no">
+    <title>WebRtc视频通话demo</title>
+    <style>
+      video {
+        background-color: bisque;
+      }
+    </style>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/socket.io.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/sdk.js"></script>
+</head>
+<body>
+    <input type="text" id="room" value="1" placeholder="输入房间号" />
+    <button id="connect">连接</button>
+    <button id="logout">挂断</button>
+    <br/>
+
+    <h3>本地视频</h3>
+    <video id="localVideo" style='width:200px;height:200px;' autoplay muted></video>
+    <br/>
+    
+    <h3>远程视频</h3>
+    <div id='remoteDiv'></div>
+    <script src="js/main.js"></script>
+</body>
+</html>

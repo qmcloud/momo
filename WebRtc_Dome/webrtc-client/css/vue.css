@@ -1,0 +1,220 @@
+html,
+body,
+#root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+p {
+  margin: 0;
+  padding: 0;
+}
+video {
+  object-fit: cover;
+}
+#root {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right top, #d1c56b, #f0ad6a, #ff9580, #fb85a4, #dc84c9, #c587d8, #a68be4, #7f90ec, #7990f0, #718ff3, #698ff7, #5f8ffb);
+}
+#root .login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+#root .login p.title {
+  padding-bottom: 10px;
+  display: flex;
+  align-items: flex-end;
+  font-size: 36px;
+  color: #FFF;
+}
+#root .login p.title span {
+  height: 44px;
+}
+#root .login p.title span.ver {
+  display: block;
+  height: 18px;
+  padding-left: 5px;
+  font-size: 12px;
+}
+#root .login p.title span.tip {
+  display: block;
+  width: 12px;
+  height: 40px;
+  margin-right: 5px;
+  padding: 2px 5px;
+  font-size: 12px;
+  line-height: 13px;
+  border-radius: 6px;
+  background-color: orange;
+  writing-mode: lr-tb;
+}
+#root .login .room-id {
+  margin-top: 10px;
+  width: 180px;
+  height: 36px;
+  padding: 7px 15px;
+  line-height: 36px;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #333;
+  border: 1px solid;
+  border-color: #e899ea;
+  border-radius: 20px;
+  background: white;
+  /* box-shadow: inset 1px 1px 2px rgb(0 0 0 / 10%); */
+  -webkit-appearance: none;
+}
+#root .login .room-id:focus {
+  outline: none;
+  border-color: #92AFED;
+  box-shadow: 0 0 5px #92AFEC, inset 1px 1px 2px rgba(0, 0, 0, 0.1);
+}
+#root .login .join {
+  margin-top: 20px;
+  display: inline-block;
+  border-radius: 6px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 16px;
+  padding: 6px;
+  width: 120px;
+  transition: all 0.5s;
+  cursor: pointer;
+  outline: none;
+}
+#root .login .join span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+#root .login .join span:after {
+  content: '»';
+  height: 100%;
+  line-height: 22px;
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -15px;
+  transition: 0.5s;
+}
+#root .login .join:hover span {
+  padding-right: 15px;
+}
+#root .login .join:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+#root .room {
+  box-sizing: border-box;
+  padding: 20px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#root .room .video-box {
+  flex: 1;
+  display: flex;
+  overflow: hidden;
+}
+#root .room .video-box .video-leader {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: green;
+}
+#root .room .video-box .video-leader video {
+  width: 100%;
+  height: 100%;
+  background-color: bisque;
+}
+#root .room .video-box .video-leader .leader-name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+}
+#root .room .video-box .video-group {
+  margin-left: 20px;
+  width: 410px;
+  display: flex;
+  flex-wrap: wrap;
+  overflow-y: auto;
+}
+#root .room .video-box .video-group .user {
+  position: relative;
+  margin-left: 10px;
+  margin-bottom: 10px;
+  width: 200px;
+  height: 140px;
+  overflow: hidden;
+  border-radius: 5px;
+}
+#root .room .video-box .video-group .user:nth-child(odd) {
+  margin-left: 0;
+}
+#root .room .video-box .video-group .user video {
+  width: 100%;
+  height: 100%;
+}
+#root .room .video-box .video-group .user .user-name {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 20px;
+  line-height: 20px;
+  font-size: 12px;
+  text-align: center;
+  color: white;
+  background: rgba(0, 0, 0, 0.3);
+}
+#root .room .tool-box {
+  margin-top: 20px;
+  height: 100px;
+  border-radius: 20px;
+  background-color: #FFF;
+  box-shadow: 0 0 10px 2px #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+#root .room .tool-box .tool-item {
+  height: 80%;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+#root .room .tool-box .tool-item img {
+  width: 40px;
+  height: 40px;
+}
+#root .room .tool-box .tool-item span {
+  display: block;
+  color: #5f8ffb;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+}
+#root .room .tool-box .tool-item:hover {
+  box-shadow: 0 0 8px 2px #dcdada;
+}
