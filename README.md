@@ -50,7 +50,7 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 [上线APP搜：]() 【欢心交友】 
 
 **演示：**
-![](https://qr.api.cli.im/newqr/create?data=http%3A%2F%2Fliveshop.52webrtc.top%2F%23page1&level=H&transparent=false&bgcolor=%23FFFFFF&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=50&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=b471dad0606b99774bbe01018d471852)
+![](https://qr.api.cli.im/newqr/create?data=http%253A%252F%252Fliveshop.52webrtc.top&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=110&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=ace02115bc4b3180b3617d12a42181b2)
 
 [直播短视频带货app下载](https://wwa.lanzouy.com/ib7Ws01hupdc) 点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
   
@@ -80,7 +80,7 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 - **集小视频/IM聊天/直播等功能于一体的直播项目。界面仿制抖音|火山小视频|陌陌直播|比心陪玩等。**
 
 #### *注意：*前端的具体细技术细节请移至前端篇赘述，本贴暂不描述前端内容。
-![陪玩app](https://img-blog.csdnimg.cn/20210406163759968.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
+
 
 ## PHP框架开发
 
