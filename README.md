@@ -50,9 +50,9 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 [上线APP搜：]() 【欢心交友】 
 
 **演示：**
-![](https://qr.api.cli.im/newqr/create?data=https%3A%2F%2Fwwa.lanzoui.com%2FisHcIvmbeng&level=H&transparent=false&bgcolor=%23FFFFFF&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=96&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=1accf12ddac20710ce6c829b73fb8aeb)
+![](https://qr.api.cli.im/newqr/create?data=http%253A%252F%252Fliveshop.52webrtc.top%252F%2523page1&level=H&transparent=false&bgcolor=%23FFFFFF&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=500&kid=cliim&key=d3d2268865990900358002d0bc2e444e)
 
-[直播短视频带货app下载](https://wwa.lanzoui.com/isHcIvmbeng) 点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
+[直播短视频带货app下载](https://wwa.lanzouy.com/ib7Ws01hupdc) 点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
   
 ----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
