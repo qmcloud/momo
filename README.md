@@ -50,9 +50,11 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 [上线APP搜：]() 【欢心交友】 
 
 **演示：**
-![](https://qr.api.cli.im/newqr/create?data=http%253A%252F%252Fliveshop.52webrtc.top&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=110&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=ace02115bc4b3180b3617d12a42181b2)
+![](https://qr.api.cli.im/newqr/create?data=http%253A%252F%252Fvoice.52webrtc.top%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=100&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=3c2eed1f4ee6fe950be62dbbe9f8ba78)
 
-[直播短视频带货app下载](https://wwa.lanzouy.com/ib7Ws01hupdc) 点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
+地址：http://voice.52webrtc.top
+
+点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
   
 ----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
