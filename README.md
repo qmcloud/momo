@@ -65,8 +65,9 @@ IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v
 ![前端展示](https://img-blog.csdnimg.cn/20210605203510511.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
 **后台界面**
-![后台界面](https://img-blog.csdnimg.cn/20200907180807339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
+![vue界面](https://img-blog.csdnimg.cn/6a993757bb6e43698358ea12f838e8ad.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Y2I5aSc56CB54uC,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
+![k8s界面](https://img-blog.csdnimg.cn/ae959e8fb8994ef2a3b92356c3276890.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Y2I5aSc56CB54uC,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
 ----------------
 
