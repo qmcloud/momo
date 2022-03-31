@@ -5,7 +5,7 @@ import (
 
 	"backend/service/backend/cmd/api/internal/logic/admin"
 	"backend/service/backend/cmd/api/internal/svc"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func AdminLogoutHandler(ctx *svc.ServiceContext) http.HandlerFunc {

@@ -6,7 +6,7 @@ import (
 	"backend/service/backend/cmd/api/internal/types"
 	"context"
 	"fmt"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type SystemApiDeleteLogic struct {
@@ -14,6 +14,7 @@ type SystemApiDeleteLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
+
 // Api管理 delete
 func NewSystemApiDeleteLogic(ctx context.Context, svcCtx *svc.ServiceContext) SystemApiDeleteLogic {
 	return SystemApiDeleteLogic{

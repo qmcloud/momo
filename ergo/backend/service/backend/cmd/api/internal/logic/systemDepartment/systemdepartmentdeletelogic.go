@@ -6,7 +6,7 @@ import (
 	"backend/service/backend/cmd/api/internal/types"
 	"context"
 	"fmt"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type SystemDepartmentDeleteLogic struct {
@@ -14,6 +14,7 @@ type SystemDepartmentDeleteLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
+
 // 部门管理 delete
 func NewSystemDepartmentDeleteLogic(ctx context.Context, svcCtx *svc.ServiceContext) SystemDepartmentDeleteLogic {
 	return SystemDepartmentDeleteLogic{

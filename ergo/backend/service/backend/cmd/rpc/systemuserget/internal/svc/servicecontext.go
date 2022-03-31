@@ -3,7 +3,7 @@ package svc
 import (
 	"backend/service/backend/cmd/rpc/systemuserget/internal/config"
 	"backend/service/backend/model"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
 )
 
 type ServiceContext struct {

@@ -5,9 +5,9 @@ import (
 	"backend/service/backend/cmd/api/internal/middleware"
 	"backend/service/backend/cmd/rpc/systemuserget/systemusergeter"
 	"backend/service/backend/model"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"github.com/tal-tech/go-zero/rest"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/rest"
+	"github.com/zeromicro/go-zero/zrpc"
 )
 
 type ServiceContext struct {

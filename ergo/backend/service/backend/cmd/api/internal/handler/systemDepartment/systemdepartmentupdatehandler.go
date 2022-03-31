@@ -6,9 +6,10 @@ import (
 	"backend/service/backend/cmd/api/internal/svc"
 	"backend/service/backend/cmd/api/internal/types"
 	"fmt"
-	"github.com/tal-tech/go-zero/rest/httpx"
+	"github.com/zeromicro/go-zero/rest/httpx"
 	"net/http"
 )
+
 // 部门管理 update
 func SystemDepartmentUpdateHandler(ctx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {

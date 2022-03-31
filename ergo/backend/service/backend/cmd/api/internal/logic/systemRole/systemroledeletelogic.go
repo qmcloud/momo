@@ -6,7 +6,7 @@ import (
 	"backend/service/backend/cmd/api/internal/types"
 	"context"
 	"fmt"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 )
 
 type SystemRoleDeleteLogic struct {
@@ -14,6 +14,7 @@ type SystemRoleDeleteLogic struct {
 	ctx    context.Context
 	svcCtx *svc.ServiceContext
 }
+
 // 角色管理 delete
 func NewSystemRoleDeleteLogic(ctx context.Context, svcCtx *svc.ServiceContext) SystemRoleDeleteLogic {
 	return SystemRoleDeleteLogic{

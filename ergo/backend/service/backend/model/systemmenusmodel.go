@@ -4,19 +4,19 @@ import (
 	"backend/common/utils"
 	"database/sql"
 	"fmt"
-	"github.com/tal-tech/go-zero/core/logx"
+	"github.com/zeromicro/go-zero/core/logx"
 	"strings"
 	"time"
 
-	"github.com/tal-tech/go-zero/core/stores/cache"
-	"github.com/tal-tech/go-zero/core/stores/sqlc"
-	"github.com/tal-tech/go-zero/core/stores/sqlx"
-	"github.com/tal-tech/go-zero/core/stringx"
-	"github.com/tal-tech/go-zero/tools/goctl/model/sql/builderx"
+	"github.com/zeromicro/go-zero/core/stores/builder"
+	"github.com/zeromicro/go-zero/core/stores/cache"
+	"github.com/zeromicro/go-zero/core/stores/sqlc"
+	"github.com/zeromicro/go-zero/core/stores/sqlx"
+	"github.com/zeromicro/go-zero/core/stringx"
 )
 
 var (
-	systemMenusFieldNames          = builderx.RawFieldNames(&SystemMenus{})
+	systemMenusFieldNames          = builder.RawFieldNames(&SystemMenus{})
 	systemMenusRows                = strings.Join(systemMenusFieldNames, ",")
 	systemMenusRowsExpectAutoSet   = strings.Join(stringx.Remove(systemMenusFieldNames, "`id`", "`created_at`", "`updated_at`", "`deleted_at`"), ",")
 	systemMenusRowsWithPlaceHolder = strings.Join(stringx.Remove(systemMenusFieldNames, "`id`", "`created_at`", "`updated_at`", "`deleted_at`"), "=?,") + "=?"

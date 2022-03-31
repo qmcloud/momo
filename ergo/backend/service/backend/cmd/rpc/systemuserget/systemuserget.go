@@ -9,8 +9,8 @@ import (
 	"backend/service/backend/cmd/rpc/systemuserget/internal/svc"
 	"backend/service/backend/cmd/rpc/systemuserget/systemuserget"
 
-	"github.com/tal-tech/go-zero/core/conf"
-	"github.com/tal-tech/go-zero/zrpc"
+	"github.com/zeromicro/go-zero/core/conf"
+	"github.com/zeromicro/go-zero/zrpc"
 	"google.golang.org/grpc"
 )
 
