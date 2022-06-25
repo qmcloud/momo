@@ -18,14 +18,14 @@
 ### 微服务（K8s,Docker容器）组成：
 
 - **goim** ：不多说 B站 IM架构
-- **livego** ：基于golang开发的高性能rtmp服务器 实测机型：阿里云32核64G独享服务器 30000路并发拉流，cpu占用率不到50%！
+- **SRS** ：SRS是一个高效的实时视频服务器，支持RTMP/WebRTC/HLS/HTTP-FLV/SRT/GB28181。
 - **webrtc** ：Janus Gateway：Meetecho优秀的通用WebRTC服务器（SFU）；
 - **MongoDB** ：云时代构建的基于文档的分布式数据库；
 - **Redis**：内存中的数据结构存储，用作数据库，缓存和消息代理；
 - **kafka** ：队列 群聊，私聊，消息通知等。
 - **Coturn** ：TURN和STUN Server的开源项目；
-- **Nginx** ：高性能负载平衡器，Web服务器和有HTTP3 / Quiche和Brtoli支持的反向代理；
-- **Docker**：用于构建、部署和管理容器化应用程序的平台。
+- **Nginx** ：高性能负载平衡器，Web服务器和有HTTPS / Quiche和Brtoli支持的反向代理；
+- **K8s+docker**：用于构建、部署和管理容器化应用程序的平台。
 - **后台管理界面**: php版 | golang版 + vue + Element-UI 
 ----------------
 
@@ -47,17 +47,16 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ----------------
 
-[上线APP搜：]() 【欢心交友】 
+[上架APP请搜：]() 【欢心交友】
 
-**演示：**
-![](https://qr.api.cli.im/newqr/create?data=http%253A%252F%252Fvoice.52webrtc.top%252F&level=H&transparent=false&bgcolor=%23ffffff&forecolor=%23000000&blockpixel=12&marginblock=1&logourl=&logoshape=no&size=100&bgimg=&text=&fontsize=30&fontcolor=%23000000&fontfamily=simsun.ttc&incolor=&outcolor=&qrcode_eyes=null&background=&wper=&hper=&tper=&lper=&eye_use_fore=1&qrpad=10&kid=cliim&key=3c2eed1f4ee6fe950be62dbbe9f8ba78)
-
-地址：http://voice.52webrtc.top
+SRS+Goim演示地址：http://live.52webrtc.top
+ 
+APP下载地址：http://voice.52webrtc.top
 
 点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
   
-----------------
 IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
+
 
 ----------------
 
