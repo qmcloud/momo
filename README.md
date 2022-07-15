@@ -51,12 +51,7 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 SRS+Goim演示地址：http://live.52webrtc.top
  
-APP下载地址：http://voice.52webrtc.top
-
-点击此处下载app（用手机浏览器打开下载，不要用微信直接下载）
-  
-IOS 视频演示：https://pan.baidu.com/s/18KaHu-39TMQLetb0m7XD0Q 提取码：v929
-
+APP下载地址：https://www.pgyer.com/Baoya
 
 ----------------
 
