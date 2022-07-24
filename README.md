@@ -86,7 +86,7 @@ APP下载地址：https://www.pgyer.com/Baoya
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
-4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括两套成熟方案 nginx_rtmp SRS + WebRtc）。
+4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括成熟方案 nginx + SRS + WebRtc）。
 5. kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
 6. prometheus系统监控：监听主播异常掉线情况、直播消息推送等。
  
@@ -164,7 +164,11 @@ nginx做网关，使用nginx的auth模块，调用后端的backend服务统一�
 
 3、流水线步骤 ：
 
-拉取代码--->ci检测（这里可以省略哈，自己看着办）--->构建镜像（Dockerfile可以通过goctl自动生成）-->推送到harbor镜像服务--->使用kubectl去k8s拉取镜像（ack、ask都行，ask无法使用daemonset 不能用filebeat）---->ok
+gitlab拉取代码--->CI/CD检测（不会的可自行百度）
+			  --->构建镜像（Dockerfile可以通过goctl自动生成）
+			  --->推送到harbor镜像服务
+			  --->使用kubectl去k8s拉取镜像（ack、ask都行，ask无法使用daemonset 不能用filebeat）
+			  --->done
 ```
 
 ## 视频服务

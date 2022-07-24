@@ -1,0 +1,372 @@
+<template>
+	<view class="page">
+		
+		<video class="flex-1" :src="src" autoplay :controls="false"></video>
+		
+		<!-- 头部 -->
+		<view style="position: fixed;left: 0;right: 0;" :style="'top:'+statusBarHeight+'px'">
+			<!-- 个人信息|观看详细信息 -->
+			<view style="height: 80rpx;" class="px-2 flex justify-between align-center">
+				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle">
+					<view class="p">
+						<image :src="detail.user.avatar || '/static/tabbar/min.png'" style="width: 70rpx;height: 70rpx;" class="rounded-circle"></image>
+					</view>
+					<view class="flex-1 flex flex-column justify-center">
+						<text class="text-white font">{{ detail.user.username }}</text>
+						<text class="text-white font-sm">{{ detail.look_count }}</text>
+					</view>
+					<view class="p">
+						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx;height: 70rpx;">
+							<text class="text-white">+</text>
+						</view>
+					</view>
+				</view>
+				
+				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle">
+					<!-- 实时在线观看用户情况 -->
+					<scroll-view scroll-x="true" class="flex-1 flex">
+						<view class="p" v-for="(item,index) in list" :key="index">
+							<image :src="item.avatar || '/static/tabbar/min.png'" style="width: 70rpx;height: 70rpx;" class="rounded-circle"></image>
+						</view>
+					</scroll-view>
+					<view class="p">
+						<view class="rounded-circle flex align-center justify-center bg-danger" style="width: 70rpx;height: 70rpx;">
+							<!-- 实时在线观看人数 -->
+							<text class="text-white font-sm">{{ list.length }}</text>
+						</view>
+					</view>
+				</view>
+			</view>
+			<!-- 金币 -->
+			<view style="height: 80rpx;" class="px-2 my-2">
+				<view style="width: 325rpx;background-color: rgba(0,0,0,0.4);" class="flex rounded-circle align-center">
+					<view class="p">
+						<text class="text-warning">金币</text>
+					</view>
+					<view class="flex-1 flex flex-column justify-center">
+						<text class="text-white font">{{ detail.coin }}</text>
+					</view>
+				</view>
+			</view>
+			<!-- 收到礼物 -->
+			<f-gift ref="gift"></f-gift>
+		</view>
+		
+		<!-- 弹幕 -->
+		<f-danmu ref="danmu"></f-danmu>
+		
+		<!-- 底部 -->
+		<view style="position: fixed;left: 0;bottom: 0;right: 0;height: 120rpx;" class="flex align-center justify-between">
+			<view class="px-2">
+				<view class="btn px-3" @click="openInput">
+					<text class="text-white font">说点什么...</text>
+				</view>
+			</view>
+			<view class="flex align-center">
+				<view class="btn btn-icon" @click="openCoin">
+					<text class="iconfont text-white" style="font-size: 40px;">&#xe633;</text>
+				</view>
+				<view class="btn btn-icon bg-warning" @click="openGift">
+					<text class="iconfont">&#xe67c;</text>
+				</view>
+				<!-- <view class="btn btn-icon">
+					<text class="iconfont text-white">&#xe7cd;</text>
+				</view> -->
+				<view class="btn btn-icon" @click="back">
+					<text class="iconfont text-white">&#xe607;</text>
+				</view>
+			</view>
+		</view>
+		
+		
+		<!-- 输入框弹出层 -->
+		<uni-popup type="bottom" ref="input">
+			<view class="bg-white flex align-center px-3" style="height: 120rpx;">
+				<input type="text" v-model="content" class="border rounded flex-1 px-3 font-md" placeholder="说点什么..." style="height: 80rpx;"/>
+				<view class="flex align-center justify-center py-2 px-2 ml-3 rounded" @click="submit" :class="content === '' ? 'bg-main-disabled' : 'bg-main'">
+					<text class="font text-white">发送</text>
+				</view>
+			</view>
+		</uni-popup>
+		
+		<!-- 送礼物弹出层 -->
+		<uni-popup type="bottom" ref="giftPopup">
+			<view class="bg-white" style="width: 750rpx;height: 550rpx;">
+				<view style="height: 100rpx;" class="flex justify-between align-center">
+					<text class="text-main font-md ml-3">礼物</text>
+					<view class="flex align-center justify-center" style="width: 100rpx;height: 100rpx;" @click="closeGift">
+						<text class="iconfont">&#xe607;</text>
+					</view>
+				</view>
+				<swiper :indicator-dots="true" :duration="500" style="height: 350rpx;" class="border-bottom border-top">
+					<swiper-item>
+						<view class="flex flex-wrap">
+							<view style="width: 187.5rpx;height: 175rpx;" class="flex flex-column justify-center align-center" v-for="(item,index) in gifts" :key="index" :class="giftActiveId === item.id ? 'border border-main' : ''" @click="giftActiveId = item.id">
+								<image :src="item.image" style="width: 100rpx;height: 100rpx;"></image>
+								<view class="flex mt-1">
+									<text class="text-warning font mr-1">{{item.name}}</text>
+									<text class="text-secondary font">{{item.coin}}</text>
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+				</swiper>
+				<view style="height: 100rpx;" class="flex align-center justify-end">
+					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-warning" @click="openCoin">
+						<text class="font">充值</text>
+					</view>
+					<view class="flex align-center justify-center py-2 px-2 mr-3 rounded bg-main" @click="sendGift">
+						<text class="font text-white">发送</text>
+					</view>
+				</view>
+			</view>
+		</uni-popup>
+		
+		
+	</view>
+</template>
+
+<script>
+	import fGift from '@/components/live/f-gift.vue';
+	import fDanmu from '@/components/live/f-danmu.vue';
+	import uniPopup from '@/components/uni-ui/uni-popup/uni-popup.vue';
+	import $H from '@/common/request.js';
+	import $C from '@/common/config.js';
+	import { mapState } from 'vuex'
+	
+	export default {
+		components: {
+			fGift,
+			fDanmu,
+			uniPopup
+		},
+		data() {
+			return {
+				id:0,
+				detail:{
+					"created_time": "",
+					"id": 1,
+					"title": "",
+					"cover": "",
+					"user_id": 0,
+					"look_count": 0,
+					"coin": 0,
+					"key": "",
+					"status": 0,
+					"userId": 0,
+					"user": {
+						"id": 0,
+						"username": "",
+						"avatar": ""
+					}
+				},
+				sign:"",
+				statusBarHeight:0,
+				content:"",
+				gifts:[],
+				giftActiveId:0,
+				
+				// 在线用户列表
+				list:[]
+			}
+		},
+		onLoad(e) {
+			this.id = e.id
+			let res = uni.getSystemInfoSync()
+			this.statusBarHeight = res.statusBarHeight
+			
+			$H.get('/live/read/' + this.id).then(res=>{
+				this.detail = res.data
+				this.sign = res.sign
+			})
+			
+			$H.get('/gift/list').then(res=>{
+				this.gifts = res.map(item=>{
+					item.image = $C.baseUrl + item.image
+					return item
+				})
+			})
+			// 监听全局事件
+			uni.$on('live',this.handleLiveEvent)
+		},
+		mounted() {
+			// 送礼物演示
+			// setInterval(()=>{
+			// 	this.$refs.gift.send({
+			// 		username:"发送人",
+			// 		avatar:"",
+			// 		gift_name:"蛋糕",
+			// 		gift_image:"/static/gift/3.png",
+			// 		num:1
+			// 	})
+			// },3000)
+			
+			// 发送弹幕演示
+			// let id = 1
+			// setInterval(()=>{
+			// 	this.$refs.danmu.send({
+			// 		id:id,
+			// 		name:"昵称"+id,
+			// 		content:"测试内容"+id
+			// 	})
+			// 	id++
+			// },3000)
+			// 加入直播间
+			this.joinOrLeaveLive('join')
+		},
+		destroyed() {
+			// 离开直播间
+			this.joinOrLeaveLive('leave')
+			// 移除全局事件
+			uni.$off('live',this.handleLiveEvent)
+		},
+		computed: {
+			...mapState({
+				socket:state=>state.socket,
+				token:state=>state.token
+			}),
+			src() {
+				if(this.detail.key == '' || this.sign == ''){
+					return ''
+				}
+				return `${$C.livePlayBaseUrl}/live/${this.detail.key}.flv?sign=${this.sign}`
+			}
+		},
+		methods: {
+			handleLiveEvent(e){
+				let d = e.data
+				switch (e.type){
+					case 'online':
+					if(d.action === 'join'){
+						this.list = d.data
+					}
+						break;
+					case 'comment':
+					this.$refs.danmu.send({
+						id:d.id,
+						name:d.user.name,
+						content:d.content
+					})
+					this.content = ''
+					this.$refs.input.close()
+						break;
+					case 'gift':
+					d.gift_image = $C.imageUrl + d.gift_image
+					this.detail.coin += d.gift_coin * d.num
+					this.$refs.gift.send(d)
+					this.closeGift()
+						break;
+					default:
+						break;
+				}
+			},
+			// 加入或离开直播间
+			joinOrLeaveLive(type){
+				if(this.socket && this.token){
+					this.socket.emit( type + 'Live',{
+						live_id:this.id,
+						token:this.token
+					})
+				}
+			},
+			sendGift(){
+				if(this.giftActiveId === 0){
+					return uni.showToast({
+						title: '请选择要发送的礼物',
+						icon: 'none'
+					});
+				}
+				let index = this.gifts.findIndex(item=>item.id === this.giftActiveId)
+				if(index === -1){
+					return
+				}
+				let g = this.gifts[index]
+				
+				if(!this.token && !this.socket){
+					uni.navigateTo({
+						url: '../login/login',
+					});
+					return uni.showToast({
+						title: '请先登录',
+						icon: 'none'
+					});
+				}
+				
+				if(this.socket){
+					this.socket.emit('gift',{
+						live_id:this.id,
+						gift_id:g.id,
+						token:this.token
+					})
+				}
+			},
+			back(){
+				uni.navigateBack({
+					delta: 1
+				});
+			},
+			openGift(){
+				this.$refs.giftPopup.open()
+			},
+			closeGift(){
+				this.$refs.giftPopup.close()
+			},
+			openInput(){
+				this.$store.dispatch('authMethod',()=>{
+					this.$refs.input.open()
+				})
+			},
+			// 发送弹幕
+			submit(){
+				if(this.content === ''){
+					return uni.showToast({
+						title: '评论内容不能为空',
+						icon: 'none'
+					});
+				}
+				
+				if(!this.token && !this.socket){
+					uni.navigateTo({
+						url: '../login/login',
+					});
+					return uni.showToast({
+						title: '请先登录',
+						icon: 'none'
+					});
+				}
+
+				if(this.socket){
+					this.socket.emit('comment',{
+						live_id:this.id,
+						data:this.content,
+						token:this.token
+					})
+				}
+
+			},
+			openCoin(){
+				uni.navigateTo({
+					url: '../coin/coin'
+				});
+			},
+			
+		}
+	}
+</script>
+
+<style>
+.page{
+	flex: 1;
+}
+.btn{
+	height: 80rpx;
+	border-radius: 100rpx;
+	background-color: rgba(255,255,255,0.12);
+	align-items: center;
+	justify-content: center;
+}
+.btn-icon{
+	width: 80rpx;
+	margin-right: 20rpx;
+}
+</style>
