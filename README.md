@@ -50,8 +50,12 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 [上架APP请搜：]() 【欢心交友】
 
 SRS+Goim演示地址：http://live.52webrtc.top
- 
-APP下载地址：https://www.pgyer.com/Baoya
+
+直播APP下载地址：https://www.pgyer.com/Baoya
+
+语聊APP下载：https://www.pgyer.com/Voicelive
+
+后台管理：http://k8s.52webrtc.top 用户名：test123 密码：test123
 
 ----------------
 
@@ -164,11 +168,12 @@ nginx做网关，使用nginx的auth模块，调用后端的backend服务统一�
 
 3、流水线步骤 ：
 
-gitlab拉取代码--->CI/CD检测（不会的可自行百度）
-			  --->构建镜像（Dockerfile可以通过goctl自动生成）
-			  --->推送到harbor镜像服务
-			  --->使用kubectl去k8s拉取镜像（ack、ask都行，ask无法使用daemonset 不能用filebeat）
-			  --->done
+gitlab拉取代码
+ -->CI/CD检测（不会的可自行百度）
+ --->构建镜像（Dockerfile可以通过goctl自动生成）
+ --->推送到harbor镜像服务
+ --->使用kubectl去k8s拉取镜像（ack、ask都行，ask无法使用daemonset 不能用filebeat）
+ --->done
 ```
 
 ## 视频服务
