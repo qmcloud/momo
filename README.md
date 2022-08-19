@@ -51,9 +51,9 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 SRS+Goim演示地址：http://live.52webrtc.top
 
-直播APP下载地址：https://www.pgyer.com/Baoya
+直播APP下载地址：https://wwn.lanzouy.com/i7Td609t1zwh
 
-语聊APP下载：https://www.pgyer.com/Voicelive
+语聊APP下载：https://wwn.lanzouy.com/i56Zx09sz33e
 
 后台管理：http://k8s.52webrtc.top 用户名：test123 密码：test123
 
