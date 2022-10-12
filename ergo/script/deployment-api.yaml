@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: gozero-admin-api
-  name: gozero-admin-api
-  namespace: gozero
+    app: admin-api
+  name: admin-api
+  namespace: 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gozero-admin-api
+      app: admin-api
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: gozero-admin-api
+        app:dmin-api
     spec:
       containers:
       - image: registry.cn-shanghai.aliyuncs.com/xptools/gozero_admin_api:v1.0.1
-        name: gozero-admin-api
+        name: admin-api
         resources: {}
       imagePullSecrets:
-      - name: gozero-docker-registry
+      - name: docker-registry
 status: {}
