@@ -3,25 +3,25 @@ kind: Deployment
 metadata:
   creationTimestamp: null
   labels:
-    app: gozero-admin-rpc
-  name: gozero-admin-rpc
+    app: admin-rpc
+  name: admin-rpc
   namespace: gozero
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: gozero-admin-rpc
+      app: admin-rpc
   strategy: {}
   template:
     metadata:
       creationTimestamp: null
       labels:
-        app: gozero-admin-rpc
+        app: admin-rpc
     spec:
       containers:
       - image: registry.cn-shanghai.aliyuncs.com/xptools/gozero_admin_rpc:v1.0.1
-        name: gozero-admin-rpc
+        name: admin-rpc
         resources: {}
       imagePullSecrets:
-      - name: gozero-docker-registry
+      - name: docker-registry
 status: {}
