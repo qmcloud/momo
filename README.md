@@ -47,18 +47,6 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ----------------
 
-[上架APP请搜：]() 【欢心交友】
-
-SRS+Goim演示地址：http://live.52webrtc.top
-
-直播APP下载地址：https://wwn.lanzouy.com/i7Td609t1zwh
-
-语聊APP下载：https://wwn.lanzouy.com/i56Zx09sz33e
-
-后台管理：http://k8s.52webrtc.top 用户名：test123 密码：test123
-
-----------------
-
 **前端展示**
 ![前端展示](https://img-blog.csdnimg.cn/20210605203510511.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
 
