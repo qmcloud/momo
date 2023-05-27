@@ -57,13 +57,13 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 **演示**
 
-⨳ Web演示地址：http://voice.onionnews.cn/(opens new window)
+⨳ Web演示地址：http://voice.onionnews.cn
 
-⨳ 直播APP下载地址： https://wwus.lanzouy.com/iGwys0w9d49i(opens new window)
+⨳ 直播APP下载地址： https://wwus.lanzouy.com/iGwys0w9d49i
 
-⨳ 语聊APP下载：https://wwus.lanzouy.com/iGwys0w9d49i(opens new window)
+⨳ 语聊APP下载：https://wwus.lanzouy.com/iGwys0w9d49i
 
-⨳ 后台管理：http://admin.onionnews.cn/xjmuyHKnec.php/index/login (opens new window)账号：admin 密码：admin123
+⨳ 后台管理：http://admin.onionnews.cn/xjmuyHKnec.php/index/login 账号：admin 密码：admin123
 
 ----------------
 
