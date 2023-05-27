@@ -55,6 +55,16 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ![k8s界面](https://img-blog.csdnimg.cn/ae959e8fb8994ef2a3b92356c3276890.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Y2I5aSc56CB54uC,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
+**演示**
+
+⨳ Web演示地址：http://voice.onionnews.cn/(opens new window)
+
+⨳ 直播APP下载地址： https://wwus.lanzouy.com/iGwys0w9d49i(opens new window)
+
+⨳ 语聊APP下载：https://wwus.lanzouy.com/iGwys0w9d49i(opens new window)
+
+⨳ 后台管理：http://admin.onionnews.cn/xjmuyHKnec.php/index/login (opens new window)账号：admin 密码：admin123
+
 ----------------
 
 ### 入门推荐书籍
