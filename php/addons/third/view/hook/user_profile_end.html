@@ -1,0 +1,24 @@
+<div class="form-group">
+    <label class="control-label col-xs-12 col-sm-2">第三方登录:</label>
+    <div class="col-xs-12 col-sm-4">
+        <!--@formatter:off-->
+        {if in_array('wechat', $platform)}
+            <a href="{:addon_url('third/index/unbind', [':platform'=>'wechat'], false)}" data-toggle="tooltip" data-title="点击取消绑定微信登录" class="btn btn-primary btn-sm btn-cancel"><i class="fa fa-wechat"></i></a>
+        {else /}
+            <a href="{:addon_url('third/index/bind', [':platform'=>'wechat'], false)}" data-toggle="tooltip" data-title="点击绑定微信登录" class="btn btn-default btn-sm btn-gray"><i class="fa fa-wechat"></i></a>
+        {/if}
+        {if in_array('qq', $platform)}
+            <a href="{:addon_url('third/index/unbind', [':platform'=>'qq'], false)}" data-toggle="tooltip" data-title="点击取消绑定QQ登录" class="btn btn-primary btn-sm btn-cancel"><i class="fa fa-qq"></i></a>
+        {else /}
+            <a href="{:addon_url('third/index/bind', [':platform'=>'qq'], false)}" data-toggle="tooltip" data-title="点击绑定QQ登录" class="btn btn-default btn-sm btn-gray"><i class="fa fa-qq"></i></a>
+        {/if}
+        {if in_array('weibo', $platform)}
+            <a href="{:addon_url('third/index/unbind', [':platform'=>'weibo'], false)}" data-toggle="tooltip" data-title="点击取消绑定微博登录" class="btn btn-primary btn-sm btn-cancel"><i class="fa fa-weibo"></i></a>
+        {else /}
+            <a href="{:addon_url('third/index/bind', [':platform'=>'weibo'], false)}" data-toggle="tooltip" data-title="点击绑定微博登录" class="btn btn-default btn-sm btn-gray"><i class="fa fa-weibo"></i></a>
+        {/if}
+        <!--@formatter:on-->
+
+    </div>
+</div>
+

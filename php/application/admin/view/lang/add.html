@@ -1,0 +1,46 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('File_name')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input type="text"
+                   id="c_lang_file"
+                   class="form-control selectpage"
+                   data-source="Lang/get_controller_list"
+                   name="row[lang_file]"
+                   placeholder="请选择lang文件" />
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lang_json')}:</label>
+        <div class="col-xs-12 col-sm-8">
+
+            <dl class="fieldlist" data-name="row[lang_json]"  data-template="lang_tlp">
+                <dd>
+                    <ins>{:__('Key')}</ins>
+                    <ins>{:__('Value')}</ins>
+                </dd>
+                <dd><a href="javascript:;" class="btn btn-sm btn-success btn-append"><i class="fa fa-plus"></i> {:__('Append')}</a></dd>
+                <textarea name="row[lang_json]" class="form-control hide" cols="30" rows="5"></textarea>
+            </dl>
+
+        </div>
+    </div>
+    <script type="text/html" id="lang_tlp">
+        <dd class="form-inline">
+            <input type="text" name="row[lang_json][<%=index%>][key]" class="form-control" value="<%=row.key%>" size="30">
+            <input type="text" name="row[lang_json][<%=index%>][value]" class="form-control" value="<%=row.value%>" size="30">
+            <span class="btn btn-sm btn-danger btn-remove"><i class="fa fa-times"></i></span>
+        </dd>
+    </script>
+
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-success btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

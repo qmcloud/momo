@@ -1,0 +1,38 @@
+{
+    "name": "karsonzhang/fastadmin-addons",
+    "description": "addons package for fastadmin",
+    "homepage": "https://github.com/karsonzhang/fastadmin-addons",
+    "license": "Apache-2.0",
+    "version": "1.3.3",
+    "authors": [
+        {
+            "name": "Karson",
+            "email": "karson@fastadmin.net"
+        },
+        {
+            "name": "xiaobo.sun",
+            "email": "xiaobo.sun@qq.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/karsonzhang/fastadmin-addons/issues"
+    },
+    "require": {
+        "php": ">=7.0.0",
+        "nelexa/zip": "^3.3",
+        "symfony/var-exporter": "^4.4.13"
+    },
+    "autoload": {
+        "psr-4": {
+            "think\\": "src/"
+        },
+        "files": [
+            "src/common.php"
+        ]
+    },
+    "extra": {
+        "think-config": {
+            "addons": "src/config.php"
+        }
+    }
+}

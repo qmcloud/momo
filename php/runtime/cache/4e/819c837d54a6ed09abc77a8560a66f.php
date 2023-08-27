@@ -1,0 +1,4 @@
+<?php
+//000000000000
+ exit();?>
+a:12:{s:8:"app_init";a:6:{i:0;s:27:"\addons\addonmask\Addonmask";i:1;s:19:"\addons\banip\Banip";i:2;s:23:"\addons\captcha\Captcha";i:3;s:23:"\addons\crontab\Crontab";i:4;s:17:"\addons\epay\Epay";i:5;s:21:"\addons\qrcode\Qrcode";}s:16:"admin_login_init";a:1:{i:0;s:23:"\addons\loginbg\Loginbg";}s:7:"upgrade";a:1:{i:0;s:25:"\addons\simditor\Simditor";}s:11:"config_init";a:2:{i:0;s:25:"\addons\simditor\Simditor";i:1;s:19:"\addons\third\Third";}s:8:"sms_send";a:1:{i:0;s:21:"\addons\smsbao\Smsbao";}s:10:"sms_notice";a:1:{i:0;s:21:"\addons\smsbao\Smsbao";}s:9:"sms_check";a:1:{i:0;s:21:"\addons\smsbao\Smsbao";}s:21:"user_delete_successed";a:1:{i:0;s:19:"\addons\third\Third";}s:21:"user_logout_successed";a:1:{i:0;s:19:"\addons\third\Third";}s:11:"module_init";a:1:{i:0;s:19:"\addons\third\Third";}s:12:"action_begin";a:1:{i:0;s:19:"\addons\third\Third";}s:11:"view_filter";a:1:{i:0;s:19:"\addons\third\Third";}}

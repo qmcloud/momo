@@ -1,0 +1,208 @@
+<form id="edit-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Uid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-uid" data-rule="required" class="form-control" name="row[uid]" type="number" value="{$row.uid|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Title')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-title" data-rule="required" class="form-control" name="row[title]" type="text" value="{$row.title|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Thumb')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-thumb" data-rule="required" class="form-control" size="50" name="row[thumb]" type="text" value="{$row.thumb|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-thumb" class="btn btn-danger faupload" data-input-id="c-thumb" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-thumb"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-thumb" class="btn btn-primary fachoose" data-input-id="c-thumb" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-thumb"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-thumb"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Thumb_s')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-thumb_s" data-rule="required" class="form-control" size="50" name="row[thumb_s]" type="text" value="{$row.thumb_s|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-thumb_s" class="btn btn-danger faupload" data-input-id="c-thumb_s" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="true" data-preview-id="p-thumb_s"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-thumb_s" class="btn btn-primary fachoose" data-input-id="c-thumb_s" data-mimetype="image/*" data-multiple="true"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-thumb_s"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-thumb_s"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Href')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-href" data-rule="required" class="form-control" name="row[href]" type="text" value="{$row.href|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Href_w')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-href_w" data-rule="required" class="form-control" size="50" name="row[href_w]" type="text" value="{$row.href_w|htmlentities}">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-href_w" class="btn btn-danger faupload" data-input-id="c-href_w" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-href_w"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-href_w" class="btn btn-primary fachoose" data-input-id="c-href_w" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-href_w"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-href_w"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Likes')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-likes" data-rule="required" class="form-control" name="row[likes]" type="number" value="{$row.likes|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Views')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-views" data-rule="required" class="form-control" name="row[views]" type="number" value="{$row.views|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Comments')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-comments" data-rule="required" class="form-control" name="row[comments]" type="number" value="{$row.comments|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Steps')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-steps" data-rule="required" class="form-control" name="row[steps]" type="number" value="{$row.steps|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Shares')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-shares" data-rule="required" class="form-control" name="row[shares]" type="number" value="{$row.shares|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Addtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-addtime" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[addtime]" type="text" value="{:$row.addtime?datetime($row.addtime):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lat')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lat" data-rule="required" class="form-control" name="row[lat]" type="text" value="{$row.lat|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Lng')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-lng" data-rule="required" class="form-control" name="row[lng]" type="text" value="{$row.lng|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('City')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class='control-relative'><input id="c-city" data-rule="required" class="form-control" data-toggle="city-picker" name="row[city]" type="text" value="{$row.city|htmlentities}"></div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Isdel')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-isdel" data-rule="required" class="form-control" name="row[isdel]" type="number" value="{$row.isdel|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-status" data-rule="required" class="form-control" name="row[status]" type="number" value="{$row.status|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Music_id')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-music_id" data-rule="required" data-source="music/index" class="form-control selectpage" name="row[music_id]" type="text" value="{$row.music_id|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Xiajia_reason')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-xiajia_reason" data-rule="required" class="form-control" name="row[xiajia_reason]" type="text" value="{$row.xiajia_reason|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Nopass_time')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-nopass_time" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[nopass_time]" type="text" value="{:$row.nopass_time?datetime($row.nopass_time):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Watch_ok')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-watch_ok" data-rule="required" class="form-control" name="row[watch_ok]" type="number" value="{$row.watch_ok|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Is_ad')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-is_ad" data-rule="required" class="form-control" name="row[is_ad]" type="number" value="{$row.is_ad|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ad_endtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ad_endtime" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[ad_endtime]" type="text" value="{:$row.ad_endtime?datetime($row.ad_endtime):''}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Ad_url')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-ad_url" data-rule="required" class="form-control" name="row[ad_url]" type="text" value="{$row.ad_url|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Orderno')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-orderno" data-rule="required" class="form-control" name="row[orderno]" type="number" value="{$row.orderno|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-type" data-rule="required" class="form-control" name="row[type]" type="number" value="{$row.type|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Goodsid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-goodsid" data-rule="required" class="form-control" name="row[goodsid]" type="number" value="{$row.goodsid|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Classid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-classid" data-rule="required" class="form-control" name="row[classid]" type="number" value="{$row.classid|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Anyway')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-anyway" data-rule="required" class="form-control" name="row[anyway]" type="text" value="{$row.anyway|htmlentities}">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

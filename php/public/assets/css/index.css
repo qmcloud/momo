@@ -1,0 +1,141 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: "Roboto", "SF Pro SC", "SF Pro Display", "SF Pro Icons", "PingFang SC", BlinkMacSystemFont, -apple-system, "Segoe UI", "Microsoft Yahei", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    margin: 0;
+}
+
+a {
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
+    color: #474157;
+}
+
+a:hover,
+a:focus {
+    color: #474157;
+}
+
+hr {
+    max-width: 100px;
+    margin: 25px auto 0;
+    border-width: 1px;
+    border-color: rgba(34, 34, 34, 0.1);
+}
+
+hr.light {
+    border-color: white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 200;
+    letter-spacing: 1px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+
+#mainbody {
+    position: relative;
+    width: 100%;
+    min-height: auto;
+    overflow-y: hidden;
+    background: #f1f6fd;
+    color: #474157;
+    height: calc(100vh - 61px);
+}
+
+#mainbody > .container > .text-center {
+    text-align: center;
+    padding: 350px 0 50px;
+    position: relative;
+    height: 100vh;
+}
+
+#mainbody > .container > .text-center h1 {
+    font-size: 50px;
+    font-weight: bold;
+    color: #171347
+}
+
+#mainbody > .container > .text-center > a {
+    background: #fdcc52;
+    background: -webkit-linear-gradient(#fdcc52, #fdc539);
+    background: linear-gradient(#fdcc52, #fdc539);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border-radius: 300px;
+    margin-top: 20px;
+    padding: 10px 45px;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+@media (max-height: 500px) {
+    #mainbody {
+        height: inherit;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-default {
+        background-color: transparent;
+        border-color: transparent;
+    }
+
+    #mainbody .index-text {
+        text-align: left;
+    }
+}
+
+@media (max-width: 767px) {
+
+    #mainbody > .container > .text-center {
+
+
+        padding: 130px 0 0 0;
+        height: calc(100vh - 261px);
+    }
+
+    #mainbody > .container > .text-center > h1 {
+
+
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+}
+
+.footer {
+    background-color: #222222;
+    padding: 20px 0;
+    color: rgba(255, 255, 255, 0.3);
+    text-align: center;
+}
+
+.footer p {
+    font-size: 14px;
+    margin: 0;
+}

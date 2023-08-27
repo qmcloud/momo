@@ -1,0 +1,165 @@
+<style>
+    .tab-content > .chart {
+        padding: 10px;
+    }
+</style>
+<div class="row">
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-aqua">
+            <div class="inner">
+                <h3>150</h3>
+
+                <p>今日订单</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-shopping-cart"></i>
+            </div>
+            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-green">
+            <div class="inner">
+                <h3>53<sup style="font-size: 20px">%</sup></h3>
+
+                <p>同比增长率</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-area-chart"></i>
+            </div>
+            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-yellow">
+            <div class="inner">
+                <h3>44</h3>
+
+                <p>今日注册用户数</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-users"></i>
+            </div>
+            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+    <div class="col-lg-3 col-xs-6">
+        <!-- small box -->
+        <div class="small-box bg-red">
+            <div class="inner">
+                <h3>65</h3>
+
+                <p>唯一访客用户</p>
+            </div>
+            <div class="icon">
+                <i class="fa fa-user"></i>
+            </div>
+            <a href="#" class="small-box-footer">更多 <i class="fa fa-arrow-circle-right"></i></a>
+        </div>
+    </div>
+    <!-- ./col -->
+</div>
+<!-- /.row -->
+<!-- Main row -->
+<div class="row" style="margin-bottom:5px;">
+    <!-- Left col -->
+    <section class="col-lg-7 connectedSortable">
+        <!-- Custom tabs (Charts with tabs)-->
+        <div class="nav-tabs-custom charts-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+                <li class="active"><a href="#line-chart" data-toggle="tab">折线图</a></li>
+                <li><a href="#area-chart" data-toggle="tab">区域图</a></li>
+                <li class="pull-left header"><i class="fa fa-inbox"></i> 销售趋势</li>
+            </ul>
+            <div class="tab-content no-padding">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="line-chart" style="position: relative; height: 300px;"></div>
+                <div class="chart tab-pane" id="area-chart" style="position: relative; height: 300px;"></div>
+            </div>
+        </div>
+        <div class="nav-tabs-custom charts-custom">
+            <!-- Tabs within a box -->
+            <ul class="nav nav-tabs pull-right">
+                <li class="active"><a href="#pie-chart" data-toggle="tab">饼图</a></li>
+                <li><a href="#bar-chart" data-toggle="tab">柱状图</a></li>
+                <li class="pull-left header"><i class="fa fa-inbox"></i> 访问记录</li>
+            </ul>
+            <div class="tab-content no-padding">
+                <!-- Morris chart - Sales -->
+                <div class="chart tab-pane active" id="pie-chart" style="position: relative; height: 300px;"></div>
+                <div class="chart tab-pane" id="bar-chart" style="position: relative; height: 300px;"></div>
+            </div>
+        </div>
+        <!-- /.nav-tabs-custom -->
+
+    </section>
+    <!-- /.Left col -->
+    <section class="col-lg-5 connectedSortable">
+
+        <!-- Map box -->
+        <div class="box box-solid bg-light-blue-gradient">
+            <div class="box-header">
+                <!-- tools box -->
+                <div class="pull-right box-tools">
+                </div>
+                <!-- /. tools -->
+
+                <i class="fa fa-map-marker"></i>
+
+                <h3 class="box-title">
+                    访客分布
+                </h3>
+            </div>
+            <div class="box-body">
+                <div id="simplebar-chart" style="height: 250px; width: 100%;"></div>
+            </div>
+            <!-- /.box-body-->
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="knob-label">统计最近一周访客的记录</div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.box -->
+
+        <!-- solid sales graph -->
+        <div class="box box-solid bg-teal-gradient">
+            <div class="box-header">
+                <i class="fa fa-th"></i>
+
+                <h3 class="box-title">订单趋势</h3>
+
+                <div class="box-tools pull-right">
+                </div>
+            </div>
+            <div class="box-body border-radius-none">
+                <div class="chart" id="smoothline-chart" style="height: 250px;"></div>
+            </div>
+            <!-- /.box-body-->
+            <div class="box-footer no-border">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <div class="knob-label">统计最近一周订单的趋势</div>
+                    </div>
+                    <!-- ./col -->
+                </div>
+                <!-- /.row -->
+            </div>
+        </div>
+        <!-- /.box -->
+
+    </section>
+    <!-- right col -->
+</div>
+<!-- /.row (main row) -->

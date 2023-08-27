@@ -1,0 +1,43 @@
+.fixed-columns, .fixed-columns-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    background-color: #fff;
+    box-sizing: border-box;
+    z-index: 1;
+    box-shadow: 0 -1px 8px rgba(0, 0, 0, .08);
+}
+
+.fixed-columns {
+    left: 0
+}
+
+.fixed-columns .fixed-table-body {
+    overflow: hidden !important
+}
+
+.fixed-columns-right {
+    right: 0;
+    box-shadow: -1px 0 8px rgba(0, 0, 0, .08)
+}
+
+.fixed-columns-right .fixed-table-body {
+    overflow-x: hidden !important
+}
+
+.fix-sticky {
+    position: fixed;
+    z-index: 100;
+}
+
+.fix-sticky thead {
+    background: #fff;
+}
+
+.fix-sticky thead th,
+.fix-sticky thead th:first-child {
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 1px solid #eee;
+    border-radius: 0;
+}

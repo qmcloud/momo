@@ -1,0 +1,40 @@
+<style type="text/css">
+    #schedulepicker {
+        padding-top:7px;
+    }
+</style>
+<form id="edit-form" class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" action="">
+    <div class="form-group">
+        <label for="content" class="control-label col-xs-12 col-sm-2">{:__('Content')}:</label>
+        <div class="col-xs-12 col-sm-10">
+            <textarea name="row[content]" id="conent" cols="30" style="width:100%;" rows="20" class="form-control" data-rule="required" readonly>{$row.content|htmlentities}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="executetime" class="control-label col-xs-12 col-sm-2">{:__('End time')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input type="text" class="form-control datetimepicker" id="executetime" name="row[executetime]" value="{$row.executetime|datetime}" data-rule="{:__('End time')}:required;match(gte, row[begintime], datetime)" size="6" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="completetime" class="control-label col-xs-12 col-sm-2">{:__('End time')}:</label>
+        <div class="col-xs-12 col-sm-4">
+            <input type="text" class="form-control datetimepicker" id="completetime" name="row[completetime]" value="{$row.completetime|datetime}" data-rule="{:__('End time')}:required;match(gte, row[begintime], datetime)" size="6" disabled />
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Status')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div style="padding-top:8px;">
+            {if $row['status']=='success'}<span class="label label-success">{:__('Success')}</span>{else/}<span class="label label-danger">{:__('Failure')}</span>{/if}
+            </div>
+        </div>
+    </div>
+    <div class="form-group hide layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="button" class="btn btn-success btn-embossed" onclick="parent.Layer.close(parent.Layer.getFrameIndex(window.name))">{:__('Close')}</button>
+        </div>
+    </div>
+
+</form>

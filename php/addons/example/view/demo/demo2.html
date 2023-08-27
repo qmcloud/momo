@@ -1,0 +1,31 @@
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading/Breadcrumbs -->
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">需登录页面
+                <small>开发者示例</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li><a href="{:addon_url('example/index/index')}">插件首页</a>
+                </li>
+                <li class="active">需登录页面</li>
+            </ol>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Content Row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <p class="well">当前登录页面需要登录后才可以查看，你可以退出后再访问此页面，会提醒登录,当前请求的name值为：{$Request.param.name|htmlentities}</p>
+            <p class="well">你好！{$user.nickname|htmlentities}，<a href="{:url('index/user/logout')}">注销登录</a></p>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <hr>
+
+</div>
+<!-- /.container -->

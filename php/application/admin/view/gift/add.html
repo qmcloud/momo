@@ -1,0 +1,96 @@
+<form id="add-form" class="form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Mark')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-mark" data-rule="required" class="form-control" name="row[mark]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Type')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-type" data-rule="required" class="form-control" name="row[type]" type="number" value="1">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sid')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sid" data-rule="required" class="form-control" name="row[sid]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Giftname')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-giftname" data-rule="required" class="form-control" name="row[giftname]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Needcoin')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-needcoin" data-rule="required" class="form-control" name="row[needcoin]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Gifticon')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <div class="input-group">
+                <input id="c-gifticon" data-rule="required" class="form-control" size="50" name="row[gifticon]" type="text" value="">
+                <div class="input-group-addon no-border no-padding">
+                    <span><button type="button" id="faupload-gifticon" class="btn btn-danger faupload" data-input-id="c-gifticon" data-mimetype="image/gif,image/jpeg,image/png,image/jpg,image/bmp,image/webp" data-multiple="false" data-preview-id="p-gifticon"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                    <span><button type="button" id="fachoose-gifticon" class="btn btn-primary fachoose" data-input-id="c-gifticon" data-mimetype="image/*" data-multiple="false"><i class="fa fa-list"></i> {:__('Choose')}</button></span>
+                </div>
+                <span class="msg-box n-right" for="c-gifticon"></span>
+            </div>
+            <ul class="row list-inline faupload-preview" id="p-gifticon"></ul>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('List_order')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-list_order" data-rule="required" class="form-control" name="row[list_order]" type="number" value="9999">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Addtime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-addtime" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[addtime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Swftype')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-swftype" data-rule="required" class="form-control" name="row[swftype]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Swf')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-swf" data-rule="required" class="form-control" name="row[swf]" type="text" value="">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Swftime')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-swftime" data-rule="required" class="form-control datetimepicker" data-date-format="YYYY-MM-DD HH:mm:ss" data-use-current="true" name="row[swftime]" type="text" value="{:date('Y-m-d H:i:s')}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Isplatgift')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-isplatgift" data-rule="required" class="form-control" name="row[isplatgift]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label col-xs-12 col-sm-2">{:__('Sticker')}:</label>
+        <div class="col-xs-12 col-sm-8">
+            <input id="c-sticker" class="form-control" name="row[sticker]" type="number" value="0">
+        </div>
+    </div>
+    <div class="form-group layer-footer">
+        <label class="control-label col-xs-12 col-sm-2"></label>
+        <div class="col-xs-12 col-sm-8">
+            <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+            <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+        </div>
+    </div>
+</form>

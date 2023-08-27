@@ -1,0 +1,47 @@
+<div class="container">
+    <h2 class="scanpay-title">
+        <img src="__ADDON__/images/logo-alipay.png" alt="" height="32" class="pull-left" style="margin-right:5px;"> 支付宝支付
+        <div class="scanpay-time">
+            请在 <span>60</span> 秒内完成支付
+        </div>
+    </h2>
+
+    <div class="scanpay scanpay-alipay">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-5">
+                        <div class="scanpay-body">
+                            <div class="scanpay-order clearfix">
+                                <p>订单标题：<em>{$orderData.title}</em></p>
+                                <p>订单编号：<em>{$orderData.orderid}</em></p>
+                                <p>订单价格：<em class="scanpay-price">￥{$orderData.amount}</em> 元</p>
+                            </div>
+                            <div class="scanpay-qrcode">
+                                <div class="qrcode" data-text="{$payData.qr_code}"></div>
+                                <div class="expired hidden"></div>
+                                <div class="paid hidden"></div>
+                            </div>
+                            <div class="scanpay-tips">
+                                <p>请使用支付宝扫一扫<br>扫描二维码进行支付</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-1"></div>
+                    <div class="col-sm-6 hidden-xs">
+                        <div class="scanpay-screenshot">
+                            <img src="__ADDON__/images/screenshot-alipay.png" class="img-responsive" alt=""/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!--@formatter:off-->
+<script>
+    var queryParams = {"paytype":"alipay", "orderid":"{$orderData.orderid}", "returnurl":"{$orderData.returnurl}"};
+</script>
+<!--@formatter:on-->

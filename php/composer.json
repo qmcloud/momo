@@ -1,0 +1,49 @@
+{
+    "name": "karsonzhang/fastadmin",
+    "description": "the fastest admin framework",
+    "type": "project",
+    "keywords": [
+        "fastadmin",
+        "thinkphp"
+    ],
+    "homepage": "https://www.fastadmin.net/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Karson",
+            "email": "karson@fastadmin.net"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.0",
+        "topthink/framework": "dev-master",
+        "topthink/think-captcha": "^1.0",
+        "topthink/think-installer": "^1.0.14",
+        "topthink/think-queue": "1.1.6",
+        "topthink/think-helper": "^1.0.7",
+        "karsonzhang/fastadmin-addons": "~1.3.2",
+        "overtrue/pinyin": "^3.0",
+        "phpoffice/phpspreadsheet": "1.19",
+        "overtrue/wechat": "^4.6",
+        "nelexa/zip": "^3.3",
+        "ext-json": "*",
+        "ext-curl": "*",
+        "ext-pdo": "*",
+        "ext-bcmath": "*",
+        "txthinking/mailer": "^2.0",
+        "topthink/think-swoole": "v3.0.*"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "allow-plugins": {
+            "topthink/think-installer": true,
+            "easywechat-composer/easywechat-composer": true
+        }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://mirrors.huaweicloud.com/repository/php/"
+        }
+    ]
+}

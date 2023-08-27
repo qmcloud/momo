@@ -1,0 +1,127 @@
+/*
+ * Skin: Blue
+ * -----------
+ */
+@import "../bootstrap-less/mixins.less";
+@import "../bootstrap-less/variables.less";
+@import "../fastadmin/variables.less";
+@import "../fastadmin/mixins.less";
+
+@blue: #4e73df;
+@sidebar-dark-bg: #4e73df;
+@sidebar-dark-color: #ccd9ff;
+@sidebar-dark-submenu-color: #ccd9ff;
+@sidebar-dark-submenu-bg: darken(@sidebar-dark-bg, 3%);
+
+.skin-blue {
+    .main-header {
+
+        .navbar-toggle {
+            color: #333;
+        }
+
+        .navbar-brand {
+            color: #333;
+            border-right: 1px solid #eee;
+        }
+
+        .navbar {
+            .navbar-variant(#fff; #444; @blue; rgba(0, 0, 0, .02));
+
+            > .sidebar-toggle {
+                color: #333;
+                border-right: 1px solid #eee;
+            }
+
+            .navbar-nav {
+                > li > a {
+                    border-right: 1px solid #eee;
+                }
+            }
+
+            .navbar-custom-menu .navbar-nav,
+            .navbar-right {
+                > li {
+                    > a {
+                        border-left: 1px solid #eee;
+                        border-left: none;
+                        border-right-width: 0;
+                    }
+                }
+            }
+        }
+
+        > .logo {
+            .logo-variant(@blue; #fff);
+            border-right: 1px solid @blue;
+            box-shadow: none;
+            @media (max-width: @screen-header-collapse) {
+                .logo-variant(#fff; #222);
+                border-right: none;
+            }
+        }
+
+        li.user-header {
+            background-color: @blue;
+        }
+
+        .nav-addtabs > li > a, .nav-addtabs > li.active > a {
+            border-right-color: transparent;
+        }
+
+    }
+
+    .content-header {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    .skin-dark-sidebar(#fff);
+
+    .sidebar-menu > li {
+        > a {
+            border-left: 3px solid transparent;
+            padding-left: 12px;
+        }
+    }
+
+    @media (min-width: @screen-sm) {
+        &.sidebar-mini.sidebar-collapse .sidebar-menu > li:hover > a > span:not(.pull-right) {
+            margin-left: -3px;
+        }
+    }
+
+    .sidebar-form input[type="text"] {
+        .placeholder(#fff);
+    }
+
+    .sidebar-form input[type="text"], .sidebar-form .btn {
+        color: #fff;
+    }
+
+    &.multiplenav {
+        @media (max-width: @screen-header-collapse) {
+            .main-header {
+                .navbar {
+                    .navbar-variant(@sidebar-dark-bg; #fff);
+                }
+
+
+                > .logo {
+                    .logo-variant(@sidebar-dark-bg; #fff);
+                }
+            }
+
+            .sidebar .mobilenav a.btn-app {
+                background: lighten(@sidebar-dark-bg, 10%);
+                color: #fff;
+
+                &.active {
+                    background: #fff;
+                    color: lighten(@sidebar-dark-bg, 10%);
+                }
+            }
+        }
+
+    }
+}

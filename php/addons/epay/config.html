@@ -1,0 +1,394 @@
+<form id="config-form" class="edit-form form-horizontal" role="form" data-toggle="validator" method="POST" action="">
+
+    <div class="panel panel-default panel-intro">
+        <div class="panel-heading">
+            <ul class="nav nav-tabs nav-group">
+                <li class="active"><a href="#wechat" data-toggle="tab">微信支付</a></li>
+                <li><a href="#alipay" data-toggle="tab">支付宝</a></li>
+            </ul>
+        </div>
+
+        <div class="panel-body">
+            <div id="myTabContent" class="tab-content">
+                {foreach $addon.config as $item}
+                {if $item.name=='wechat'}
+                <div class="tab-pane fade active in" id="wechat">
+                    <table class="table table-striped table-config">
+                        <tbody>
+                        <tr>
+                            <td width="15%">APP的app_id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][appid]" value="{$item.value.appid|default=''}" class="form-control" data-rule="" data-tip="APP应用中支付时使用"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>公众号的app_id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][app_id]" value="{$item.value.app_id|default=''}" class="form-control" data-rule="" data-tip="公众号中支付时使用"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>公众号的app_secret</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][app_secret]" value="{$item.value.app_secret|default=''}" class="form-control" data-rule="" data-tip="仅在需要获取Openid时使用"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>小程序的app_id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][miniapp_id]" value="{$item.value.miniapp_id|default=''}" class="form-control" data-rule="" data-tip="仅在小程序支付时使用"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>微信支付商户号ID</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][mch_id]" value="{$item.value.mch_id|default=''}" class="form-control" data-rule="" data-tip=""/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>微信支付商户的密钥</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][key]" value="{$item.value.key|default=''}" class="form-control" data-rule="" data-tip=""/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>支付模式</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        {:Form::radios('row[wechat][mode]',['normal'=>'正式环境','dev'=>'沙箱环境','service'=>'服务商模式'],$item.value.mode??'normal')}
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-type="service" class="{:$item.value.mode!='service'?'hidden':''}">
+                            <td>子商户商户号ID</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][sub_mch_id]" value="{$item.value.sub_mch_id|default=''}" class="form-control" data-rule="" data-tip="如果未用到子商户，请勿填写"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-type="service" class="{:$item.value.mode!='service'?'hidden':''}">
+                            <td>子商户APP的app_id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][sub_appid]" value="{$item.value.sub_appid|default=''}" class="form-control" data-rule="" data-tip="如果未用到子商户，请勿填写"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-type="service" class="{:$item.value.mode!='service'?'hidden':''}">
+                            <td>子商户公众号的app_id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][sub_app_id]" value="{$item.value.sub_app_id|default=''}" class="form-control" data-rule="" data-tip="如果未用到子商户，请勿填写"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr data-type="service" class="{:$item.value.mode!='service'?'hidden':''}">
+                            <td>子商户小程序的app_id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][sub_miniapp_id]" value="{$item.value.sub_miniapp_id|default=''}" class="form-control" data-rule="" data-tip="如果未用到子商户，请勿填写"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>回调通知地址</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[wechat][notify_url]" value="{$item.value.notify_url|default=''}" class="form-control" data-rule="" data-tip="请勿随意修改，实际以逻辑代码中请求的为准"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>微信支付API证书cert</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input id="c-cert_client" class="form-control" size="50" name="row[wechat][cert_client]" type="text" value="{$item.value.cert_client|htmlentities}" data-tip="可选, 仅在退款、红包等情况时需要用到">
+                                            <div class="input-group-addon no-border no-padding">
+                                                <span><button type="button" id="faupload-cert_client" class="btn btn-danger faupload" data-url="epay/upload" data-multipart='{"certname":"cert_client"}' data-mimetype="pem" data-input-id="c-cert_client" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                            </div>
+                                            <span class="msg-box n-right" for="c-cert_client"></span>
+                                        </div>
+                                        <div style="margin-top:5px;"><a href="https://pay.weixin.qq.com" target="_blank"><i class="fa fa-question-circle"></i> 如何获取微信支付API证书?</a></div>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>微信支付API证书key</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input id="c-cert_key" class="form-control" size="50" name="row[wechat][cert_key]" type="text" value="{$item.value.cert_key|htmlentities}" data-tip="可选, 仅在退款、红包等情况时需要用到">
+                                            <div class="input-group-addon no-border no-padding">
+                                                <span><button type="button" id="faupload-cert_key" class="btn btn-danger faupload" data-url="epay/upload" data-multipart='{"certname":"cert_key"}' data-mimetype="pem" data-input-id="c-cert_key" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                            </div>
+                                            <span class="msg-box n-right" for="c-cert_key"></span>
+                                        </div>
+                                        <div style="margin-top:5px;"><a href="https://pay.weixin.qq.com" target="_blank"><i class="fa fa-question-circle"></i> 如何获取微信支付API证书?</a></div>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>记录日志</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        {:Form::radios('row[wechat][log]',['1'=>'开启','0'=>'关闭'],$item.value.log)}
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {elseif $item.name=='alipay'}
+                <div class="tab-pane fade" id="alipay">
+                    <table class="table table-striped table-config">
+                        <tbody>
+                        <tr>
+                            <td>支付模式</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-12 col-xs-12">
+                                        {:Form::radios('row[alipay][mode]',['normal'=>'正式环境','dev'=>'沙箱环境'],$item.value.mode??'normal')}
+
+                                        <div style="margin-top:5px;" data-mode="dev" class="text-muted {if ($item.value.mode??'')==='normal'}hidden{/if}">
+                                            <i class="fa fa-info-circle"></i> 如果使用沙箱环境，务必使用沙箱的app_id和沙箱证书，以及使用沙箱账号进行测试。<br>
+                                          沙箱环境：<a href="https://openhome.alipay.com/develop/sandbox/app" target="_blank">https://openhome.alipay.com/develop/sandbox/app</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="15%">应用ID(app_id)</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[alipay][app_id]" value="{$item.value.app_id|default=''}" class="form-control" data-rule="" data-tip=""/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>回调通知地址</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[alipay][notify_url]" value="{$item.value.notify_url|default=''}" class="form-control" data-rule="" data-tip="请勿随意修改，实际以逻辑代码中请求的为准"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>支付跳转地址</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[alipay][return_url]" value="{$item.value.return_url|default=''}" class="form-control" data-rule="" data-tip="请勿随意修改，实际以逻辑代码中请求的为准"/>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>应用私钥(private_key)</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <input type="text" name="row[alipay][private_key]" value="{$item.value.private_key|default=''}" class="form-control" data-rule=""/>
+                                        <div style="margin-top:5px;"><a href="https://opensupport.alipay.com/support/helpcenter/207/201602469554" target="_blank"><i class="fa fa-question-circle"></i> 如何获取应用私钥?</a></div>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>签名方式</td>
+                            <td>
+                                <div>
+                                    <div class="radio">
+                                        <label for="row[alipay][signtype]-publickey"><input id="row[alipay][signtype]-publickey" name="row[alipay][signtype]" {if isset($item.value.signtype)&&$item.value.signtype=='publickey'}checked{/if} type="radio" value="publickey"> 公钥</label>
+                                        <label for="row[alipay][signtype]-cert"><input id="row[alipay][signtype]-cert" {if isset($item.value.signtype)&&$item.value.signtype=='cert'}checked{/if} name="row[alipay][signtype]" type="radio" value="cert"> 公钥证书</label>
+                                    </div>
+                                </div>
+                                <div style="margin-top:5px;" class="text-muted">
+                                <i class="fa fa-info-circle"></i> 如果要使用转账、提现功能，则必须使用公钥证书
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>支付宝公钥路径(alipay_public_key)</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input id="c-ali_public_key" class="form-control" size="50" name="row[alipay][ali_public_key]" type="text" value="{$item.value.ali_public_key|default=''|htmlentities}" placeholder="公钥请直接粘贴，公钥证书请点击右侧的上传">
+                                            <div class="input-group-addon no-border no-padding">
+                                                <span><button type="button" id="faupload-ali_public_key" class="btn btn-danger faupload" data-url="epay/upload" data-multipart='{"certname":"ali_public_key"}' data-mimetype="crt" data-input-id="c-ali_public_key" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                            </div>
+                                            <span class="msg-box n-right" for="c-ali_public_key"></span>
+                                        </div>
+                                        <div style="margin-top:5px;"><a href="https://opensupport.alipay.com/support/helpcenter/271/201602474998" target="_blank"><i class="fa fa-question-circle"></i> 如何获取支付宝公钥证书?</a></div>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>应用公钥证书路径(app_cert_public_key)</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input id="c-app_cert_public_key" class="form-control" size="50" name="row[alipay][app_cert_public_key]" type="text" value="{$item.value.app_cert_public_key|default=''|htmlentities}">
+                                            <div class="input-group-addon no-border no-padding">
+                                                <span><button type="button" id="faupload-app_cert_public_key" class="btn btn-danger faupload" data-url="epay/upload" data-multipart='{"certname":"app_cert_public_key"}' data-mimetype="crt" data-input-id="c-app_cert_public_key" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                            </div>
+                                            <span class="msg-box n-right" for="c-app_cert_public_key"></span>
+                                        </div>
+                                        <div style="margin-top:5px;"><a href="https://opensupport.alipay.com/support/helpcenter/271/201602474998" target="_blank"><i class="fa fa-question-circle"></i> 如何获取应用公钥证书?</a></div>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>支付宝根证书路径(alipay_root_cert)</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        <div class="input-group">
+                                            <input id="c-alipay_root_cert" class="form-control" size="50" name="row[alipay][alipay_root_cert]" type="text" value="{$item.value.alipay_root_cert|default=''|htmlentities}">
+                                            <div class="input-group-addon no-border no-padding">
+                                                <span><button type="button" id="faupload-alipay_root_cert" class="btn btn-danger faupload" data-url="epay/upload" data-multipart='{"certname":"alipay_root_cert"}' data-mimetype="crt" data-input-id="c-alipay_root_cert" data-multiple="false"><i class="fa fa-upload"></i> {:__('Upload')}</button></span>
+                                            </div>
+                                            <span class="msg-box n-right" for="c-alipay_root_cert"></span>
+                                        </div>
+                                        <div style="margin-top:5px;"><a href="https://opensupport.alipay.com/support/helpcenter/271/201602474998" target="_blank"><i class="fa fa-question-circle"></i> 如何获取支付宝证书?</a></div>
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>记录日志</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        {:Form::radios('row[alipay][log]',['1'=>'开启','0'=>'关闭'],$item.value.log)}
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>PC端使用扫码支付</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-sm-8 col-xs-12">
+                                        {:Form::radios('row[alipay][scanpay]',['1'=>'开启','0'=>'关闭'],$item.value.scanpay??0)}
+                                    </div>
+                                    <div class="col-sm-4"></div>
+                                </div>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                {/if}
+                {/foreach}
+                <div class="form-group layer-footer">
+                    <label class="control-label col-xs-12 col-sm-2"></label>
+                    <div class="col-xs-12 col-sm-8">
+                        <button type="submit" class="btn btn-primary btn-embossed disabled">{:__('OK')}</button>
+                        <button type="reset" class="btn btn-default btn-embossed">{:__('Reset')}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+<script>
+    document.querySelectorAll("input[name='row[wechat][mode]']").forEach(function (i, j) {
+        i.addEventListener("click", function () {
+            document.querySelectorAll("#wechat table tr[data-type]").forEach(function (m, n) {
+                m.classList.add("hidden");
+            });
+            document.querySelectorAll("#wechat table tr[data-type='" + this.value + "']").forEach(function (m, n) {
+                m.classList.remove("hidden");
+            });
+        });
+    });
+    document.querySelectorAll("input[name='row[alipay][mode]']").forEach(function (i, j) {
+        i.addEventListener("click", function () {
+            document.querySelectorAll("#alipay [data-mode]").forEach(function (m, n) {
+                m.classList.add("hidden");
+            });
+            document.querySelectorAll("#alipay [data-mode='" + this.value + "']").forEach(function (m, n) {
+                m.classList.remove("hidden");
+            });
+        });
+    });
+</script>

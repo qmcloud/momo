@@ -1,0 +1,60 @@
+{
+    "name": "nelexa/zip",
+    "type": "library",
+    "description": "PhpZip is a php-library for extended work with ZIP-archives. Open, create, update, delete, extract and get info tool. Supports appending to existing ZIP files, WinZip AES encryption, Traditional PKWARE Encryption, ZipAlign tool, BZIP2 compression, external file attributes and ZIP64 extensions. Alternative ZipArchive. It does not require php-zip extension.",
+    "keywords": [
+        "zip",
+        "unzip",
+        "archive",
+        "extract",
+        "winzip",
+        "zipalign",
+        "ziparchive"
+    ],
+    "homepage": "https://github.com/Ne-Lexa/php-zip",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Ne-Lexa",
+            "email": "alexey@nelexa.ru",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^5.5.9 || ^7.0",
+        "ext-zlib": "*",
+        "psr/http-message": "^1.0",
+        "paragonie/random_compat": "*",
+        "symfony/finder": "^3.0|^4.0|^5.0"
+    },
+    "require-dev": {
+        "ext-bz2": "*",
+        "ext-openssl": "*",
+        "ext-fileinfo": "*",
+        "ext-xml": "*",
+        "guzzlehttp/psr7": "^1.6",
+        "phpunit/phpunit": "^4.8|^5.7",
+        "symfony/var-dumper": "^3.0|^4.0|^5.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpZip\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpZip\\Tests\\": "tests/"
+        }
+    },
+    "suggest": {
+        "ext-openssl": "Needed to support encrypt zip entries or use ext-mcrypt",
+        "ext-mcrypt": "Needed to support encrypt zip entries or use ext-openssl",
+        "ext-bz2": "Needed to support BZIP2 compression",
+        "ext-fileinfo": "Needed to get mime-type file"
+    },
+    "minimum-stability": "stable",
+    "scripts": {
+        "php:fix": "php .php_cs --force",
+        "php:fix:debug": "php .php_cs"
+    }
+}

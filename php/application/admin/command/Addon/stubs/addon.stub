@@ -1,0 +1,54 @@
+<?php
+
+namespace addons\{%name%};
+
+use app\common\library\Menu;
+use think\Addons;
+
+/**
+ * 插件
+ */
+class {%addonClassName%} extends Addons
+{
+
+    /**
+     * 插件安装方法
+     * @return bool
+     */
+    public function install()
+    {
+        {%addonInstallMenu%}
+        return true;
+    }
+
+    /**
+     * 插件卸载方法
+     * @return bool
+     */
+    public function uninstall()
+    {
+        {%addonUninstallMenu%}
+        return true;
+    }
+
+    /**
+     * 插件启用方法
+     * @return bool
+     */
+    public function enable()
+    {
+        {%addonEnableMenu%}
+        return true;
+    }
+
+    /**
+     * 插件禁用方法
+     * @return bool
+     */
+    public function disable()
+    {
+        {%addonDisableMenu%}
+        return true;
+    }
+
+}

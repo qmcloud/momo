@@ -1,0 +1,224 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    padding-top: 50px; /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: 'Source Sans Pro', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+}
+
+.img-addon {
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+.display-1 {
+    font-size: 44px;
+}
+
+.display-4 {
+    font-size: 24px;
+    line-height: 32px;
+}
+
+/* Home Page Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+}
+
+.error-404 {
+    font-size: 100px;
+}
+
+/* Pricing Page Styles */
+
+.price {
+    display: block;
+    font-size: 50px;
+    line-height: 50px;
+}
+
+.price sup {
+    top: -20px;
+    left: 2px;
+    font-size: 20px;
+}
+
+.period {
+    display: block;
+    font-style: italic;
+}
+
+/* Footer Styles */
+
+footer {
+}
+
+/* Responsive Styles */
+
+@media (max-width: 991px) {
+    .customer-img,
+    .img-related {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 767px) {
+    .img-addon {
+        margin-bottom: 15px;
+    }
+
+    header.carousel .carousel {
+        height: 70%;
+    }
+}
+
+.carousel-body {
+    position: absolute;
+    width: 100%;
+    top: 25%;
+    text-align: center;
+    color: #fff;
+}
+
+.addonlist a > p {
+    margin-bottom: 15px;
+}
+
+/* PC扫码支付 */
+
+.scanpay {
+    margin-top: 20px;
+}
+.scanpay-title {
+    margin: 30px 0 15px 0;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.scanpay-qrcode {
+    margin-bottom: 20px;
+    position: relative;
+
+    img {
+        width: 100%;
+        border: 1px solid #eee;
+    }
+
+    .expired {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .95;
+        background: #fff url(../images/expired.png) center center no-repeat;
+    }
+
+    .paid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: .95;
+        background: #fff url(../images/paid.png) center center no-repeat;
+    }
+}
+
+
+.scanpay-screenshot {
+    padding: 0;
+
+    img {
+        width: 100%;
+    }
+}
+
+.scanpay-tips {
+    height: 60px;
+    padding: 8px 0 8px 125px;
+    background: #00c800 url(../images/scan.png) 50px 12px no-repeat;
+    background-size: 36px 36px;
+
+    p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 22px;
+        color: #fff;
+        font-weight: 700
+    }
+}
+
+.scanpay-time {
+    font-size: 14px;
+    margin-bottom: 15px;
+    position: absolute;
+    top: 15px;
+    right: 10px;
+    font-weight: normal;
+    display: none;
+
+    span {
+        color: red;
+    }
+
+}
+
+.scanpay-order {
+    margin-bottom: 5px;
+
+    em {
+        font-style: normal;
+        color: #666;
+
+        &.scanpay-price {
+            color: #ff3333;
+            font-weight: bold;
+        }
+    }
+}
+
+.scanpay-alipay {
+    .scanpay-tips {
+        background-color: #4290e8;
+    }
+}
+
+@media (max-width: 767px) {
+    .scanpay {
+        margin-top: 20px;
+    }
+}
+
+@media (max-height: 855px) and (min-width: 767px) {
+    .scanpay {
+        width: calc(~ '130vh');
+        min-width: 760px;
+    }
+}
+
+.qrcode canvas, .qrcode img {
+    width: 100%;
+}

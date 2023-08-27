@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+        <title>Alisms短信发送示例</title>
+        <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="//cdn.fastadmin.net/assets/css/frontend.min.css" rel="stylesheet">
+
+        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="//cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container">
+            <div class="well" style="margin-top:30px;">
+                <form class="form-horizontal" action="{:addon_url('alisms/index/send')}">
+                    <fieldset>
+                        <legend>阿里大于短信发送</legend>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">手机号</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="mobile" placeholder="手机号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">消息模板</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="template" placeholder="消息模板">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">签名</label>
+                            <div class="col-lg-10">
+                                <input type="text" class="form-control" name="sign" placeholder="消息模板(可以留空)">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-2 control-label">消息参数</label>
+                            <div class="col-lg-10">
+                                <textarea name="param" class="form-control" cols="30" rows="10" placeholder="必须是JSON字符串"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-lg-10 col-lg-offset-2">
+                                <button type="submit" class="btn btn-primary">发送</button>
+                                <button type="reset" class="btn btn-default">重置</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+        <script src="//cdn.bootcss.com/jquery/2.1.4/jquery.min.js"></script>
+        <script src="//cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+
+            });
+        </script>
+    </body>
+</html>

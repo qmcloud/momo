@@ -1,0 +1,28 @@
+<style>.social-login {
+    display: flex
+}
+
+.social-login a {
+    flex: 1;
+    margin: 0 2px;
+}
+
+.social-login a:first-child {
+    margin-left: 0;
+}
+
+.social-login a:last-child {
+    margin-right: 0;
+}</style>
+
+<div class="form-group social-login">
+    {if in_array('wechat', $status)}
+        <a class="btn btn-success" href="{:url('/third/connect/wechat')}?url={$url|urlencode}"><i class="fa fa-wechat"></i> 微信登录</a>
+    {/if}
+    {if in_array('qq', $status)}
+        <a class="btn btn-info" href="{:url('/third/connect/qq')}?url={$url|urlencode}"><i class="fa fa-qq"></i> QQ登录</a>
+    {/if}
+    {if in_array('weibo', $status)}
+        <a class="btn btn-danger" href="{:url('/third/connect/weibo')}?url={$url|urlencode}"><i class="fa fa-weibo"></i> 微博登录</a>
+    {/if}
+</div>

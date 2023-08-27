@@ -1,0 +1,67 @@
+<!-- Page Content -->
+    <div class="container">
+
+        <!-- Page Heading/Breadcrumbs -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">使用模板标签和变量
+                    <small>开发者示例</small>
+                </h1>
+                <ol class="breadcrumb">
+                    <li><a href="{:addon_url('example/index/index')}">插件首页</a>
+                    </li>
+                    <li class="active">使用模板标签和变量</li>
+                </ol>
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <!-- Content Row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <p class="well">当前请求的name值为：{$Request.param.name|htmlentities}</p>
+                {literal}
+                <pre>
+在插件视图中可以使用所有ThinkPHP5内支持的模板标签和变量，如
+
+{$Think.server.script_name} // 输出$_SERVER['SCRIPT_NAME']变量
+{$Think.session.user_id} // 输出$_SESSION['user_id']变量
+{$Think.get.pageNumber} // 输出$_GET['pageNumber']变量
+{$Think.cookie.name}  // 输出$_COOKIE['name']变量
+
+// 调用Request对象的get方法 传入参数为id
+{$Request.get.id}
+// 调用Request对象的param方法 传入参数为name
+{$Request.param.name}
+// 调用Request对象的param方法 传入参数为user.nickname
+{$Request.param.user.nickname}
+// 调用Request对象的root方法
+{$Request.root}
+// 调用Request对象的root方法，并且传入参数true
+{$Request.root.true}
+// 调用Request对象的path方法
+{$Request.path}
+// 调用Request对象的module方法
+{$Request.module}
+// 调用Request对象的controller方法
+{$Request.controller}
+// 调用Request对象的action方法
+{$Request.action}
+// 调用Request对象的ext方法
+{$Request.ext}
+// 调用Request对象的host方法
+{$Request.host}
+// 调用Request对象的ip方法
+{$Request.ip}
+// 调用Request对象的header方法
+{$Request.header.accept-encoding}
+                </pre>
+                {/literal}
+            </div>
+        </div>
+        <!-- /.row -->
+
+        <hr>
+
+    </div>
+    <!-- /.container -->

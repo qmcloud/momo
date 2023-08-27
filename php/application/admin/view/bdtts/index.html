@@ -1,0 +1,262 @@
+<div class="tab-content">
+    <div class="tab-pane active" id="info19">
+        <div class="well">
+            百度语音合成集成api
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    使用须知
+                </strong>
+            </div>
+            <div class="panel-body">
+                注册百度开发者中心后创建语音应用
+                价格标准参照<a href="https://ai.baidu.com/ai-doc/SPEECH/Nk38y8pjq">百度</a>
+            </div>
+        </div>
+        <!-- 内容 -->
+            <div class="row">
+    <form class="form-horizontal form-ajax" role="form" data-toggle="validator" method="POST" id="form"  action="{:addon_url('bdtts/index/index');}">
+        <div class="col-xs-9">
+            <div class="form-inline" data-toggle="cxselect">
+                <label class="control-label">语速</label>
+                <select class="form-control " data-style="btn-primary" data-live-search="true"  name="spd"  style="min-width: 120px;">
+                    <option value="5">自动</option>                  
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                </select>
+                <label class="control-label">语调</label>
+                <select class=" form-control" name="pit"  style="min-width: 120px;">
+                    <option value="5">自动</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+
+                </select>
+                <label class="control-label">音量</label>
+                <select class=" form-control" name="vol"  style="min-width: 120px;">
+                    <option value="5">自动</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+                    <option value="12">12</option>
+                    <option value="13">13</option>
+                    <option value="14">14</option>
+                    <option value="15">15</option>
+                </select>
+
+                <label class="control-label">发音人</label>
+                <select class=" form-control" name="per"  style="min-width: 120px;">
+                    <option value="0">女生</option>
+                    <option value="1">男生</option>
+                    <option value="3">度逍遥</option>
+                    <option value="4">度丫丫</option>                   
+                </select>
+
+                
+            </div>
+        </div>
+
+        <div class="col-xs-3 text-right">
+            <h6><a class="btn btn-success" href="javascript:;" onclick="$('#form').submit();"><i class="fa fa-play"></i> 启动</a></h6>
+        </div>
+        <div class="col-xs-12">
+            <textarea class="form-control" rows="8" name="tex" placeholder="为保证语音合成质量，请将单次请求长度控制在 1000 bytes以内。（汉字约为300个）" data-rule="required" ></textarea>
+        </div>
+        </form>
+    </div>
+
+    <div class="row" style="">
+            <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    结果
+                </strong>
+            </div>
+            <div class="panel-body">
+                <audio loop="" controls="" id="testingaudio">
+                    <source src="" type="audio/wav">
+                    您的浏览器不支持 audio 元素。
+                </audio>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    API接口请求地址
+                </strong>
+            </div>
+            <div class="panel-body">                
+                <a href="{:addon_url('bdtts/index/index',[],true,true);}">
+                    {:addon_url('bdtts/index/index',[],true,true);}
+                </a>
+                <br/>
+                <span>
+                    http://你的域名{:addon_url('bdtts/index/index',[],true,false);}
+                </span>
+                <br/>
+                请求方式 <span class="label label-success">POST</span>
+            </div>
+    </div>
+
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    参数
+                </strong>
+            </div>
+            <div class="panel-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>
+                                名称
+                            </th>
+                            <th>
+                                类型
+                            </th>
+                            <th>
+                                必选
+                            </th>
+                            <th>
+                                描述
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                tex
+                            </td>
+                            <td>
+                                string
+                            </td>
+                            <td>
+                                是
+                            </td>
+                            <td>
+                                需要合成的文本字符串 （单次不要超过300个汉字）
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                spd
+                            </td>
+                            <td>
+                                int
+                            </td>
+                            <td>
+                                否
+                            </td>
+                            <td>
+                                语速 取值范围：(1-9) 默认5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                pit
+                            </td>
+                            <td>
+                                int
+                            </td>
+                            <td>
+                                否
+                            </td>
+                            <td>
+                                语调 取值范围(1-9) 默认5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                vol
+                            </td>
+                            <td>
+                                int
+                            </td>
+                            <td>
+                                否
+                            </td>
+                            <td>
+                                音量 取值范围(1-15) 默认5
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                per
+                            </td>
+                            <td>
+                                int
+                            </td>
+                            <td>
+                                否
+                            </td>
+                            <td>
+                                发音人选择, 0为女声，1为男声，3为情感合成-度逍遥，4为情感合成-度丫丫，默认为普通女
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <strong>
+                    返回值
+                </strong>
+            </div>
+            <div class="panel-body">
+<pre>
+{
+    "code": 1,
+    "msg": "成功",
+    "data": {
+        "realpath": "文件的硬盘地址:C:/www/202011063122424.wav",
+        "filename": "网络访问地址:http://www.tetss.com/202011063122424.wav"
+    },
+    "url": "",
+    "wait": 3
+}
+</pre>
+失败返回
+<pre>
+{
+    "code": 0,
+    "msg": "失败",
+    "data": {},
+    "url": "",
+    "wait": 3
+}
+</pre>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
