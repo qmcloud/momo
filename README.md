@@ -26,7 +26,7 @@
 - **Coturn** ：TURN和STUN Server的开源项目；
 - **Nginx** ：高性能负载平衡器，Web服务器和有HTTPS / Quiche和Brtoli支持的反向代理；
 - **K8S+Docker**：用于构建、部署和管理容器化应用程序的平台。
-- **后台管理界面**: php版 | golang版 + vue + Element-UI 
+- **后台管理界面**: php版 + layUI | golang版 + vue + Element-UI 
 ----------------
 
 **技术群：**
@@ -34,8 +34,6 @@
 
 ----------------
 微信：BCFind5 【请备注好信息】
-
-文档地址：https://www.52webrtc.top
 
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
@@ -84,9 +82,9 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
-4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括成熟方案 nginx + SRS + WebRtc）。
-5. kafka 队列 聊天服务提供直播群聊，私聊，消息通知等。
-6. prometheus系统监控：监听主播异常掉线情况、直播消息推送等。
+4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括成熟方案SRS）
+5. workman 队列 聊天服务提供直播群聊，私聊，消息通知等。
+6. 后台框架：fastadmin框架。
  
 ------------
 ## golang微服务架构
