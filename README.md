@@ -65,29 +65,22 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ----------------
 
-### 入门推荐书籍
-
-* [FFmpeg从入门到精通](https://book.douban.com/subject/30178432/) - 强烈推荐
-* [直播系统开发：基于Nginx与Nginx-rtmp-module](https://book.douban.com/subject/30423374/)
-* [WebRTC权威指南](https://book.douban.com/subject/26915289/)
-* [CDN技术详解](https://book.douban.com/subject/10759173/)
-
-### 技术结构
+### 技术栈
 
 
-## PHP框架开发
+## php框架开发版本 【源码已开源】
 
--  **PHP版本视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、聊天服务、后台管理系统和定时监控组成，后台管理及API采用PHP语言开发**
+-  **PHP版本视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、workman聊天服务、后台管理系统和定时监控组成，后台管理及API采用PHP语言开发**
 
 1. WEB 系统提供页面、接口逻辑。
 2. REDIS 服务提供数据的缓存、存储动态数据。
 3. MYSQL 服务提供静态数据的存储。
 4. 视频服务提供视频直播，傍路直播，转码、存储、点播等 支持腾讯云 阿里云 七牛等 自建流媒体服务器等（包括成熟方案SRS）
-5. workman 队列 聊天服务提供直播群聊，私聊，消息通知等。
+5. mq 队列 聊天服务提供直播群聊，私聊，消息通知等。
 6. 后台框架：fastadmin框架。
  
 ------------
-## golang微服务架构
+## golang微服务架构版本【未开源】
 
 **微服务介绍**
 
@@ -159,17 +152,45 @@ stp3: gitlab拉取代码-->CI/CD检测（不会的可自行百度）--->构建�
 ```
 
 ## 视频服务
+
+#### README ： https://github.com/DOUBLE-Baller/momo/tree/master/livego
 ------------
-
-README ： https://github.com/DOUBLE-Baller/momo/tree/master/livego
-
 
 ## IM服务
+
+#### README ：https://github.com/DOUBLE-Baller/momo/tree/master/IM
 ------------
 
-README ：https://github.com/DOUBLE-Baller/momo/tree/master/IM
+### 入门推荐书籍教学视频
 
-==问题反馈==
+* [FFmpeg从入门到精通](https://book.douban.com/subject/30178432/) - 强烈推荐
+* [直播系统开发：基于Nginx与Nginx-rtmp-module](https://book.douban.com/subject/30423374/)
+* [WebRTC权威指南](https://book.douban.com/subject/26915289/)
+* [CDN技术详解](https://book.douban.com/subject/10759173/)
+
+#### 【免费】FFmpeg/WebRTC/RTMP/NDK/Android音视频流媒体高级开发教学视频，完全免费，绝无套路，观看学习后请自行删除，禁止私自转卖，售卖等违法行为，否则后果自负。
+
+* 第1套 跟我学FFmpeg 音视频编码基础入门 价值100元
+* 第2套 （51CTO）OpenGL-实现视频播放(FFMpeg)视频课程价值89元
+* 第3套 FFMPEG跨平台iOS&Android高级开发实践视频教程 价值350元
+* 第4套 C++编程FFMpeg实时美颜直播推流实战-基于ffmpeg，qt5，opencv 价值500元
+* 第5套 (51CTO夏曹俊)FFmpeg安卓流媒体播放器开发实战 价值268元
+* 第6套 (51CTO夏曹俊)C++实战手把手教您用ffmpeg和QT开发播放器实战 价值241元
+* 第7套 OpenCV3.2+QT5+ffmpeg开发视频编辑器（附源码 讲义） 68课 价值899元
+* 第8套 基于FFmpeg+SDL的视频播放器的制作视频教程附讲义源码软件 11课 价值200元
+* 第9套 Android视频编码和直播推流教程 价值450元
+* 第10套 FFmpeg打造Android万能音频播放器 价值99元
+* 第11套 FFmpeg+OpenGL ES+OpenSL ES打造Android视频播放器 价值200元
+* 第12套 5G时代必备技能 音视频WebRTC实时互动直播技术入门与实战 价值280元
+* 第13套 FFmpeg音视频核心技术精讲与实战 价值120元
+* 第14套 Webrtc环境搭建教学 价值150元
+* 第15套 百万级高并发WebRTC流媒体服务器设计与开发 价值299元
+
+链接：[https://pan.baidu.com/s/1Teaw_rwTCKJtp8WrFeZM5Q](https://www.onionnews.cn/blog/tutorials/)
+提取码：gjf1
+
+
+### ==问题反馈==
 
 **在使用中有任何问题，欢迎反馈给我们**
 
