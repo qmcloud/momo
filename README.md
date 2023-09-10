@@ -186,8 +186,8 @@ stp3: gitlab拉取代码-->CI/CD检测（不会的可自行百度）--->构建�
 * 第14套 Webrtc环境搭建教学 价值150元
 * 第15套 百万级高并发WebRTC流媒体服务器设计与开发 价值299元
 
-链接：[https://pan.baidu.com/s/1Teaw_rwTCKJtp8WrFeZM5Q](https://www.onionnews.cn/blog/tutorials/)
-提取码：gjf1
+链接：[https://www.onionnews.cn/blog/tutorials/](https://www.onionnews.cn/blog/tutorials/)
+
 
 
 ### ==问题反馈==
