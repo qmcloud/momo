@@ -1,3 +1,0 @@
-define(['frontend'], function (Frontend) {
-
-});
