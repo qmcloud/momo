@@ -18,8 +18,8 @@
 ### 微服务（K8S,Docker容器）组成：
 
 - **Goim** ：不多说 B站 IM架构 官网：http://goim.io
-- **SRS** ：SRS是一个高效的实时视频服务器，支持RTMP/WebRTC/HLS/HTTP-FLV/SRT/GB28181。
-- **webrtc** ：Janus Gateway：Meetecho优秀的通用WebRTC服务器（SFU）。
+- **流媒体服务器** ：golang开发的流媒体服务器，支持RTMP/WebRTC/HLS/HTTP-FLV/SRT/GB28181。
+- **webrtc** ： Meetecho优秀的通用WebRTC服务器（SFU）。
 - **MongoDB** ：基于文档的分布式数据库。
 - **Redis**：内存中的数据结构存储，用作数据库，缓存和消息代理。
 - **kafka** ：队列 群聊，私聊，消息通知等。
@@ -55,7 +55,7 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 **演示**
 
-⨳ Web演示地址：http://voice.onionnews.cn
+⨳ Web演示地址：http://h5.onionnews.cn
 
 ⨳ 直播APP下载地址： https://wwus.lanzouy.com/iGwys0w9d49i
 
