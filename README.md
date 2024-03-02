@@ -55,13 +55,17 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 **演示**
 
-⨳ Web演示地址：http://h5.onionnews.cn
+⨳ PC演示地址：http://voice.onionnews.cn
+
+⨳ H5演示地址：http://h5.onionnews.cn
 
 ⨳ 直播APP下载地址： https://wwus.lanzouy.com/iGwys0w9d49i
 
-⨳ 语聊APP下载：https://wwus.lanzouy.com/iGwys0w9d49i
+⨳ 直播后台管理：http://admin.onionnews.cn/xjmuyHKnec.php/index/login 账号：admin 密码：admin123
 
-⨳ 后台管理：http://admin.onionnews.cn/xjmuyHKnec.php/index/login 账号：admin 密码：admin123
+⨳ 语聊APP下载：http://live.onionnews.cn/voice.apk
+
+⨳ 语聊后台管理：http://live.onionnews.cn 账号：admin 密码：123456
 
 ----------------
 
