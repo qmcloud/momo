@@ -59,13 +59,13 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 ⨳ Vue3版本演示地址：[http://web.onionnews.cn/](http://web.onionnews.cn/)
 
-⨳ H5演示地址：[http://h5.onionnews.cn](http://h5.onionnews.cn)
+⨳ Uniapp演示地址：[http://h5.onionnews.cn/](http://h5.onionnews.cn/)
 
-⨳ 直播APP下载地址： [https://wwus.lanzouy.com/iGwys0w9d49i](https://wwus.lanzouy.com/iGwys0w9d49i)
+⨳ 直播APP下载地址： [https://app.onionnews.cn/live](https://app.onionnews.cn/live)
 
 ⨳ 直播后台管理：[http://admin.onionnews.cn/xjmuyHKnec.php/index/login](http://admin.onionnews.cn/xjmuyHKnec.php/index/login) 账号：admin 密码：admin123
 
-⨳ 语聊APP下载：[http://live.onionnews.cn/voice.apk](http://live.onionnews.cn/voice.apk)
+⨳ 语聊APP下载：[https://app.onionnews.cn/voice](https://app.onionnews.cn/voice)
 
 ⨳ 语聊后台管理：[http://live.onionnews.cn](http://live.onionnews.cn) 账号：admin 密码：123456
 
