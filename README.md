@@ -28,11 +28,6 @@
 - **K8S+Docker**：用于构建、部署和管理容器化应用程序的平台。
 - **后台管理界面**: php版 + layUI | golang版 + vue + Element-UI 
 ----------------
-
-**技术群：**
-![](https://img-blog.csdnimg.cn/20200623093238797.png)
-
-----------------
 微信：BCFind5 【请备注好信息】
 
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
@@ -44,14 +39,6 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 ### 商业合作 （UI设计，定制开发，系统重构，代理推广等）
 
 ----------------
-
-**前端展示**
-![前端展示](https://img-blog.csdnimg.cn/20210605203510511.jpg?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIxMTUxOTc=,size_16,color_FFFFFF,t_70#pic_center)
-
-**后台界面**
-![vue界面](https://img-blog.csdnimg.cn/6a993757bb6e43698358ea12f838e8ad.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Y2I5aSc56CB54uC,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
-
-![k8s界面](https://img-blog.csdnimg.cn/ae959e8fb8994ef2a3b92356c3276890.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5Y2I5aSc56CB54uC,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
 **演示**
 
