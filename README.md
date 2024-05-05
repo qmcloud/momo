@@ -55,17 +55,15 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 **演示**
 
-⨳ Web演示地址：[http://voice.onionnews.cn/](http://voice.onionnews.cn/)
-
 ⨳ Vue3版本演示地址：[http://web.onionnews.cn/](http://web.onionnews.cn/)
 
 ⨳ Uniapp演示地址：[http://h5.onionnews.cn/](http://h5.onionnews.cn/)
 
-⨳ 直播APP下载地址： [https://app.onionnews.cn/live](https://app.onionnews.cn/live)
+⨳ 直播APP下载地址： [https://app.onionnews.cn](https://app.onionnews.cn)
 
 ⨳ 直播后台管理：[http://admin.onionnews.cn/xjmuyHKnec.php/index/login](http://admin.onionnews.cn/xjmuyHKnec.php/index/login) 账号：admin 密码：admin123
 
-⨳ 语聊APP下载：[https://app.onionnews.cn/voice](https://app.onionnews.cn/voice)
+⨳ 语聊APP下载：[https://app.onionnews.cn](https://app.onionnews.cn)
 
 ⨳ 语聊后台管理：[http://live.onionnews.cn](http://live.onionnews.cn) 账号：admin 密码：123456
 
@@ -145,27 +143,22 @@ nginx做网关，使用nginx的auth模块，调用后端的backend服务统一�
 ```
 **分布式事务DTM**
 ```
-分布式事务准备使用的是dtm，本项目目前还未使用到，后续准备直接集成就好了，如果读者使用直接去看那个源码就行了
+分布式事务准备使用的是dtm.性能够用。
 ```
 **K8S部署**
 ```
-stp1：搭建一个gitlab、jenkins、harbor，将代码放在gitlab
-
-stp2：在gitlab创建流水线，一个服务一个流水线。
-
-stp3: gitlab拉取代码-->CI/CD检测（不会的可自行百度）--->构建镜像（Dockerfile可以通过goctl自动生成）--->推送到harbor镜像服务--->使用kubectl去k8s拉取镜像（ack、ask都行，ask无法使用daemonset 不能用filebeat）--->done
+简单易用: 提供可视化的 Web UI，极大降低 Kubernetes 部署和管理门槛.
+按需创建: 调用云平台 API，一键快速创建和部署 Kubernetes 集群
+按需伸缩: 快速伸缩 Kubernetes 集群，优化资源使用效率
+按需修补: 快速升级和修补 Kubernetes 集群.
+离线部署: 支持完全离线下的 Kubernetes 集群部署
+自我修复: 通过重建故障节点确保集群可用性
+全栈监控: 提供从Pod、Node到集群的事件、监控、告警、和日志方案
+Multi-AZ 支持: 将 Master 节点分布在不同的故障域上确保集群高可用
+应用商店: 内置 Apps 应用商店
+GPU 支持: 支持 GPU 节点，助力运行深度学习等应用.
 
 ```
-
-## 视频服务
-
-#### README ： https://github.com/DOUBLE-Baller/momo/tree/master/livego
-------------
-
-## IM服务
-
-#### README ：https://github.com/DOUBLE-Baller/momo/tree/master/IM
-------------
 
 ### 入门推荐书籍教学视频
 
