@@ -13,7 +13,7 @@
 </div>
 
 
-### 前端: VUE + Android + IOS
+### 前端: VUE + Android + IOS + Uniapp
 
 ### 微服务（K8S,Docker容器）组成：
 
@@ -26,7 +26,7 @@
 - **Coturn** ：TURN和STUN Server的开源项目；
 - **Nginx** ：高性能负载平衡器，Web服务器和有HTTPS / Quiche和Brtoli支持的反向代理；
 - **K8S+Docker**：用于构建、部署和管理容器化应用程序的平台。
-- **后台管理界面**: php版 + layUI | golang版 + vue + Element-UI 
+- **后台管理界面**: php版 + vue + Element-UI  | golang版 + vue + Element-UI 
 ----------------
 微信：BCFind5 【请备注好信息】
 
@@ -42,17 +42,7 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 
 **演示**
 
-⨳ Vue3版本演示地址：[http://web.onionnews.cn/](http://web.onionnews.cn/)
-
-⨳ Uniapp演示地址：[http://h5.onionnews.cn/](http://h5.onionnews.cn/)
-
-⨳ 直播APP下载地址： [https://app.onionnews.cn](https://app.onionnews.cn)
-
-⨳ 直播后台管理：[http://admin.onionnews.cn/xjmuyHKnec.php/index/login](http://admin.onionnews.cn/xjmuyHKnec.php/index/login) 账号：admin 密码：admin123
-
-⨳ 语聊APP下载：[https://app.onionnews.cn](https://app.onionnews.cn)
-
-⨳ 语聊后台管理：[http://live.onionnews.cn](http://live.onionnews.cn) 账号：admin 密码：123456
+⨳ 演示地址：[http://www.onionnews.cn/](http://www.onionnews.cn/)
 
 ----------------
 
@@ -82,7 +72,7 @@ Gitee：https://gitee.com/baoyalive/baoyalive.git
 5. 自动校验客户端请求参数合法性
 6. 大量微服务治理和并发工具包
 
-**架构图**
+**golang微服务架构图**
 
 ![](https://github.com/DOUBLE-Baller/momo/blob/master/doc/doc.jpg?raw=true)
 

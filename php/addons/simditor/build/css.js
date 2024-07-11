@@ -1,4 +1,0 @@
-({
-  optimizeCss: "default",
-  optimize: "uglify"
-})
