@@ -12,7 +12,6 @@
 <img src="https://img.shields.io/badge/gorm-1.9.12-red"/>
 </div>
 
-
 ### 前端: VUE + Android + IOS + Uniapp
 
 ### 微服务（K8S,Docker容器）组成：
@@ -23,33 +22,23 @@
 - **MongoDB** ：基于文档的分布式数据库。
 - **Redis**：内存中的数据结构存储，用作数据库，缓存和消息代理。
 - **kafka** ：队列 群聊，私聊，消息通知等。
-- **Coturn** ：TURN和STUN Server的开源项目；
 - **Nginx** ：高性能负载平衡器，Web服务器和有HTTPS / Quiche和Brtoli支持的反向代理；
 - **K8S+Docker**：用于构建、部署和管理容器化应用程序的平台。
 - **后台管理界面**: php版 + vue + Element-UI  | golang版 + vue + Element-UI 
 ----------------
-微信：BCFind5 【请备注好信息】
 
 博客地址：https://blog.csdn.net/u012115197/article/details/106916635
 
-Gitee：https://gitee.com/baoyalive/baoyalive.git
+Gitee：https://gitee.com/baoyalive/baoyalive.git （历史代码备份）
 
-----------------
-
-### 商业合作 （UI设计，定制开发，系统重构，代理推广等）
-
-----------------
-
-**演示**
-
-⨳ 演示地址：[http://www.onionnews.cn/](http://www.onionnews.cn/)
+演示地址：[http://www.onionnews.cn/](http://www.onionnews.cn/)
 
 ----------------
 
 ### 技术栈
 
 
-## php框架开发版本 【源码已开源】
+## php框架开发版本 【开源】
 
 -  **PHP版本视频互动系统由 WEB 系统、REDIS 服务、MYSQL 服务、视频服务、workman聊天服务、后台管理系统和定时监控组成，后台管理及API采用PHP语言开发**
 
@@ -114,13 +103,11 @@ nginx做网关，使用nginx的auth模块，调用后端的backend服务统一�
 ```
 **延迟队列、定时任务**
 ```
-延迟队列、定时任务本项目使用的是asynq ， google团队给予redis开发的简单中间件，
-当然了asynq也支持消息队列，你也可也把kq消息队列替换成这个，毕竟只需要redis不需要在去维护一个kafka也是不错的
-链接：https://github.com/hibiken/asynq
+延迟队列、定时任务本项目使用的是asynq ， google团队给予redis开发的简单中间件， asynq也支持消息队列，你也可也把kq消息队列替换成kafka
 ```
 **分布式事务DTM**
 ```
-分布式事务准备使用的是dtm.性能够用。
+分布式事务使用的是dtm，单节点每秒1W条事务，平常抢购秒杀足够应付了。
 ```
 **K8S部署**
 ```
@@ -136,39 +123,9 @@ Multi-AZ 支持: 将 Master 节点分布在不同的故障域上确保集群高�
 GPU 支持: 支持 GPU 节点，助力运行深度学习等应用.
 
 ```
+### 商业合作 （UI设计，定制开发，系统重构，代理推广等）
 
-### 入门推荐书籍教学视频
-
-* [FFmpeg从入门到精通](https://book.douban.com/subject/30178432/) - 强烈推荐
-* [直播系统开发：基于Nginx与Nginx-rtmp-module](https://book.douban.com/subject/30423374/)
-* [WebRTC权威指南](https://book.douban.com/subject/26915289/)
-* [CDN技术详解](https://book.douban.com/subject/10759173/)
-
-#### 【免费】FFmpeg/WebRTC/RTMP/NDK/Android音视频流媒体高级开发教学视频，完全免费，绝无套路，观看学习后请自行删除，禁止私自转卖，售卖等违法行为，否则后果自负。
-
-* 第1套 跟我学FFmpeg 音视频编码基础入门 价值100元
-* 第2套 （51CTO）OpenGL-实现视频播放(FFMpeg)视频课程价值89元
-* 第3套 FFMPEG跨平台iOS&Android高级开发实践视频教程 价值350元
-* 第4套 C++编程FFMpeg实时美颜直播推流实战-基于ffmpeg，qt5，opencv 价值500元
-* 第5套 (51CTO夏曹俊)FFmpeg安卓流媒体播放器开发实战 价值268元
-* 第6套 (51CTO夏曹俊)C++实战手把手教您用ffmpeg和QT开发播放器实战 价值241元
-* 第7套 OpenCV3.2+QT5+ffmpeg开发视频编辑器（附源码 讲义） 68课 价值899元
-* 第8套 基于FFmpeg+SDL的视频播放器的制作视频教程附讲义源码软件 11课 价值200元
-* 第9套 Android视频编码和直播推流教程 价值450元
-* 第10套 FFmpeg打造Android万能音频播放器 价值99元
-* 第11套 FFmpeg+OpenGL ES+OpenSL ES打造Android视频播放器 价值200元
-* 第12套 5G时代必备技能 音视频WebRTC实时互动直播技术入门与实战 价值280元
-* 第13套 FFmpeg音视频核心技术精讲与实战 价值120元
-* 第14套 Webrtc环境搭建教学 价值150元
-* 第15套 百万级高并发WebRTC流媒体服务器设计与开发 价值299元
-
-链接：[https://www.onionnews.cn/blog/tutorials/](https://www.onionnews.cn/blog/tutorials/)
-
-
-
-### ==问题反馈==
-
-**在使用中有任何问题，欢迎反馈给我们**
-
-https://github.com/DOUBLE-Baller/momo/issues
+**微信**：BCFind5 【请备注好信息，否则不加】
+**QQ**：407193275 【请备注好信息，否则不加】
+**TG**：@qmcloud 【回复较慢】
 
